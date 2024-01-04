@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C0F428BD-664C-400B-B07C-2CBD3A2D4EB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{6AD6E8FE-81D4-45ED-9DAB-CCD8133586EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{5CFA29A0-C9E6-4223-B94D-621FE89454A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{02939D33-9568-4306-8DF4-4BAACCE434C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{D88981EF-C625-4D85-9BF6-41407CB038A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "News", "News", "{7744A985-877D-48B8-8591-5AB576F664DA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.Domain", "src\Microservices\BuildingBlocks\NewsAggregator.Domain\NewsAggregator.Domain.csproj", "{0E32B82D-7860-4B9C-A2D3-6671D39CEEB1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.Infrastructure", "src\Microservices\BuildingBlocks\NewsAggregator.Infrastructure\NewsAggregator.Infrastructure.csproj", "{7FB8F301-8E48-4F48-BB0A-3E4B344D381A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.News", "src\Microservices\Services\News\NewsAggregator.News\NewsAggregator.News.csproj", "{75411EC2-1DC4-471E-9C5D-A779DAC15784}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.Identity", "src\Microservices\Services\Identity\NewsAggregator.Identity\NewsAggregator.Identity.csproj", "{E0D29C46-E454-4916-A54B-7FD3255FD0F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notification", "Notification", "{ECEDCD7F-D36C-466D-977C-C82FC44A2A32}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.Notification", "src\Microservices\Services\Notification\NewsAggregator.Notification\NewsAggregator.Notification.csproj", "{11F9EB00-95EA-4662-B84D-29813BAA3A0C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.News.Api", "src\Microservices\Services\News\NewsAggregator.News.Api\NewsAggregator.News.Api.csproj", "{FC973B14-1EC3-4EA3-BB2A-FD1F430B1366}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E32B82D-7860-4B9C-A2D3-6671D39CEEB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E32B82D-7860-4B9C-A2D3-6671D39CEEB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E32B82D-7860-4B9C-A2D3-6671D39CEEB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E32B82D-7860-4B9C-A2D3-6671D39CEEB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FB8F301-8E48-4F48-BB0A-3E4B344D381A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FB8F301-8E48-4F48-BB0A-3E4B344D381A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FB8F301-8E48-4F48-BB0A-3E4B344D381A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FB8F301-8E48-4F48-BB0A-3E4B344D381A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75411EC2-1DC4-471E-9C5D-A779DAC15784}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75411EC2-1DC4-471E-9C5D-A779DAC15784}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75411EC2-1DC4-471E-9C5D-A779DAC15784}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75411EC2-1DC4-471E-9C5D-A779DAC15784}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0D29C46-E454-4916-A54B-7FD3255FD0F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0D29C46-E454-4916-A54B-7FD3255FD0F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0D29C46-E454-4916-A54B-7FD3255FD0F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0D29C46-E454-4916-A54B-7FD3255FD0F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11F9EB00-95EA-4662-B84D-29813BAA3A0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11F9EB00-95EA-4662-B84D-29813BAA3A0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11F9EB00-95EA-4662-B84D-29813BAA3A0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11F9EB00-95EA-4662-B84D-29813BAA3A0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC973B14-1EC3-4EA3-BB2A-FD1F430B1366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC973B14-1EC3-4EA3-BB2A-FD1F430B1366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC973B14-1EC3-4EA3-BB2A-FD1F430B1366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC973B14-1EC3-4EA3-BB2A-FD1F430B1366}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6AD6E8FE-81D4-45ED-9DAB-CCD8133586EB} = {C0F428BD-664C-400B-B07C-2CBD3A2D4EB0}
+		{5CFA29A0-C9E6-4223-B94D-621FE89454A6} = {6AD6E8FE-81D4-45ED-9DAB-CCD8133586EB}
+		{02939D33-9568-4306-8DF4-4BAACCE434C4} = {6AD6E8FE-81D4-45ED-9DAB-CCD8133586EB}
+		{D88981EF-C625-4D85-9BF6-41407CB038A1} = {02939D33-9568-4306-8DF4-4BAACCE434C4}
+		{7744A985-877D-48B8-8591-5AB576F664DA} = {02939D33-9568-4306-8DF4-4BAACCE434C4}
+		{0E32B82D-7860-4B9C-A2D3-6671D39CEEB1} = {5CFA29A0-C9E6-4223-B94D-621FE89454A6}
+		{7FB8F301-8E48-4F48-BB0A-3E4B344D381A} = {5CFA29A0-C9E6-4223-B94D-621FE89454A6}
+		{75411EC2-1DC4-471E-9C5D-A779DAC15784} = {7744A985-877D-48B8-8591-5AB576F664DA}
+		{E0D29C46-E454-4916-A54B-7FD3255FD0F6} = {D88981EF-C625-4D85-9BF6-41407CB038A1}
+		{ECEDCD7F-D36C-466D-977C-C82FC44A2A32} = {02939D33-9568-4306-8DF4-4BAACCE434C4}
+		{11F9EB00-95EA-4662-B84D-29813BAA3A0C} = {ECEDCD7F-D36C-466D-977C-C82FC44A2A32}
+		{FC973B14-1EC3-4EA3-BB2A-FD1F430B1366} = {7744A985-877D-48B8-8591-5AB576F664DA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D5E7907C-EDB2-449B-8860-F86555E8F584}
+	EndGlobalSection
+EndGlobal
