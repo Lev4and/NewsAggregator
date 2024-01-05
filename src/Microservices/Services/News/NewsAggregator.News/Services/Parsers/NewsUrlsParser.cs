@@ -16,14 +16,27 @@ namespace NewsAggregator.News.Services.Parsers
             CancellationToken cancellationToken = default)
         {
             var newsSiteUri = new Uri(newsSiteUrl);
-            var htmlDocument = await _htmlWeb.LoadFromWebAsync(newsSiteUrl, cancellationToken);
 
-            return htmlDocument.DocumentNode.SelectNodes(options.NewsUrlXPath)
-                .Select(node => node.Attributes["href"].Value)
-                .Select(newsUrl => !newsUrl.Contains(newsSiteUri.Host) 
+            var htmlDocument = await _htmlWeb.LoadFromWebAsync(newsSiteUrl, cancellationToken);
+            var htmlDocumentNavigator = htmlDocument.CreateNavigator();
+
+            if (htmlDocumentNavigator is null)
+            {
+                throw new NullReferenceException(nameof(htmlDocumentNavigator));
+            }
+
+            var result = new List<string>();
+
+            foreach (var item in htmlDocumentNavigator.Select(options.NewsUrlXPath))
+            {
+                var newsUrl = item.ToString() ?? "";
+
+                result.Add(!newsUrl.Contains(newsSiteUri.Host)
                     ? $"{newsSiteUri.Scheme}://{newsSiteUri.Host}/{newsUrl.Substring(1)}"
-                    : newsUrl)
-                .ToList();
+                        : newsUrl);
+            }
+
+            return result;
         }
     }
 }

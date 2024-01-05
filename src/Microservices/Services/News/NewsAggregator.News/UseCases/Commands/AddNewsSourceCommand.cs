@@ -3,6 +3,8 @@ using MediatR;
 using NewsAggregator.Domain.Infrastructure.Databases.Repositories;
 using NewsAggregator.Domain.Infrastructure.Databases;
 using NewsAggregator.News.Databases.EntityFramework.News.Entities;
+using NewsAggregator.Domain.Infrastructure.Caching;
+using NewsAggregator.News.Databases.EntityFramework.News.Repositories;
 
 namespace NewsAggregator.News.UseCases.Commands
 {
@@ -27,11 +29,16 @@ namespace NewsAggregator.News.UseCases.Commands
         {
             private readonly IUnitOfWork _unitOfWork;
             private readonly IRepository _repository;
+            private readonly IMemoryCache _memoryCache;
+            private readonly INewsSourceRepository _newsSourceRepository;
 
-            public Handler(IUnitOfWork unitOfWork, IRepository repository)
+            public Handler(IUnitOfWork unitOfWork, IRepository repository, IMemoryCache memoryCache, 
+                INewsSourceRepository newsSourceRepository)
             {
                 _unitOfWork = unitOfWork;
                 _repository = repository;
+                _memoryCache = memoryCache;
+                _newsSourceRepository = newsSourceRepository;
             }
 
             public async Task<bool> Handle(AddNewsSourceCommand request, CancellationToken cancellationToken)
@@ -98,6 +105,15 @@ namespace NewsAggregator.News.UseCases.Commands
                         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
                         await transaction.CommitAsync(cancellationToken);
+
+                        var newsSource = await _newsSourceRepository.FindNewsSourceByIdAsync(request.NewsSource.Id,
+                            cancellationToken);
+
+                        if (newsSource is not null)
+                        {
+                            await _memoryCache.SetAsync($"newssource:{newsSource.Id}", newsSource,
+                                cancellationToken);
+                        }
 
                         return true;
                     }

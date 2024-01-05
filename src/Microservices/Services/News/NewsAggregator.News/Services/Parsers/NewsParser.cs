@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using NewsAggregator.News.DTOs;
 using System.Globalization;
+using System.Linq;
 
 namespace NewsAggregator.News.Services.Parsers
 {
@@ -17,40 +18,47 @@ namespace NewsAggregator.News.Services.Parsers
             CancellationToken cancellationToken = default)
         {
             var htmlDocument = await _htmlWeb.LoadFromWebAsync(newsUrl);
+            var htmlDocumentNavigator = htmlDocument.CreateNavigator();
 
-            var newsTitle = htmlDocument.DocumentNode
-                .SelectSingleNode(options.TitleXPath).InnerText;
+            if (htmlDocumentNavigator is null)
+            {
+                throw new NullReferenceException(nameof(htmlDocumentNavigator));
+            }
+
+            var newsTitle = htmlDocumentNavigator?.SelectSingleNode(options.TitleXPath)
+                ?.Value?.Trim() ?? "";
 
             var newsSubTitle = null as string;
 
             if (!string.IsNullOrEmpty(options.SubTitleXPath))
             {
-                newsSubTitle = htmlDocument.DocumentNode
-                    .SelectSingleNode(options.SubTitleXPath).InnerText;
+                newsSubTitle = htmlDocumentNavigator
+                    ?.SelectSingleNode(options.SubTitleXPath)?.Value?.Trim();
             }
 
             var newsPictureUrl = null as string;
 
             if (!string.IsNullOrEmpty(options.PictureUrlXPath))
             {
-                newsPictureUrl = htmlDocument.DocumentNode
-                    .SelectSingleNode(options.PictureUrlXPath).Attributes["src"].Value;
+                newsPictureUrl = htmlDocumentNavigator
+                    ?.SelectSingleNode(options.PictureUrlXPath)?.Value?.Trim();
             }
 
             var newsDescription = null as string;
 
             if (!string.IsNullOrEmpty(options.DescriptionXPath))
             {
-                newsDescription = htmlDocument.DocumentNode
-                    .SelectSingleNode(options.DescriptionXPath).OuterHtml;
+                newsDescription = string.Join("",
+                    htmlDocument.DocumentNode.SelectNodes(options.DescriptionXPath)
+                        .Select(node => node.OuterHtml.Trim()));
             }
 
             var newsEditorName = null as string;
 
             if (!string.IsNullOrEmpty(options.EditorNameXPath))
             {
-                newsEditorName = htmlDocument.DocumentNode
-                    .SelectSingleNode(options.EditorNameXPath).InnerText;
+                newsEditorName = htmlDocumentNavigator
+                    ?.SelectSingleNode(options.EditorNameXPath)?.Value?.Trim();
             }
 
             var newsPublishedAt = null as DateTime?;
@@ -58,8 +66,8 @@ namespace NewsAggregator.News.Services.Parsers
             if (!string.IsNullOrEmpty(options.PublishedAtXPath) && !string.IsNullOrEmpty(options.PublishedAtFormat)
                 && !string.IsNullOrEmpty(options.PublishedAtCultureInfo))
             {
-                newsPublishedAt = DateTime.ParseExact(htmlDocument.DocumentNode
-                    .SelectSingleNode(options.PublishedAtXPath).InnerText, options.PublishedAtFormat,
+                newsPublishedAt = DateTime.ParseExact(htmlDocumentNavigator
+                    ?.SelectSingleNode(options.PublishedAtXPath)?.Value?.Trim() ?? "", options.PublishedAtFormat,
                         new CultureInfo(options.PublishedAtCultureInfo)).ToUniversalTime();
             }
 
