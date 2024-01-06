@@ -29,13 +29,11 @@ namespace NewsAggregator.News.UseCases.Commands
         {
             private readonly IUnitOfWork _unitOfWork;
             private readonly IRepository _repository;
-            private readonly IMemoryCache _memoryCache;
 
-            public Handler(IUnitOfWork unitOfWork, IRepository repository, IMemoryCache memoryCache)
+            public Handler(IUnitOfWork unitOfWork, IRepository repository)
             {
                 _unitOfWork = unitOfWork;
                 _repository = repository;
-                _memoryCache = memoryCache;
             }
 
             public async Task<bool> Handle(RemoveNewsSourceByIdCommand request, CancellationToken cancellationToken)
@@ -52,8 +50,6 @@ namespace NewsAggregator.News.UseCases.Commands
                         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
                         await transaction.CommitAsync(cancellationToken);
-
-                        await _memoryCache.RemoveAsync($"newssource:{request.Id}", cancellationToken);
 
                         return true;
                     }

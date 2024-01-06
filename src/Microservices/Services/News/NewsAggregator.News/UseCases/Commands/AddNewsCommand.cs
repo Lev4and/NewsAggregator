@@ -34,16 +34,14 @@ namespace NewsAggregator.News.UseCases.Commands
         {
             private readonly IUnitOfWork _unitOfWork;
             private readonly IRepository _repository;
-            private readonly IMemoryCache _memoryCache;
             private readonly INewsEditorRepository _newsEditorRepository;
             private readonly INewsSourceRepository _newsSourceRepository;
 
-            public Handler(IUnitOfWork unitOfWork, IRepository repository, IMemoryCache memoryCache, 
+            public Handler(IUnitOfWork unitOfWork, IRepository repository,
                 INewsEditorRepository newsEditorRepository, INewsSourceRepository newsSourceRepository)
             {
                 _unitOfWork = unitOfWork;
                 _repository = repository;
-                _memoryCache = memoryCache;
                 _newsEditorRepository = newsEditorRepository;
                 _newsSourceRepository = newsSourceRepository;
             }
@@ -119,11 +117,9 @@ namespace NewsAggregator.News.UseCases.Commands
 
                         await transaction.CommitAsync(cancellationToken);
 
-                        await _memoryCache.SetAsync($"news:{news.Id}", news, cancellationToken);
-
                         return true;
                     }
-                    catch
+                    catch (Exception ex)
                     {
                         await transaction.RollbackAsync(cancellationToken);
 
