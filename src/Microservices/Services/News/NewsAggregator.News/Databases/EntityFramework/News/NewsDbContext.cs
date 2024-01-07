@@ -3,6 +3,7 @@ using NewsAggregator.Domain.Infrastructure.Databases;
 using NewsAggregator.Domain.Infrastructure.Databases.Transactions;
 using NewsAggregator.Infrastructure.Databases.EntityFramework.Transactions;
 using NewsAggregator.News.Databases.EntityFramework.News.Entities;
+using NewsAggregator.News.Extensions;
 
 namespace NewsAggregator.News.Databases.EntityFramework.News
 {
@@ -54,6 +55,8 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.AddNewsSources();
 
             modelBuilder.Entity<Entities.News>()
                 .HasOne(news => news.SubTitle)

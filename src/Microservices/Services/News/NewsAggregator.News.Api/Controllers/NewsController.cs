@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using NewsAggregator.Infrastructure.Web.Http;
 using NewsAggregator.News.Databases.EntityFramework.News.Entities;
 using NewsAggregator.News.DTOs;
 using NewsAggregator.News.UseCases.Commands;
@@ -23,7 +24,7 @@ namespace NewsAggregator.News.Api.Controllers
 
         [HttpGet]
         [Route("{id:guid:required}")]
-        [ProducesResponseType(typeof(IReadOnlyCollection<Entities.News>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ApiResponse<Entities.News>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetNewsByIdAsync([Required][FromRoute(Name = "id")] Guid id,
             CancellationToken cancellationToken = default)
         {
@@ -31,7 +32,7 @@ namespace NewsAggregator.News.Api.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(IReadOnlyCollection<Entities.News>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ApiResponse<Entities.News>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetNewsByUrlAsync([Required][FromQuery(Name = "url")] string url,
             CancellationToken cancellationToken = default)
         {
@@ -40,7 +41,7 @@ namespace NewsAggregator.News.Api.Controllers
 
         [HttpGet]
         [Route("check")]
-        [ProducesResponseType(typeof(IReadOnlyCollection<bool>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ApiResponse<bool>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> CheckNewsOnExistsByUrlAsync([Required][FromQuery(Name = "url")] string url,
             CancellationToken cancellationToken = default)
         {
@@ -48,7 +49,7 @@ namespace NewsAggregator.News.Api.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(IReadOnlyCollection<bool>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ApiResponse<bool>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> AddNewsAsync([Required][FromBody] NewsDto news, 
             CancellationToken cancellationToken = default)
         {
@@ -57,7 +58,7 @@ namespace NewsAggregator.News.Api.Controllers
 
         [HttpGet]
         [Route("sources")]
-        [ProducesResponseType(typeof(IReadOnlyCollection<NewsSource>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ApiResponse<IReadOnlyCollection<NewsSource>>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetNewsSourcesAsync(CancellationToken cancellationToken = default)
         {
             return Ok(await _mediator.Send(new GetNewsSourcesQuery(), cancellationToken));
@@ -65,7 +66,7 @@ namespace NewsAggregator.News.Api.Controllers
 
         [HttpGet]
         [Route("sources/{id:guid:required}")]
-        [ProducesResponseType(typeof(NewsSource), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ApiResponse<NewsSource>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetNewsSourceByIdAsync([Required][FromRoute(Name = "id")] Guid id,
             CancellationToken cancellationToken = default)
         {
@@ -74,7 +75,7 @@ namespace NewsAggregator.News.Api.Controllers
 
         [HttpPost]
         [Route("sources")]
-        [ProducesResponseType(typeof(IReadOnlyCollection<bool>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ApiResponse<bool>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> AddNewsSourceAsync([Required][FromBody] NewsSource newsSource,
             CancellationToken cancellationToken = default)
         {
@@ -83,7 +84,7 @@ namespace NewsAggregator.News.Api.Controllers
 
         [HttpPut]
         [Route("sources")]
-        [ProducesResponseType(typeof(IReadOnlyCollection<bool>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ApiResponse<bool>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> UpdateNewsSourceAsync([Required][FromBody] NewsSource newsSource,
             CancellationToken cancellationToken = default)
         {
@@ -92,7 +93,7 @@ namespace NewsAggregator.News.Api.Controllers
 
         [HttpDelete]
         [Route("sources/{id:guid:required}")]
-        [ProducesResponseType(typeof(IReadOnlyCollection<NewsSourceDto>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ApiResponse<bool>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> RemoveNewsSourceByIdAsync([Required][FromRoute(Name = "id")] Guid id,
             CancellationToken cancellationToken = default)
         {

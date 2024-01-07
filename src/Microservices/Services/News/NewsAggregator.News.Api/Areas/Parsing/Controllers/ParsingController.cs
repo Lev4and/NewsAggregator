@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using NewsAggregator.Infrastructure.Web.Http;
 using NewsAggregator.News.DTOs;
 using NewsAggregator.News.UseCases.Commands;
 using System.ComponentModel.DataAnnotations;
@@ -20,7 +21,7 @@ namespace NewsAggregator.News.Api.Areas.Parsing.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(NewsDto), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ApiResponse<NewsDto>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> TestParseNewsAsync([Required][FromQuery(Name = "newsUrl")] string newsUrl,
             CancellationToken cancellationToken = default)
         {
@@ -29,7 +30,7 @@ namespace NewsAggregator.News.Api.Areas.Parsing.Controllers
 
         [HttpPost]
         [Route("test")]
-        [ProducesResponseType(typeof(NewsDto), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ApiResponse<NewsDto>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> TestParseNewsAsync([Required][FromBody] TestParseNewsDto dto,
             CancellationToken cancellationToken = default)
         {

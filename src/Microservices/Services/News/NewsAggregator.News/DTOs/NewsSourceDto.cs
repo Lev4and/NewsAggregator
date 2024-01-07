@@ -1,15 +1,20 @@
-﻿namespace NewsAggregator.News.DTOs
+﻿using NewsAggregator.News.Databases.EntityFramework.News.Entities;
+using NewsAggregator.News.Services.Parsers;
+
+namespace NewsAggregator.News.DTOs
 {
     public class NewsSourceDto
     {
-        public string Title { get; }
+        public string Title { get; set; }
 
-        public string SiteUrl { get; }
+        public string SiteUrl { get; set; }
 
-        public NewsSourceDto(string title, string siteUrl)
-        {
-            Title = title;
-            SiteUrl = siteUrl;
-        }
+        public string NewsSiteUrl { get; set; }
+
+        public string? LogoUrl { get; set; }
+
+        public NewsParserOptions ParseSettings { get; set; }
+
+        public NewsUrlsParserOptions SearchSettings { get; set; }
     }
 }

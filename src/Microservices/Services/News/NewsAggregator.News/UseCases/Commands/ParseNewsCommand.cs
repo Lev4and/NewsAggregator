@@ -50,10 +50,10 @@ namespace NewsAggregator.News.UseCases.Commands
                         request.NewsUrl, 
                         new NewsParserOptions(
                             newsSource.ParseSettings.TitleXPath, 
+                            newsSource.ParseSettings.DescriptionXPath,
                             newsSource.ParseSettings.ParseSubTitleSettings?.TitleXPath,
                             newsSource.ParseSettings.ParseEditorSettings?.NameXPath,
                             newsSource.ParseSettings.ParsePictureSettings?.UrlXPath,
-                            newsSource.ParseSettings.DescriptionXPath,
                             newsSource.ParseSettings.ParsePublishedAtSettings?.PublishedAtXPath,
                             newsSource.ParseSettings.ParsePublishedAtSettings?.PublishedAtFormat,
                             newsSource.ParseSettings.ParsePublishedAtSettings?.PublishedAtCultureInfo),
