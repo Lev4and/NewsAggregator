@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.Notification
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.News.Api", "src\Microservices\Services\News\NewsAggregator.News.Api\NewsAggregator.News.Api.csproj", "{FC973B14-1EC3-4EA3-BB2A-FD1F430B1366}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsAggregator.News.Tests", "src\Microservices\Services\News\NewsAggregator.News.Tests\NewsAggregator.News.Tests.csproj", "{C8501751-1282-4529-AAB3-F81071C45B1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{FC973B14-1EC3-4EA3-BB2A-FD1F430B1366}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC973B14-1EC3-4EA3-BB2A-FD1F430B1366}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC973B14-1EC3-4EA3-BB2A-FD1F430B1366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8501751-1282-4529-AAB3-F81071C45B1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8501751-1282-4529-AAB3-F81071C45B1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8501751-1282-4529-AAB3-F81071C45B1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8501751-1282-4529-AAB3-F81071C45B1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +82,7 @@ Global
 		{ECEDCD7F-D36C-466D-977C-C82FC44A2A32} = {02939D33-9568-4306-8DF4-4BAACCE434C4}
 		{11F9EB00-95EA-4662-B84D-29813BAA3A0C} = {ECEDCD7F-D36C-466D-977C-C82FC44A2A32}
 		{FC973B14-1EC3-4EA3-BB2A-FD1F430B1366} = {7744A985-877D-48B8-8591-5AB576F664DA}
+		{C8501751-1282-4529-AAB3-F81071C45B1C} = {7744A985-877D-48B8-8591-5AB576F664DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D5E7907C-EDB2-449B-8860-F86555E8F584}
