@@ -4,16 +4,11 @@ namespace NewsAggregator.News.Tests.Services.Parsers
 {
     public class NewsParserTestsData
     {
-        public class NewsSources : TheoryData<NewsSourceDto>
+        public class NewsSources : TheoryData
         {
             public NewsSources()
             {
-                var newsSourceDtos = new NewsSourceDtos();
-
-                foreach (var newsSourceDto in newsSourceDtos)
-                {
-                    Add(newsSourceDto);
-                }
+                
             }
         }
     }
