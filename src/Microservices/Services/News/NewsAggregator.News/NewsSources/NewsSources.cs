@@ -322,6 +322,226 @@ namespace NewsAggregator.News.NewsSources
 
             Add(new NewsSource
             {
+                Title = "БелТА",
+                SiteUrl = "https://www.belta.by/",
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//h1/text()",
+                    DescriptionXPath = "//div[@class='js-mediator-article']",
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//div[@class='inner_content']//div[@class='main_img']//img/@src"
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//div[@class='date_full']/text()",
+                        PublishedAtFormat = "dd M yyyy, HH:mm",
+                        PublishedAtCultureInfo = "ru-RU"
+                    }
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsSiteUrl = "https://www.belta.by/",
+                    NewsUrlXPath = "//a[contains(@href, 'https://www.belta.by/') and contains(@href, '/view/')]/@href"
+                }
+            });
+
+            Add(new NewsSource
+            {
+                Title = "СвободнаяПресса",
+                SiteUrl = "https://svpressa.ru/",
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//h1[@class='b-text__title']/text()",
+                    DescriptionXPath = "//div[@class='b-text__content']/div[contains(@class, 'b-text__block')]"
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsSiteUrl = "https://svpressa.ru/all/news/",
+                    NewsUrlXPath = "//a[contains(@href, '/news/') and not(contains(@href, '?')) and not(starts-with(@href, '/all/news/'))]/@href"
+                }
+            });
+
+            Add(new NewsSource
+            {
+                Title = "Москва 24",
+                SiteUrl = "https://www.m24.ru/",
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//h1/text()",
+                    DescriptionXPath = "//div[@class='b-material-body']/div/*[not(@class='b-material-incut-m-image')]",
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//div[@class='b-material-incut-m-image']//@src"
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//p[@class='b-material__date']/text()",
+                        PublishedAtFormat = "HH:mm",
+                        PublishedAtCultureInfo = "ru-RU"
+                    }
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsSiteUrl = "https://www.m24.ru/",
+                    NewsUrlXPath = "//a[contains(@href, '/news/')]/@href"
+                }
+            });
+
+            Add(new NewsSource
+            {
+                Title = "ВЗГЛЯД.РУ",
+                SiteUrl = "https://vz.ru/",
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//h1/text()",
+                    DescriptionXPath = "//article/div[@class='news_text']",
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//article/figure/img/@src"
+                    },
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//h4/text()"
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//article/div[@class='header']/span/text()",
+                        PublishedAtFormat = "dd M yyyy, HH:mm",
+                        PublishedAtCultureInfo = "ru-RU"
+                    }
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsSiteUrl = "https://vz.ru/",
+                    NewsUrlXPath = "//a[contains(@href, '.html') and not(contains(@href, '#comments')) and not(contains(@href, '?')) and not(contains(@href, '/about/'))]/@href"
+                }
+            });
+
+            Add(new NewsSource
+            {
+                Title = "Чемпионат.com",
+                SiteUrl = "https://www.championat.com/",
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//article/header/div[@class='article-head__title']/text()",
+                    DescriptionXPath = "//article/div[@class='article-content']/*[not(@class)]",
+                    ParseEditorSettings = new NewsParseEditorSettings
+                    {
+                        NameXPath = "//article//header//div[@class='article-head__author-name']/a[@rel='author']/span/text()"
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//article//header/div[@class='article-head__photo']/img/@src"
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//article//header//time[@class='article-head__date']/text()",
+                        PublishedAtFormat = "dd M yyyy, HH:mm",
+                        PublishedAtCultureInfo = "ru-RU"
+                    }
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsSiteUrl = "https://www.championat.com/news/1.html?utm_source=button&utm_medium=news",
+                    NewsUrlXPath = "//a[contains(@href, 'news-') and contains(@href, '.html') and not(contains(@href, '#comments'))]/@href"
+                }
+            });
+
+            Add(new NewsSource
+            {
+                Title = "Life",
+                SiteUrl = "https://life.ru/",
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//h1/text()",
+                    DescriptionXPath = "//div[contains(@class, 'styles_bodyWrapper')]/div[not(@class)]",
+                    ParseEditorSettings = new NewsParseEditorSettings
+                    {
+                        NameXPath = "//div[contains(@class, 'styles_bodyWrapper')]//div[contains(@class, 'styles_authorsLinks')]/a/text()"
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//article//header/div[contains(@class, 'styles_cover_media')]/img/@src"
+                    },
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//article//header//p[contains(@class, 'styles_subtitle')]/text()"
+                    }
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsSiteUrl = "https://life.ru/s/novosti",
+                    NewsUrlXPath = "//a[contains(@href, '/p/')]/@href"
+                }
+            });
+
+            Add(new NewsSource
+            {
+                Title = "3Dnews.ru",
+                SiteUrl = "https://3dnews.ru/",
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//h1/text()",
+                    DescriptionXPath = "//div[contains(@class, 'article-entry')]//div[@class='js-mediator-article']/p[position()>1]",
+                    ParseEditorSettings = new NewsParseEditorSettings
+                    {
+                        NameXPath = "//div[contains(@class, 'article-entry')]//div[@class='entry-info']//a[@itemprop='author']//span[@itemprop='name']/text()"
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//div[contains(@class, 'article-entry')]//div[contains(@class, 'entry-body')]//div[@class='source-wrapper']/img[@itemprop='image']/@src"
+                    },
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//div[contains(@class, 'article-entry')]//div[@class='js-mediator-article']/p[position()=1]/text()"
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//div[contains(@class, 'article-entry')]//div[@class='entry-info']/span[@itemprop='datePublished']/@content",
+                        PublishedAtFormat = "yyyy-MM-ddTHH:mm:sszzz",
+                        PublishedAtCultureInfo = "ru-RU"
+                    }
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsSiteUrl = "https://3dnews.ru/news/",
+                    NewsUrlXPath = "//div[@class='news-feed-all']//a[@class='entry-header']/h1/../@href"
+                }
+            });
+
+            Add(new NewsSource
+            {
+                Title = "iXBT.com",
+                SiteUrl = "https://www.ixbt.com/",
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//h1/text()",
+                    DescriptionXPath = "//div[@itemprop='articleBody']",
+                    ParseEditorSettings = new NewsParseEditorSettings
+                    {
+                        NameXPath = "//span[@itemprop='author']/span[@itemprop='name']/@content"
+                    },
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//h4/text()"
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//div[@class='b-article__top-author']/p[@class='date']/text()",
+                        PublishedAtFormat = "dd M yyyy в HH:mm",
+                        PublishedAtCultureInfo = "ru-RU"
+                    }
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsSiteUrl = "https://www.ixbt.com/news/",
+                    NewsUrlXPath = "//a[starts-with(@href, '/news/') and contains(@href, '.html') and not(contains(@href, '#comments'))]/@href"
+                }
+            });
+
+            Add(new NewsSource
+            {
                 Title = "iXBT.games",
                 SiteUrl = "https://ixbt.games/",
                 Logo = new NewsSourceLogo
