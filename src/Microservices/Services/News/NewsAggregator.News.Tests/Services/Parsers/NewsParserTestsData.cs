@@ -1,6 +1,4 @@
-﻿using NewsAggregator.News.DTOs;
-
-namespace NewsAggregator.News.Tests.Services.Parsers
+﻿namespace NewsAggregator.News.Tests.Services.Parsers
 {
     public class NewsParserTestsData
     {
@@ -8,7 +6,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         {
             public NewsSources()
             {
-                
+
             }
         }
     }

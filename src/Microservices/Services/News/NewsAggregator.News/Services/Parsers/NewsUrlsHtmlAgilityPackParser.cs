@@ -1,15 +1,15 @@
 ﻿using HtmlAgilityPack;
-using System.Linq;
+using NewsAggregator.News.Web.Http;
 
 namespace NewsAggregator.News.Services.Parsers
 {
-    public class NewsUrlsParser : INewsUrlsParser
+    public class NewsUrlsHtmlAgilityPackParser : INewsUrlsParser
     {
-        private readonly HtmlWeb _htmlWeb;
+        private readonly NewsHttpClient _httpClient;
 
-        public NewsUrlsParser(HtmlWeb htmlWeb)
+        public NewsUrlsHtmlAgilityPackParser(NewsHttpClient httpClient)
         {
-            _htmlWeb = htmlWeb;
+            _httpClient = httpClient;
         }
 
         public async Task<IReadOnlyCollection<string>> ParseAsync(string newsSiteUrl, NewsUrlsParserOptions options,
@@ -17,7 +17,12 @@ namespace NewsAggregator.News.Services.Parsers
         {
             var newsSiteUri = new Uri(newsSiteUrl);
 
-            var htmlDocument = await _htmlWeb.LoadFromWebAsync(newsSiteUrl, cancellationToken);
+            var html = await _httpClient.GetUtf8StringAsync(newsSiteUrl, cancellationToken);
+
+            var htmlDocument = new HtmlDocument();
+
+            htmlDocument.LoadHtml(html);
+
             var htmlDocumentNavigator = htmlDocument.CreateNavigator();
 
             if (htmlDocumentNavigator is null)

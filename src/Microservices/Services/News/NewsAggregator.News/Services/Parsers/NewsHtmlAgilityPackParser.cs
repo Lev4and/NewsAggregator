@@ -1,23 +1,28 @@
 ﻿using HtmlAgilityPack;
 using NewsAggregator.News.DTOs;
+using NewsAggregator.News.Web.Http;
 using System.Globalization;
-using System.Linq;
 
 namespace NewsAggregator.News.Services.Parsers
 {
-    public class NewsParser : INewsParser
+    public class NewsHtmlAgilityPackParser : INewsParser
     {
-        private readonly HtmlWeb _htmlWeb;
+        private readonly NewsHttpClient _httpClient;
 
-        public NewsParser(HtmlWeb htmlWeb)
+        public NewsHtmlAgilityPackParser(NewsHttpClient httpClient)
         {
-            _htmlWeb = htmlWeb;
+            _httpClient = httpClient;
         }
 
         public async Task<NewsDto> ParseAsync(string newsUrl, NewsParserOptions options, 
             CancellationToken cancellationToken = default)
         {
-            var htmlDocument = await _htmlWeb.LoadFromWebAsync(newsUrl);
+            var html = await _httpClient.GetUtf8StringAsync(newsUrl, cancellationToken);
+
+            var htmlDocument = new HtmlDocument();
+
+            htmlDocument.LoadHtml(html);
+
             var htmlDocumentNavigator = htmlDocument.CreateNavigator();
 
             if (htmlDocumentNavigator is null)

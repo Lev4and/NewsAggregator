@@ -2,9 +2,19 @@
 
 namespace NewsAggregator.News.NewsSources
 {
-    public class NewsSources : List<NewsSource>
+    public class Sources : List<NewsSource>
     {
-        public NewsSources()
+        public NewsSource this[string title]
+        {
+            get => this.Single(newsSource => newsSource.Title == title);
+        }
+
+        public NewsSource this[Uri uri]
+        {
+            get => this.Single(newsSource => new Uri(newsSource.SiteUrl).Host == uri.Host);
+        }
+
+        public Sources()
         {
             Add(new NewsSource
             {

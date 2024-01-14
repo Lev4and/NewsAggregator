@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NewsAggregator.News.Databases.EntityFramework.News.Entities;
+using NewsAggregator.News.NewsSources;
 
 namespace NewsAggregator.News.Extensions
 {
@@ -7,7 +8,7 @@ namespace NewsAggregator.News.Extensions
     {
         public static ModelBuilder AddNewsSources(this ModelBuilder modelBuilder)
         {
-            var newsSources = new NewsSources.NewsSources();
+            var newsSources = new Sources();
 
             foreach (var newsSource in newsSources)
             {

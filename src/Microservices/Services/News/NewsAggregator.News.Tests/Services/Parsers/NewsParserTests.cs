@@ -10,10 +10,5 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         {
             _output = output;
         }
-
-        public void ParseAsync_WithParams_ReturnNotNullResult()
-        {
-            
-        }
     }
 }
