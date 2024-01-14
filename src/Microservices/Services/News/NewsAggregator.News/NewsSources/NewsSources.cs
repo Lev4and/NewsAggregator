@@ -577,6 +577,126 @@ namespace NewsAggregator.News.NewsSources
                     NewsUrlXPath = "//a[@class='card-link']/@href"
                 }
             });
+
+            Add(new NewsSource
+            {
+                Title = "Газета.Ru",
+                SiteUrl = "https://www.gazeta.ru/",
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//h1/text()",
+                    DescriptionXPath = "//div[@itemprop='articleBody']",
+                    ParseEditorSettings = new NewsParseEditorSettings
+                    {
+                        NameXPath = "//div[@class='author']/span[@itemprop='author']/span[@itemprop='name']/a/text()"
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//div[@class='b_article-media']//div[@class='mainarea-wrapper']/figure/img[@class='item-image-front']/@src"
+                    },
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//h2/text()"
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//article/div[@class='b_article-header']//time[@itemprop='datePublished']/@datetime",
+                        PublishedAtFormat = "yyyy-MM-ddTHH:mm:sszzz",
+                        PublishedAtCultureInfo = "ru-RU"
+                    }
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsSiteUrl = "https://www.gazeta.ru/news/",
+                    NewsUrlXPath = "//a[contains(@href, '/news/') and contains(@href, '.shtml') and not(contains(@href, '?'))]/@href"
+                }
+            });
+
+            Add(new NewsSource
+            {
+                Title = "Интерфакс",
+                SiteUrl = "https://www.interfax.ru/",
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//h1/text()",
+                    DescriptionXPath = "//article[@itemprop='articleBody']/*[not(name() = 'h1') and not(name() = 'aside') and not(name() = 'meta') and not(name() = 'link') and not(@itemprop)]",
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//article[@itemprop='articleBody']/meta[@itemprop='datePublished']/@content",
+                        PublishedAtFormat = "yyyy-MM-ddTHH:mm:ss",
+                        PublishedAtCultureInfo = "ru-RU"
+                    }
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsSiteUrl = "https://www.interfax.ru/",
+                    NewsUrlXPath = "//div[@class='timeline']//a[@tabindex=5]/@href"
+                }
+            });
+
+            Add(new NewsSource
+            {
+                Title = "Правда.ру",
+                SiteUrl = "https://www.pravda.ru/",
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//div[@class='title article-header']/text()",
+                    DescriptionXPath = "//div[contains(@class, 'full-article')]/*[not(name()='h1') and not(name()='style') and not(name()='div')]",
+                    ParseEditorSettings = new NewsParseEditorSettings
+                    {
+                        NameXPath = "//div[contains(@class, 'full-article')]/div[@class='authors-block']//span[text()='Автор']/../a/text()"
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//div[contains(@class, 'full-article')]/div[contains(@class, 'gallery')]/picture/img/@src"
+                    },
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//h1/text()"
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//div[contains(@class, 'full-article')]//time/text()",
+                        PublishedAtFormat = "dd.MM.yyyy HH:mm",
+                        PublishedAtCultureInfo = "ru-RU"
+                    }
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsSiteUrl = "https://www.pravda.ru/",
+                    NewsUrlXPath = "//a[contains(@href, '/news/') and not(@href='https://www.pravda.ru/news/')]/@href"
+                }
+            });
+
+            Add(new NewsSource
+            {
+                Title = "Ura.ru",
+                SiteUrl = "https://ura.news/",
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//h1/text()",
+                    DescriptionXPath = "//div[@itemprop='articleBody']/*[not(name()='div')]",
+                    ParseEditorSettings = new NewsParseEditorSettings
+                    {
+                        NameXPath = "//div[@itemprop='author']/span[@itemprop='name']/text()"
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//div[@itemprop='articleBody']//div[@itemprop='image']/picture/img[@itemprop='contentUrl']/@src"
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//div[@class='publication-info']/time[@itemprop='datePublished']/@datetime",
+                        PublishedAtFormat = "yyyy-MM-ddTHH:mm:sszzz",
+                        PublishedAtCultureInfo = "ru-RU"
+                    }
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsSiteUrl = "https://ura.news/",
+                    NewsUrlXPath = "//a[contains(@href, '/news/')]/@href"
+                }
+            });
         }
     }
 }
