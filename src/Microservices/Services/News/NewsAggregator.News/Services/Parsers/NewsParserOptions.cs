@@ -8,9 +8,15 @@
 
         public string? SubTitleXPath { get; set; }
 
+        public bool IsSubTitleRequired { get; set; }
+
         public string? EditorNameXPath { get; set; }
 
+        public bool IsEditorNameRequired { get; set; }
+
         public string? PictureUrlXPath { get; set; }
+
+        public bool IsPictureUrlRequired { get; set; }
 
         public string? PublishedAtXPath { get; set; }
 
@@ -18,22 +24,29 @@
 
         public string? PublishedAtCultureInfo { get; set; }
 
-        public NewsParserOptions() : this("", "", null, null, null, null, null, null)
+        public bool IsPublishedAtRequired { get; set; }
+
+        public NewsParserOptions() : this("", "", null, false, null, false, null, false, null, null, null, false)
         {
 
         }
 
-        public NewsParserOptions(string titleXPath, string descriptionXPath, string? subTitleXPath, string? editorNameXPath, 
-            string? pictureUrlXPath, string? publishedAtXPath, string? publishedAtFormat, string? publishedAtCultureInfo)
+        public NewsParserOptions(string titleXPath, string descriptionXPath, string? subTitleXPath, bool isSubTitleRequired, 
+            string? editorNameXPath, bool isEditorNameRequired, string? pictureUrlXPath, bool isPictureUrlRequired, 
+            string? publishedAtXPath, string? publishedAtFormat, string? publishedAtCultureInfo, bool isPublishedAtRequired)
         {
             TitleXPath = titleXPath;
             DescriptionXPath = descriptionXPath;
             SubTitleXPath = subTitleXPath;
+            IsSubTitleRequired = isSubTitleRequired;
             EditorNameXPath = editorNameXPath;
+            IsEditorNameRequired = isEditorNameRequired;
             PictureUrlXPath = pictureUrlXPath;
+            IsPictureUrlRequired = isPictureUrlRequired;
             PublishedAtXPath = publishedAtXPath;
             PublishedAtFormat = publishedAtFormat;
             PublishedAtCultureInfo = publishedAtCultureInfo;
+            IsPublishedAtRequired = isPublishedAtRequired;
         }
     }
 }

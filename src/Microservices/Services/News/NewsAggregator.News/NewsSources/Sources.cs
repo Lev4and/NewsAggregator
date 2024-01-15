@@ -26,17 +26,20 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath  = "//div[contains(@class, 'article__body')]",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//div[@class='photoview__open']/img/@src"
+                        UrlXPath = "//div[@class='photoview__open']/img/@src",
+                        IsRequired = false
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
-                        TitleXPath = "//h1[@class='article__second-title']/text()"
+                        TitleXPath = "//h1[@class='article__second-title']/text()",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//div[@class='article__info']//div[@class='article__info-date']/a/text()",
                         PublishedAtFormat = "HH:mm dd.MM.yyyy",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -56,13 +59,15 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[contains(@class, 'article__text ')]",
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
-                        TitleXPath = "//div[contains(@class, 'article__summary')]/text()"
+                        TitleXPath = "//div[contains(@class, 'article__summary')]/text()",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//div[contains(@class, 'article__date-autor-shortcode')]/div[contains(@class, 'article__date')]/time[@class='date']/@datetime",
                         PublishedAtFormat = "yyyy-MM-d HH:mm",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -82,11 +87,13 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//article",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//div[contains(@class, 'HeaderMedia_image')]//img[contains(@class, 'Image_image')]/@src"
+                        UrlXPath = "//div[contains(@class, 'HeaderMedia_image')]//img[contains(@class, 'Image_image')]/@src",
+                        IsRequired = false
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
-                        TitleXPath = "//h3/text()"
+                        TitleXPath = "//h3/text()",
+                        IsRequired = false
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -106,21 +113,25 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[@class='topic-body__content']",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
-                        NameXPath = "//div[@class='topic-authors']/a[@class='topic-authors__author']/text()"
+                        NameXPath = "//div[@class='topic-authors']/a[@class='topic-authors__author']/text()",
+                        IsRequired = true
                     },
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//div[contains(@class, 'topic-body__title-image')]//img[contains(@class, 'picture__image')]/@src"
+                        UrlXPath = "//div[contains(@class, 'topic-body__title-image')]//img[contains(@class, 'picture__image')]/@src",
+                        IsRequired = true
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
-                        TitleXPath = "//div[contains(@class, 'topic-body__title')]/text()"
+                        TitleXPath = "//div[contains(@class, 'topic-body__title')]/text()",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//div[@class='topic-page__header']//a[contains(@class, 'topic-header__time')]/text()",
                         PublishedAtFormat = "HH:mm, d M yyyy",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -140,17 +151,20 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[contains(@class, 'PageContentCommonStyling_text')]",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
-                        NameXPath = "//div[contains(@class, 'PageArticleContent_authors')]//a[contains(@class, 'LinksOfAuthor_item')]/text()"
+                        NameXPath = "//div[contains(@class, 'PageArticleContent_authors')]//a[contains(@class, 'LinksOfAuthor_item')]/text()",
+                        IsRequired = true
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
-                        TitleXPath = "//div[contains(@class, 'PageArticleContent_lead')]/text()"
+                        TitleXPath = "//div[contains(@class, 'PageArticleContent_lead')]/text()",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//div[contains(@class, 'PageArticleContent_date')]/text()",
                         PublishedAtFormat = "dd.MM.yyyy HH:mm",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -170,17 +184,20 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[@class='article_text']",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
-                        NameXPath = "//div[@class='article_top']//div[@class='authors']//div[@class='autor']//span/text()"
+                        NameXPath = "//div[@class='article_top']//div[@class='authors']//div[@class='autor']//span/text()",
+                        IsRequired = true
                     },
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//div[@class='img_box']/a[@class='zoom_js']/img/@src"
+                        UrlXPath = "//div[@class='img_box']/a[@class='zoom_js']/img/@src",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//div[@class='article_top']//div[@class='date']//time/text()",
                         PublishedAtFormat = "dd.MM.yyyy HH:mm",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -200,17 +217,20 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[@class='article__text article__text_free']/*[not(contains(@class, 'article__text__overview'))]",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
-                        NameXPath = "//div[@class='article__authors']//span[@class='article__authors__author']/span[@class='article__authors__author__name']/text()"
+                        NameXPath = "//div[@class='article__authors']//span[@class='article__authors__author']/span[@class='article__authors__author__name']/text()",
+                        IsRequired = true
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
-                        TitleXPath = "//div[contains(@class, 'article__text')]/div[@class='article__text__overview']/span/text()"
+                        TitleXPath = "//div[contains(@class, 'article__text')]/div[@class='article__text__overview']/span/text()",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//div[@class='article__header__info-block']/time[@class='article__header__date']/@datetime",
                         PublishedAtFormat = "yyyy-MM-ddTHH:mm:sszzz",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -230,13 +250,15 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[contains(@class, 'news-item__content')]",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
-                        NameXPath = "//footer[@class='news-item__footer']/div[@class='news-item__footer-after-news']/p[position()=1]//span/text()"
+                        NameXPath = "//footer[@class='news-item__footer']/div[@class='news-item__footer-after-news']/p[position()=1]//span/text()",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//header[@class='news-item__header']//time/@content",
                         PublishedAtFormat = "yyyy-MM-ddTHH:mm:sszzz",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -256,17 +278,20 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[@class='article_text_wrapper js-search-mark']/*[not(contains(@class, 'doc__text document_authors'))]",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
-                        NameXPath = "//p[@class='doc__text document_authors']/text()"
+                        NameXPath = "//p[@class='doc__text document_authors']/text()",
+                        IsRequired = true
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
-                        TitleXPath = "//header[@class='doc_header']/h2[@class='doc_header__subheader']/text()"
+                        TitleXPath = "//header[@class='doc_header']/h2[@class='doc_header__subheader']/text()",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//div[@class='doc_header__time']/time[@class='doc_header__publish_time']/@datetime",
                         PublishedAtFormat = "yyyy-MM-ddTHH:mm:sszzz",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -286,13 +311,15 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[@itemprop='articleBody']",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//div[contains(@class, 'big_photo')]//div[@class='big_photo__img']//img/@src"
+                        UrlXPath = "//div[contains(@class, 'big_photo')]//div[@class='big_photo__img']//img/@src",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//div[@class='article_page__left__top__left']//div[@class='article_page__left__top__time']//time/@datetime",
                         PublishedAtFormat = "yyyy-MM-ddTHH:mm:ssZ",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -312,15 +339,18 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[@class='article__content']/*[not(contains(@class, 'article__title')) and not(contains(@class, 'article__intro'))]",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
-                        NameXPath = "//a[@class='article__author']/text()"
+                        NameXPath = "//a[@class='article__author']/text()",
+                        IsRequired = true
                     },
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//div[@class='article__media']//img/@src"
+                        UrlXPath = "//div[@class='article__media']//img/@src",
+                        IsRequired = true
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
-                        TitleXPath = "//div[@class='article__intro']/p/text()"
+                        TitleXPath = "//div[@class='article__intro']/p/text()",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -340,13 +370,15 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[@class='js-mediator-article']",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//div[@class='inner_content']//div[@class='main_img']//img/@src"
+                        UrlXPath = "//div[@class='inner_content']//div[@class='main_img']//img/@src",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//div[@class='date_full']/text()",
                         PublishedAtFormat = "dd M yyyy, HH:mm",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -382,13 +414,15 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[@class='b-material-body']/div/*[not(@class='b-material-incut-m-image')]",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//div[@class='b-material-incut-m-image']//@src"
+                        UrlXPath = "//div[@class='b-material-incut-m-image']//@src",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//p[@class='b-material__date']/text()",
                         PublishedAtFormat = "HH:mm",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -408,17 +442,20 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//article/div[@class='news_text']",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//article/figure/img/@src"
+                        UrlXPath = "//article/figure/img/@src",
+                        IsRequired = true
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
-                        TitleXPath = "//h4/text()"
+                        TitleXPath = "//h4/text()",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//article/div[@class='header']/span/text()",
                         PublishedAtFormat = "dd M yyyy, HH:mm",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -438,17 +475,20 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//article/div[@class='article-content']/*[not(@class)]",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
-                        NameXPath = "//article//header//div[@class='article-head__author-name']/a[@rel='author']/span/text()"
+                        NameXPath = "//article//header//div[@class='article-head__author-name']/a[@rel='author']/span/text()",
+                        IsRequired = true
                     },
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//article//header/div[@class='article-head__photo']/img/@src"
+                        UrlXPath = "//article//header/div[@class='article-head__photo']/img/@src",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//article//header//time[@class='article-head__date']/text()",
                         PublishedAtFormat = "dd M yyyy, HH:mm",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -468,15 +508,18 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[contains(@class, 'styles_bodyWrapper')]/div[not(@class)]",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
-                        NameXPath = "//div[contains(@class, 'styles_bodyWrapper')]//div[contains(@class, 'styles_authorsLinks')]/a/text()"
+                        NameXPath = "//div[contains(@class, 'styles_bodyWrapper')]//div[contains(@class, 'styles_authorsLinks')]/a/text()",
+                        IsRequired = true
                     },
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//article//header/div[contains(@class, 'styles_cover_media')]/img/@src"
+                        UrlXPath = "//article//header/div[contains(@class, 'styles_cover_media')]/img/@src",
+                        IsRequired = true
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
-                        TitleXPath = "//article//header//p[contains(@class, 'styles_subtitle')]/text()"
+                        TitleXPath = "//article//header//p[contains(@class, 'styles_subtitle')]/text()",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -496,21 +539,25 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[contains(@class, 'article-entry')]//div[@class='js-mediator-article']/p[position()>1]",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
-                        NameXPath = "//div[contains(@class, 'article-entry')]//div[@class='entry-info']//a[@itemprop='author']//span[@itemprop='name']/text()"
+                        NameXPath = "//div[contains(@class, 'article-entry')]//div[@class='entry-info']//a[@itemprop='author']//span[@itemprop='name']/text()",
+                        IsRequired = true
                     },
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//div[contains(@class, 'article-entry')]//div[contains(@class, 'entry-body')]//div[@class='source-wrapper']/img[@itemprop='image']/@src"
+                        UrlXPath = "//div[contains(@class, 'article-entry')]//div[contains(@class, 'entry-body')]//div[@class='source-wrapper']/img[@itemprop='image']/@src",
+                        IsRequired = true
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
-                        TitleXPath = "//div[contains(@class, 'article-entry')]//div[@class='js-mediator-article']/p[position()=1]/text()"
+                        TitleXPath = "//div[contains(@class, 'article-entry')]//div[@class='js-mediator-article']/p[position()=1]/text()",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//div[contains(@class, 'article-entry')]//div[@class='entry-info']/span[@itemprop='datePublished']/@content",
                         PublishedAtFormat = "yyyy-MM-ddTHH:mm:sszzz",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -530,11 +577,13 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[@itemprop='articleBody']",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
-                        NameXPath = "//span[@itemprop='author']/span[@itemprop='name']/@content"
+                        NameXPath = "//span[@itemprop='author']/span[@itemprop='name']/@content",
+                        IsRequired = true
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
-                        TitleXPath = "//h4/text()"
+                        TitleXPath = "//h4/text()",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
@@ -564,21 +613,25 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[@class='container-fluid shifted']/p[@class='announce lead']",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
-                        NameXPath = "//div[@class='container-fluid publication-footer']//a[contains(@class, 'text-secondary')]/@title"
+                        NameXPath = "//div[@class='container-fluid publication-footer']//a[contains(@class, 'text-secondary')]/@title",
+                        IsRequired = true
                     },
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//a[@class='glightbox']/img[contains(@class, 'pub-cover')]/@src"
+                        UrlXPath = "//a[@class='glightbox']/img[contains(@class, 'pub-cover')]/@src",
+                        IsRequired = true
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
-                        TitleXPath = "//div[@class='container-fluid shifted']/p[@class='announce lead']/text()"
+                        TitleXPath = "//div[@class='container-fluid shifted']/p[@class='announce lead']/text()",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//div[contains(@class, 'publication-footer')]//div[contains(@class, 'pubdatetime')]//div[contains(@class, 'badge-time')]/text()",
                         PublishedAtFormat = "yyyy-MM-dd HH:mm:ss",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -598,21 +651,25 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[@itemprop='articleBody']",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
-                        NameXPath = "//div[@class='author']/span[@itemprop='author']/span[@itemprop='name']/a/text()"
+                        NameXPath = "//div[@class='author']/span[@itemprop='author']/span[@itemprop='name']/a/text()",
+                        IsRequired = true
                     },
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//div[@class='b_article-media']//div[@class='mainarea-wrapper']/figure/img[@class='item-image-front']/@src"
+                        UrlXPath = "//div[@class='b_article-media']//div[@class='mainarea-wrapper']/figure/img[@class='item-image-front']/@src",
+                        IsRequired = true
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
-                        TitleXPath = "//h2/text()"
+                        TitleXPath = "//h2/text()",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//article/div[@class='b_article-header']//time[@itemprop='datePublished']/@datetime",
                         PublishedAtFormat = "yyyy-MM-ddTHH:mm:sszzz",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -634,7 +691,8 @@ namespace NewsAggregator.News.NewsSources
                     {
                         PublishedAtXPath = "//article[@itemprop='articleBody']/meta[@itemprop='datePublished']/@content",
                         PublishedAtFormat = "yyyy-MM-ddTHH:mm:ss",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -654,21 +712,25 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[contains(@class, 'full-article')]/*[not(name()='h1') and not(name()='style') and not(name()='div')]",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
-                        NameXPath = "//div[contains(@class, 'full-article')]/div[@class='authors-block']//span[text()='Автор']/../a/text()"
+                        NameXPath = "//div[contains(@class, 'full-article')]/div[@class='authors-block']//span[text()='Автор']/../a/text()",
+                        IsRequired = true
                     },
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//div[contains(@class, 'full-article')]/div[contains(@class, 'gallery')]/picture/img/@src"
+                        UrlXPath = "//div[contains(@class, 'full-article')]/div[contains(@class, 'gallery')]/picture/img/@src",
+                        IsRequired = true
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
-                        TitleXPath = "//h1/text()"
+                        TitleXPath = "//h1/text()",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//div[contains(@class, 'full-article')]//time/text()",
                         PublishedAtFormat = "dd.MM.yyyy HH:mm",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -688,17 +750,20 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[@itemprop='articleBody']/*[not(name()='div')]",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
-                        NameXPath = "//div[@itemprop='author']/span[@itemprop='name']/text()"
+                        NameXPath = "//div[@itemprop='author']/span[@itemprop='name']/text()",
+                        IsRequired = true
                     },
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//div[@itemprop='articleBody']//div[@itemprop='image']/picture/img[@itemprop='contentUrl']/@src"
+                        UrlXPath = "//div[@itemprop='articleBody']//div[@itemprop='image']/picture/img[@itemprop='contentUrl']/@src",
+                        IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//div[@class='publication-info']/time[@itemprop='datePublished']/@datetime",
                         PublishedAtFormat = "yyyy-MM-ddTHH:mm:sszzz",
-                        PublishedAtCultureInfo = "ru-RU"
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true
                     }
                 },
                 SearchSettings = new NewsSearchSettings

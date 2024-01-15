@@ -37,16 +37,24 @@ namespace NewsAggregator.News.Services.Parsers
 
             if (!string.IsNullOrEmpty(options.SubTitleXPath))
             {
-                newsSubTitle = htmlDocumentNavigator
+                var parsedNewsSubTitle = htmlDocumentNavigator
                     ?.SelectSingleNode(options.SubTitleXPath)?.Value?.Trim();
+
+                newsSubTitle = options.IsSubTitleRequired
+                    ? parsedNewsSubTitle ?? throw new NullReferenceException(nameof(parsedNewsSubTitle))
+                    : parsedNewsSubTitle;
             }
 
             var newsPictureUrl = null as string;
 
             if (!string.IsNullOrEmpty(options.PictureUrlXPath))
             {
-                newsPictureUrl = htmlDocumentNavigator
+                var parsedNewsPictureUrl = htmlDocumentNavigator
                     ?.SelectSingleNode(options.PictureUrlXPath)?.Value?.Trim();
+
+                newsPictureUrl = options.IsPictureUrlRequired
+                    ? parsedNewsPictureUrl ?? throw new NullReferenceException(nameof(parsedNewsPictureUrl))
+                    : parsedNewsPictureUrl;
             }
 
             var newsDescription = null as string;
@@ -62,8 +70,12 @@ namespace NewsAggregator.News.Services.Parsers
 
             if (!string.IsNullOrEmpty(options.EditorNameXPath))
             {
-                newsEditorName = htmlDocumentNavigator
+                var parsedNewsEditorName = htmlDocumentNavigator
                     ?.SelectSingleNode(options.EditorNameXPath)?.Value?.Trim();
+
+                newsEditorName = options.IsEditorNameRequired
+                    ? parsedNewsEditorName ?? throw new NullReferenceException(nameof(parsedNewsEditorName))
+                    : parsedNewsEditorName;
             }
 
             var newsPublishedAt = null as DateTime?;
@@ -71,9 +83,20 @@ namespace NewsAggregator.News.Services.Parsers
             if (!string.IsNullOrEmpty(options.PublishedAtXPath) && !string.IsNullOrEmpty(options.PublishedAtFormat)
                 && !string.IsNullOrEmpty(options.PublishedAtCultureInfo))
             {
-                newsPublishedAt = DateTime.ParseExact(htmlDocumentNavigator
-                    ?.SelectSingleNode(options.PublishedAtXPath)?.Value?.Trim() ?? "", options.PublishedAtFormat,
-                        new CultureInfo(options.PublishedAtCultureInfo)).ToUniversalTime();
+                var parsedNewsPublishedAt = DateTime.UnixEpoch;
+
+                var isParsedNewsPublishedAt = DateTime.TryParseExact(
+                    htmlDocumentNavigator?.SelectSingleNode(options.PublishedAtXPath)?.Value?.Trim() ?? "", 
+                    options.PublishedAtFormat, new CultureInfo(
+                    options.PublishedAtCultureInfo), 
+                    DateTimeStyles.None, 
+                    out parsedNewsPublishedAt);
+
+                newsPublishedAt = options.IsPublishedAtRequired
+                    ? isParsedNewsPublishedAt
+                        ? parsedNewsPublishedAt.ToUniversalTime()
+                        : throw new NullReferenceException(nameof(parsedNewsPublishedAt))
+                    : null;
             }
 
             return new NewsDto(newsUrl, newsTitle, newsSubTitle, newsEditorName, newsPictureUrl, 

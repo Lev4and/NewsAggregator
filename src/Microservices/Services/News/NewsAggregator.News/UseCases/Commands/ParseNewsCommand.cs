@@ -4,6 +4,7 @@ using NewsAggregator.Domain.Infrastructure.MessageBrokers;
 using NewsAggregator.News.Databases.EntityFramework.News.Repositories;
 using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Exceptions;
+using NewsAggregator.News.Extensions;
 using NewsAggregator.News.Messages;
 using NewsAggregator.News.Services.Parsers;
 
@@ -46,17 +47,7 @@ namespace NewsAggregator.News.UseCases.Commands
 
                 if (newsSource is not null && newsSource.ParseSettings is not null)
                 {
-                    return await _parser.ParseAsync(
-                        request.NewsUrl, 
-                        new NewsParserOptions(
-                            newsSource.ParseSettings.TitleXPath, 
-                            newsSource.ParseSettings.DescriptionXPath,
-                            newsSource.ParseSettings.ParseSubTitleSettings?.TitleXPath,
-                            newsSource.ParseSettings.ParseEditorSettings?.NameXPath,
-                            newsSource.ParseSettings.ParsePictureSettings?.UrlXPath,
-                            newsSource.ParseSettings.ParsePublishedAtSettings?.PublishedAtXPath,
-                            newsSource.ParseSettings.ParsePublishedAtSettings?.PublishedAtFormat,
-                            newsSource.ParseSettings.ParsePublishedAtSettings?.PublishedAtCultureInfo),
+                    return await _parser.ParseAsync(request.NewsUrl, newsSource.ParseSettings.ToNewsParserOptions(), 
                         cancellationToken);
                 }
                 else throw new NewsSourceNotFoundException(newsUri.Host);
