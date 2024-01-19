@@ -20,6 +20,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "РИА Новости",
                 SiteUrl = "https://ria.ru/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//div[@class='article__title']/text()",
@@ -53,6 +54,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "RT на русском",
                 SiteUrl = "https://russian.rt.com/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -81,6 +83,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "ТАСС",
                 SiteUrl = "https://tass.ru/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -107,6 +110,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Лента.Ру",
                 SiteUrl = "https://lenta.ru/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1[@class='topic-body__titles']/span[@class='topic-body__title']/text()",
@@ -145,6 +149,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Российская газета",
                 SiteUrl = "https://rg.ru/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -178,6 +183,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Аргументы и факты",
                 SiteUrl = "https://aif.ru/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -211,6 +217,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "РБК",
                 SiteUrl = "https://www.rbc.ru/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -244,6 +251,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Storts.ru",
                 SiteUrl = "https://www.sports.ru/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -272,6 +280,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Коммерсантъ",
                 SiteUrl = "https://www.kommersant.ru/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -305,6 +314,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Известия",
                 SiteUrl = "https://iz.ru/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/span/text()",
@@ -333,6 +343,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Царьград",
                 SiteUrl = "https://tsargrad.tv/",
+                IsEnabled = false,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1[@class='article__title']/text()",
@@ -364,6 +375,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "БелТА",
                 SiteUrl = "https://www.belta.by/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -392,6 +404,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "СвободнаяПресса",
                 SiteUrl = "https://svpressa.ru/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1[@class='b-text__title']/text()",
@@ -408,6 +421,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Москва 24",
                 SiteUrl = "https://www.m24.ru/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -436,6 +450,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "ВЗГЛЯД.РУ",
                 SiteUrl = "https://vz.ru/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -469,6 +484,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Чемпионат.com",
                 SiteUrl = "https://www.championat.com/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//article/header/div[@class='article-head__title']/text()",
@@ -502,6 +518,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Life",
                 SiteUrl = "https://life.ru/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -533,6 +550,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "3Dnews.ru",
                 SiteUrl = "https://3dnews.ru/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -571,6 +589,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "iXBT.com",
                 SiteUrl = "https://www.ixbt.com/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -603,6 +622,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "iXBT.games",
                 SiteUrl = "https://ixbt.games/",
+                IsEnabled = false,
                 Logo = new NewsSourceLogo
                 {
                     Url = "https://sun13-2.userapi.com/s/v1/ig2/_ID-2w6Llad8ig5_987dKAfh1pyLdj7HfLHqGx9HxyDjoEDN7wxR0ZWJm5ja1Ey6UuQXaEYEBW1Zd51cpRrjSGfS.jpg?size=100x100&quality=96&crop=22,22,626,626&ava=1"
@@ -645,6 +665,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Газета.Ru",
                 SiteUrl = "https://www.gazeta.ru/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -683,6 +704,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Интерфакс",
                 SiteUrl = "https://www.interfax.ru/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -706,6 +728,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Правда.ру",
                 SiteUrl = "https://www.pravda.ru/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -744,6 +767,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Ura.ru",
                 SiteUrl = "https://ura.news/",
+                IsEnabled = true,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",

@@ -3,12 +3,14 @@ using NewsAggregator.Domain.Entities;
 
 namespace NewsAggregator.News.Databases.EntityFramework.News.Entities
 {
-    [Index(nameof(Title), nameof(SiteUrl))]
+    [Index(nameof(Title), nameof(SiteUrl), nameof(IsEnabled))]
     public class NewsSource : EntityBase
     {
         public string Title { get; set; }
 
         public string SiteUrl { get; set; }
+
+        public bool IsEnabled { get; set; }
 
         public virtual NewsSourceLogo? Logo { get; set; }
 
