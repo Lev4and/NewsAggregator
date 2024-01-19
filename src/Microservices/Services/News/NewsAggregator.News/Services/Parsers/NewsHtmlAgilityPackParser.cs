@@ -31,7 +31,7 @@ namespace NewsAggregator.News.Services.Parsers
             }
 
             var newsTitle = htmlDocumentNavigator?.SelectSingleNode(options.TitleXPath)
-                ?.Value?.Trim() ?? "";
+                ?.Value?.Trim() ?? throw new NullReferenceException("newsTitle");
 
             var newsSubTitle = null as string;
 
@@ -87,8 +87,8 @@ namespace NewsAggregator.News.Services.Parsers
 
                 var isParsedNewsPublishedAt = DateTime.TryParseExact(
                     htmlDocumentNavigator?.SelectSingleNode(options.PublishedAtXPath)?.Value?.Trim() ?? "", 
-                    options.PublishedAtFormat, new CultureInfo(
-                    options.PublishedAtCultureInfo), 
+                    options.PublishedAtFormat, 
+                    new CultureInfo(options.PublishedAtCultureInfo), 
                     DateTimeStyles.None, 
                     out parsedNewsPublishedAt);
 

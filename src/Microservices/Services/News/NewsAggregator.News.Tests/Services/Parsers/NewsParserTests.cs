@@ -31,7 +31,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
             var foundNews = 0;
             var parsedNews = 0;
 
-            var newsSource = _newsSources[new Uri("https://tass.ru/")];
+            var newsSource = _newsSources[new Uri("https://ura.news/")];
 
             if (newsSource.SearchSettings is null)
                 throw new NullReferenceException(nameof(newsSource.SearchSettings));
@@ -64,7 +64,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
 
             var parsedNewsRate = (double)parsedNews / (double)foundNews;
 
-            _output.WriteLine("Parsed {0} of {1} news ({2:P5})", parsedNews, foundNews, parsedNewsRate);
+            _output.WriteLine("\nParsed {0} of {1} news ({2:P5})", parsedNews, foundNews, parsedNewsRate);
 
             Assert.Equal(1, parsedNewsRate);
         }
