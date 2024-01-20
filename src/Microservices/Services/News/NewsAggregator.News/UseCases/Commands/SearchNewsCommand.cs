@@ -5,6 +5,7 @@ using NewsAggregator.News.Databases.EntityFramework.News.Repositories;
 using NewsAggregator.News.Exceptions;
 using NewsAggregator.News.Messages;
 using NewsAggregator.News.Services.Parsers;
+using NewsAggregator.News.Services.Providers;
 
 namespace NewsAggregator.News.UseCases.Commands
 {
@@ -27,13 +28,16 @@ namespace NewsAggregator.News.UseCases.Commands
 
         internal class Handler : IRequestHandler<SearchNewsCommand, IReadOnlyCollection<string>>
         {
-            private readonly INewsSourceRepository _repository;
             private readonly INewsUrlsParser _parser;
+            private readonly INewsSourceRepository _repository;
+            private readonly INewsListHtmlPageProvider _newsListHtmlPageProvider;
 
-            public Handler(INewsSourceRepository repository, INewsUrlsParser parser)
+            public Handler(INewsUrlsParser parser, INewsSourceRepository repository, 
+                INewsListHtmlPageProvider newsListHtmlPageProvider)
             {
-                _repository = repository;
                 _parser = parser;
+                _repository = repository;
+                _newsListHtmlPageProvider = newsListHtmlPageProvider;
             }
 
             public async Task<IReadOnlyCollection<string>> Handle(SearchNewsCommand request, 
@@ -43,7 +47,9 @@ namespace NewsAggregator.News.UseCases.Commands
 
                 if (newsSource != null && newsSource.SearchSettings != null)
                 {
-                    return await _parser.ParseAsync(newsSource.SearchSettings.NewsSiteUrl, 
+                    var html = await _newsListHtmlPageProvider.ProvideAsync(request.SiteUrl, cancellationToken);
+
+                    return await _parser.ParseAsync(newsSource.SearchSettings.NewsSiteUrl, html,
                         new NewsUrlsParserOptions(newsSource.SearchSettings.NewsUrlXPath), cancellationToken);
                 }
                 else throw new NewsSourceNotFoundException(new Uri(request.SiteUrl).Host);

@@ -1,6 +1,8 @@
 ﻿using FluentValidation;
 using MediatR;
 using NewsAggregator.News.Services.Parsers;
+using NewsAggregator.News.Services.Providers;
+using NewsAggregator.News.Web.Http;
 
 namespace NewsAggregator.News.UseCases.Commands
 {
@@ -28,18 +30,22 @@ namespace NewsAggregator.News.UseCases.Commands
         internal class Handler : IRequestHandler<TestSearchNewsCommand, IReadOnlyCollection<string>>
         {
             private readonly INewsUrlsParser _parser;
+            private readonly INewsListHtmlPageProvider _newsListHtmlPageProvider;
 
-            public Handler(INewsUrlsParser parser)
+            public Handler(INewsUrlsParser parser, INewsListHtmlPageProvider newsListHtmlPageProvider)
             {
                 _parser = parser;
+
+                _newsListHtmlPageProvider = newsListHtmlPageProvider;
             }
 
             public async Task<IReadOnlyCollection<string>> Handle(TestSearchNewsCommand request, 
                 CancellationToken cancellationToken)
             {
-                return await _parser.ParseAsync(request.NewsSiteUrl, 
-                    new NewsUrlsParserOptions(request.NewsUrlXPath),
-                        cancellationToken);
+                var html = await _newsListHtmlPageProvider.ProvideAsync(request.NewsSiteUrl, cancellationToken);
+
+                return await _parser.ParseAsync(request.NewsSiteUrl, html,
+                    new NewsUrlsParserOptions(request.NewsUrlXPath), cancellationToken);
             }
         }
     }

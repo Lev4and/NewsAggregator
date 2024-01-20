@@ -10,20 +10,16 @@ namespace NewsAggregator.News.Services.Parsers
 {
     public class NewsAngleSharpParser : INewsParser
     {
-        private readonly NewsHttpClient _httpClient;
         private readonly HtmlParser _parser;
 
-        public NewsAngleSharpParser(NewsHttpClient httpClient, HtmlParser parser)
+        public NewsAngleSharpParser(HtmlParser parser)
         {
-            _httpClient = httpClient;
             _parser = parser;
         }
 
-        public async Task<NewsDto> ParseAsync(string newsUrl, NewsParserOptions options, 
+        public async Task<NewsDto> ParseAsync(string newsUrl, string html, NewsParserOptions options, 
             CancellationToken cancellationToken = default)
         {
-            var html = await _httpClient.GetUtf8StringAsync(newsUrl, cancellationToken);
-
             var htmlDocument = await _parser.ParseDocumentAsync(html, cancellationToken);
 
             var htmlDocumentNavigator = htmlDocument.CreateNavigator();

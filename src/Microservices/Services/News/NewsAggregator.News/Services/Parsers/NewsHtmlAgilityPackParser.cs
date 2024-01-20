@@ -1,24 +1,19 @@
 ﻿using HtmlAgilityPack;
 using NewsAggregator.News.DTOs;
-using NewsAggregator.News.Web.Http;
 using System.Globalization;
 
 namespace NewsAggregator.News.Services.Parsers
 {
     public class NewsHtmlAgilityPackParser : INewsParser
     {
-        private readonly NewsHttpClient _httpClient;
-
-        public NewsHtmlAgilityPackParser(NewsHttpClient httpClient)
+        public NewsHtmlAgilityPackParser()
         {
-            _httpClient = httpClient;
+
         }
 
-        public async Task<NewsDto> ParseAsync(string newsUrl, NewsParserOptions options, 
+        public Task<NewsDto> ParseAsync(string newsUrl, string html, NewsParserOptions options, 
             CancellationToken cancellationToken = default)
         {
-            var html = await _httpClient.GetUtf8StringAsync(newsUrl, cancellationToken);
-
             var htmlDocument = new HtmlDocument();
 
             htmlDocument.LoadHtml(html);
@@ -97,8 +92,8 @@ namespace NewsAggregator.News.Services.Parsers
                     : null;
             }
 
-            return new NewsDto(newsUrl, newsTitle, newsDescription, newsSubTitle, newsEditorName, 
-                newsPictureUrl, newsPublishedAt);
+            return Task.FromResult(new NewsDto(newsUrl, newsTitle, newsDescription, newsSubTitle, 
+                newsEditorName, newsPictureUrl, newsPublishedAt));
         }
     }
 }

@@ -7,6 +7,7 @@ using NewsAggregator.News.Exceptions;
 using NewsAggregator.News.Extensions;
 using NewsAggregator.News.Messages;
 using NewsAggregator.News.Services.Parsers;
+using NewsAggregator.News.Services.Providers;
 
 namespace NewsAggregator.News.UseCases.Commands
 {
@@ -31,11 +32,13 @@ namespace NewsAggregator.News.UseCases.Commands
         {
             private readonly INewsParser _parser;
             private readonly INewsSourceRepository _repository;
+            private readonly INewsHtmlPageProvider _newsHtmlPageProvider;
 
-            public Handler(INewsParser parser, INewsSourceRepository repository)
+            public Handler(INewsParser parser, INewsSourceRepository repository, INewsHtmlPageProvider newsHtmlPageProvider)
             {
                 _parser = parser;
                 _repository = repository;
+                _newsHtmlPageProvider = newsHtmlPageProvider;
             }
 
             public async Task<NewsDto> Handle(ParseNewsCommand request, CancellationToken cancellationToken)
@@ -47,8 +50,10 @@ namespace NewsAggregator.News.UseCases.Commands
 
                 if (newsSource is not null && newsSource.ParseSettings is not null)
                 {
-                    return await _parser.ParseAsync(request.NewsUrl, newsSource.ParseSettings.ToNewsParserOptions(), 
-                        cancellationToken);
+                    var html = await _newsHtmlPageProvider.ProvideAsync(request.NewsUrl, cancellationToken);
+
+                    return await _parser.ParseAsync(request.NewsUrl, html, 
+                        newsSource.ParseSettings.ToNewsParserOptions(), cancellationToken);
                 }
                 else throw new NewsSourceNotFoundException(newsUri.Host);
             }

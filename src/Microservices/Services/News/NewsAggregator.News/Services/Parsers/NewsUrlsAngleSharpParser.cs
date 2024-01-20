@@ -6,21 +6,17 @@ namespace NewsAggregator.News.Services.Parsers
 {
     public class NewsUrlsAngleSharpParser : INewsUrlsParser
     {
-        private readonly NewsHttpClient _httpClient;
         private readonly HtmlParser _parser;
 
-        public NewsUrlsAngleSharpParser(NewsHttpClient httpClient, HtmlParser parser)
+        public NewsUrlsAngleSharpParser(HtmlParser parser)
         {
-            _httpClient = httpClient;
             _parser = parser;
         }
 
-        public async Task<IReadOnlyCollection<string>> ParseAsync(string newsSiteUrl, NewsUrlsParserOptions options, 
-            CancellationToken cancellationToken = default)
+        public async Task<IReadOnlyCollection<string>> ParseAsync(string newsSiteUrl, string html, 
+            NewsUrlsParserOptions options, CancellationToken cancellationToken = default)
         {
             var newsSiteUri = new Uri(newsSiteUrl);
-
-            var html = await _httpClient.GetUtf8StringAsync(newsSiteUrl, cancellationToken);
 
             var htmlDocument = await _parser.ParseDocumentAsync(html, cancellationToken);
 

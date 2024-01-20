@@ -2,6 +2,7 @@
 using MediatR;
 using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Services.Parsers;
+using NewsAggregator.News.Services.Providers;
 
 namespace NewsAggregator.News.UseCases.Commands
 {
@@ -29,15 +30,20 @@ namespace NewsAggregator.News.UseCases.Commands
         internal class Handler : IRequestHandler<TestParseNewsCommand, NewsDto> 
         {
             private readonly INewsParser _parser;
+            private readonly INewsHtmlPageProvider _newsHtmlPageProvider;
 
-            public Handler(INewsParser parser)
+            public Handler(INewsParser parser, INewsHtmlPageProvider newsHtmlPageProvider)
             {
                 _parser = parser;
+
+                _newsHtmlPageProvider = newsHtmlPageProvider;
             }
 
             public async Task<NewsDto> Handle(TestParseNewsCommand request, CancellationToken cancellationToken)
             {
-                return await _parser.ParseAsync(request.NewsUrl, request.ParserOptions, cancellationToken);
+                var html = await _newsHtmlPageProvider.ProvideAsync(request.NewsUrl, cancellationToken);
+
+                return await _parser.ParseAsync(request.NewsUrl, html, request.ParserOptions, cancellationToken);
             }
         }
     }

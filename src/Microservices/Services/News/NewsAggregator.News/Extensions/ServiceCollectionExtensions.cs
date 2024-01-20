@@ -6,6 +6,7 @@ using NewsAggregator.Domain.Infrastructure.Databases.Repositories;
 using NewsAggregator.News.Databases.EntityFramework.News.Repositories;
 using NewsAggregator.News.NewsSources;
 using NewsAggregator.News.Services.Parsers;
+using NewsAggregator.News.Services.Providers;
 using NewsAggregator.News.Web.Http;
 
 namespace NewsAggregator.News.Extensions
@@ -33,10 +34,12 @@ namespace NewsAggregator.News.Extensions
         {
             services.AddSingleton<Sources>();
 
-            services.AddSingleton<HtmlWeb>();
             services.AddSingleton<HtmlParser>();
 
             services.AddSingleton<NewsHttpClient>();
+
+            services.AddSingleton<INewsHtmlPageProvider, NewsHtmlPageProvider>();
+            services.AddSingleton<INewsListHtmlPageProvider, NewsListHtmlPageProvider>();
 
             services.AddSingleton<INewsParser, NewsAngleSharpParser>();
             services.AddSingleton<INewsUrlsParser, NewsUrlsAngleSharpParser>();

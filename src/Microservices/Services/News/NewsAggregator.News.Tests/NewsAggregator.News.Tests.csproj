@@ -29,4 +29,8 @@
     <ProjectReference Include="..\NewsAggregator.News\NewsAggregator.News.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Parsers\" />
+  </ItemGroup>
+
 </Project>
