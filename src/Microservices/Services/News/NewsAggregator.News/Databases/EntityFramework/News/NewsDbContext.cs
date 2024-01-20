@@ -17,6 +17,8 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
 
         public DbSet<NewsParseEditorSettings> NewsParseEditorSettings { get; set; }
 
+        public DbSet<NewsParseError> NewsParseErrors { get; set; }
+
         public DbSet<NewsParsePictureSettings> NewsParsePictureSettings { get; set; }
 
         public DbSet<NewsParsePublishedAtSettings> NewsParsePublishedAtSettings { get; set; }
