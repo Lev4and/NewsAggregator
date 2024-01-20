@@ -27,7 +27,8 @@ namespace NewsAggregator.News.Extensions
                 {
                     Id = newsSource.Id,
                     Title = newsSource.Title,
-                    SiteUrl = newsSource.SiteUrl
+                    SiteUrl = newsSource.SiteUrl,
+                    IsEnabled = newsSource.IsEnabled
                 });
 
             if (!string.IsNullOrEmpty(newsSource.Logo?.Url))
@@ -67,7 +68,8 @@ namespace NewsAggregator.News.Extensions
                         {
                             Id = newsSource.ParseSettings.ParseSubTitleSettings.Id,
                             ParseSettingsId = newsSource.ParseSettings.ParseSubTitleSettings.ParseSettingsId,
-                            TitleXPath = newsSource.ParseSettings.ParseSubTitleSettings.TitleXPath
+                            TitleXPath = newsSource.ParseSettings.ParseSubTitleSettings.TitleXPath,
+                            IsRequired = newsSource.ParseSettings.ParseSubTitleSettings.IsRequired
                         });
                 }
 
@@ -81,7 +83,8 @@ namespace NewsAggregator.News.Extensions
                         {
                             Id = newsSource.ParseSettings.ParsePictureSettings.Id,
                             ParseSettingsId = newsSource.ParseSettings.ParsePictureSettings.ParseSettingsId,
-                            UrlXPath = newsSource.ParseSettings.ParsePictureSettings.UrlXPath
+                            UrlXPath = newsSource.ParseSettings.ParsePictureSettings.UrlXPath,
+                            IsRequired = newsSource.ParseSettings.ParsePictureSettings.IsRequired
                         });
                 }
 
@@ -95,7 +98,8 @@ namespace NewsAggregator.News.Extensions
                         {
                             Id = newsSource.ParseSettings.ParseEditorSettings.Id,
                             ParseSettingsId = newsSource.ParseSettings.ParseEditorSettings.ParseSettingsId,
-                            NameXPath = newsSource.ParseSettings.ParseEditorSettings.NameXPath
+                            NameXPath = newsSource.ParseSettings.ParseEditorSettings.NameXPath,
+                            IsRequired = newsSource.ParseSettings.ParseEditorSettings.IsRequired
                         });
                 }
 
@@ -111,7 +115,8 @@ namespace NewsAggregator.News.Extensions
                             Id = newsSource.ParseSettings.ParsePublishedAtSettings.Id,
                             ParseSettingsId = newsSource.ParseSettings.ParsePublishedAtSettings.ParseSettingsId,
                             PublishedAtXPath = newsSource.ParseSettings.ParsePublishedAtSettings.PublishedAtXPath,
-                            PublishedAtCultureInfo = newsSource.ParseSettings.ParsePublishedAtSettings.PublishedAtCultureInfo
+                            PublishedAtCultureInfo = newsSource.ParseSettings.ParsePublishedAtSettings.PublishedAtCultureInfo,
+                            IsRequired = newsSource.ParseSettings.ParsePublishedAtSettings.IsRequired
                         });
 
                     if (newsSource.ParseSettings.ParsePublishedAtSettings.Formats?.Count > 0)
