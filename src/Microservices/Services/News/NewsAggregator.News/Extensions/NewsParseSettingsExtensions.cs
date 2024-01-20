@@ -19,7 +19,7 @@ namespace NewsAggregator.News.Extensions
                 EditorNameXPath = settings.ParseEditorSettings?.NameXPath,
                 IsEditorNameRequired = settings.ParseEditorSettings?.IsRequired ?? false,
                 PublishedAtXPath = settings.ParsePublishedAtSettings?.PublishedAtXPath,
-                PublishedAtFormat = settings.ParsePublishedAtSettings?.PublishedAtFormat,
+                PublishedAtFormats = settings.ParsePublishedAtSettings?.Formats?.Select(format => format.Format).ToArray(),
                 PublishedAtCultureInfo = settings.ParsePublishedAtSettings?.PublishedAtCultureInfo,
                 IsPublishedAtRequired = settings.ParsePublishedAtSettings?.IsRequired ?? false,
             };

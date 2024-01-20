@@ -80,14 +80,14 @@ namespace NewsAggregator.News.Services.Parsers
 
             var newsPublishedAt = null as DateTime?;
 
-            if (!string.IsNullOrEmpty(options.PublishedAtXPath) && !string.IsNullOrEmpty(options.PublishedAtFormat)
-                && !string.IsNullOrEmpty(options.PublishedAtCultureInfo))
+            if (!string.IsNullOrEmpty(options.PublishedAtXPath) && !string.IsNullOrEmpty(options.PublishedAtCultureInfo) && 
+                options.PublishedAtFormats?.Length > 0)
             {
                 var parsedNewsPublishedAt = DateTime.UnixEpoch;
 
                 var isParsedNewsPublishedAt = DateTime.TryParseExact(
                     htmlDocumentNavigator?.SelectSingleNode(options.PublishedAtXPath)?.Value?.Trim() ?? "", 
-                    options.PublishedAtFormat, 
+                    options.PublishedAtFormats, 
                     new CultureInfo(options.PublishedAtCultureInfo), 
                     DateTimeStyles.None, 
                     out parsedNewsPublishedAt);

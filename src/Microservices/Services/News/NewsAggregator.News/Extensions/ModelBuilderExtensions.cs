@@ -100,7 +100,6 @@ namespace NewsAggregator.News.Extensions
                 }
 
                 if (!string.IsNullOrEmpty(newsSource.ParseSettings.ParsePublishedAtSettings?.PublishedAtXPath) &&
-                    !string.IsNullOrEmpty(newsSource.ParseSettings.ParsePublishedAtSettings?.PublishedAtFormat) &&
                     !string.IsNullOrEmpty(newsSource.ParseSettings.ParsePublishedAtSettings?.PublishedAtCultureInfo))
                 {
                     newsSource.ParseSettings.ParsePublishedAtSettings.Id = Guid.NewGuid();
@@ -112,9 +111,25 @@ namespace NewsAggregator.News.Extensions
                             Id = newsSource.ParseSettings.ParsePublishedAtSettings.Id,
                             ParseSettingsId = newsSource.ParseSettings.ParsePublishedAtSettings.ParseSettingsId,
                             PublishedAtXPath = newsSource.ParseSettings.ParsePublishedAtSettings.PublishedAtXPath,
-                            PublishedAtFormat = newsSource.ParseSettings.ParsePublishedAtSettings.PublishedAtFormat,
                             PublishedAtCultureInfo = newsSource.ParseSettings.ParsePublishedAtSettings.PublishedAtCultureInfo
                         });
+
+                    if (newsSource.ParseSettings.ParsePublishedAtSettings.Formats?.Count > 0)
+                    {
+                        foreach (var format in newsSource.ParseSettings.ParsePublishedAtSettings.Formats)
+                        {
+                            format.Id = Guid.NewGuid();
+                            format.NewsParsePublishedAtSettingsId = newsSource.ParseSettings.ParsePublishedAtSettings.Id;
+
+                            modelBuilder.Entity<NewsParsePublishedAtSettingsFormat>().HasData(
+                                new NewsParsePublishedAtSettingsFormat
+                                {
+                                    Id = format.Id,
+                                    NewsParsePublishedAtSettingsId = format.NewsParsePublishedAtSettingsId,
+                                    Format = format.Format
+                                });
+                        }
+                    }
                 }
             }
 

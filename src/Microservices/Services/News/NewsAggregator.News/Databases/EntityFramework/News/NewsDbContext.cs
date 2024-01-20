@@ -23,6 +23,8 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
 
         public DbSet<NewsParsePublishedAtSettings> NewsParsePublishedAtSettings { get; set; }
 
+        public DbSet<NewsParsePublishedAtSettingsFormat> NewsParsePublishedAtSettingsFormats { get; set; }
+
         public DbSet<NewsParseSettings> NewsParseSettings { get; set; }
 
         public DbSet<NewsParseSubTitleSettings> NewsParseSubTitleSettings { get; set; }
@@ -79,6 +81,11 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
                 .HasMany(editor => editor.News)
                     .WithOne(news => news.Editor)
                         .HasForeignKey(news => news.EditorId);
+
+            modelBuilder.Entity<NewsParsePublishedAtSettings>()
+                .HasMany(settings => settings.Formats)
+                    .WithOne(format => format.Settings)
+                        .HasForeignKey(format => format.NewsParsePublishedAtSettingsId);
 
             modelBuilder.Entity<NewsParseSettings>()
                 .HasOne(settings => settings.ParseEditorSettings)

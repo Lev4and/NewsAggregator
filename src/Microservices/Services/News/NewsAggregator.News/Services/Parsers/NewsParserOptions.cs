@@ -20,7 +20,7 @@
 
         public string? PublishedAtXPath { get; set; }
 
-        public string? PublishedAtFormat { get; set; }
+        public string[]? PublishedAtFormats { get; set; }
 
         public string? PublishedAtCultureInfo { get; set; }
 
@@ -33,7 +33,7 @@
 
         public NewsParserOptions(string titleXPath, string descriptionXPath, string? subTitleXPath, bool isSubTitleRequired, 
             string? editorNameXPath, bool isEditorNameRequired, string? pictureUrlXPath, bool isPictureUrlRequired, 
-            string? publishedAtXPath, string? publishedAtFormat, string? publishedAtCultureInfo, bool isPublishedAtRequired)
+            string? publishedAtXPath, string[]? publishedAtFormats, string? publishedAtCultureInfo, bool isPublishedAtRequired)
         {
             TitleXPath = titleXPath;
             DescriptionXPath = descriptionXPath;
@@ -44,7 +44,7 @@
             PictureUrlXPath = pictureUrlXPath;
             IsPictureUrlRequired = isPictureUrlRequired;
             PublishedAtXPath = publishedAtXPath;
-            PublishedAtFormat = publishedAtFormat;
+            PublishedAtFormats = publishedAtFormats;
             PublishedAtCultureInfo = publishedAtCultureInfo;
             IsPublishedAtRequired = isPublishedAtRequired;
         }
