@@ -1,4 +1,5 @@
-﻿using HtmlAgilityPack;
+﻿using AngleSharp.Html.Parser;
+using HtmlAgilityPack;
 using MassTransit.Internals;
 using Microsoft.Extensions.DependencyInjection;
 using NewsAggregator.Domain.Infrastructure.Databases.Repositories;
@@ -31,12 +32,14 @@ namespace NewsAggregator.News.Extensions
         public static IServiceCollection AddNewsParsers(this IServiceCollection services) 
         {
             services.AddSingleton<Sources>();
+
             services.AddSingleton<HtmlWeb>();
+            services.AddSingleton<HtmlParser>();
 
             services.AddSingleton<NewsHttpClient>();
 
-            services.AddSingleton<INewsParser, NewsHtmlAgilityPackParser>();
-            services.AddSingleton<INewsUrlsParser, NewsUrlsHtmlAgilityPackParser>();
+            services.AddSingleton<INewsParser, NewsAngleSharpParser>();
+            services.AddSingleton<INewsUrlsParser, NewsUrlsAngleSharpParser>();
 
             return services;
         }

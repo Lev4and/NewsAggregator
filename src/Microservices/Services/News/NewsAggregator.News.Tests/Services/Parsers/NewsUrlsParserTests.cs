@@ -23,7 +23,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         [Fact]
         public async Task ParseAsync_SpecificNewsSource_ReturnNotEmptyResult()
         {
-            var newsSource = _newsSources[new Uri("https://tsargrad.tv/")];
+            var newsSource = _newsSources[new Uri("https://ria.ru/")];
 
             if (newsSource.SearchSettings is null)
                 throw new NullReferenceException(nameof(newsSource.SearchSettings));
