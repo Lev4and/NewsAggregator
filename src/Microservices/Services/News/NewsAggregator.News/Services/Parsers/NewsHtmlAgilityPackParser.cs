@@ -33,6 +33,9 @@ namespace NewsAggregator.News.Services.Parsers
             var newsTitle = htmlDocumentNavigator?.SelectSingleNode(options.TitleXPath)
                 ?.Value?.Trim() ?? throw new NullReferenceException("newsTitle");
 
+            var newsDescription = string.Join("", htmlDocument.DocumentNode.SelectNodes(options.DescriptionXPath)
+                ?.Select(node => node.OuterHtml.Trim()) ?? throw new NullReferenceException("newsDescription"));
+
             var newsSubTitle = null as string;
 
             if (!string.IsNullOrEmpty(options.SubTitleXPath))
@@ -55,15 +58,6 @@ namespace NewsAggregator.News.Services.Parsers
                 newsPictureUrl = options.IsPictureUrlRequired
                     ? parsedNewsPictureUrl ?? throw new NullReferenceException(nameof(parsedNewsPictureUrl))
                     : parsedNewsPictureUrl;
-            }
-
-            var newsDescription = null as string;
-
-            if (!string.IsNullOrEmpty(options.DescriptionXPath))
-            {
-                newsDescription = string.Join("",
-                    htmlDocument.DocumentNode.SelectNodes(options.DescriptionXPath)
-                        .Select(node => node.OuterHtml.Trim()));
             }
 
             var newsEditorName = null as string;
@@ -99,8 +93,8 @@ namespace NewsAggregator.News.Services.Parsers
                     : null;
             }
 
-            return new NewsDto(newsUrl, newsTitle, newsSubTitle, newsEditorName, newsPictureUrl, 
-                newsDescription, newsPublishedAt);
+            return new NewsDto(newsUrl, newsTitle, newsDescription, newsSubTitle, newsEditorName, 
+                newsPictureUrl, newsPublishedAt);
         }
     }
 }

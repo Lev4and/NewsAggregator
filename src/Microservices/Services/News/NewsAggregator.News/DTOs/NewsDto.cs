@@ -12,12 +12,12 @@
 
         public string? PictureUrl { get; }
 
-        public string? Description { get; }
+        public string Description { get; }
 
         public DateTime? PublishedAt { get; }
 
-        public NewsDto(string url, string title, string? subTitle, string? editorName, string? pictureUrl, 
-            string? description, DateTime? publishedAt)
+        public NewsDto(string url, string title, string description, string? subTitle, string? editorName, 
+            string? pictureUrl, DateTime? publishedAt)
         {
             Url = url;
             Title = title;
