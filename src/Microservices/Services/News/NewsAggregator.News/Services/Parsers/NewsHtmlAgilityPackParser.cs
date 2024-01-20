@@ -88,7 +88,11 @@ namespace NewsAggregator.News.Services.Parsers
 
                 newsPublishedAt = options.IsPublishedAtRequired
                     ? isParsedNewsPublishedAt
-                        ? parsedNewsPublishedAt.ToUniversalTime()
+                        ? !string.IsNullOrEmpty(options.PublishedAtTimeZoneInfoId)
+                            ? TimeZoneInfo.ConvertTime(parsedNewsPublishedAt, 
+                                TimeZoneInfo.FindSystemTimeZoneById(options.PublishedAtTimeZoneInfoId), 
+                                    TimeZoneInfo.Utc)
+                            : parsedNewsPublishedAt.ToUniversalTime()
                         : throw new NullReferenceException(nameof(parsedNewsPublishedAt))
                     : null;
             }

@@ -24,16 +24,19 @@
 
         public string? PublishedAtCultureInfo { get; set; }
 
+        public string? PublishedAtTimeZoneInfoId { get; set; }
+
         public bool IsPublishedAtRequired { get; set; }
 
-        public NewsParserOptions() : this("", "", null, false, null, false, null, false, null, null, null, false)
+        public NewsParserOptions() : this("", "", null, false, null, false, null, false, null, null, null, null, false)
         {
 
         }
 
         public NewsParserOptions(string titleXPath, string descriptionXPath, string? subTitleXPath, bool isSubTitleRequired, 
             string? editorNameXPath, bool isEditorNameRequired, string? pictureUrlXPath, bool isPictureUrlRequired, 
-            string? publishedAtXPath, string[]? publishedAtFormats, string? publishedAtCultureInfo, bool isPublishedAtRequired)
+            string? publishedAtXPath, string[]? publishedAtFormats, string? publishedAtCultureInfo, 
+            string? publishedAtTimeZoneId, bool isPublishedAtRequired)
         {
             TitleXPath = titleXPath;
             DescriptionXPath = descriptionXPath;
@@ -46,6 +49,7 @@
             PublishedAtXPath = publishedAtXPath;
             PublishedAtFormats = publishedAtFormats;
             PublishedAtCultureInfo = publishedAtCultureInfo;
+            PublishedAtTimeZoneInfoId = publishedAtTimeZoneId;
             IsPublishedAtRequired = isPublishedAtRequired;
         }
     }

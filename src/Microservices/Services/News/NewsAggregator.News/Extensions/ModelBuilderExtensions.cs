@@ -116,6 +116,7 @@ namespace NewsAggregator.News.Extensions
                             ParseSettingsId = newsSource.ParseSettings.ParsePublishedAtSettings.ParseSettingsId,
                             PublishedAtXPath = newsSource.ParseSettings.ParsePublishedAtSettings.PublishedAtXPath,
                             PublishedAtCultureInfo = newsSource.ParseSettings.ParsePublishedAtSettings.PublishedAtCultureInfo,
+                            PublishedAtTimeZoneInfoId = newsSource.ParseSettings.ParsePublishedAtSettings.PublishedAtTimeZoneInfoId,
                             IsRequired = newsSource.ParseSettings.ParsePublishedAtSettings.IsRequired
                         });
 

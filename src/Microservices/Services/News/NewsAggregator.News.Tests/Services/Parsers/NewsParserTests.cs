@@ -31,7 +31,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
             var foundNews = 0;
             var parsedNews = 0;
 
-            var newsSource = _newsSources[new Uri("https://ura.news/")];
+            var newsSource = _newsSources[new Uri("https://www.championat.com/")];
 
             if (newsSource.SearchSettings is null)
                 throw new NullReferenceException(nameof(newsSource.SearchSettings));

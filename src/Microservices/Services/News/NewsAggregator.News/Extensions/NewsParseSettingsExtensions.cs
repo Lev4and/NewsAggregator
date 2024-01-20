@@ -21,6 +21,7 @@ namespace NewsAggregator.News.Extensions
                 PublishedAtXPath = settings.ParsePublishedAtSettings?.PublishedAtXPath,
                 PublishedAtFormats = settings.ParsePublishedAtSettings?.Formats?.Select(format => format.Format).ToArray(),
                 PublishedAtCultureInfo = settings.ParsePublishedAtSettings?.PublishedAtCultureInfo,
+                PublishedAtTimeZoneInfoId = settings.ParsePublishedAtSettings?.PublishedAtTimeZoneInfoId,
                 IsPublishedAtRequired = settings.ParsePublishedAtSettings?.IsRequired ?? false,
             };
         }

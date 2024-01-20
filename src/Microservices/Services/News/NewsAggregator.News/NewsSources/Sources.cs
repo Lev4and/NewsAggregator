@@ -630,6 +630,7 @@ namespace NewsAggregator.News.NewsSources
                     {
                         PublishedAtXPath = "//article//header//time[@class='article-head__date']/text()",
                         PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
                         IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
