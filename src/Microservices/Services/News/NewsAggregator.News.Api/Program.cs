@@ -33,7 +33,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.UseMiddleware<AutoWrapJsonResponseMiddleware>();
-app.UseMiddleware<AutoExceptionHandlerMiddleware>();
+app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 
 app.UseEndpoints(builder =>
 {

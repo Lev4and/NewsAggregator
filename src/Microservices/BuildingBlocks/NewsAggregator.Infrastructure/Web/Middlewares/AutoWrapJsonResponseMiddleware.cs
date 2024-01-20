@@ -62,6 +62,8 @@ namespace NewsAggregator.Infrastructure.Web.Middlewares
             var newResponseBody = new ApiResponse<object>(null, HttpStatusCode.BadGateway, exception);
             var newResponseBodyText = JsonConvert.SerializeObject(newResponseBody);
 
+            response.StatusCode = (int)HttpStatusCode.BadGateway;
+
             await response.WriteAsync(newResponseBodyText, cancellationToken);
         }
 

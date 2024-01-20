@@ -7,11 +7,11 @@ using System.Net;
 
 namespace NewsAggregator.News.Web.Middlewares
 {
-    public class AutoExceptionHandlerMiddleware
+    public class GlobalExceptionHandlerMiddleware
     {
         private readonly RequestDelegate _next;
 
-        public AutoExceptionHandlerMiddleware(RequestDelegate next)
+        public GlobalExceptionHandlerMiddleware(RequestDelegate next)
         {
             _next = next;
         }
@@ -37,6 +37,8 @@ namespace NewsAggregator.News.Web.Middlewares
         {
             var newResponseBody = new ApiResponse<object>(null, httpStatusCode, exception);
             var newResponseBodyText = JsonConvert.SerializeObject(newResponseBody);
+
+            response.StatusCode = (int)httpStatusCode;
 
             await response.WriteAsync(newResponseBodyText, cancellationToken);
         }
