@@ -1,6 +1,5 @@
 ﻿using AngleSharp.Html.Parser;
 using AngleSharp.XPath;
-using NewsAggregator.News.Web.Http;
 
 namespace NewsAggregator.News.Services.Parsers
 {

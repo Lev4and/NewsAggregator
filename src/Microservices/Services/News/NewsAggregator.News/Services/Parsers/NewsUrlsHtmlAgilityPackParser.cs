@@ -1,16 +1,10 @@
 ﻿using HtmlAgilityPack;
-using NewsAggregator.News.Web.Http;
 
 namespace NewsAggregator.News.Services.Parsers
 {
     public class NewsUrlsHtmlAgilityPackParser : INewsUrlsParser
     {
-        public NewsUrlsHtmlAgilityPackParser()
-        {
-
-        }
-
-        public async Task<IReadOnlyCollection<string>> ParseAsync(string newsSiteUrl, string html, 
+        public Task<IReadOnlyCollection<string>> ParseAsync(string newsSiteUrl, string html, 
             NewsUrlsParserOptions options, CancellationToken cancellationToken = default)
         {
             var newsSiteUri = new Uri(newsSiteUrl);
@@ -37,7 +31,7 @@ namespace NewsAggregator.News.Services.Parsers
                         : newsUrl);
             }
 
-            return result;
+            return Task.FromResult((IReadOnlyCollection<string>)result);
         }
     }
 }

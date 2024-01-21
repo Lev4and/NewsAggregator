@@ -26,6 +26,8 @@ namespace NewsAggregator.News.Web.Http
         public NewsHttpClient() : base()
         {
             UseHeaders(_headers);
+
+            Timeout = new TimeSpan(0, 0, 5);
         }
 
         public async Task<string> GetUtf8StringAsync(string requestUri, CancellationToken cancellationToken = default)
