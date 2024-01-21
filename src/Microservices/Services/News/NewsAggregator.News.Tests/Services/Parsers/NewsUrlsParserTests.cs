@@ -92,7 +92,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
 
                 await Task.WhenAny(tasks);
 
-                tasks.RemoveAll(s => s.IsCompleted);
+                tasks.RemoveAll(task => task.IsCompleted);
             }
             while (tasks.Any(task => !task.IsCompleted));
         }

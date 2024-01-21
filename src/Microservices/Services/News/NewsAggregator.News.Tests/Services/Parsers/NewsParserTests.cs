@@ -30,10 +30,30 @@ namespace NewsAggregator.News.Tests.Services.Parsers
             _output = output;
         }
 
+        [Theory]
+        [InlineData("https://life.ru/p/1634587")]
+        public async Task ParseAsync_SpecificNewsUrl_ReturnNotNullResult(string newsUrl)
+        {
+            var newsSource = _sources[new Uri(newsUrl)];
+
+            var news = await ParseNewsAsync(newsUrl, newsSource);
+
+            _output.WriteLine("\nReport:\n");
+
+            _output.WriteLine("URL: {0}", news.Url);
+            _output.WriteLine("Title: {0}", news.Title);
+            _output.WriteLine("Sub title: {0}", news.SubTitle);
+            _output.WriteLine("Picture URL: {0}", news.PictureUrl);
+            _output.WriteLine("Editor name: {0}", news.EditorName);
+            _output.WriteLine("Published at: {0:dd.MM.yyyy HH:mm:ss}", news.PublishedAt);
+
+            Assert.NotNull(news);
+        }
+
         [Fact]
         public async Task ParseAsync_SpecificNewsSource_ReturnNotEmptyResult()
         {
-            var newsSource = _sources[new Uri("https://tass.ru/")];
+            var newsSource = _sources[new Uri("https://ura.news/")];
 
             var newsUrls = await ParseNewsUrlsAsync(newsSource);
             var newsUrlsEnumerator = newsUrls.GetEnumerator();
@@ -96,7 +116,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
 
                 await Task.WhenAny(tasks);
 
-                tasks.RemoveAll(s => s.IsCompleted);
+                tasks.RemoveAll(task => task.IsCompleted);
             }
             while (tasks.Any(task => !task.IsCompleted));
         }
@@ -236,7 +256,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
                 foreach (var item in notParsedNews)
                 {
                     _output.WriteLine("An error occurred when parse news {0}. Description: {1}.",
-                        item.Key, item.Value);
+                        item.Key, item.Value.Message);
                 }
             }
         }

@@ -39,6 +39,7 @@ namespace NewsAggregator.News.NewsSources
                     {
                         PublishedAtXPath = "//div[@class='article__info']//div[@class='article__info-date']/a/text()",
                         PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
                         IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
@@ -74,6 +75,7 @@ namespace NewsAggregator.News.NewsSources
                     {
                         PublishedAtXPath = "//div[contains(@class, 'article__date-autor-shortcode')]/div[contains(@class, 'article__date')]/time[@class='date']/@datetime",
                         PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
                         IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
@@ -112,9 +114,10 @@ namespace NewsAggregator.News.NewsSources
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
-                        PublishedAtXPath = "//div[contains(@class, 'NewsHeader')]//div[contains(@class, 'PublishedMark_publish')]//span[@ca-ts]/text()",
+                        PublishedAtXPath = "//div[contains(@class, 'NewsHeader')]//div[contains(@class, 'PublishedMark')]//span[@ca-ts]/text()",
                         PublishedAtCultureInfo = "ru-RU",
                         IsRequired = true,
+                        PublishedAtTimeZoneInfoId = "UTC",
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
                             new NewsParsePublishedAtSettingsFormat
@@ -139,7 +142,7 @@ namespace NewsAggregator.News.NewsSources
                 SearchSettings = new NewsSearchSettings
                 {
                     NewsSiteUrl = "https://tass.ru/",
-                    NewsUrlXPath = "//a[contains(@class, 'tass_pkg_link-v5WdK') and contains(substring(@href, 2), '/')]/@href"
+                    NewsUrlXPath = "//a[contains(@class, 'tass_pkg_link-v5WdK') and contains(substring(@href, 2), '/') and not(contains(@href, '/spec/')) and not(contains(@href, 'spec.tass.ru'))]/@href"
                 }
             });
 
@@ -171,6 +174,7 @@ namespace NewsAggregator.News.NewsSources
                     {
                         PublishedAtXPath = "//div[@class='topic-page__header']//a[contains(@class, 'topic-header__time')]/text()",
                         PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
                         IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
@@ -211,6 +215,7 @@ namespace NewsAggregator.News.NewsSources
                     {
                         PublishedAtXPath = "//div[contains(@class, 'PageArticleContent_date')]/text()",
                         PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
                         IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
@@ -251,6 +256,7 @@ namespace NewsAggregator.News.NewsSources
                     {
                         PublishedAtXPath = "//div[@class='article_top']//div[@class='date']//time/text()",
                         PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
                         IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
@@ -279,7 +285,7 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[@class='article__text article__text_free']/*[not(contains(@class, 'article__text__overview'))]",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
-                        NameXPath = "//div[@class='article__authors']//span[@class='article__authors__author']/span[@class='article__authors__author__name']/text()",
+                        NameXPath = "//div[@class='article__authors']//*[@class='article__authors__author']/span[@class='article__authors__author__name']/text()",
                         IsRequired = false
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
@@ -446,12 +452,17 @@ namespace NewsAggregator.News.NewsSources
                     {
                         PublishedAtXPath = "//div[@class='article__meta']/time/text()",
                         PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
                         IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
                             new NewsParsePublishedAtSettingsFormat
                             {
                                 Format = "dd MMMM yyyy HH:mm"
+                            },
+                            new NewsParsePublishedAtSettingsFormat
+                            {
+                                Format = "HH:mm"
                             }
                         }
                     }
@@ -481,6 +492,7 @@ namespace NewsAggregator.News.NewsSources
                     {
                         PublishedAtXPath = "//div[@class='date_full']/text()",
                         PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
                         IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
@@ -511,9 +523,14 @@ namespace NewsAggregator.News.NewsSources
                     {
                         PublishedAtXPath = "//div[@class='b-text__date']/text()",
                         PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
                         IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
+                            new NewsParsePublishedAtSettingsFormat
+                            {
+                                Format = "dd MMMM yyyy HH:mm"
+                            },
                             new NewsParsePublishedAtSettingsFormat
                             {
                                 Format = "dd MMMM  HH:mm"
@@ -546,6 +563,7 @@ namespace NewsAggregator.News.NewsSources
                     {
                         PublishedAtXPath = "//p[@class='b-material__date']/text()",
                         PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
                         IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
@@ -556,6 +574,10 @@ namespace NewsAggregator.News.NewsSources
                             new NewsParsePublishedAtSettingsFormat
                             {
                                 Format = "dd MMMM, HH:mm"
+                            },
+                            new NewsParsePublishedAtSettingsFormat
+                            {
+                                Format = "HH:mm"
                             }
                         }
                     }
@@ -590,6 +612,7 @@ namespace NewsAggregator.News.NewsSources
                     {
                         PublishedAtXPath = "//article/div[@class='header']/span/text()",
                         PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
                         IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
@@ -676,6 +699,7 @@ namespace NewsAggregator.News.NewsSources
                     {
                         PublishedAtXPath = "//article//header//div[contains(@class, 'styles_meta')]//div[contains(@class, 'styles_metaItem')]/text()",
                         PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "UTC",
                         IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
@@ -765,6 +789,7 @@ namespace NewsAggregator.News.NewsSources
                     {
                         PublishedAtXPath = "//div[@class='b-article__top-author']/p[@class='date']/text()",
                         PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
                         IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
@@ -814,6 +839,7 @@ namespace NewsAggregator.News.NewsSources
                     {
                         PublishedAtXPath = "//div[contains(@class, 'publication-footer')]//div[contains(@class, 'pubdatetime')]//div[contains(@class, 'badge-time')]/text()",
                         PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
                         IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
@@ -889,6 +915,7 @@ namespace NewsAggregator.News.NewsSources
                     {
                         PublishedAtXPath = "//article[@itemprop='articleBody']/meta[@itemprop='datePublished']/@content",
                         PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
                         IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
@@ -923,7 +950,7 @@ namespace NewsAggregator.News.NewsSources
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
                         UrlXPath = "//div[contains(@class, 'full-article')]/div[contains(@class, 'gallery')]/picture/img/@src",
-                        IsRequired = true
+                        IsRequired = false
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
@@ -934,6 +961,7 @@ namespace NewsAggregator.News.NewsSources
                     {
                         PublishedAtXPath = "//div[contains(@class, 'full-article')]//time/text()",
                         PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
                         IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
