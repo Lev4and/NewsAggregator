@@ -1,4 +1,4 @@
-﻿using NewsAggregator.News.Databases.EntityFramework.News.Entities;
+﻿using NewsAggregator.News.Entities;
 using NewsAggregator.News.NewsSources;
 
 namespace NewsAggregator.News.Tests.Services.Parsers

@@ -1,12 +1,12 @@
 ﻿using NewsAggregator.Domain.Entities;
 
-namespace NewsAggregator.News.Databases.EntityFramework.News.Entities
+namespace NewsAggregator.News.Entities
 {
-    public class NewsParseSubTitleSettings : EntityBase
+    public class NewsParsePictureSettings : EntityBase
     {
         public Guid ParseSettingsId { get; set; }
 
-        public string TitleXPath { get; set; }
+        public string UrlXPath { get; set; }
 
         public bool IsRequired { get; set; }
 

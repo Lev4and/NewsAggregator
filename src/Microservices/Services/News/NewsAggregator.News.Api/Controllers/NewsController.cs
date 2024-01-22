@@ -1,13 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using NewsAggregator.Infrastructure.Web.Http;
-using NewsAggregator.News.Databases.EntityFramework.News.Entities;
 using NewsAggregator.News.DTOs;
+using NewsAggregator.News.Entities;
 using NewsAggregator.News.UseCases.Commands;
 using NewsAggregator.News.UseCases.Queries;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
-using Entities = NewsAggregator.News.Databases.EntityFramework.News.Entities;
 
 namespace NewsAggregator.News.Api.Controllers
 {

@@ -1,6 +1,6 @@
 ﻿using NewsAggregator.Domain.Entities;
 
-namespace NewsAggregator.News.Databases.EntityFramework.News.Entities
+namespace NewsAggregator.News.Entities
 {
     public class NewsParseEditorSettings : EntityBase
     {
@@ -8,7 +8,7 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Entities
 
         public string NameXPath { get; set; }
 
-        public bool IsRequired {  get; set; }
+        public bool IsRequired { get; set; }
 
         public virtual NewsParseSettings? ParseSettings { get; set; }
     }

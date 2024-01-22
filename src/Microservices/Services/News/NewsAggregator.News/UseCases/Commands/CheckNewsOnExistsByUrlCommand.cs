@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
 using MediatR;
 using NewsAggregator.Domain.Infrastructure.MessageBrokers;
-using NewsAggregator.News.Databases.EntityFramework.News.Repositories;
 using NewsAggregator.News.Messages;
+using NewsAggregator.News.Repositories;
 
 namespace NewsAggregator.News.UseCases.Commands
 {

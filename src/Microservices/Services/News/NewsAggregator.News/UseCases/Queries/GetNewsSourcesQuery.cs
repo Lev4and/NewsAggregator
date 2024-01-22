@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using NewsAggregator.News.Databases.EntityFramework.News.Entities;
-using NewsAggregator.News.Databases.EntityFramework.News.Repositories;
 using NewsAggregator.News.DTOs;
+using NewsAggregator.News.Entities;
+using NewsAggregator.News.Repositories;
 
 namespace NewsAggregator.News.UseCases.Queries
 {

@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NewsAggregator.Domain.Entities;
 
-namespace NewsAggregator.News.Databases.EntityFramework.News.Entities
+namespace NewsAggregator.News.Entities
 {
-    [Index(nameof(Title), nameof(SiteUrl), nameof(IsEnabled))]
     public class NewsSource : EntityBase
     {
         public string Title { get; set; }

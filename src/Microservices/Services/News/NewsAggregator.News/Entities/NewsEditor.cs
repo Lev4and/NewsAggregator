@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NewsAggregator.Domain.Entities;
 
-namespace NewsAggregator.News.Databases.EntityFramework.News.Entities
+namespace NewsAggregator.News.Entities
 {
-    [Index(nameof(Name))]
     public class NewsEditor : EntityBase
     {
         public Guid SourceId { get; set; }

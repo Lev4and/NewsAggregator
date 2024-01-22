@@ -1,6 +1,6 @@
 ﻿using NewsAggregator.Domain.Infrastructure.Databases.Repositories;
 
-namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
+namespace NewsAggregator.News.Repositories
 {
     public interface INewsRepository : IRepository<Entities.News>
     {

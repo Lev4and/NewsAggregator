@@ -2,7 +2,7 @@
 using MediatR;
 using NewsAggregator.Domain.Infrastructure.Databases;
 using NewsAggregator.Domain.Infrastructure.Databases.Repositories;
-using NewsAggregator.News.Databases.EntityFramework.News.Entities;
+using NewsAggregator.News.Entities;
 
 namespace NewsAggregator.News.UseCases.Commands
 {

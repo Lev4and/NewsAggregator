@@ -1,15 +1,11 @@
 ﻿using FluentValidation;
-using MassTransit.Saga;
 using MediatR;
-using NewsAggregator.Domain.Infrastructure.Caching;
 using NewsAggregator.Domain.Infrastructure.Databases;
 using NewsAggregator.Domain.Infrastructure.Databases.Repositories;
-using NewsAggregator.News.Databases.EntityFramework.News.Entities;
-using NewsAggregator.News.Databases.EntityFramework.News.Repositories;
 using NewsAggregator.News.DTOs;
+using NewsAggregator.News.Entities;
 using NewsAggregator.News.Exceptions;
-using System.Xml.Linq;
-using Entities = NewsAggregator.News.Databases.EntityFramework.News.Entities;
+using NewsAggregator.News.Repositories;
 
 namespace NewsAggregator.News.UseCases.Commands
 {

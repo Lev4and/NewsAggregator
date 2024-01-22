@@ -1,5 +1,4 @@
-﻿using NewsAggregator.News.Databases.EntityFramework.News.Entities;
-using NewsAggregator.News.Services.Parsers;
+﻿using NewsAggregator.News.Services.Parsers;
 
 namespace NewsAggregator.News.DTOs
 {

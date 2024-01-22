@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 using MediatR;
 using NewsAggregator.Domain.Infrastructure.MessageBrokers;
-using NewsAggregator.News.Databases.EntityFramework.News.Repositories;
 using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Exceptions;
 using NewsAggregator.News.Extensions;
 using NewsAggregator.News.Messages;
+using NewsAggregator.News.Repositories;
 using NewsAggregator.News.Services.Parsers;
 using NewsAggregator.News.Services.Providers;
 

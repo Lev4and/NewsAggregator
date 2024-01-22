@@ -1,4 +1,5 @@
-﻿using NewsAggregator.News.Databases.EntityFramework.News.Entities;
+﻿using NewsAggregator.News.Entities;
+using NewsAggregator.News.Repositories;
 
 namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
 {

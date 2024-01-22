@@ -1,5 +1,5 @@
 ﻿using MongoDB.Driver;
-using NewsAggregator.News.Databases.EntityFramework.News.Entities;
+using NewsAggregator.News.Entities;
 using NewsAggregator.News.Services.Parsers;
 
 namespace NewsAggregator.News.Extensions

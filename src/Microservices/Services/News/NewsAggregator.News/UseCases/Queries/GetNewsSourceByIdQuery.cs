@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
 using MediatR;
 using NewsAggregator.Domain.Infrastructure.Caching;
-using NewsAggregator.News.Databases.EntityFramework.News.Entities;
-using NewsAggregator.News.Databases.EntityFramework.News.Repositories;
+using NewsAggregator.News.Entities;
 using NewsAggregator.News.Exceptions;
+using NewsAggregator.News.Repositories;
 
 namespace NewsAggregator.News.UseCases.Queries
 {

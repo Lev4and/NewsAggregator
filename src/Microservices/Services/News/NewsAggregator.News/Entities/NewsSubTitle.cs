@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NewsAggregator.Domain.Entities;
 
-namespace NewsAggregator.News.Databases.EntityFramework.News.Entities
+namespace NewsAggregator.News.Entities
 {
     [Index(nameof(Title))]
     public class NewsSubTitle : EntityBase
