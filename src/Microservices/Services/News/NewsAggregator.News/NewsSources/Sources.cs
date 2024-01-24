@@ -557,7 +557,7 @@ namespace NewsAggregator.News.NewsSources
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
                         UrlXPath = "//div[@class='b-material-incut-m-image']//@src",
-                        IsRequired = true
+                        IsRequired = false
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {

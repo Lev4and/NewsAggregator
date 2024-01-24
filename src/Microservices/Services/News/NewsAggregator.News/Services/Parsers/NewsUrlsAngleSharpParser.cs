@@ -32,7 +32,7 @@ namespace NewsAggregator.News.Services.Parsers
             {
                 var newsUrl = item.ToString() ?? "";
 
-                result.Add(!newsUrl.Contains(newsSiteUri.Host)
+                result.Add(!newsUrl.Contains(newsSiteUri.Host.Replace("www.", ""))
                     ? $"{newsSiteUri.Scheme}://{newsSiteUri.Host}/{newsUrl.Substring(1)}"
                         : newsUrl);
             }

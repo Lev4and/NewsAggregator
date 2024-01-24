@@ -27,11 +27,18 @@ namespace NewsAggregator.News.HostedServices
 
                     foreach (var newsSource in newsSources)
                     {
-                        var newsUrls = await mediator.Send(new SearchNewsCommand(newsSource.SiteUrl));
-
-                        foreach (var newsUrl in newsUrls)
+                        try
                         {
-                            await mediator.Publish(new FoundNews(newsUrl));
+                            var newsUrls = await mediator.Send(new SearchNewsCommand(newsSource.SiteUrl));
+
+                            foreach (var newsUrl in newsUrls)
+                            {
+                                await mediator.Publish(new FoundNews(newsUrl));
+                            }
+                        }
+                        catch
+                        {
+                            continue;
                         }
                     }
 

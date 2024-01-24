@@ -73,5 +73,20 @@ namespace NewsAggregator.News.UseCases.Commands
                 await _messageBus.SendAsync(notification, cancellationToken);
             }
         }
+
+        internal class NotParsedNewsNotificationHandler : INotificationHandler<NotParsedNews>
+        {
+            private readonly IMessageBus _messageBus;
+
+            public NotParsedNewsNotificationHandler(IMessageBus messageBus)
+            {
+                _messageBus = messageBus;
+            }
+
+            public async Task Handle(NotParsedNews notification, CancellationToken cancellationToken)
+            {
+                await _messageBus.SendAsync(notification, cancellationToken);
+            }
+        }
     }
 }

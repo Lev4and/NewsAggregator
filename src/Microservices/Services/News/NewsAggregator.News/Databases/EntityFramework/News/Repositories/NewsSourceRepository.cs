@@ -35,6 +35,15 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
                 .ToListAsync();
         }
 
+        public async Task<IReadOnlyCollection<NewsSource>> FindAvailableNewsSourcesAsync(
+            CancellationToken cancellationToken = default)
+        {
+            return await _dbContext.NewsSources.AsNoTracking()
+                .Include(newsSource => newsSource.Logo)
+                .Where(newsSource => newsSource.IsEnabled)
+                .ToListAsync();
+        }
+
         public async Task<NewsSource?> FindNewsSourceByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
             return await _dbContext.NewsSources.AsNoTracking()

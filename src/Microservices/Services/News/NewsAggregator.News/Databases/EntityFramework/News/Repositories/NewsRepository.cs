@@ -4,7 +4,7 @@ using NewsAggregator.News.Repositories;
 
 namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
 {
-    public class NewsRepository : NewsDbRepository<NewsAggregator.News.Entities.News>, INewsRepository
+    public class NewsRepository : NewsDbRepository<Entities.News>, INewsRepository
     {
         public NewsRepository(NewsDbContext dbContext) : base(dbContext)
         {
@@ -13,10 +13,11 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
 
         public async Task<bool> ContainsNewsByUrlAsync(string url, CancellationToken cancellationToken = default)
         {
-            return await FindNewsByUrlAsync(url, cancellationToken) != null;
+            return await _dbContext.News.AsNoTracking().SingleOrDefaultAsync(news => news.Url == url, cancellationToken) != null ||
+                await _dbContext.NewsParseErrors.AsNoTracking().SingleOrDefaultAsync(error => error.NewsUrl == url, cancellationToken) != null;
         }
 
-        public async Task<NewsAggregator.News.Entities.News?> FindNewsByUrlAsync(string url, CancellationToken cancellationToken = default)
+        public async Task<Entities.News?> FindNewsByUrlAsync(string url, CancellationToken cancellationToken = default)
         {
             return await _dbContext.News
                 .Include(news => news.Editor)

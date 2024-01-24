@@ -23,6 +23,19 @@ namespace NewsAggregator.News.Tests.Services.Parsers
             _output = output;
         }
 
+        [Fact]
+        public async Task ParseAsync_SpecificNewsSource_ReturnNotEmptyResult()
+        {
+            var newsSource = new Sources()[new Uri("https://www.interfax.ru/")];
+            var newsUrls = await ParseNewsUrlsAsync(newsSource);
+
+            _output.WriteLine("\nReport:\n");
+
+            _output.WriteLine("Found {0} news items from \"{1}\" news source", newsUrls.Count, newsSource.Title);
+
+            Assert.NotEmpty(newsUrls);
+        }
+
         [Theory]
         [ClassData(typeof(NewsUrlsParserTestsData.NewsSources))]
         public async Task ParseAsync_EachNewsSource_ReturnNotEmptyResult(NewsSource newsSource)
