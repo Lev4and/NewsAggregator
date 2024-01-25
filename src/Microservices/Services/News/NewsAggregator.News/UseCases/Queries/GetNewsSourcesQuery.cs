@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Entities;
 using NewsAggregator.News.Repositories;
 
@@ -19,7 +18,7 @@ namespace NewsAggregator.News.UseCases.Queries
             public async Task<IReadOnlyCollection<NewsSource>> Handle(GetNewsSourcesQuery request, 
                 CancellationToken cancellationToken)
             {
-                return await _repository.FindAvailableNewsSourcesAsync(cancellationToken);
+                return await _repository.FindNewsSourcesAsync(cancellationToken);
             }
         }
     }

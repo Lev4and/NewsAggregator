@@ -50,12 +50,16 @@ namespace NewsAggregator.News.UseCases.Commands
 
                 if (newsSource is not null && newsSource.ParseSettings is not null)
                 {
-                    var html = await _newsHtmlPageProvider.ProvideAsync(request.NewsUrl, cancellationToken);
+                    var html = await _newsHtmlPageProvider.ProvideAsync(request.NewsUrl, 
+                        cancellationToken);
 
                     return await _parser.ParseAsync(request.NewsUrl, html, 
                         newsSource.ParseSettings.ToNewsParserOptions(), cancellationToken);
                 }
-                else throw new NewsSourceNotFoundException(newsUri.Host);
+                else
+                {
+                    throw new NewsSourceNotFoundException(newsUri.Host);
+                }
             }
         }
 

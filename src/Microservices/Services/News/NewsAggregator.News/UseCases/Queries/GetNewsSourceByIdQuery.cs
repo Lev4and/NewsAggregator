@@ -26,13 +26,13 @@ namespace NewsAggregator.News.UseCases.Queries
 
         internal class Handler : IRequestHandler<GetNewsSourceByIdQuery, NewsSource>
         {
-            private readonly INewsSourceRepository _repository;
             private readonly IMemoryCache _memoryCache;
+            private readonly INewsSourceRepository _repository;
 
-            public Handler(INewsSourceRepository repository, IMemoryCache memoryCache)
+            public Handler(IMemoryCache memoryCache, INewsSourceRepository repository)
             {
-                _repository = repository;
                 _memoryCache = memoryCache;
+                _repository = repository;
             }
 
             public async Task<NewsSource> Handle(GetNewsSourceByIdQuery request, CancellationToken cancellationToken)

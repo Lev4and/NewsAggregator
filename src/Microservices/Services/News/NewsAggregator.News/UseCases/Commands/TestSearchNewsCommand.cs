@@ -35,14 +35,14 @@ namespace NewsAggregator.News.UseCases.Commands
             public Handler(INewsUrlsParser parser, INewsListHtmlPageProvider newsListHtmlPageProvider)
             {
                 _parser = parser;
-
                 _newsListHtmlPageProvider = newsListHtmlPageProvider;
             }
 
             public async Task<IReadOnlyCollection<string>> Handle(TestSearchNewsCommand request, 
                 CancellationToken cancellationToken)
             {
-                var html = await _newsListHtmlPageProvider.ProvideAsync(request.NewsSiteUrl, cancellationToken);
+                var html = await _newsListHtmlPageProvider.ProvideAsync(request.NewsSiteUrl, 
+                    cancellationToken);
 
                 return await _parser.ParseAsync(request.NewsSiteUrl, html,
                     new NewsUrlsParserOptions(request.NewsUrlXPath), cancellationToken);

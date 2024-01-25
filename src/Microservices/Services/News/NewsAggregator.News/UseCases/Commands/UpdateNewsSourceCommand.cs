@@ -42,12 +42,12 @@ namespace NewsAggregator.News.UseCases.Commands
                     {
                         _repository.Update(request.NewsSource);
 
-                        if (request.NewsSource.ParseSettings != null)
+                        if (request.NewsSource.ParseSettings is not null)
                         {
                             _repository.Update(request.NewsSource.ParseSettings);
                         }
 
-                        if (request.NewsSource.SearchSettings != null)
+                        if (request.NewsSource.SearchSettings is not null)
                         {
                             _repository.Update(request.NewsSource.SearchSettings);
                         }

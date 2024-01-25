@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using NewsAggregator.Domain.Infrastructure.MessageBrokers;
 using NewsAggregator.News.Exceptions;
 using NewsAggregator.News.Messages;
@@ -43,31 +44,36 @@ namespace NewsAggregator.News.UseCases.Commands
             public async Task<IReadOnlyCollection<string>> Handle(SearchNewsCommand request, 
                 CancellationToken cancellationToken)
             {
-                var newsSource = await _repository.FindNewsSourceBySiteUrlAsync(request.SiteUrl, cancellationToken);
+                var newsSource = await _repository.FindNewsSourceBySiteUrlAsync(request.SiteUrl, 
+                    cancellationToken);
 
-                if (newsSource != null && newsSource.SearchSettings != null)
+                if (newsSource is not null && newsSource.SearchSettings is not null)
                 {
-                    var html = await _newsListHtmlPageProvider.ProvideAsync(request.SiteUrl, cancellationToken);
+                    var html = await _newsListHtmlPageProvider.ProvideAsync(request.SiteUrl, 
+                        cancellationToken);
 
                     return await _parser.ParseAsync(newsSource.SearchSettings.NewsSiteUrl, html,
                         new NewsUrlsParserOptions(newsSource.SearchSettings.NewsUrlXPath), cancellationToken);
                 }
-                else throw new NewsSourceNotFoundException(new Uri(request.SiteUrl).Host);
+                else
+                {
+                    throw new NewsSourceNotFoundException(new Uri(request.SiteUrl).Host);
+                }
             }
         }
 
         internal class FoundNewsHotificationHandler : INotificationHandler<FoundNews>
         {
-            private readonly IMessageBus _messageBus;
+            private readonly ILogger<FoundNewsHotificationHandler> _logger;
 
-            public FoundNewsHotificationHandler(IMessageBus messageBus)
+            public FoundNewsHotificationHandler(ILogger<FoundNewsHotificationHandler> logger)
             {
-                _messageBus = messageBus;
+                _logger = logger;
             }
 
             public async Task Handle(FoundNews notification, CancellationToken cancellationToken)
             {
-                await _messageBus.SendAsync(notification, cancellationToken);
+                _logger.LogInformation("Found news url: {0}", notification.NewsUrl);
             }
         }
     }
