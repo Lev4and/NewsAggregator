@@ -6,6 +6,9 @@ namespace NewsAggregator.News.Repositories
     {
         Task<bool> ContainsNewsByUrlAsync(string url, CancellationToken cancellationToken = default);
 
+        Task<IReadOnlyDictionary<string, bool>> ContainsNewsByUrlsAsync(IReadOnlyCollection<string> urls, 
+            CancellationToken cancellationToken = default);
+
         Task<Entities.News?> FindNewsByUrlAsync(string url, CancellationToken cancellationToken = default);
     }
 }

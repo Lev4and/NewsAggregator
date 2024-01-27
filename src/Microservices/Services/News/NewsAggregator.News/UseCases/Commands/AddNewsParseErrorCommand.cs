@@ -10,15 +10,15 @@ namespace NewsAggregator.News.UseCases.Commands
     {
         public string NewsUrl { get; }
 
+        public string Message { get; }
+
         public DateTime CreatedAt { get; }
 
-        public Exception Exception { get; }
-
-        public AddNewsParseErrorCommand(string newsUrl, DateTime createdAt, Exception exception)
+        public AddNewsParseErrorCommand(string newsUrl, string message, DateTime createdAt)
         {
             NewsUrl = newsUrl;
+            Message = message;
             CreatedAt = createdAt;
-            Exception = exception;
         }
 
         internal class Validator : AbstractValidator<AddNewsParseErrorCommand>
@@ -26,7 +26,7 @@ namespace NewsAggregator.News.UseCases.Commands
             public Validator()
             {
                 RuleFor(command => command.NewsUrl).NotEmpty();
-                RuleFor(command => command.Exception).NotNull();
+                RuleFor(command => command.Message).NotEmpty();
             }
         }
 
@@ -50,7 +50,7 @@ namespace NewsAggregator.News.UseCases.Commands
                         _repository.Add(new NewsParseError
                         {
                             NewsUrl = request.NewsUrl,
-                            Message = request.Exception.Message,
+                            Message = request.Message,
                             CreatedAt = request.CreatedAt
                         });
 

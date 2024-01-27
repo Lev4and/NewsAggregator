@@ -17,24 +17,21 @@ namespace NewsAggregator.News.HostedServices
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            while (!stoppingToken.IsCancellationRequested)
+            while (true)
             {
                 using (var scope = _scopeFactory.CreateScope()) 
                 {
                     var mediator = scope.ServiceProvider.GetRequiredService<MediatR.IMediator>();
 
-                    var newsSources = await mediator.Send(new GetNewsSourcesQuery(), stoppingToken);
+                    var newsSources = await mediator.Send(new GetAvailableNewsSourcesQuery(), stoppingToken);
 
                     foreach (var newsSource in newsSources)
                     {
                         try
                         {
-                            var newsUrls = await mediator.Send(new SearchNewsCommand(newsSource.SiteUrl));
+                            var newsUrls = await mediator.Send(new SearchNewsByNewsSourceCommand(newsSource), stoppingToken);
 
-                            foreach (var newsUrl in newsUrls)
-                            {
-                                await mediator.Publish(new FoundNews(newsUrl));
-                            }
+                            await mediator.Publish(new FoundNewsUrls(newsUrls), stoppingToken);
                         }
                         catch
                         {

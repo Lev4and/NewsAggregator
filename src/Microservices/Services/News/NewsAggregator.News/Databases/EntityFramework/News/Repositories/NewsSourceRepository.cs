@@ -31,15 +31,26 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
                     .ThenInclude(parseSettings => parseSettings.ParseSubTitleSettings)
                 .Include(newsSource => newsSource.ParseSettings)
                     .ThenInclude(parseSettings => parseSettings.ParsePublishedAtSettings)
+                        .ThenInclude(parsePublishedAtSettings => parsePublishedAtSettings.Formats)
                 .Include(newsSource => newsSource.SearchSettings)
                 .ToListAsync();
         }
 
-        public async Task<IReadOnlyCollection<NewsSource>> FindAvailableNewsSourcesAsync(
+        public async Task<IReadOnlyCollection<NewsSource>> FindAvailableNewsSourcesExtendedAsync(
             CancellationToken cancellationToken = default)
         {
             return await _dbContext.NewsSources.AsNoTracking()
                 .Include(newsSource => newsSource.Logo)
+                .Include(newsSource => newsSource.ParseSettings)
+                    .ThenInclude(parseSettings => parseSettings.ParseEditorSettings)
+                .Include(newsSource => newsSource.ParseSettings)
+                    .ThenInclude(parseSettings => parseSettings.ParsePictureSettings)
+                .Include(newsSource => newsSource.ParseSettings)
+                    .ThenInclude(parseSettings => parseSettings.ParseSubTitleSettings)
+                .Include(newsSource => newsSource.ParseSettings)
+                    .ThenInclude(parseSettings => parseSettings.ParsePublishedAtSettings)
+                        .ThenInclude(parsePublishedAtSettings => parsePublishedAtSettings.Formats)
+                .Include(newsSource => newsSource.SearchSettings)
                 .Where(newsSource => newsSource.IsEnabled)
                 .ToListAsync();
         }
@@ -56,6 +67,7 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
                     .ThenInclude(parseSettings => parseSettings.ParseSubTitleSettings)
                 .Include(newsSource => newsSource.ParseSettings)
                     .ThenInclude(parseSettings => parseSettings.ParsePublishedAtSettings)
+                        .ThenInclude(parsePublishedAtSettings => parsePublishedAtSettings.Formats)
                 .Include(newsSource => newsSource.SearchSettings)
                 .SingleOrDefaultAsync(newsSource => newsSource.Id == id);
         }
@@ -73,6 +85,7 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
                     .ThenInclude(parseSettings => parseSettings.ParseSubTitleSettings)
                 .Include(newsSource => newsSource.ParseSettings)
                     .ThenInclude(parseSettings => parseSettings.ParsePublishedAtSettings)
+                        .ThenInclude(parsePublishedAtSettings => parsePublishedAtSettings.Formats)
                 .Include(newsSource => newsSource.SearchSettings)
                 .SingleOrDefaultAsync(newsSource => newsSource.SiteUrl == siteUrl);
         }

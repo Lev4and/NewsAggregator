@@ -25,24 +25,17 @@ namespace NewsAggregator.News.UseCases.Queries
 
         internal class Handler : IRequestHandler<GetNewsByUrlQuery, Entities.News>
         {
-            private readonly IMemoryCache _memoryCache;
             private readonly INewsRepository _repository;
 
-            public Handler(IMemoryCache memoryCache, INewsRepository repository)
+            public Handler(INewsRepository repository)
             {
-                _memoryCache = memoryCache;
                 _repository = repository;
             }
 
             public async Task<Entities.News> Handle(GetNewsByUrlQuery request, CancellationToken cancellationToken)
             {
-                return await _memoryCache.GetAsync($"news:{request.Url}",
-                    async () =>
-                    {
-                        return await _repository.FindNewsByUrlAsync(request.Url, cancellationToken)
-                            ?? throw new NewsNotFoundException(request.Url);
-                    }, 
-                    cancellationToken);
+                return await _repository.FindNewsByUrlAsync(request.Url, cancellationToken)
+                    ?? throw new NewsNotFoundException(request.Url);
             }
         }
     }

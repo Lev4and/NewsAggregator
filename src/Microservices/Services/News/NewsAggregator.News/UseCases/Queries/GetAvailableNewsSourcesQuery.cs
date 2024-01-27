@@ -5,9 +5,9 @@ using NewsAggregator.News.Repositories;
 
 namespace NewsAggregator.News.UseCases.Queries
 {
-    public class GetNewsSourcesQuery : IRequest<IReadOnlyCollection<NewsSource>>
+    public class GetAvailableNewsSourcesQuery : IRequest<IReadOnlyCollection<NewsSource>>
     {
-        internal class Handler : IRequestHandler<GetNewsSourcesQuery, IReadOnlyCollection<NewsSource>>
+        internal class Handler : IRequestHandler<GetAvailableNewsSourcesQuery, IReadOnlyCollection<NewsSource>>
         {
             private readonly INewsSourceMemoryCache _cache;
             private readonly INewsSourceRepository _repository;
@@ -18,11 +18,11 @@ namespace NewsAggregator.News.UseCases.Queries
                 _repository = repository;
             }
 
-            public async Task<IReadOnlyCollection<NewsSource>> Handle(GetNewsSourcesQuery request, 
+            public async Task<IReadOnlyCollection<NewsSource>> Handle(GetAvailableNewsSourcesQuery request,
                 CancellationToken cancellationToken)
             {
-                return await _cache.GetNewsSourcesAsync(async () => await _repository.FindNewsSourcesAsync(cancellationToken),
-                    cancellationToken);
+                return await _cache.GetAvailableNewsSourcesAsync(async () => 
+                    await _repository.FindAvailableNewsSourcesExtendedAsync(cancellationToken), cancellationToken);
             }
         }
     }

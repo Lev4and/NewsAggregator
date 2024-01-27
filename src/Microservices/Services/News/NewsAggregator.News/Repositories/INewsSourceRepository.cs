@@ -9,7 +9,7 @@ namespace NewsAggregator.News.Repositories
 
         Task<IReadOnlyCollection<NewsSource>> FindNewsSourcesExtendedAsync(CancellationToken cancellationToken = default);
 
-        Task<IReadOnlyCollection<NewsSource>> FindAvailableNewsSourcesAsync(CancellationToken cancellationToken = default);
+        Task<IReadOnlyCollection<NewsSource>> FindAvailableNewsSourcesExtendedAsync(CancellationToken cancellationToken = default);
 
         Task<NewsSource?> FindNewsSourceByIdAsync(Guid id, CancellationToken cancellationToken = default);
 

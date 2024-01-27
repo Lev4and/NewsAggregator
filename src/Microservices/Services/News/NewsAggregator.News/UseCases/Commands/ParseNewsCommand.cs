@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 using NewsAggregator.Domain.Infrastructure.MessageBrokers;
+using NewsAggregator.News.Caching;
 using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Exceptions;
 using NewsAggregator.News.Extensions;
@@ -30,12 +31,15 @@ namespace NewsAggregator.News.UseCases.Commands
 
         internal class Handler : IRequestHandler<ParseNewsCommand, NewsDto>
         {
+            private readonly INewsSourceMemoryCache _cache;
             private readonly INewsParser _parser;
             private readonly INewsSourceRepository _repository;
             private readonly INewsHtmlPageProvider _newsHtmlPageProvider;
 
-            public Handler(INewsParser parser, INewsSourceRepository repository, INewsHtmlPageProvider newsHtmlPageProvider)
+            public Handler(INewsSourceMemoryCache cache, INewsParser parser, INewsSourceRepository repository, 
+                INewsHtmlPageProvider newsHtmlPageProvider)
             {
+                _cache = cache;
                 _parser = parser;
                 _repository = repository;
                 _newsHtmlPageProvider = newsHtmlPageProvider;
@@ -45,7 +49,12 @@ namespace NewsAggregator.News.UseCases.Commands
             {
                 var newsUri = new Uri(request.NewsUrl);
 
-                var newsSource = await _repository.FindNewsSourceBySiteUrlAsync($"{newsUri.Scheme}://{newsUri.Host}/",
+                var newsSource = await _cache.GetNewsSourceBySiteUrlAsync($"{newsUri.Scheme}://{newsUri.Host}/",
+                    async() =>
+                    {
+                        return await _repository.FindNewsSourceBySiteUrlAsync($"{newsUri.Scheme}://{newsUri.Host}/",
+                            cancellationToken) ?? throw new NewsSourceNotFoundException(newsUri.Host);
+                    },
                     cancellationToken);
 
                 if (newsSource is not null && newsSource.ParseSettings is not null)

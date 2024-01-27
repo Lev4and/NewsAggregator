@@ -1,4 +1,5 @@
 ﻿
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using NewsAggregator.News.Repositories;
 
@@ -15,6 +16,21 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
         {
             return await _dbContext.News.AsNoTracking().SingleOrDefaultAsync(news => news.Url == url, cancellationToken) != null ||
                 await _dbContext.NewsParseErrors.AsNoTracking().SingleOrDefaultAsync(error => error.NewsUrl == url, cancellationToken) != null;
+        }
+
+        public async Task<IReadOnlyDictionary<string, bool>> ContainsNewsByUrlsAsync(IReadOnlyCollection<string> urls, 
+            CancellationToken cancellationToken = default)
+        {
+            var newsUrls = await _dbContext.News.AsNoTracking()
+                .Where(news => urls.Contains(news.Url))
+                .Select(news => news.Url)
+                .Union(_dbContext.NewsParseErrors.AsNoTracking()
+                    .Where(news => urls.Contains(news.NewsUrl))
+                    .Select(news => news.NewsUrl))
+                .Distinct()
+                .ToListAsync();
+
+            return urls.Distinct().ToDictionary(key => key, newsUrls.Contains);
         }
 
         public async Task<Entities.News?> FindNewsByUrlAsync(string url, CancellationToken cancellationToken = default)

@@ -6,15 +6,15 @@ namespace NewsAggregator.News.Messages
     {
         public string NewsUrl { get; }
 
+        public string Message { get; }
+
         public DateTime CreatedAt { get; }
 
-        public Exception Exception { get; }
-
-        public NotParsedNews(string newsUrl, Exception exception)
+        public NotParsedNews(string newsUrl, string message, DateTime createdAt)
         {
             NewsUrl = newsUrl;
-            CreatedAt = DateTime.UtcNow;
-            Exception = exception;
+            Message = message;
+            CreatedAt = createdAt;
         }
     }
 }

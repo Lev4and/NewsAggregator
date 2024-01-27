@@ -39,7 +39,12 @@ namespace NewsAggregator.Infrastructure.Caching.Default
         public async Task SetAsync<T>(string key, T value, CancellationToken cancellationToken = default)
             where T : class
         {
-            await _distributedCache.SetStringAsync(key, JsonConvert.SerializeObject(value),
+            await _distributedCache.SetStringAsync(key, 
+                JsonConvert.SerializeObject(value, 
+                    new JsonSerializerSettings()
+                    {
+                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                    }),
                 cancellationToken);
 
             _cacheKeys.TryAdd(key, false);

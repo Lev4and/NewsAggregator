@@ -39,12 +39,12 @@ namespace NewsAggregator.News.Api.Controllers
         }
 
         [HttpGet]
-        [Route("check")]
+        [Route("contains")]
         [ProducesResponseType(typeof(ApiResponse<bool>), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> CheckNewsOnExistsByUrlAsync([Required][FromQuery(Name = "url")] string url,
+        public async Task<IActionResult> ContainsNewsByUrlAsync([Required][FromQuery(Name = "url")] string url,
             CancellationToken cancellationToken = default)
         {
-            return Ok(await _mediator.Send(new CheckNewsOnExistsByUrlCommand(url), cancellationToken));
+            return Ok(await _mediator.Send(new ContainsNewsByUrlCommand(url), cancellationToken));
         }
 
         [HttpPost]
@@ -70,33 +70,6 @@ namespace NewsAggregator.News.Api.Controllers
             CancellationToken cancellationToken = default)
         {
             return Ok(await _mediator.Send(new GetNewsSourceByIdQuery(id), cancellationToken));
-        }
-
-        [HttpPost]
-        [Route("sources")]
-        [ProducesResponseType(typeof(ApiResponse<bool>), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> AddNewsSourceAsync([Required][FromBody] NewsSource newsSource,
-            CancellationToken cancellationToken = default)
-        {
-            return Ok(await _mediator.Send(new AddNewsSourceCommand(newsSource), cancellationToken));
-        }
-
-        [HttpPut]
-        [Route("sources")]
-        [ProducesResponseType(typeof(ApiResponse<bool>), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> UpdateNewsSourceAsync([Required][FromBody] NewsSource newsSource,
-            CancellationToken cancellationToken = default)
-        {
-            return Ok(await _mediator.Send(new UpdateNewsSourceCommand(newsSource), cancellationToken));
-        }
-
-        [HttpDelete]
-        [Route("sources/{id:guid:required}")]
-        [ProducesResponseType(typeof(ApiResponse<bool>), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> RemoveNewsSourceByIdAsync([Required][FromRoute(Name = "id")] Guid id,
-            CancellationToken cancellationToken = default)
-        {
-            return Ok(await _mediator.Send(new RemoveNewsSourceByIdCommand(id), cancellationToken));
         }
     }
 }

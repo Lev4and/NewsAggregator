@@ -1,25 +1,22 @@
 ﻿using FluentValidation;
 using MediatR;
-using Microsoft.Extensions.Logging;
-using NewsAggregator.Domain.Infrastructure.MessageBrokers;
 using NewsAggregator.News.Exceptions;
-using NewsAggregator.News.Messages;
 using NewsAggregator.News.Repositories;
 using NewsAggregator.News.Services.Parsers;
 using NewsAggregator.News.Services.Providers;
 
 namespace NewsAggregator.News.UseCases.Commands
 {
-    public class SearchNewsCommand : IRequest<IReadOnlyCollection<string>>
+    public class SearchNewsBySiteUrlCommand : IRequest<IReadOnlyCollection<string>>
     {
         public string SiteUrl { get; }
 
-        public SearchNewsCommand(string siteUrl)
+        public SearchNewsBySiteUrlCommand(string siteUrl)
         {
             SiteUrl = siteUrl;
         }
 
-        public class Validator : AbstractValidator<SearchNewsCommand>
+        public class Validator : AbstractValidator<SearchNewsBySiteUrlCommand>
         {
             public Validator()
             {
@@ -27,7 +24,7 @@ namespace NewsAggregator.News.UseCases.Commands
             }
         }
 
-        internal class Handler : IRequestHandler<SearchNewsCommand, IReadOnlyCollection<string>>
+        internal class Handler : IRequestHandler<SearchNewsBySiteUrlCommand, IReadOnlyCollection<string>>
         {
             private readonly INewsUrlsParser _parser;
             private readonly INewsSourceRepository _repository;
@@ -41,7 +38,7 @@ namespace NewsAggregator.News.UseCases.Commands
                 _newsListHtmlPageProvider = newsListHtmlPageProvider;
             }
 
-            public async Task<IReadOnlyCollection<string>> Handle(SearchNewsCommand request, 
+            public async Task<IReadOnlyCollection<string>> Handle(SearchNewsBySiteUrlCommand request, 
                 CancellationToken cancellationToken)
             {
                 var newsSource = await _repository.FindNewsSourceBySiteUrlAsync(request.SiteUrl, 
@@ -59,21 +56,6 @@ namespace NewsAggregator.News.UseCases.Commands
                 {
                     throw new NewsSourceNotFoundException(new Uri(request.SiteUrl).Host);
                 }
-            }
-        }
-
-        internal class FoundNewsHotificationHandler : INotificationHandler<FoundNews>
-        {
-            private readonly ILogger<FoundNewsHotificationHandler> _logger;
-
-            public FoundNewsHotificationHandler(ILogger<FoundNewsHotificationHandler> logger)
-            {
-                _logger = logger;
-            }
-
-            public async Task Handle(FoundNews notification, CancellationToken cancellationToken)
-            {
-                _logger.LogInformation("Found news url: {0}", notification.NewsUrl);
             }
         }
     }

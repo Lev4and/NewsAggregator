@@ -9,6 +9,7 @@ using NewsAggregator.Domain.Infrastructure.Databases;
 using NewsAggregator.Domain.Infrastructure.MessageBrokers;
 using NewsAggregator.Infrastructure.Caching.Default;
 using NewsAggregator.Infrastructure.MessageBrokers.RabbitMQ;
+using NewsAggregator.News.Caching;
 using NewsAggregator.News.ConfigurationOptions;
 using NewsAggregator.News.Databases.EntityFramework.News;
 using NewsAggregator.News.Extensions;
@@ -53,6 +54,8 @@ namespace NewsAggregator.News
 
             services.AddDistributedMemoryCache();
             services.AddSingleton<IMemoryCache, MemoryCache>();
+            services.AddSingleton<INewsMemoryCache, NewsMemoryCache>();
+            services.AddSingleton<INewsSourceMemoryCache, NewsSourceMemoryCache>();
 
             services.AddStackExchangeRedisCache(redisOptions =>
             {

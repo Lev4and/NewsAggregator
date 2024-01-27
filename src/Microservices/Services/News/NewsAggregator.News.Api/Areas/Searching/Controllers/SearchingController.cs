@@ -25,17 +25,7 @@ namespace NewsAggregator.News.Api.Areas.Searching.Controllers
         public async Task<IActionResult> SearchNewsAsync([Required][FromQuery(Name = "siteUrl")] string siteUrl,
             CancellationToken cancellationToken = default)
         {
-            return Ok(await _mediator.Send(new SearchNewsCommand(siteUrl), cancellationToken));
-        }
-
-        [HttpPost]
-        [Route("test")]
-        [ProducesResponseType(typeof(ApiResponse<IReadOnlyCollection<string>>), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> TestSearchNewsAsync([Required][FromBody] TestSearchNewsDto dto, 
-            CancellationToken cancellationToken = default)
-        {
-            return Ok(await _mediator.Send(new TestSearchNewsCommand(dto.NewsSiteUrl, dto.NewsUrlXPath), 
-                cancellationToken));
+            return Ok(await _mediator.Send(new SearchNewsBySiteUrlCommand(siteUrl), cancellationToken));
         }
     }
 }

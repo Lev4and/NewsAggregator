@@ -49,11 +49,9 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
             return await base.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<IDatabaseTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
+        public Task<IDatabaseTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
         {
-            await Task.CompletedTask;
-
-            return new EntityFrameworkDatabaseTransaction(this);
+            return Task.FromResult<IDatabaseTransaction>(new EntityFrameworkDatabaseTransaction(this));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

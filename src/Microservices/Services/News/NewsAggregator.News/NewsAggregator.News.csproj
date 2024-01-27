@@ -28,7 +28,6 @@
 	
   <ItemGroup>
     <Folder Include="Databases\EntityFramework\News\Migrations\" />
-    <Folder Include="MessageConsumers\" />
   </ItemGroup>
 
 </Project>
