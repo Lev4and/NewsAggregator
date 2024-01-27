@@ -33,9 +33,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.News.Tests",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{ED44C7DB-0B64-46DA-99CE-EB62F91B9C03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsAggregator.Gateways.Api", "src\Microservices\Gateways\NewsAggregator.Gateways.Api\NewsAggregator.Gateways.Api.csproj", "{6F53DC02-8B5D-4835-8D0B-0BFAF6C4F502}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.Gateways.Api", "src\Microservices\Gateways\NewsAggregator.Gateways.Api\NewsAggregator.Gateways.Api.csproj", "{6F53DC02-8B5D-4835-8D0B-0BFAF6C4F502}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsAggregator.News.Benchmarks", "src\Microservices\Services\News\NewsAggregator.News.Benchmarks\NewsAggregator.News.Benchmarks.csproj", "{80A5EE36-A4D8-4EA3-B34C-536D97D215A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.News.Benchmarks", "src\Microservices\Services\News\NewsAggregator.News.Benchmarks\NewsAggregator.News.Benchmarks.csproj", "{80A5EE36-A4D8-4EA3-B34C-536D97D215A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UIs", "UIs", "{88CA4354-BF43-4C79-87A6-67663F525763}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsAggregator.News.Mvc", "src\Microservices\Services\News\NewsAggregator.News.Mvc\NewsAggregator.News.Mvc.csproj", "{D49433FD-2B08-4403-A1C4-E21226282172}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsAggregator.News.Parser", "src\Microservices\Services\News\NewsAggregator.News.Parser\NewsAggregator.News.Parser.csproj", "{64048467-07E9-43CC-A789-E8AA5ADF32C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsAggregator.News.Searcher", "src\Microservices\Services\News\NewsAggregator.News.Searcher\NewsAggregator.News.Searcher.csproj", "{DB49B646-4D54-448B-B72B-61A1D3E01AAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +87,18 @@ Global
 		{80A5EE36-A4D8-4EA3-B34C-536D97D215A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80A5EE36-A4D8-4EA3-B34C-536D97D215A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80A5EE36-A4D8-4EA3-B34C-536D97D215A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D49433FD-2B08-4403-A1C4-E21226282172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D49433FD-2B08-4403-A1C4-E21226282172}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D49433FD-2B08-4403-A1C4-E21226282172}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D49433FD-2B08-4403-A1C4-E21226282172}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64048467-07E9-43CC-A789-E8AA5ADF32C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64048467-07E9-43CC-A789-E8AA5ADF32C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64048467-07E9-43CC-A789-E8AA5ADF32C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64048467-07E9-43CC-A789-E8AA5ADF32C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB49B646-4D54-448B-B72B-61A1D3E01AAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB49B646-4D54-448B-B72B-61A1D3E01AAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB49B646-4D54-448B-B72B-61A1D3E01AAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB49B646-4D54-448B-B72B-61A1D3E01AAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +120,10 @@ Global
 		{ED44C7DB-0B64-46DA-99CE-EB62F91B9C03} = {6AD6E8FE-81D4-45ED-9DAB-CCD8133586EB}
 		{6F53DC02-8B5D-4835-8D0B-0BFAF6C4F502} = {ED44C7DB-0B64-46DA-99CE-EB62F91B9C03}
 		{80A5EE36-A4D8-4EA3-B34C-536D97D215A1} = {7744A985-877D-48B8-8591-5AB576F664DA}
+		{88CA4354-BF43-4C79-87A6-67663F525763} = {C0F428BD-664C-400B-B07C-2CBD3A2D4EB0}
+		{D49433FD-2B08-4403-A1C4-E21226282172} = {7744A985-877D-48B8-8591-5AB576F664DA}
+		{64048467-07E9-43CC-A789-E8AA5ADF32C6} = {7744A985-877D-48B8-8591-5AB576F664DA}
+		{DB49B646-4D54-448B-B72B-61A1D3E01AAA} = {7744A985-877D-48B8-8591-5AB576F664DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D5E7907C-EDB2-449B-8860-F86555E8F584}

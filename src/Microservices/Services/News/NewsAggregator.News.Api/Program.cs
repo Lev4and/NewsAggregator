@@ -1,7 +1,6 @@
 using NewsAggregator.Infrastructure.Web.Middlewares;
 using NewsAggregator.News;
 using NewsAggregator.News.ConfigurationOptions;
-using NewsAggregator.News.HostedServices;
 using NewsAggregator.News.Web.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,8 +16,6 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGenNewtonsoftSupport();
-
-builder.Services.AddHostedService<SearchingNewsWorker>();
 
 var app = builder.Build();
 

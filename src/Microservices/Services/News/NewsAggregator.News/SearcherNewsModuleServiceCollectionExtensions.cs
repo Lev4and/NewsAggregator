@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
 using MassTransit;
 using MediatR;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using NewsAggregator.Domain.Infrastructure.Caching;
@@ -13,23 +12,19 @@ using NewsAggregator.News.Caching;
 using NewsAggregator.News.ConfigurationOptions;
 using NewsAggregator.News.Databases.EntityFramework.News;
 using NewsAggregator.News.Extensions;
-using NewsAggregator.News.MessageConsumers;
+using NewsAggregator.News.HostedServices;
 using NewsAggregator.News.Pipelines;
 using System.Reflection;
 
 namespace NewsAggregator.News
 {
-    public static class NewsModuleServiceCollectionExtensions
+    public static class SearcherNewsModuleServiceCollectionExtensions
     {
-        public static IServiceCollection AddNewsModule(this IServiceCollection services, AppSettings settings)
+        public static IServiceCollection AddSearcherNewsModule(this IServiceCollection services, AppSettings settings)
         {
             services.AddMassTransit(busConfigurator =>
             {
                 busConfigurator.SetKebabCaseEndpointNameFormatter();
-
-                busConfigurator.AddConsumer<FoundNewsUrlsMessageConsumer>();
-                busConfigurator.AddConsumer<NotParsedNewsMessageConsumer>();
-                busConfigurator.AddConsumer<ParsedNewsMessageConsumer>();
 
                 busConfigurator.UsingRabbitMq((context, configurator) =>
                 {
@@ -71,15 +66,9 @@ namespace NewsAggregator.News
 
             services.AddNewsParsers();
 
-            return services;
-        }
+            services.AddHostedService<SearchingNewsWorker>();
 
-        public static void MigrateNewsDb(this IApplicationBuilder app)
-        {
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>()?.CreateScope())
-            {
-                serviceScope?.ServiceProvider.GetRequiredService<NewsDbContext>().Database.Migrate();
-            }
+            return services;
         }
     }
 }

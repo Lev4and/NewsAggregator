@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
 using MassTransit;
 using MediatR;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using NewsAggregator.Domain.Infrastructure.Caching;
@@ -19,17 +18,15 @@ using System.Reflection;
 
 namespace NewsAggregator.News
 {
-    public static class NewsModuleServiceCollectionExtensions
+    public static class ParserNewsModuleServiceCollectionExtensions
     {
-        public static IServiceCollection AddNewsModule(this IServiceCollection services, AppSettings settings)
+        public static IServiceCollection AddParserNewsModule(this IServiceCollection services, AppSettings settings)
         {
             services.AddMassTransit(busConfigurator =>
             {
                 busConfigurator.SetKebabCaseEndpointNameFormatter();
 
-                busConfigurator.AddConsumer<FoundNewsUrlsMessageConsumer>();
-                busConfigurator.AddConsumer<NotParsedNewsMessageConsumer>();
-                busConfigurator.AddConsumer<ParsedNewsMessageConsumer>();
+                busConfigurator.AddConsumer<NotContainedNewsMessageConsumer>();
 
                 busConfigurator.UsingRabbitMq((context, configurator) =>
                 {
@@ -72,14 +69,6 @@ namespace NewsAggregator.News
             services.AddNewsParsers();
 
             return services;
-        }
-
-        public static void MigrateNewsDb(this IApplicationBuilder app)
-        {
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>()?.CreateScope())
-            {
-                serviceScope?.ServiceProvider.GetRequiredService<NewsDbContext>().Database.Migrate();
-            }
         }
     }
 }
