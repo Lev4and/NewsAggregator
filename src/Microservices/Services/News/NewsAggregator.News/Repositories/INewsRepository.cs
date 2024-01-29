@@ -10,5 +10,9 @@ namespace NewsAggregator.News.Repositories
             CancellationToken cancellationToken = default);
 
         Task<Entities.News?> FindNewsByUrlAsync(string url, CancellationToken cancellationToken = default);
+
+        Task<IReadOnlyCollection<Entities.News>> FindRecentNewsAsync(int count, CancellationToken cancellationToken = default);
+
+        Task<IReadOnlyCollection<Entities.News>> FindRecentNewsExtendedAsync(int count, CancellationToken cancellationToken = default);
     }
 }

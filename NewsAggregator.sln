@@ -39,11 +39,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.News.Benchma
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UIs", "UIs", "{88CA4354-BF43-4C79-87A6-67663F525763}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsAggregator.News.Mvc", "src\Microservices\Services\News\NewsAggregator.News.Mvc\NewsAggregator.News.Mvc.csproj", "{D49433FD-2B08-4403-A1C4-E21226282172}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.News.Mvc", "src\Microservices\Services\News\NewsAggregator.News.Mvc\NewsAggregator.News.Mvc.csproj", "{D49433FD-2B08-4403-A1C4-E21226282172}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsAggregator.News.Parser", "src\Microservices\Services\News\NewsAggregator.News.Parser\NewsAggregator.News.Parser.csproj", "{64048467-07E9-43CC-A789-E8AA5ADF32C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.News.Parser", "src\Microservices\Services\News\NewsAggregator.News.Parser\NewsAggregator.News.Parser.csproj", "{64048467-07E9-43CC-A789-E8AA5ADF32C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsAggregator.News.Searcher", "src\Microservices\Services\News\NewsAggregator.News.Searcher\NewsAggregator.News.Searcher.csproj", "{DB49B646-4D54-448B-B72B-61A1D3E01AAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.News.Searcher", "src\Microservices\Services\News\NewsAggregator.News.Searcher\NewsAggregator.News.Searcher.csproj", "{DB49B646-4D54-448B-B72B-61A1D3E01AAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
