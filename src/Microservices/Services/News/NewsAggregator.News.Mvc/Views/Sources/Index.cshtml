@@ -1,0 +1,11 @@
+﻿@model IReadOnlyCollection<NewsSource>
+@{
+    ViewData["Title"] = "Sources";
+}
+
+@foreach (var newsSource in Model)
+{
+    <p>
+        <a asp-route="Source" asp-route-id="@newsSource.Id">@newsSource.Title</a>
+    </p>
+}

@@ -1,0 +1,36 @@
+﻿@model IReadOnlyCollection<News>
+
+<div id="carouselNews" class="carousel slide mb-6" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        @for (var i = 0; i < Model.Count; i++)
+        {
+            <button type="button" data-bs-target="#carouselNews" data-bs-slide-to="@i" aria-label="Slide @(i + 1)" aria-current="@(i == 0 ? "true": "false")" class="@(i == 0 ? "active": "")"></button>
+        }
+    </div>
+    <div class="carousel-inner">
+        @for (var i = 0; i < Model.Count; i++)
+        {
+            <div class="@(i == 0 ? "carousel-item active": "carousel-item")">
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)" /></svg>
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>@Model.ElementAt(i).Title</h1>
+                        @if (Model.ElementAt(i).SubTitle is not null)
+                        {
+                            <p class="opacity-75">@Model.ElementAt(i).SubTitle?.Title</p>
+                        }
+                        <p><a class="btn btn-lg btn-primary" asp-route="News" asp-route-id="@Model.ElementAt(i).Id">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselNews" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselNews" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>

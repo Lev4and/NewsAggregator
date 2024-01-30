@@ -34,7 +34,7 @@ namespace NewsAggregator.News.UseCases.Queries
 
             public async Task<Entities.News> Handle(GetNewsByIdQuery request, CancellationToken cancellationToken)
             {
-                return await _repository.FindOneByIdAsync(request.Id, cancellationToken)
+                return await _repository.FindNewsByIdAsync(request.Id, cancellationToken)
                     ?? throw new NewsNotFoundException(request.Id);
             }
         }

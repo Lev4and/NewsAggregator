@@ -1,0 +1,60 @@
+﻿@model News
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="row g-5">
+    <div class="col-md-8">
+        <article class="blog-post">
+            <h1 class="display-5 link-body-emphasis mb-1">@Model.Title</h1>
+            <p class="blog-post-meta">
+                @if (Model.PublishedAt is not null)
+                {
+                    <span itemprop="datePublished">
+                        Date of publication:
+                        <time datetime="@Model.PublishedAt?.ToString("dd-MM-yyyyTHH:mm:sszzz")">
+                            @Model.PublishedAt?.ToString("MMM. dd, yyyy, h:mm tt zzz", new CultureInfo("en-US"))
+                        </time>
+                    </span>
+                }
+                @if (Model.Editor is not null)
+                {
+                    <span itemprop="author">
+                        Author: <a asp-route="Author" asp-route-id="@Model.Editor.Id" itemprop="name">@(Model.Editor.Name != string.Empty ? Model.Editor.Name : "Unknown")</a>
+                    </span>
+
+                    @if (Model.Editor.Source is not null)
+                    {
+                        <span itemprop="source">
+                            Source: <a asp-route="Source" asp-route-id="@Model.Editor.Source.Id" itemprop="title">@Model.Editor.Source.Title</a>
+                        </span>
+                    }
+
+                    <span itemprop="original">
+                        Original: <a href="@Model.Url">@Model.Url</a>
+                    </span>
+                }
+            </p>
+            @if (Model.SubTitle is not null)
+            {
+                <h2>@Model.SubTitle.Title</h2>
+            }
+            <hr>
+            @if (Model.Picture is not null)
+            {
+                <img itemprop="image" src="@Model.Picture.Url" class="w-100" />
+            }
+            @if (Model.Description is not null)
+            {
+                <div itemprop="articleBody">
+                    @Html.Raw(Model.Description.Description)
+                </div>
+            }
+        </article>
+    </div>
+    <div class="col-md-4">
+        <div class="position-sticky" style="top: 2rem;">
+            <vc:recent-news />
+        </div>
+    </div>
+</div>

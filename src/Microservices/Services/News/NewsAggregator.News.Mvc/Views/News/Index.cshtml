@@ -1,0 +1,29 @@
+﻿@model IReadOnlyCollection<News>
+@{
+    ViewData["Title"] = "News";
+}
+
+<div class="row mb-2">
+    @foreach (var news in Model)
+    {
+        <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <h3 class="mb-0">@news.Title</h3>
+                    @if (news.PublishedAt is not null)
+                    {
+                        <div class="mb-1 text-body-secondary">@news.PublishedAt?.ToString("MMM. dd, yyyy, h:mm tt zzz", new CultureInfo("en-US"))</div>
+                    }
+                    @if (news.SubTitle is not null)
+                    {
+                        <p class="card-text mb-auto">@news.SubTitle?.Title</p>
+                    }
+                    <a asp-route="News" asp-route-id="@news.Id" class="icon-link gap-1 icon-link-hover stretched-link">
+                        Continue reading
+                        <svg class="bi"><use xlink:href="#chevron-right" /></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

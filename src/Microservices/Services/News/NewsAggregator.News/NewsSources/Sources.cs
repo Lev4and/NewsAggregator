@@ -393,7 +393,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Известия",
                 SiteUrl = "https://iz.ru/",
-                IsEnabled = true,
+                IsEnabled = false,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/span/text()",

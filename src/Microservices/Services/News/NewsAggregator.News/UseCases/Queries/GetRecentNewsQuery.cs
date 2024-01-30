@@ -6,11 +6,11 @@ namespace NewsAggregator.News.UseCases.Queries
 {
     public class GetRecentNewsQuery : IRequest<IReadOnlyCollection<Entities.News>>
     {
-        public int Count => 10;
+        public int Count { get; }
 
-        public GetRecentNewsQuery()
+        public GetRecentNewsQuery(int count = 10)
         {
-
+            Count = count;
         }
 
         internal class Validator : AbstractValidator<GetRecentNewsQuery>

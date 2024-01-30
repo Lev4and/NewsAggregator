@@ -1,27 +1,24 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using NewsAggregator.News.Mvc.Models;
-using NewsAggregator.News.UseCases.Queries;
 using System.Diagnostics;
 
 namespace NewsAggregator.News.Mvc.Controllers
 {
+    [Route("")]
     public class HomeController : Controller
     {
         private readonly IMediator _mediator;
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(IMediator mediator, ILogger<HomeController> logger)
+        public HomeController(IMediator mediator)
         {
             _mediator = mediator;
-            _logger = logger;
         }
 
-        public async Task<IActionResult> Index(CancellationToken cancellationToken = default)
+        [HttpGet("", Name = "Main")]
+        public IActionResult Index()
         {
-            var news = await _mediator.Send(new GetRecentNewsExtendedQuery(), cancellationToken);
-
-            return View(news);
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

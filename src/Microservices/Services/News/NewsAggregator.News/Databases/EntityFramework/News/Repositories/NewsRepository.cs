@@ -33,6 +33,19 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
             return urls.Distinct().ToDictionary(key => key, newsUrls.Contains);
         }
 
+        public async Task<Entities.News?> FindNewsByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        {
+            return await _dbContext.News
+                .Include(news => news.Editor)
+                    .ThenInclude(editor => editor.Source)
+                        .ThenInclude(source => source.Logo)
+                .Include(news => news.SubTitle)
+                .Include(news => news.Picture)
+                .Include(news => news.Description)
+                .AsNoTracking()
+                .SingleOrDefaultAsync(news => news.Id == id, cancellationToken);
+        }
+
         public async Task<Entities.News?> FindNewsByUrlAsync(string url, CancellationToken cancellationToken = default)
         {
             return await _dbContext.News
@@ -54,24 +67,6 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
                     .ThenInclude(editor => editor.Source)
                         .ThenInclude(source => source.Logo)
                 .Include(news => news.SubTitle)
-                .Include(news => news.Picture)
-                .Where(news => news.SubTitle != null && news.Picture != null)
-                .OrderByDescending(news => news.PublishedAt)
-                .Take(count)
-                .AsNoTracking()
-                .ToListAsync();
-        }
-
-        public async Task<IReadOnlyCollection<Entities.News>> FindRecentNewsExtendedAsync(int count,
-            CancellationToken cancellationToken = default)
-        {
-            return await _dbContext.News
-                .Include(news => news.Editor)
-                    .ThenInclude(editor => editor.Source)
-                        .ThenInclude(source => source.Logo)
-                .Include(news => news.SubTitle)
-                .Include(news => news.Picture)
-                .Include(news => news.Description)
                 .OrderByDescending(news => news.PublishedAt)
                 .Take(count)
                 .AsNoTracking()
