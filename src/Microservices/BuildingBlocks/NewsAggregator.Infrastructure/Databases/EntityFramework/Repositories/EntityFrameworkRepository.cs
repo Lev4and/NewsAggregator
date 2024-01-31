@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NewsAggregator.Domain.Entities;
 using NewsAggregator.Domain.Infrastructure.Databases;
-using NewsAggregator.Domain.Infrastructure.Databases.Repositories;
+using NewsAggregator.Domain.Repositories;
+using NewsAggregator.Domain.Specification;
 using System.Linq.Expressions;
 
 namespace NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories
 {
-    public abstract class EntityFrameworkRepository<TDbContext> : IRepository
+    public abstract class EntityFrameworkRepository<TDbContext> : IRepository, IGridRepository
         where TDbContext : DbContext, IUnitOfWork
     {
         protected readonly TDbContext _dbContext;
@@ -52,9 +53,90 @@ namespace NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories
         {
             _dbContext.Set<TEntity>().Remove(entity);
         }
+
+        public async ValueTask<long> CountAsync<TEntity>(IGridSpecification<TEntity> specification, 
+            CancellationToken cancellationToken = default) where TEntity : EntityBase
+        {
+            var query = _dbContext.Set<TEntity>().AsNoTracking();
+
+            if (specification.Includes is not null && specification.Includes.Count() > 0)
+            {
+                foreach (var include in specification.Includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+
+            if (specification.Criterias is not null && specification.Criterias.Count() > 0)
+            {
+                var expression = specification.Criterias.First();
+
+                for (var i = 1; i <  specification.Criterias.Count(); i++)
+                {
+                    
+                }
+
+                query = query.Where(expression);
+            }
+
+            if (specification.GroupBy is not null)
+            {
+                query = query.GroupBy(specification.GroupBy).SelectMany(selector => selector);
+            }
+
+            return await query.CountAsync(cancellationToken);
+        }
+
+        public async Task<IReadOnlyCollection<TEntity>> FindAsync<TEntity>(IGridSpecification<TEntity> specification, 
+            CancellationToken cancellationToken = default) where TEntity : EntityBase
+        {
+            var query = _dbContext.Set<TEntity>().AsNoTracking();
+
+            if (specification.Includes is not null && specification.Includes.Count() > 0)
+            {
+                foreach (var include in specification.Includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+
+            if (specification.Criterias is not null && specification.Criterias.Count() > 0)
+            {
+                var expression = specification.Criterias.First();
+
+                for (var i = 1; i < specification.Criterias.Count(); i++)
+                {
+                    //TODO
+                }
+
+                query = query.Where(expression);
+            }
+
+            if (specification.GroupBy is not null)
+            {
+                query = query.GroupBy(specification.GroupBy).SelectMany(selector => selector);
+            }
+
+            if (specification.OrderBy is not null)
+            {
+                query = query.OrderBy(specification.OrderBy);
+            }
+
+            if (specification.OrderByDescending is not null)
+            {
+                query = query.OrderByDescending(specification.OrderByDescending);
+            }
+
+            if (specification.IsPagingEnabled)
+            {
+                query = query.Skip(specification.Skip).Take(specification.Take);
+            }
+
+            return await query.ToListAsync(cancellationToken);
+        }
     }
 
-    public abstract class EntityFrameworkRepository<TDbContext, TEntity> : IRepository<TEntity>
+    public abstract class EntityFrameworkRepository<TDbContext, TEntity> : IRepository<TEntity>, IGridRepository<TEntity>
         where TDbContext : DbContext, IUnitOfWork where TEntity : EntityBase
     {
         protected readonly TDbContext _dbContext;
@@ -97,6 +179,18 @@ namespace NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories
         public void Remove(TEntity entity)
         {
             _dbContext.Set<TEntity>().Remove(entity);
+        }
+
+        public async ValueTask<long> CountAsync(IGridSpecification<TEntity> specification, 
+            CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IReadOnlyCollection<TEntity>> FindAsync(IGridSpecification<TEntity> specification, 
+            CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
         }
     }
 }

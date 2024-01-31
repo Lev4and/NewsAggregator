@@ -1,4 +1,4 @@
-﻿using NewsAggregator.Domain.Infrastructure.Databases.Repositories;
+﻿using NewsAggregator.Domain.Repositories;
 using NewsAggregator.News.Entities;
 
 namespace NewsAggregator.News.Repositories

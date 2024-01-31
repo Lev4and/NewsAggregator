@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 using NewsAggregator.Domain.Infrastructure.Databases;
-using NewsAggregator.Domain.Infrastructure.Databases.Repositories;
+using NewsAggregator.Domain.Repositories;
 using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Entities;
 using NewsAggregator.News.Exceptions;

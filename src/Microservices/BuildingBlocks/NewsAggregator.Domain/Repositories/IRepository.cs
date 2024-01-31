@@ -1,7 +1,7 @@
 ﻿using NewsAggregator.Domain.Entities;
 using System.Linq.Expressions;
 
-namespace NewsAggregator.Domain.Infrastructure.Databases.Repositories
+namespace NewsAggregator.Domain.Repositories
 {
     public interface IRepository
     {

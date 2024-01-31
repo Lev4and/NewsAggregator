@@ -2,7 +2,7 @@
 using HtmlAgilityPack;
 using MassTransit.Internals;
 using Microsoft.Extensions.DependencyInjection;
-using NewsAggregator.Domain.Infrastructure.Databases.Repositories;
+using NewsAggregator.Domain.Repositories;
 using NewsAggregator.News.Databases.EntityFramework.News.Repositories;
 using NewsAggregator.News.NewsSources;
 using NewsAggregator.News.Services.Parsers;
