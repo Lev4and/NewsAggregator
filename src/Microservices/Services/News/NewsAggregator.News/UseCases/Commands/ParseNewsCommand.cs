@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using NewsAggregator.Domain.Infrastructure.MessageBrokers;
 using NewsAggregator.News.Caching;
 using NewsAggregator.News.DTOs;
@@ -75,14 +76,18 @@ namespace NewsAggregator.News.UseCases.Commands
         internal class ParsedNewsNotificationHandler : INotificationHandler<ParsedNews>
         {
             private readonly IMessageBus _messageBus;
+            private readonly ILogger<ParsedNewsNotificationHandler> _logger;
 
-            public ParsedNewsNotificationHandler(IMessageBus messageBus)
+            public ParsedNewsNotificationHandler(IMessageBus messageBus, ILogger<ParsedNewsNotificationHandler> logger)
             {
                 _messageBus = messageBus;
+                _logger = logger;
             }
 
             public async Task Handle(ParsedNews notification, CancellationToken cancellationToken)
             {
+                _logger.LogInformation("Parsed news {0}", notification.News.Url);
+
                 await _messageBus.SendAsync(notification, cancellationToken);
             }
         }
@@ -90,14 +95,18 @@ namespace NewsAggregator.News.UseCases.Commands
         internal class NotParsedNewsNotificationHandler : INotificationHandler<NotParsedNews>
         {
             private readonly IMessageBus _messageBus;
+            private readonly ILogger<NotParsedNewsNotificationHandler> _logger;
 
-            public NotParsedNewsNotificationHandler(IMessageBus messageBus)
+            public NotParsedNewsNotificationHandler(IMessageBus messageBus, ILogger<NotParsedNewsNotificationHandler> logger)
             {
                 _messageBus = messageBus;
+                _logger = logger;
             }
 
             public async Task Handle(NotParsedNews notification, CancellationToken cancellationToken)
             {
+                _logger.LogError("The news {0} parsing failed with an error {1}", notification.NewsUrl, notification.Message);
+
                 await _messageBus.SendAsync(notification, cancellationToken);
             }
         }

@@ -16,8 +16,10 @@
 
         public DateTime? PublishedAt { get; }
 
+        public DateTime ParsedAt { get; }
+
         public NewsDto(string url, string title, string description, string? subTitle, string? editorName, 
-            string? pictureUrl, DateTime? publishedAt)
+            string? pictureUrl, DateTime? publishedAt, DateTime parsedAt)
         {
             Url = url;
             Title = title;
@@ -26,6 +28,7 @@
             PictureUrl = pictureUrl;
             Description = description;
             PublishedAt = publishedAt;
+            ParsedAt = parsedAt;
         }
     }
 }

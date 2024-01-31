@@ -13,6 +13,10 @@ namespace NewsAggregator.News.Entities
 
         public virtual DateTime? PublishedAt { get; set; }
 
+        public virtual DateTime ParsedAt { get; set; }
+
+        public virtual DateTime AddedAt { get; set; }
+
         public virtual NewsEditor? Editor { get; set; }
 
         public virtual NewsSubTitle? SubTitle { get; set; }

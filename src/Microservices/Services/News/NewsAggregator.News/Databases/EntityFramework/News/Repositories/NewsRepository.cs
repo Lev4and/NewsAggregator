@@ -67,6 +67,7 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
                     .ThenInclude(editor => editor.Source)
                         .ThenInclude(source => source.Logo)
                 .Include(news => news.SubTitle)
+                .Include(news => news.Picture)
                 .OrderByDescending(news => news.PublishedAt)
                 .Take(count)
                 .AsNoTracking()

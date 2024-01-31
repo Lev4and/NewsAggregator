@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using NewsAggregator.Domain.Infrastructure.MessageBrokers;
 using NewsAggregator.News.Messages;
 using NewsAggregator.News.Repositories;
@@ -42,14 +43,18 @@ namespace NewsAggregator.News.UseCases.Commands
         internal class NotContainedNewsHandler : INotificationHandler<NotContainedNews>
         {
             private readonly IMessageBus _messageBus;
+            private readonly ILogger<NotContainedNewsHandler> _logger;
 
-            public NotContainedNewsHandler(IMessageBus messageBus)
+            public NotContainedNewsHandler(IMessageBus messageBus, ILogger<NotContainedNewsHandler> logger)
             {
                 _messageBus = messageBus;
+                _logger = logger;
             }
 
             public async Task Handle(NotContainedNews notification, CancellationToken cancellationToken)
             {
+                _logger.LogInformation("Found not contained news {0}", notification.NewsUrl);
+
                 await _messageBus.SendAsync(notification, cancellationToken);
             }
         }

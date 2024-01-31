@@ -56,14 +56,21 @@ namespace NewsAggregator.News.UseCases.Commands
         internal class FoundNewsUrlsNotificationHandler : INotificationHandler<FoundNewsUrls>
         {
             private readonly IMessageBus _messageBus;
+            private readonly ILogger<FoundNewsUrlsNotificationHandler> _logger;
 
-            public FoundNewsUrlsNotificationHandler(IMessageBus messageBus)
+            public FoundNewsUrlsNotificationHandler(IMessageBus messageBus, ILogger<FoundNewsUrlsNotificationHandler> logger)
             {
                 _messageBus = messageBus;
+                _logger = logger;
             }
 
             public async Task Handle(FoundNewsUrls notification, CancellationToken cancellationToken)
             {
+                foreach (var newsUrl in notification.NewsUrls) 
+                {
+                    _logger.LogInformation("Found news {0}", newsUrl);
+                }
+
                 await _messageBus.SendAsync(notification, cancellationToken);
             }
         }

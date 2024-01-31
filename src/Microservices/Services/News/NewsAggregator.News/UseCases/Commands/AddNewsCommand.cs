@@ -5,6 +5,7 @@ using NewsAggregator.Domain.Infrastructure.Databases.Repositories;
 using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Entities;
 using NewsAggregator.News.Exceptions;
+using NewsAggregator.News.Messages;
 using NewsAggregator.News.Repositories;
 
 namespace NewsAggregator.News.UseCases.Commands
@@ -74,7 +75,9 @@ namespace NewsAggregator.News.UseCases.Commands
                             EditorId = newsEditor.Id,
                             Url = request.News.Url,
                             Title = request.News.Title,
-                            PublishedAt = request.News.PublishedAt
+                            PublishedAt = request.News.PublishedAt,
+                            ParsedAt = request.News.ParsedAt,
+                            AddedAt = DateTime.UtcNow
                         };
 
                         _repository.Add(news);

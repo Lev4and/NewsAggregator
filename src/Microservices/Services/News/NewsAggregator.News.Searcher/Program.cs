@@ -11,4 +11,6 @@ builder.Services.AddSearcherNewsModule(appSettings);
 
 var host = builder.Build();
 
+host.MigrateNewsDb();
+
 host.Run();

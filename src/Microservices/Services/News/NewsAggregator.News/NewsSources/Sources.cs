@@ -906,7 +906,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Интерфакс",
                 SiteUrl = "https://www.interfax.ru/",
-                IsEnabled = true,
+                IsEnabled = false,
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",

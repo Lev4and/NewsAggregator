@@ -93,7 +93,7 @@ namespace NewsAggregator.News.Services.Parsers
             }
 
             return Task.FromResult(new NewsDto(newsUrl, newsTitle, newsDescription, newsSubTitle, 
-                newsEditorName, newsPictureUrl, newsPublishedAt));
+                newsEditorName, newsPictureUrl, newsPublishedAt, DateTime.UtcNow));
         }
     }
 }

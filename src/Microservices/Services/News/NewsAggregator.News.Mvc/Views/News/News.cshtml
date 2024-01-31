@@ -37,7 +37,7 @@
             </p>
             @if (Model.SubTitle is not null)
             {
-                <h2>@Model.SubTitle.Title</h2>
+                <span itemprop="subTitle">@Model.SubTitle.Title</span>
             }
             <hr>
             @if (Model.Picture is not null)
@@ -53,8 +53,8 @@
         </article>
     </div>
     <div class="col-md-4">
-        <div class="position-sticky" style="top: 2rem;">
-            <vc:recent-news />
+        <div>
+            <vc:recent-news-side-bar count="100" />
         </div>
     </div>
 </div>

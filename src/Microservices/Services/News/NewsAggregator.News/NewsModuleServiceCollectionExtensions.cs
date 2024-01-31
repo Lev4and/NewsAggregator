@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using NewsAggregator.Domain.Infrastructure.Caching;
 using NewsAggregator.Domain.Infrastructure.Databases;
 using NewsAggregator.Domain.Infrastructure.MessageBrokers;
@@ -74,9 +75,9 @@ namespace NewsAggregator.News
             return services;
         }
 
-        public static void MigrateNewsDb(this IApplicationBuilder app)
+        public static void MigrateNewsDb(this IHost host)
         {
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>()?.CreateScope())
+            using (var serviceScope = host.Services.GetService<IServiceScopeFactory>()?.CreateScope())
             {
                 serviceScope?.ServiceProvider.GetRequiredService<NewsDbContext>().Database.Migrate();
             }

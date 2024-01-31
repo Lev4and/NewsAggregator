@@ -70,6 +70,12 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
                 .HasIndex(news => news.PublishedAt);
 
             modelBuilder.Entity<Entities.News>()
+                .HasIndex(news => news.ParsedAt);
+
+            modelBuilder.Entity<Entities.News>()
+                .HasIndex(news => news.AddedAt);
+
+            modelBuilder.Entity<Entities.News>()
                 .HasOne(news => news.SubTitle)
                     .WithOne(subTitle => subTitle.News)
                         .HasForeignKey<NewsSubTitle>(subTitle => subTitle.NewsId);
