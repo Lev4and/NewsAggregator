@@ -69,14 +69,10 @@ namespace NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories
 
             if (specification.Criterias is not null && specification.Criterias.Count() > 0)
             {
-                var expression = specification.Criterias.First();
-
-                for (var i = 1; i <  specification.Criterias.Count(); i++)
+                foreach (var criteria in specification.Criterias)
                 {
-                    
+                    query = query.Union(query.Where(criteria));
                 }
-
-                query = query.Where(expression);
             }
 
             if (specification.GroupBy is not null)
@@ -102,14 +98,10 @@ namespace NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories
 
             if (specification.Criterias is not null && specification.Criterias.Count() > 0)
             {
-                var expression = specification.Criterias.First();
-
-                for (var i = 1; i < specification.Criterias.Count(); i++)
+                foreach (var criteria in specification.Criterias)
                 {
-                    //TODO
+                    query = query.Union(query.Where(criteria));
                 }
-
-                query = query.Where(expression);
             }
 
             if (specification.GroupBy is not null)
@@ -184,13 +176,74 @@ namespace NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories
         public async ValueTask<long> CountAsync(IGridSpecification<TEntity> specification, 
             CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var query = _dbContext.Set<TEntity>().AsNoTracking();
+
+            if (specification.Includes is not null && specification.Includes.Count() > 0)
+            {
+                foreach (var include in specification.Includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+
+            if (specification.Criterias is not null && specification.Criterias.Count() > 0)
+            {
+                foreach (var criteria in specification.Criterias)
+                {
+                    query = query.Union(query.Where(criteria));
+                }
+            }
+
+            if (specification.GroupBy is not null)
+            {
+                query = query.GroupBy(specification.GroupBy).SelectMany(selector => selector);
+            }
+
+            return await query.CountAsync(cancellationToken);
         }
 
         public async Task<IReadOnlyCollection<TEntity>> FindAsync(IGridSpecification<TEntity> specification, 
             CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var query = _dbContext.Set<TEntity>().AsNoTracking();
+
+            if (specification.Includes is not null && specification.Includes.Count() > 0)
+            {
+                foreach (var include in specification.Includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+
+            if (specification.Criterias is not null && specification.Criterias.Count() > 0)
+            {
+                foreach (var criteria in specification.Criterias)
+                {
+                    query = query.Union(query.Where(criteria));
+                }
+            }
+
+            if (specification.GroupBy is not null)
+            {
+                query = query.GroupBy(specification.GroupBy).SelectMany(selector => selector);
+            }
+
+            if (specification.OrderBy is not null)
+            {
+                query = query.OrderBy(specification.OrderBy);
+            }
+
+            if (specification.OrderByDescending is not null)
+            {
+                query = query.OrderByDescending(specification.OrderByDescending);
+            }
+
+            if (specification.IsPagingEnabled)
+            {
+                query = query.Skip(specification.Skip).Take(specification.Take);
+            }
+
+            return await query.ToListAsync(cancellationToken);
         }
     }
 }

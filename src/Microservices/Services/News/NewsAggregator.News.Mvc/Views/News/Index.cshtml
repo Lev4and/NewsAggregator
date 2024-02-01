@@ -3,14 +3,14 @@
     ViewData["Title"] = "News";
 }
 
-<div class="row mb-2">
+<div class="news-list row mb-2">
     @foreach (var news in Model)
     {
         <div class="col-12">
             <div class="card flex-md-row mb-4 box-shadow h-md-250">
                 @if (news.Picture is not null)
                 {
-                    <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" src="@news.Picture.Url" data-holder-rendered="true" style="width: 250px; height: 250px; object-fit: contain;">
+                    <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" src="@news.Picture.Url" data-holder-rendered="true">
                 }
                 else
                 {

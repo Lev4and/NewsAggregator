@@ -1,4 +1,5 @@
-﻿using NewsAggregator.News.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using NewsAggregator.News.Entities;
 using NewsAggregator.News.Repositories;
 
 namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
@@ -8,6 +9,13 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
         public NewsEditorRepository(NewsDbContext dbContext) : base(dbContext)
         {
 
+        }
+
+        public async Task<IReadOnlyCollection<NewsEditor>> FindNewsEditorsAsync(CancellationToken cancellationToken = default)
+        {
+            return await _dbContext.Set<NewsEditor>().AsNoTracking()
+                .Include(editor => editor.Source)
+                .ToListAsync(cancellationToken);
         }
 
         public async Task<NewsEditor> FindOneBySourceIdAndNameOrAddAsync(NewsEditor entity, Guid sourceId, string? name, 

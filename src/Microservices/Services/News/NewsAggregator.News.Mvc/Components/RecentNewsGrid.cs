@@ -4,11 +4,11 @@ using NewsAggregator.News.UseCases.Queries;
 
 namespace NewsAggregator.News.Mvc.Components
 {
-    public class RecentNewsSideBar : ViewComponent
+    public class RecentNewsGrid : ViewComponent
     {
         private readonly IMediator _mediator;
 
-        public RecentNewsSideBar(IMediator mediator)
+        public RecentNewsGrid(IMediator mediator)
         {
             _mediator = mediator;
         }

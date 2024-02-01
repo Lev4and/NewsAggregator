@@ -1,26 +1,23 @@
-﻿@model IReadOnlyCollection<NewsEditor>
-@{
-    ViewData["Title"] = "Authors";
-}
+﻿@model IReadOnlyCollection<News>
 
-<div class="authors-grid row mb-3 text-center gy-5">
-    @foreach (var editor in Model)
+<div class="recent-news-grid row mb-3 text-center gy-5">
+    @foreach (var news in Model)
     {
         <div class="col-12 col-md-6 col-lg-4">
             <div class="card overflow-hidden">
                 <div class="card-body">
                     <div class="row justify-content-around h-100">
-                        @if (editor.Source is not null)
+                        @if (news.Editor?.Source is not null)
                         {
                             <div class="col-12 align-self-center">
-                                <a class="text-decoration-none" asp-route="Source" asp-route-id="@editor.Source.Id">
-                                    @editor.Source.Title
+                                <a class="text-decoration-none" asp-route="Source" asp-route-id="@news.Editor.Source.Id">
+                                    @news.Editor.Source.Title
                                 </a>
                             </div>
                         }
                         <div class="col-12 align-self-center">
-                            <a class="text-decoration-none" asp-route="Author" asp-route-id="@editor.Id">
-                                @(!string.IsNullOrEmpty(editor.Name) ? editor.Name : "Unknown")
+                            <a class="text-decoration-none" asp-route="News" asp-route-id="@news.Id">
+                                @news.Title
                             </a>
                         </div>
                     </div>

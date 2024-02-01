@@ -48,30 +48,40 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
 
         public async Task<Entities.News?> FindNewsByUrlAsync(string url, CancellationToken cancellationToken = default)
         {
-            return await _dbContext.News
+            return await _dbContext.News.AsNoTracking()
                 .Include(news => news.Editor)
                     .ThenInclude(editor => editor.Source)
                         .ThenInclude(source => source.Logo)
                 .Include(news => news.SubTitle)
                 .Include(news => news.Picture)
                 .Include(news => news.Description)
-                .AsNoTracking()
                 .SingleOrDefaultAsync(news => news.Url == url, cancellationToken);
         }
 
-        public async Task<IReadOnlyCollection<Entities.News>> FindRecentNewsAsync(int count, 
-            CancellationToken cancellationToken = default)
+        public async Task<IReadOnlyCollection<Entities.News>> FindRecentNewsAsync(int count, bool subTitleRequired = false,
+            bool pictureRequired = false, CancellationToken cancellationToken = default)
         {
-            return await _dbContext.News
+            var query = (IQueryable<Entities.News>)_dbContext.News.AsNoTracking()
                 .Include(news => news.Editor)
                     .ThenInclude(editor => editor.Source)
                         .ThenInclude(source => source.Logo)
                 .Include(news => news.SubTitle)
-                .Include(news => news.Picture)
-                .OrderByDescending(news => news.PublishedAt)
-                .Take(count)
-                .AsNoTracking()
-                .ToListAsync();
+                .Include(news => news.Picture);
+
+            if (subTitleRequired)
+            {
+                query = query.Where(news => news.SubTitle != null);
+            }
+
+            if (pictureRequired)
+            {
+                query = query.Where(news => news.Picture != null);
+            }
+
+            query = query.OrderByDescending(news => news.PublishedAt)
+                .Take(count);
+
+            return await query.ToListAsync(cancellationToken);
         }
     }
 }

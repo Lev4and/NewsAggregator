@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using NewsAggregator.News.UseCases.Queries;
 using System.ComponentModel.DataAnnotations;
 
 namespace NewsAggregator.News.Mvc.Controllers
@@ -15,9 +16,11 @@ namespace NewsAggregator.News.Mvc.Controllers
         }
 
         [HttpGet("", Name = "Authors")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index(CancellationToken cancellationToken = default)
         {
-            return View();
+            var editors = await _mediator.Send(new GetNewsEditorsQuery(), cancellationToken);
+
+            return View(editors);
         }
 
         [HttpGet("{id:guid:required}", Name = "Author")]

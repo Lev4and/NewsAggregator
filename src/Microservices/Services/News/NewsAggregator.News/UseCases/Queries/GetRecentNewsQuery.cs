@@ -8,9 +8,15 @@ namespace NewsAggregator.News.UseCases.Queries
     {
         public int Count { get; }
 
-        public GetRecentNewsQuery(int count = 10)
+        public bool SubTitleRequired { get; }
+
+        public bool PictureRequired { get; }
+
+        public GetRecentNewsQuery(int count = 10, bool subTitleRequired = false, bool pictureRequired = false)
         {
             Count = count;
+            SubTitleRequired = subTitleRequired;
+            PictureRequired = pictureRequired;
         }
 
         internal class Validator : AbstractValidator<GetRecentNewsQuery>
@@ -33,7 +39,8 @@ namespace NewsAggregator.News.UseCases.Queries
             public async Task<IReadOnlyCollection<Entities.News>> Handle(GetRecentNewsQuery request,
                 CancellationToken cancellationToken)
             {
-                return await _repository.FindRecentNewsAsync(request.Count, cancellationToken);
+                return await _repository.FindRecentNewsAsync(request.Count, request.SubTitleRequired, 
+                    request.PictureRequired, cancellationToken);
             }
         }
     }
