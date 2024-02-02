@@ -23,8 +23,8 @@
                     <div class="carousel-caption">
                         @if (Model.ElementAt(i).Editor?.Source is not null)
                         {
-                            <a class="opacity-75 text-decoration-none" asp-route="Source" asp-route-id="@Model.ElementAt(i).Editor?.Source?.Id">
-                                @Model.ElementAt(i).Editor?.Source?.Title
+                            <a class="text-decoration-none" asp-route="Source" asp-route-id="@Model.ElementAt(i).Editor?.Source?.Id">
+                                <h2>@Model.ElementAt(i).Editor?.Source?.Title</h2>
                             </a>
                         }
                         <h1>@Model.ElementAt(i).Title</h1>

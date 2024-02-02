@@ -38,8 +38,11 @@ namespace NewsAggregator.News.UseCases.Queries
             public async Task<NewsSource> Handle(GetNewsSourceByIdQuery request, CancellationToken cancellationToken)
             {
                 return await _cache.GetNewsSourceByIdAsync(request.Id,
-                    async () => await _repository.FindNewsSourceByIdAsync(request.Id, cancellationToken)
-                        ?? throw new NewsSourceNotFoundException(request.Id),
+                    async () =>
+                    {
+                        return await _repository.FindNewsSourceByIdAsync(request.Id, cancellationToken)
+                            ?? throw new NewsSourceNotFoundException(request.Id);
+                    },
                     cancellationToken);
             }
         }
