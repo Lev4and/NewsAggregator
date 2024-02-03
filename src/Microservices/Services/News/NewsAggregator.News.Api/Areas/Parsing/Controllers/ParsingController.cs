@@ -1,10 +1,5 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using NewsAggregator.Infrastructure.Web.Http;
-using NewsAggregator.News.DTOs;
-using NewsAggregator.News.UseCases.Commands;
-using System.ComponentModel.DataAnnotations;
-using System.Net;
 
 namespace NewsAggregator.News.Api.Areas.Parsing.Controllers
 {
@@ -18,14 +13,6 @@ namespace NewsAggregator.News.Api.Areas.Parsing.Controllers
         public ParsingController(IMediator mediator)
         {
             _mediator = mediator;
-        }
-
-        [HttpGet]
-        [ProducesResponseType(typeof(ApiResponse<NewsDto>), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> TestParseNewsAsync([Required][FromQuery(Name = "newsUrl")] string newsUrl,
-            CancellationToken cancellationToken = default)
-        {
-            return Ok(await _mediator.Send(new ParseNewsCommand(newsUrl), cancellationToken));
         }
     }
 }

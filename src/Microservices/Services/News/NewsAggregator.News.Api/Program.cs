@@ -2,6 +2,7 @@ using NewsAggregator.Infrastructure.Web.Middlewares;
 using NewsAggregator.News;
 using NewsAggregator.News.ConfigurationOptions;
 using NewsAggregator.News.Web.Middlewares;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,9 @@ builder.Configuration.Bind(appSettings);
 
 builder.Services.AddNewsModule(appSettings);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options => 
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();

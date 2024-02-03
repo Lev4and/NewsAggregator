@@ -1,10 +1,5 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using NewsAggregator.Infrastructure.Web.Http;
-using NewsAggregator.News.DTOs;
-using NewsAggregator.News.UseCases.Commands;
-using System.ComponentModel.DataAnnotations;
-using System.Net;
 
 namespace NewsAggregator.News.Api.Areas.Searching.Controllers
 {
@@ -18,14 +13,6 @@ namespace NewsAggregator.News.Api.Areas.Searching.Controllers
         public SearchingController(IMediator mediator)
         {
             _mediator = mediator;
-        }
-
-        [HttpGet]
-        [ProducesResponseType(typeof(ApiResponse<IReadOnlyCollection<string>>), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> SearchNewsAsync([Required][FromQuery(Name = "siteUrl")] string siteUrl,
-            CancellationToken cancellationToken = default)
-        {
-            return Ok(await _mediator.Send(new SearchNewsBySiteUrlCommand(siteUrl), cancellationToken));
         }
     }
 }
