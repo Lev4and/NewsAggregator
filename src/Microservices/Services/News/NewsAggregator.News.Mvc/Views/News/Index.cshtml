@@ -1,12 +1,111 @@
-﻿@model IReadOnlyCollection<News>
+﻿@model GetNewsListDto
 @{
     ViewData["Title"] = "News";
 }
 
-<h1>Found @Model.Count news</h1>
+@section Styles
+{
+    <style>
+        nav[aria-label="Page navigation"] a[class="page-link"] {
+            cursor: pointer;
+        }
+    </style>
+}
+
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-3">Filters</h1>
+        <form id="newsListFrom" class="needs-validation" novalidate="" method="get" asp-route="NewsList">
+            <input type="hidden" name="page" value="@Model.Filters.Page" />
+            <div class="row g-3">
+                <div class="col-sm-6">
+                    <label for="startPublishedAt" class="form-label">Start of publish time</label>
+                    <input id="startPublishedAt" class="form-control" type="datetime-local" placeholder="" name="startPublishedAt" max="@DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm")" value="@Model.Filters.StartPublishedAt?.ToString("yyyy-MM-ddTHH:mm")">
+                </div>
+                <div class="col-sm-6">
+                    <label for="endPublishedAt" class="form-label">End of publish time</label>
+                    <input id="endPublishedAt" class="form-control" type="datetime-local" placeholder="" name="endPublishedAt" max="@DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm")" value="@Model.Filters.EndPublishedAt?.ToString("yyyy-MM-ddTHH:mm")">
+                </div>
+                <div class="col-12">
+                    <label for="searchString" class="form-label">Search string</label>
+                    <input id="searchString" class="form-control" type="text" placeholder="" name="searchString" value="@Model.Filters.SearchString">
+                </div>
+                <div class="col-12">
+                    <label for="newsEditors" class="form-label">News editors</label>
+                    <select id="newsEditors" class="form-select multiple" multiple name="newsEditorsIds" size="5">
+                        @foreach (var newsEditor in Model.NewsEditors)
+                        {
+                            @if (Model.Filters.NewsEditorsIds?.Contains(newsEditor.Id) ?? false)
+                            {
+                                <option value="@newsEditor.Id" selected>
+                                    @newsEditor.GetFormattedName() (@newsEditor.Source?.Title)
+                                </option>
+                            }
+                            else
+                            {
+                                <option value="@newsEditor.Id">
+                                    @newsEditor.GetFormattedName() (@newsEditor.Source?.Title)
+                                </option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label for="newsSources" class="form-label">News soures</label>
+                    <select id="newsSources" class="form-select multiple" multiple name="newsSourcesIds" size="5">
+                        @foreach (var newsSource in Model.NewsSources)
+                        {
+                            @if (Model.Filters.NewsSourcesIds?.Contains(newsSource.Id) ?? false)
+                            {
+                                <option value="@newsSource.Id" selected>
+                                    @newsSource.Title (@newsSource.SiteUrl)
+                                </option>
+                            }
+                            else
+                            {
+                                <option value="@newsSource.Id">
+                                    @newsSource.Title (@newsSource.SiteUrl)
+                                </option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label for="sortBy" class="form-label">Sort by</label>
+                    <select class="form-select" id="sortBy">
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label for="pageSize" class="form-label">Page size</label>
+                    <select id="pageSize" class="form-select" name="pageSize">
+                        @foreach (var pageSize in Model.PageSizes)
+                        {
+                            @if (pageSize == Model.Filters.PageSize)
+                            {
+                                <option value="@pageSize" selected>
+                                    @pageSize
+                                </option>
+                            }
+                            else
+                            {
+                                <option value="@pageSize">
+                                    @pageSize
+                                </option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <hr class="my-4">
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Apply filters</button>
+        </form>
+    </div>
+</div>
+<hr>
+<h1>Show @((Model.Result.Page - 1) * Model.Result.PageSize + Model.Result.Items.Count) from @Model.Result.GetFormattedTotalItems()</h1>
 <hr>
 <div class="news-list row mb-2">
-    @foreach (var news in Model)
+    @foreach (var news in Model.Result.Items)
     {
         <div class="col-12">
             <div class="card flex-md-row mb-4 box-shadow h-md-250">
@@ -30,7 +129,7 @@
                     </h3>
                     @if (news.PublishedAt is not null)
                     {
-                        <div class="mb-1 text-muted">@news.PublishedAt?.ToString("MMM. dd, yyyy, h:mm tt zzz", new CultureInfo("en-US"))</div>
+                        <div class="mb-1 text-muted">@news.GetFormattedPublishedAt()</div>
                     }
                     <p class="card-text mb-auto overflow-hidden">@news.SubTitle?.Title</p>
                     <a asp-route="News" asp-route-id="@news.Id">Continue reading</a>
@@ -39,20 +138,39 @@
         </div>
     }
 </div>
-<nav aria-label="Page navigation example">
+<nav aria-label="Page navigation">
     <ul class="pagination justify-content-center">
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
+        <li class="page-item @(Model.Filters.Page == 1 ? "disabled" : "")">
+            <a class="page-link" aria-label="Previous" onclick="onClickPageItem(@(Model.Filters.Page - 1))">
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
+        @foreach (var pageNumber in Model.Result.GetPageNumbers())
+        {
+            <li class="page-item @(Model.Filters.Page == pageNumber ? "active" : "")">
+                <a class="page-link" onclick="onClickPageItem(@pageNumber)">
+                    @pageNumber
+                </a>
+            </li>
+        }
+        <li class="page-item @(Model.Filters.Page == Model.Result.TotalPages ? "disabled" : "")">
+            <a class="page-link" aria-label="Next" onclick="onClickPageItem(@(Model.Filters.Page + 1))">
                 <span aria-hidden="true">&raquo;</span>
             </a>
         </li>
     </ul>
 </nav>
+
+@section Scripts 
+{
+    <script type="text/javascript">
+        function onClickPageItem(pageNumber) {
+            const form = document.querySelector('form[id="newsListFrom"]');
+            const buttonForm = form.querySelector('button[type="submit"]');
+            const pageHiddenInput = form.querySelector('input[type="hidden"][name="page"]');
+            
+            pageHiddenInput.setAttribute('value', pageNumber);
+            buttonForm.click();
+        }
+    </script>
+}

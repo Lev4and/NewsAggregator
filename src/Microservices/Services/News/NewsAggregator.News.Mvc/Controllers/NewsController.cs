@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using NewsAggregator.News.DTOs;
 using NewsAggregator.News.UseCases.Queries;
 using System.ComponentModel.DataAnnotations;
 
@@ -16,11 +17,12 @@ namespace NewsAggregator.News.Mvc.Controllers
         }
 
         [HttpGet("", Name = "NewsList")]
-        public async Task<IActionResult> Index(CancellationToken cancellationToken = default)
+        public async Task<IActionResult> Index([FromQuery] GetNewsListFilters filters, 
+            CancellationToken cancellationToken = default)
         {
-            var news = await _mediator.Send(new GetRecentNewsQuery(100), cancellationToken);
+            var dto = await _mediator.Send(new GetNewsListQuery(filters), cancellationToken);
 
-            return View(news);
+            return View(dto);
         }
 
         [HttpGet("{id:guid:required}", Name = "News")]

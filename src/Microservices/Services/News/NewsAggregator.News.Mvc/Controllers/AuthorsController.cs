@@ -27,7 +27,9 @@ namespace NewsAggregator.News.Mvc.Controllers
         public async Task<IActionResult> GetAuthorPageByIdAsync([Required][FromRoute(Name = "id")] Guid id,
             CancellationToken cancellationToken = default)
         {
-            return View("Author");
+            var editor = await _mediator.Send(new GetNewsEditorByIdQuery(id), cancellationToken);
+
+            return View("Author", editor);
         }
     }
 }

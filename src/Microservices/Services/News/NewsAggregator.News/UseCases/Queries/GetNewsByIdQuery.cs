@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 using NewsAggregator.Domain.Infrastructure.Caching;
+using NewsAggregator.News.Caching;
 using NewsAggregator.News.Exceptions;
 using NewsAggregator.News.Repositories;
 
@@ -25,17 +26,24 @@ namespace NewsAggregator.News.UseCases.Queries
 
         internal class Handler : IRequestHandler<GetNewsByIdQuery, Entities.News>
         {
+            private readonly INewsMemoryCache _cache;
             private readonly INewsRepository _repository;
 
-            public Handler(INewsRepository repository)
+            public Handler(INewsMemoryCache cache, INewsRepository repository)
             {
+                _cache = cache;
                 _repository = repository;
             }
 
             public async Task<Entities.News> Handle(GetNewsByIdQuery request, CancellationToken cancellationToken)
             {
-                return await _repository.FindNewsByIdAsync(request.Id, cancellationToken)
-                    ?? throw new NewsNotFoundException(request.Id);
+                return await _cache.GetNewsByIdAsync(request.Id,
+                    async () =>
+                    {
+                        return await _repository.FindNewsByIdAsync(request.Id, cancellationToken)
+                            ?? throw new NewsNotFoundException(request.Id);
+                    },
+                    cancellationToken);
             }
         }
     }

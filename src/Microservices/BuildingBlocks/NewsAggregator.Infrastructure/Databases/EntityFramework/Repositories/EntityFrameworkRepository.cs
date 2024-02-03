@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NewsAggregator.Domain.Entities;
+using NewsAggregator.Domain.Extensions;
 using NewsAggregator.Domain.Infrastructure.Databases;
 using NewsAggregator.Domain.Repositories;
 using NewsAggregator.Domain.Specification;
@@ -121,7 +122,8 @@ namespace NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories
 
             if (specification.IsPagingEnabled)
             {
-                query = query.Skip(specification.Skip).Take(specification.Take);
+                query = query.Skip(Convert.ToInt32(specification.Skip))
+                    .Take(Convert.ToInt32(specification.Take));
             }
 
             return await query.ToListAsync(cancellationToken);
@@ -188,10 +190,14 @@ namespace NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories
 
             if (specification.Criterias is not null && specification.Criterias.Count() > 0)
             {
-                foreach (var criteria in specification.Criterias)
+                var criteria = specification.Criterias.First();
+
+                for (var i = 1; i < specification.Criterias.Count; i++)
                 {
-                    query = query.Union(query.Where(criteria));
+                    criteria = criteria.And(specification.Criterias.ElementAt(i));
                 }
+
+                query = query.Where(criteria);
             }
 
             if (specification.GroupBy is not null)
@@ -217,10 +223,14 @@ namespace NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories
 
             if (specification.Criterias is not null && specification.Criterias.Count() > 0)
             {
-                foreach (var criteria in specification.Criterias)
+                var criteria = specification.Criterias.First();
+
+                for (var i = 1; i < specification.Criterias.Count; i++)
                 {
-                    query = query.Union(query.Where(criteria));
+                    criteria = criteria.And(specification.Criterias.ElementAt(i));
                 }
+
+                query = query.Where(criteria);
             }
 
             if (specification.GroupBy is not null)
@@ -240,7 +250,8 @@ namespace NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories
 
             if (specification.IsPagingEnabled)
             {
-                query = query.Skip(specification.Skip).Take(specification.Take);
+                query = query.Skip(Convert.ToInt32(specification.Skip))
+                    .Take(Convert.ToInt32(specification.Take));
             }
 
             return await query.ToListAsync(cancellationToken);

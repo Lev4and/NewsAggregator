@@ -7,6 +7,8 @@ namespace NewsAggregator.News.Repositories
     {
         Task<IReadOnlyCollection<NewsEditor>> FindNewsEditorsAsync(CancellationToken cancellationToken = default);
 
+        Task<NewsEditor?> FindNewsEditorByIdAsync(Guid id, CancellationToken cancellationToken = default);
+
         Task<NewsEditor> FindOneBySourceIdAndNameOrAddAsync(NewsEditor entity, Guid sourceId, string? name,
             CancellationToken cancellationToken = default);
     }

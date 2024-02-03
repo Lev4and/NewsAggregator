@@ -21,7 +21,11 @@ namespace NewsAggregator.News.UseCases.Queries
             public async Task<IReadOnlyCollection<NewsSource>> Handle(GetNewsSourcesQuery request, 
                 CancellationToken cancellationToken)
             {
-                return await _cache.GetNewsSourcesAsync(async () => await _repository.FindNewsSourcesAsync(cancellationToken),
+                return await _cache.GetNewsSourcesAsync(
+                    async () =>
+                    {
+                        return await _repository.FindNewsSourcesAsync(cancellationToken);
+                    },
                     cancellationToken);
             }
         }

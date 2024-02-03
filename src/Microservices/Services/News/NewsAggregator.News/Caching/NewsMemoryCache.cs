@@ -10,5 +10,11 @@ namespace NewsAggregator.News.Caching
         {
             _cache = cache;
         }
+
+        public async Task<Entities.News> GetNewsByIdAsync(Guid id, Func<Task<Entities.News>> factory, 
+            CancellationToken cancellationToken = default)
+        {
+            return await _cache.GetAsync($"news:{id}", factory, cancellationToken);
+        }
     }
 }

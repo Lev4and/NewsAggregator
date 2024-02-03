@@ -15,6 +15,7 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
         {
             return await _dbContext.NewsSources.AsNoTracking()
                 .Include(newsSource => newsSource.Logo)
+                .OrderBy(newsSource => newsSource.Title)
                 .ToListAsync();
         }
 

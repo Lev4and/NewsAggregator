@@ -19,7 +19,7 @@
                         </a>
                         @if (news.PublishedAt is not null)
                         {
-                            <small class="text-body-secondary">@news.PublishedAt?.ToString("MMM. dd, yyyy, h:mm tt zzz", new CultureInfo("en-US"))</small>
+                            <small class="text-body-secondary">@news.GetFormattedPublishedAt()</small>
                         }
                     </div>
                 </div>

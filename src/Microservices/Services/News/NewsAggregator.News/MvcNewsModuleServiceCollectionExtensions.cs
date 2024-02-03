@@ -52,6 +52,7 @@ namespace NewsAggregator.News
             services.AddDistributedMemoryCache();
             services.AddSingleton<IMemoryCache, MemoryCache>();
             services.AddSingleton<INewsMemoryCache, NewsMemoryCache>();
+            services.AddSingleton<INewsEditorMemoryCache, NewsEditorMemoryCache>();
             services.AddSingleton<INewsSourceMemoryCache, NewsSourceMemoryCache>();
 
             services.AddStackExchangeRedisCache(redisOptions =>

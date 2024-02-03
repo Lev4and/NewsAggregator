@@ -15,6 +15,7 @@
     <PackageReference Include="AngleSharp.XPath" Version="2.0.3" />
     <PackageReference Include="EFCore.NamingConventions" Version="8.0.0-rc.2" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.57" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -28,7 +29,6 @@
 	
   <ItemGroup>
     <Folder Include="Databases\EntityFramework\News\Migrations\" />
-    <Folder Include="Specifications\" />
   </ItemGroup>
 
 </Project>

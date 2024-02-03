@@ -15,7 +15,15 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
         {
             return await _dbContext.Set<NewsEditor>().AsNoTracking()
                 .Include(editor => editor.Source)
+                .OrderBy(editor => editor.Name)
                 .ToListAsync(cancellationToken);
+        }
+
+        public async Task<NewsEditor?> FindNewsEditorByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        {
+            return await _dbContext.Set<NewsEditor>().AsNoTracking()
+                .Include(editor => editor.Source)
+                .SingleOrDefaultAsync(editor => editor.Id == id, cancellationToken);
         }
 
         public async Task<NewsEditor> FindOneBySourceIdAndNameOrAddAsync(NewsEditor entity, Guid sourceId, string? name, 

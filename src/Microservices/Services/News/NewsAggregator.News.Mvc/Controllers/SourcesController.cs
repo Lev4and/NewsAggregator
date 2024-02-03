@@ -29,7 +29,7 @@ namespace NewsAggregator.News.Mvc.Controllers
         {
             var source = await _mediator.Send(new GetNewsSourceByIdQuery(id), cancellationToken);
 
-            return View(source);
+            return View("Source", source);
         }
     }
 }

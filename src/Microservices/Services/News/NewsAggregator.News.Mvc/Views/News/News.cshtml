@@ -13,14 +13,14 @@
                     <span itemprop="datePublished">
                         Date of publication:
                         <time datetime="@Model.PublishedAt?.ToString("dd-MM-yyyyTHH:mm:sszzz")">
-                            @Model.PublishedAt?.ToString("MMM. dd, yyyy, h:mm tt zzz", new CultureInfo("en-US"))
+                            @Model.GetFormattedPublishedAt()
                         </time>
                     </span>
                 }
                 @if (Model.Editor is not null)
                 {
                     <span itemprop="author">
-                        Author: <a asp-route="Author" asp-route-id="@Model.Editor.Id" itemprop="name">@(Model.Editor.Name != string.Empty ? Model.Editor.Name : "Unknown")</a>
+                        Author: <a asp-route="Author" asp-route-id="@Model.Editor.Id" itemprop="name">@Model.Editor.GetFormattedName()</a>
                     </span>
 
                     @if (Model.Editor.Source is not null)

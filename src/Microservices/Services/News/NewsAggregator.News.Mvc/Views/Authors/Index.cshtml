@@ -20,7 +20,7 @@
                         }
                         <div class="col-12 align-self-center">
                             <a class="text-decoration-none" asp-route="Author" asp-route-id="@editor.Id">
-                                @(!string.IsNullOrEmpty(editor.Name) ? editor.Name : "Unknown")
+                                @editor.GetFormattedName()
                             </a>
                         </div>
                     </div>

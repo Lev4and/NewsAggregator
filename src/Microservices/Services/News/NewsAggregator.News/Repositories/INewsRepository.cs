@@ -1,8 +1,11 @@
-﻿using NewsAggregator.Domain.Repositories;
+﻿using AngleSharp.Dom;
+using NewsAggregator.Domain.Repositories;
+using NewsAggregator.Domain.Specification;
+using NewsAggregator.News.Specifications;
 
 namespace NewsAggregator.News.Repositories
 {
-    public interface INewsRepository : IRepository<Entities.News>
+    public interface INewsRepository : IRepository<Entities.News>, IGridRepository<Entities.News>
     {
         Task<bool> ContainsNewsByUrlAsync(string url, CancellationToken cancellationToken = default);
 
