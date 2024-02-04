@@ -1,5 +1,7 @@
 ﻿@model IReadOnlyCollection<News>
 
+<h1>Recent news</h1>
+<hr />
 <div class="recent-news-grid row mb-3 text-center gy-5">
     @foreach (var news in Model)
     {
@@ -25,4 +27,11 @@
             </div>
         </div>
     }
+</div>
+<div class="d-grid">
+    <button class="w-100 btn btn-primary btn-lg">
+        <a class="text-decoration-none text-reset" asp-route="NewsList">
+            More news
+        </a>
+    </button>
 </div>

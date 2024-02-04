@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NewsAggregator.Domain.Entities;
 using NewsAggregator.News.Entities;
+using NewsAggregator.News.Enums;
 
 namespace NewsAggregator.News.DTOs
 {
@@ -16,6 +17,20 @@ namespace NewsAggregator.News.DTOs
 
         public IReadOnlyCollection<NewsSource> NewsSources { get; }
 
+        public IReadOnlyDictionary<NewsSortingOption, string> SortingOptions = 
+            new Dictionary<NewsSortingOption, string>()
+            {
+                { NewsSortingOption.Default, "Default" },
+                { NewsSortingOption.ByOld, "By ascending published at" },
+                { NewsSortingOption.ByRecently, "By descending published at" },
+                { NewsSortingOption.ByAscendingTitle, "By ascending title" },
+                { NewsSortingOption.ByDescendingTitle, "By descending title" },
+                { NewsSortingOption.ByAscendingNewsEditorName, "By ascending news editor name" },
+                { NewsSortingOption.ByAscendingNewsSourceTitle, "By ascending news source title" },
+                { NewsSortingOption.ByDescendingNewsEditorName, "By descending news editor name" },
+                { NewsSortingOption.ByDescendingNewsSourceTitle, "By descending news source title" }
+            };
+
         public GetNewsListDto(GetNewsListFilters filters, PagedResultModel<Entities.News> result,
             IReadOnlyCollection<NewsEditor> newsEditors, IReadOnlyCollection<NewsSource> newsSources)
         {
@@ -28,11 +43,17 @@ namespace NewsAggregator.News.DTOs
 
     public class GetNewsListFilters
     {
+        public bool HasSubTitleRequired { get; set; } = false;
+
+        public bool HasPictureRequired { get; set; } = false;
+
         public long Page { get; set; } = 1;
 
         public long PageSize { get; set; } = 100;
 
         public string SearchString { get; set; } = string.Empty;
+
+        public NewsSortingOption SortBy { get; set; } = NewsSortingOption.ByRecently;
 
         public DateTime? StartPublishedAt { get; set; } = null;
 

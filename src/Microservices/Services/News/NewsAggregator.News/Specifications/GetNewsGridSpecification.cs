@@ -1,13 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using NewsAggregator.Domain.Enums;
 using NewsAggregator.Domain.Specification;
 using NewsAggregator.News.DTOs;
-using System.Linq.Expressions;
+using NewsAggregator.News.Enums;
 
 namespace NewsAggregator.News.Specifications
 {
-    public class GetNewsListSpecification : GridSpecificationBase<Entities.News>
+    public class GetNewsGridSpecification : GridSpecificationBase<Entities.News>
     {
-        public GetNewsListSpecification(GetNewsListFilters filters)
+        public GetNewsGridSpecification(GetNewsListFilters filters)
         {
             AddInclude(news => news.Editor);
             AddInclude(news => news.Editor.Source);
@@ -15,9 +16,20 @@ namespace NewsAggregator.News.Specifications
             AddInclude(news => news.SubTitle);
             AddInclude(news => news.Picture);
 
+            if (filters.HasSubTitleRequired)
+            {
+                ApplyFilter(news => news.SubTitle != null);
+            }
+
+            if (filters.HasPictureRequired)
+            {
+                ApplyFilter(news => news.Picture != null);
+            }
+
             if (!string.IsNullOrEmpty(filters.SearchString))
             {
-                ApplyFilter(news => EF.Functions.Like(news.Title, $"%{filters.SearchString}%"));
+                ApplyFilter(news => EF.Functions.Like(news.Title, $"%{filters.SearchString}%") || 
+                    EF.Functions.Like(news.SubTitle.Title, $"%{filters.SearchString}%"));
             }
 
             if (filters.StartPublishedAt is not null && filters.EndPublishedAt is not null) 
@@ -58,7 +70,19 @@ namespace NewsAggregator.News.Specifications
 
             ApplyPaging(filters.Page * filters.PageSize - filters.PageSize, filters.PageSize);
 
-            ApplyOrderByDescending(news => news.PublishedAt);
+            var newsSotringOptions = new NewsSortingOptions();
+
+            var newsSotringOption = newsSotringOptions[filters.SortBy];
+
+            if (newsSotringOption.Key == SortingMode.Ascending)
+            {
+                ApplyOrderBy(newsSotringOption.Value);
+            }
+
+            if (newsSotringOption.Key == SortingMode.Descending)
+            {
+                ApplyOrderByDescending(newsSotringOption.Value);
+            }
         }
     }
 }

@@ -1,0 +1,24 @@
+﻿<div class="modal fade" id="searchNewsModal" tabindex="-1" aria-labelledby="searchNewsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="searchNewsModalLabel">Search news</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="searchNewsModalForm" class="needs-validation" novalidate="" method="get" asp-route="NewsList">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label for="searchStringTextInput" class="form-label">Search string</label>
+                            <input id="searchStringTextInput" class="form-control" type="text" placeholder="" name="searchString">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="onClickSearchNewsFromModal()">Search news</button>
+            </div>
+        </div>
+    </div>
+</div>

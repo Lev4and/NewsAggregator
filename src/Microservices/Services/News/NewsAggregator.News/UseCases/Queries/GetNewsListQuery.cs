@@ -43,7 +43,7 @@ namespace NewsAggregator.News.UseCases.Queries
 
             public async Task<GetNewsListDto> Handle(GetNewsListQuery request, CancellationToken cancellationToken)
             {
-                var specification = new GetNewsListSpecification(request.Filters);
+                var specification = new GetNewsGridSpecification(request.Filters);
 
                 var newsCount = await _newsRepository.CountAsync(specification, cancellationToken);
                 var newsList = await _newsRepository.FindAsync(specification, cancellationToken);

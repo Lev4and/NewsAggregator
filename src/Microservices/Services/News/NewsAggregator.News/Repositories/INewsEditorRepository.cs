@@ -3,7 +3,7 @@ using NewsAggregator.News.Entities;
 
 namespace NewsAggregator.News.Repositories
 {
-    public interface INewsEditorRepository : IRepository<NewsEditor>
+    public interface INewsEditorRepository : IRepository<NewsEditor>, IGridRepository<NewsEditor>
     {
         Task<IReadOnlyCollection<NewsEditor>> FindNewsEditorsAsync(CancellationToken cancellationToken = default);
 
