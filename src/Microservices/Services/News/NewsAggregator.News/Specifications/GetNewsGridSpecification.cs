@@ -15,6 +15,7 @@ namespace NewsAggregator.News.Specifications
             AddInclude(news => news.Editor.Source.Logo);
             AddInclude(news => news.SubTitle);
             AddInclude(news => news.Picture);
+            AddInclude(news => news.Video);
 
             if (filters.HasSubTitleRequired)
             {

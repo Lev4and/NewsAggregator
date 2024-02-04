@@ -19,6 +19,10 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
 
         public DbSet<NewsParseError> NewsParseErrors { get; set; }
 
+        public DbSet<NewsParseModifiedAtSettings> NewsParseModifiedAtSettings { get; set; }
+
+        public DbSet<NewsParseModifiedAtSettingsFormat> NewsParseModifiedAtSettingsFormats { get; set; }
+
         public DbSet<NewsParsePictureSettings> NewsParsePictureSettings { get; set; }
 
         public DbSet<NewsParsePublishedAtSettings> NewsParsePublishedAtSettings { get; set; }
@@ -29,6 +33,8 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
 
         public DbSet<NewsParseSubTitleSettings> NewsParseSubTitleSettings { get; set; }
 
+        public DbSet<NewsParseVideoSettings> NewsParseVideoSettings { get; set; }
+
         public DbSet<NewsPicture> NewsPictures { get; set; }
 
         public DbSet<NewsSearchSettings> NewsSearchSettings { get; set; }
@@ -38,6 +44,8 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
         public DbSet<NewsSourceLogo> NewsSourceLogos { get; set; }
 
         public DbSet<NewsSubTitle> NewsSubTitles { get; set; }
+
+        public DbSet<NewsVideo> NewsVideos { get; set; }
 
         public NewsDbContext(DbContextOptions options) : base(options)
         {
@@ -86,6 +94,11 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
                         .HasForeignKey<NewsPicture>(picture => picture.NewsId);
 
             modelBuilder.Entity<Entities.News>()
+                .HasOne(news => news.Video)
+                    .WithOne(video => video.News)
+                        .HasForeignKey<NewsVideo>(video => video.NewsId);
+
+            modelBuilder.Entity<Entities.News>()
                 .HasOne(news => news.Description)
                     .WithOne(description => description.News)
                         .HasForeignKey<NewsDescription>(description => description.NewsId);
@@ -104,6 +117,11 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
             modelBuilder.Entity<NewsParseError>()
                 .HasIndex(error => error.CreatedAt);
 
+            modelBuilder.Entity<NewsParseModifiedAtSettings>()
+                .HasMany(settings => settings.Formats)
+                    .WithOne(format => format.Settings)
+                        .HasForeignKey(format => format.NewsParseModifiedAtSettingsId);
+
             modelBuilder.Entity<NewsParsePublishedAtSettings>()
                 .HasMany(settings => settings.Formats)
                     .WithOne(format => format.Settings)
@@ -120,6 +138,11 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
                         .HasForeignKey<NewsParsePictureSettings>(pictureSettings => pictureSettings.ParseSettingsId);
 
             modelBuilder.Entity<NewsParseSettings>()
+                .HasOne(settings => settings.ParseVideoSettings)
+                    .WithOne(videoSettings => videoSettings.ParseSettings)
+                        .HasForeignKey<NewsParseVideoSettings>(videoSettings => videoSettings.ParseSettingsId);
+
+            modelBuilder.Entity<NewsParseSettings>()
                 .HasOne(settings => settings.ParseSubTitleSettings)
                     .WithOne(subTitleSettings => subTitleSettings.ParseSettings)
                         .HasForeignKey<NewsParseSubTitleSettings>(subTitleSettings => subTitleSettings.ParseSettingsId);
@@ -128,6 +151,11 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
                 .HasOne(settings => settings.ParsePublishedAtSettings)
                     .WithOne(publishedAtSettings => publishedAtSettings.ParseSettings)
                         .HasForeignKey<NewsParsePublishedAtSettings>(publishedAtSettings => publishedAtSettings.ParseSettingsId);
+
+            modelBuilder.Entity<NewsParseSettings>()
+                .HasOne(settings => settings.ParseModifiedAtSettings)
+                    .WithOne(modifiedAtSettings => modifiedAtSettings.ParseSettings)
+                        .HasForeignKey<NewsParseModifiedAtSettings>(modifiedAtSettings => modifiedAtSettings.ParseSettingsId);
 
             modelBuilder.Entity<NewsSource>()
                 .HasIndex(source => source.Title);

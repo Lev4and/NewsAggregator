@@ -12,22 +12,28 @@
 
         public string? PictureUrl { get; }
 
+        public string? VideoUrl { get; }
+
         public string Description { get; }
 
         public DateTime? PublishedAt { get; }
 
+        public DateTime? ModifiedAt { get; }
+
         public DateTime ParsedAt { get; }
 
         public NewsDto(string url, string title, string description, string? subTitle, string? editorName, 
-            string? pictureUrl, DateTime? publishedAt, DateTime parsedAt)
+            string? pictureUrl, string? videoUrl, DateTime? publishedAt, DateTime? modifiedAt, DateTime parsedAt)
         {
             Url = url;
             Title = title;
             SubTitle = subTitle;
             EditorName = editorName;
             PictureUrl = pictureUrl;
+            VideoUrl = videoUrl;
             Description = description;
             PublishedAt = publishedAt;
+            ModifiedAt = modifiedAt;
             ParsedAt = parsedAt;
         }
     }

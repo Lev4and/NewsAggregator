@@ -31,7 +31,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         }
 
         [Theory]
-        [InlineData("https://ixbt.games/news/2024/02/04/slux-playstation-6-poyavitsya-ranse-novoi-xbox-microsoft-ne-mozet-opredelitsya.html")]
+        [InlineData("https://tsargrad.tv/news/migrant-priznalsja-chto-ego-zastavili-ogovorit-russkih-delo-o-drake-v-cheljabinske-slushajut-v-sude_955355")]
         public async Task ParseAsync_SpecificNewsUrl_ReturnNotNullResult(string newsUrl)
         {
             var newsSource = _sources[new Uri(newsUrl)];
@@ -44,8 +44,10 @@ namespace NewsAggregator.News.Tests.Services.Parsers
             _output.WriteLine("Title: {0}", news.Title);
             _output.WriteLine("Sub title: {0}", news.SubTitle);
             _output.WriteLine("Picture URL: {0}", news.PictureUrl);
+            _output.WriteLine("Video URL: {0}", news.VideoUrl);
             _output.WriteLine("Editor name: {0}", news.EditorName);
             _output.WriteLine("Published at: {0:dd.MM.yyyy HH:mm:ss}", news.PublishedAt);
+            _output.WriteLine("Modified at: {0:dd.MM.yyyy HH:mm:ss}", news.ModifiedAt);
 
             Assert.NotNull(news);
         }
@@ -53,7 +55,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         [Fact]
         public async Task ParseAsync_SpecificNewsSource_ReturnNotEmptyResult()
         {
-            var newsSource = _sources[new Uri("https://ura.news/")];
+            var newsSource = _sources[new Uri("https://www.1obl.ru/")];
 
             var newsUrls = await ParseNewsUrlsAsync(newsSource);
             var newsUrlsEnumerator = newsUrls.GetEnumerator();
@@ -204,6 +206,21 @@ namespace NewsAggregator.News.Tests.Services.Parsers
                 }
             }
 
+            var newsUrlsWithoutVideoUrl = parsedNews.Where(news => string.IsNullOrEmpty(news.VideoUrl))
+                .Select(news => news.Url)
+                .ToList();
+
+            if (newsSource.ParseSettings?.ParseVideoSettings is not null && newsUrlsWithoutVideoUrl.Count > 0)
+            {
+                _output.WriteLine("\nParsed news without video url {0} from {1} ({2:P2})\n", newsUrlsWithoutVideoUrl.Count,
+                    parsedNews.Count, (double)newsUrlsWithoutVideoUrl.Count / (double)parsedNews.Count);
+
+                foreach (var newsUrl in newsUrlsWithoutVideoUrl)
+                {
+                    _output.WriteLine(newsUrl);
+                }
+            }
+
             var newsUrlsWithoutDescription = parsedNews.Where(news => string.IsNullOrEmpty(news.Description))
                 .Select(news => news.Url)
                 .ToList();
@@ -244,6 +261,21 @@ namespace NewsAggregator.News.Tests.Services.Parsers
                     parsedNews.Count, (double)newsUrlsWithoutPublishedAt.Count / (double)parsedNews.Count);
 
                 foreach (var newsUrl in newsUrlsWithoutPublishedAt)
+                {
+                    _output.WriteLine(newsUrl);
+                }
+            }
+
+            var newsUrlsWithoutModifiedAt = parsedNews.Where(news => news.ModifiedAt is null)
+                .Select(news => news.Url)
+                .ToList();
+
+            if (newsSource.ParseSettings?.ParseModifiedAtSettings is not null && newsUrlsWithoutModifiedAt.Count > 0)
+            {
+                _output.WriteLine("\nParsed news without modified at {0} from {1} ({2:P2})\n", newsUrlsWithoutModifiedAt.Count,
+                    parsedNews.Count, (double)newsUrlsWithoutModifiedAt.Count / (double)parsedNews.Count);
+
+                foreach (var newsUrl in newsUrlsWithoutModifiedAt)
                 {
                     _output.WriteLine(newsUrl);
                 }

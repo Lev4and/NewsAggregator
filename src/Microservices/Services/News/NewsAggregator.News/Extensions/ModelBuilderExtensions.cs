@@ -88,6 +88,21 @@ namespace NewsAggregator.News.Extensions
                         });
                 }
 
+                if (!string.IsNullOrEmpty(newsSource.ParseSettings.ParseVideoSettings?.UrlXPath))
+                {
+                    newsSource.ParseSettings.ParseVideoSettings.Id = Guid.NewGuid();
+                    newsSource.ParseSettings.ParseVideoSettings.ParseSettingsId = newsSource.ParseSettings.Id;
+
+                    modelBuilder.Entity<NewsParseVideoSettings>().HasData(
+                        new NewsParseVideoSettings
+                        {
+                            Id = newsSource.ParseSettings.ParseVideoSettings.Id,
+                            ParseSettingsId = newsSource.ParseSettings.ParseVideoSettings.ParseSettingsId,
+                            UrlXPath = newsSource.ParseSettings.ParseVideoSettings.UrlXPath,
+                            IsRequired = newsSource.ParseSettings.ParseVideoSettings.IsRequired
+                        });
+                }
+
                 if (!string.IsNullOrEmpty(newsSource.ParseSettings.ParseEditorSettings?.NameXPath))
                 {
                     newsSource.ParseSettings.ParseEditorSettings.Id = Guid.NewGuid();
@@ -132,6 +147,41 @@ namespace NewsAggregator.News.Extensions
                                 {
                                     Id = format.Id,
                                     NewsParsePublishedAtSettingsId = format.NewsParsePublishedAtSettingsId,
+                                    Format = format.Format
+                                });
+                        }
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(newsSource.ParseSettings.ParseModifiedAtSettings?.ModifiedAtXPath) &&
+                    !string.IsNullOrEmpty(newsSource.ParseSettings.ParseModifiedAtSettings?.ModifiedAtCultureInfo))
+                {
+                    newsSource.ParseSettings.ParseModifiedAtSettings.Id = Guid.NewGuid();
+                    newsSource.ParseSettings.ParseModifiedAtSettings.ParseSettingsId = newsSource.ParseSettings.Id;
+
+                    modelBuilder.Entity<NewsParseModifiedAtSettings>().HasData(
+                        new NewsParseModifiedAtSettings
+                        {
+                            Id = newsSource.ParseSettings.ParseModifiedAtSettings.Id,
+                            ParseSettingsId = newsSource.ParseSettings.ParseModifiedAtSettings.ParseSettingsId,
+                            ModifiedAtXPath = newsSource.ParseSettings.ParseModifiedAtSettings.ModifiedAtXPath,
+                            ModifiedAtCultureInfo = newsSource.ParseSettings.ParseModifiedAtSettings.ModifiedAtCultureInfo,
+                            ModifiedAtTimeZoneInfoId = newsSource.ParseSettings.ParseModifiedAtSettings.ModifiedAtTimeZoneInfoId,
+                            IsRequired = newsSource.ParseSettings.ParseModifiedAtSettings.IsRequired
+                        });
+
+                    if (newsSource.ParseSettings.ParseModifiedAtSettings.Formats?.Count > 0)
+                    {
+                        foreach (var format in newsSource.ParseSettings.ParseModifiedAtSettings.Formats)
+                        {
+                            format.Id = Guid.NewGuid();
+                            format.NewsParseModifiedAtSettingsId = newsSource.ParseSettings.ParseModifiedAtSettings.Id;
+
+                            modelBuilder.Entity<NewsParseModifiedAtSettingsFormat>().HasData(
+                                new NewsParseModifiedAtSettingsFormat
+                                {
+                                    Id = format.Id,
+                                    NewsParseModifiedAtSettingsId = format.NewsParseModifiedAtSettingsId,
                                     Format = format.Format
                                 });
                         }

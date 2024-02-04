@@ -76,6 +76,7 @@ namespace NewsAggregator.News.UseCases.Commands
                             Url = request.News.Url,
                             Title = request.News.Title,
                             PublishedAt = request.News.PublishedAt,
+                            ModifiedAt = request.News.ModifiedAt,
                             ParsedAt = request.News.ParsedAt,
                             AddedAt = DateTime.UtcNow
                         };
@@ -99,6 +100,16 @@ namespace NewsAggregator.News.UseCases.Commands
                                 { 
                                     NewsId = news.Id, 
                                     Url = request.News.PictureUrl 
+                                });
+                        }
+
+                        if (!string.IsNullOrEmpty(request.News.VideoUrl))
+                        {
+                            _repository.Add(
+                                new NewsVideo
+                                {
+                                    NewsId = news.Id,
+                                    Url = request.News.VideoUrl
                                 });
                         }
 

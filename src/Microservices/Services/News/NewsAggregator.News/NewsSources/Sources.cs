@@ -52,6 +52,20 @@ namespace NewsAggregator.News.NewsSources
                                 Format = "HH:mm dd.MM.yyyy"
                             }
                         }
+                    },
+                    ParseModifiedAtSettings = new NewsParseModifiedAtSettings
+                    {
+                        ModifiedAtXPath = "//div[@class='article__info']//div[@class='article__info-date']/span[@class='article__info-date-modified']/text()",
+                        ModifiedAtCultureInfo = "ru-RU",
+                        ModifiedAtTimeZoneInfoId = "Russian Standard Time",
+                        IsRequired = true,
+                        Formats = new List<NewsParseModifiedAtSettingsFormat>
+                        {
+                            new NewsParseModifiedAtSettingsFormat
+                            {
+                                Format = "(обновлено: HH:mm dd.MM.yyyy)"
+                            }
+                        }
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -113,7 +127,7 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//article",
+                    DescriptionXPath = "//article/*",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
                         UrlXPath = "//div[contains(@class, 'HeaderMedia_image')]//img[contains(@class, 'Image_image')]/@src",
@@ -126,30 +140,48 @@ namespace NewsAggregator.News.NewsSources
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
-                        PublishedAtXPath = "//div[contains(@class, 'NewsHeader')]//div[contains(@class, 'PublishedMark')]//span[@ca-ts]/text()",
+                        PublishedAtXPath = "//div[contains(@class, 'NewsHeader')]//div[contains(@class, 'PublishedMark_publish')]//span[@ca-ts]/text()",
                         PublishedAtCultureInfo = "ru-RU",
-                        IsRequired = true,
                         PublishedAtTimeZoneInfoId = "UTC",
+                        IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
                             new NewsParsePublishedAtSettingsFormat
                             {
-                                Format = "dd MMMM yyyy, HH:mm"
+                                Format = "d MMMM yyyy, HH:mm"
                             },
                             new NewsParsePublishedAtSettingsFormat
                             {
-                                Format = "dd MMMM yyyy, HH:mm,"
+                                Format = "d MMMM yyyy, HH:mm,"
                             },
                             new NewsParsePublishedAtSettingsFormat
                             {
-                                Format = "dd MMMM, HH:mm"
+                                Format = "d MMMM, HH:mm"
                             },
                             new NewsParsePublishedAtSettingsFormat
                             {
-                                Format = "dd MMMM, HH:mm,"
+                                Format = "d MMMM, HH:mm,"
                             }
                         }
-                    }
+                    },
+                    ParseModifiedAtSettings = new NewsParseModifiedAtSettings
+                    {
+                        ModifiedAtXPath = "//div[contains(@class, 'NewsHeader')]//div[contains(@class, 'PublishedMark_update')]//span[@ca-ts]/text()",
+                        ModifiedAtCultureInfo = "ru-RU",
+                        ModifiedAtTimeZoneInfoId = "UTC",
+                        IsRequired = false,
+                        Formats = new List<NewsParseModifiedAtSettingsFormat>
+                        {
+                            new NewsParseModifiedAtSettingsFormat
+                            {
+                                Format = "обновлено d MMMM yyyy, HH:mm"
+                            },
+                            new NewsParseModifiedAtSettingsFormat
+                            {
+                                Format = "обновлено d MMMM, HH:mm"
+                            }
+                        }
+                    },
                 },
                 SearchSettings = new NewsSearchSettings
                 {
@@ -196,7 +228,7 @@ namespace NewsAggregator.News.NewsSources
                         {
                             new NewsParsePublishedAtSettingsFormat
                             {
-                                Format = "HH:mm, dd MMMM yyyy"
+                                Format = "HH:mm, d MMMM yyyy"
                             }
                         }
                     }
@@ -416,6 +448,24 @@ namespace NewsAggregator.News.NewsSources
                                 Format = "yyyy-MM-ddTHH:mm:sszzz"
                             }
                         }
+                    },
+                    ParseModifiedAtSettings = new NewsParseModifiedAtSettings
+                    {
+                        ModifiedAtXPath = "//div[@class='doc_header__time']/span[contains(@class, 'publish_update')]/text()",
+                        ModifiedAtCultureInfo = "ru-RU",
+                        ModifiedAtTimeZoneInfoId = "Russian Standard Time",
+                        IsRequired = false,
+                        Formats = new List<NewsParseModifiedAtSettingsFormat>
+                        {
+                            new NewsParseModifiedAtSettingsFormat
+                            {
+                                Format = "обновлено HH:mm , dd.MM"
+                            },
+                            new NewsParseModifiedAtSettingsFormat
+                            {
+                                Format = "обновлено HH:mm , dd.MM.yyyy"
+                            }
+                        }
                     }
                 },
                 SearchSettings = new NewsSearchSettings
@@ -429,7 +479,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Известия",
                 SiteUrl = "https://iz.ru/",
-                IsEnabled = false,
+                IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
                     Url = "https://cdn.iz.ru/profiles/portal/themes/purple/images/favicons/apple-icon-120x120.png"
@@ -437,7 +487,7 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/span/text()",
-                    DescriptionXPath = "//div[@itemprop='articleBody']",
+                    DescriptionXPath = "//div[@itemprop='articleBody']/*",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
                         UrlXPath = "//div[contains(@class, 'big_photo')]//div[@class='big_photo__img']//img/@src",
@@ -468,7 +518,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Царьград",
                 SiteUrl = "https://tsargrad.tv/",
-                IsEnabled = false,
+                IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
                     Url = "https://ural.tsargrad.tv/favicons/apple-touch-icon-120x120.png?s2"
@@ -571,6 +621,11 @@ namespace NewsAggregator.News.NewsSources
                 {
                     TitleXPath = "//h1[@class='b-text__title']/text()",
                     DescriptionXPath = "//div[@class='b-text__content']/div[contains(@class, 'b-text__block')]",
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//picture/img/@src",
+                        IsRequired = true
+                    },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//div[@class='b-text__date']/text()",
@@ -581,11 +636,11 @@ namespace NewsAggregator.News.NewsSources
                         {
                             new NewsParsePublishedAtSettingsFormat
                             {
-                                Format = "dd MMMM yyyy HH:mm"
+                                Format = "d MMMM yyyy HH:mm"
                             },
                             new NewsParsePublishedAtSettingsFormat
                             {
-                                Format = "dd MMMM  HH:mm"
+                                Format = "d MMMM  HH:mm"
                             }
                         }
                     }
@@ -678,7 +733,7 @@ namespace NewsAggregator.News.NewsSources
                         {
                             new NewsParsePublishedAtSettingsFormat
                             {
-                                Format = "dd MMMM yyyy, HH:mm"
+                                Format = "d MMMM yyyy, HH:mm"
                             }
                         }
                     }
@@ -723,7 +778,7 @@ namespace NewsAggregator.News.NewsSources
                         {
                             new NewsParsePublishedAtSettingsFormat
                             {
-                                Format = "dd MMMM yyyy, HH:mm МСК"
+                                Format = "d MMMM yyyy, HH:mm МСК"
                             }
                         }
                     }
@@ -773,11 +828,11 @@ namespace NewsAggregator.News.NewsSources
                         {
                             new NewsParsePublishedAtSettingsFormat
                             {
-                                Format = "dd MMMM yyyy, HH:mm"
+                                Format = "d MMMM yyyy, HH:mm"
                             },
                             new NewsParsePublishedAtSettingsFormat
                             {
-                                Format = "dd MMMM, HH:mm"
+                                Format = "d MMMM, HH:mm"
                             }
                         }
                     }
@@ -809,7 +864,7 @@ namespace NewsAggregator.News.NewsSources
                     },
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//div[contains(@class, 'article-entry')]//div[contains(@class, 'entry-body')]//div[@class='source-wrapper']/img[@itemprop='image']/@src",
+                        UrlXPath = "//img[@itemprop='image']/@src",
                         IsRequired = false
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
@@ -850,7 +905,7 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[@itemprop='articleBody']",
+                    DescriptionXPath = "//div[@itemprop='articleBody']/*",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//span[@itemprop='author']/span[@itemprop='name']/@content",
@@ -871,7 +926,7 @@ namespace NewsAggregator.News.NewsSources
                         {
                             new NewsParsePublishedAtSettingsFormat
                             {
-                                Format = "dd MMMM yyyy в HH:mm"
+                                Format = "d MMMM yyyy в HH:mm"
                             }
                         }
                     }
@@ -945,7 +1000,7 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[@itemprop='articleBody']",
+                    DescriptionXPath = "//div[@itemprop='articleBody']/*",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//div[@class='author']/span[@itemprop='author']/span[@itemprop='name']/a/text()",
@@ -1108,6 +1163,105 @@ namespace NewsAggregator.News.NewsSources
                 {
                     NewsSiteUrl = "https://ura.news/",
                     NewsUrlXPath = "//a[contains(@href, '/news/')]/@href"
+                }
+            });
+
+            Add(new NewsSource
+            {
+                Title = "74.ru",
+                SiteUrl = "https://74.ru/",
+                IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://static.ngs.ru/jtnews/dist/static/favicons/apple/apple-favicon-74-120.png"
+                },
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//h1[@itemprop='headline']/span/text()",
+                    DescriptionXPath = "//div[@itemprop='articleBody']/*[not(name() = 'figure')]",
+                    ParseEditorSettings = new NewsParseEditorSettings
+                    {
+                        NameXPath = "//div[@itemprop='author']//p[@itemprop='name']/text()",
+                        IsRequired = false,
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//figure//img/@src",
+                        IsRequired = false,
+                    },
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//p[@itemprop='alternativeHeadline']/span/text()",
+                        IsRequired = true
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//div[@itemprop='datePublished']/time/@datetime",
+                        PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
+                        IsRequired = true,
+                        Formats = new List<NewsParsePublishedAtSettingsFormat>
+                        {
+                            new NewsParsePublishedAtSettingsFormat
+                            {
+                                Format = "yyyy-MM-ddTHH:mm:ss"
+                            }
+                        }
+                    }
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsSiteUrl = "https://74.ru/",
+                    NewsUrlXPath = "//a[starts-with(@href, '/text/') and not(contains(@href, '?')) and not(contains(@href, 'comments/')) and not(@href='/text/')]/@href"
+                }
+            });
+
+            Add(new NewsSource
+            {
+                Title = "Первый областной",
+                SiteUrl = "https://www.1obl.ru/",
+                IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://www.1obl.ru/apple-touch-icon.png"
+                },
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//h1[@itemprop='headline']/text()",
+                    DescriptionXPath = "//div[@itemprop='articleBody']/*",
+                    ParseEditorSettings = new NewsParseEditorSettings
+                    {
+                        NameXPath = "//*[@itemprop='author']/*[@itemprop='name']//text()",
+                        IsRequired = true
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//div[contains(@class, 'newsMediaContainer')]/img/@src",
+                        IsRequired = true,
+                    },
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//div[@itemprop='alternativeHeadline']/text()",
+                        IsRequired = true
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//meta[@itemprop='datePublished']/@content",
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true,
+                        Formats = new List<NewsParsePublishedAtSettingsFormat>
+                        {
+                            new NewsParsePublishedAtSettingsFormat
+                            {
+                                Format = "yyyy-MM-ddTHH:mm:sszzz"
+                            }
+                        }
+                    }
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsSiteUrl = "https://www.1obl.ru/news/",
+                    NewsUrlXPath = "//a[starts-with(@href, '/news/') and not(contains(@href, '?'))]/@href"
                 }
             });
         }

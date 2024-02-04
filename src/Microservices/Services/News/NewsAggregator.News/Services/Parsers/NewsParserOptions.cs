@@ -20,6 +20,10 @@
 
         public string? PublishedAtXPath { get; set; }
 
+        public bool IsVideoUrlRequired { get; set; }
+
+        public string? VideoUrlXPath { get; set; }
+
         public string[]? PublishedAtFormats { get; set; }
 
         public string? PublishedAtCultureInfo { get; set; }
@@ -28,29 +32,14 @@
 
         public bool IsPublishedAtRequired { get; set; }
 
-        public NewsParserOptions() : this("", "", null, false, null, false, null, false, null, null, null, null, false)
-        {
+        public string? ModifiedAtXPath { get; set; }
 
-        }
+        public string[]? ModifiedAtFormats { get; set; }
 
-        public NewsParserOptions(string titleXPath, string descriptionXPath, string? subTitleXPath, bool isSubTitleRequired, 
-            string? editorNameXPath, bool isEditorNameRequired, string? pictureUrlXPath, bool isPictureUrlRequired, 
-            string? publishedAtXPath, string[]? publishedAtFormats, string? publishedAtCultureInfo, 
-            string? publishedAtTimeZoneId, bool isPublishedAtRequired)
-        {
-            TitleXPath = titleXPath;
-            DescriptionXPath = descriptionXPath;
-            SubTitleXPath = subTitleXPath;
-            IsSubTitleRequired = isSubTitleRequired;
-            EditorNameXPath = editorNameXPath;
-            IsEditorNameRequired = isEditorNameRequired;
-            PictureUrlXPath = pictureUrlXPath;
-            IsPictureUrlRequired = isPictureUrlRequired;
-            PublishedAtXPath = publishedAtXPath;
-            PublishedAtFormats = publishedAtFormats;
-            PublishedAtCultureInfo = publishedAtCultureInfo;
-            PublishedAtTimeZoneInfoId = publishedAtTimeZoneId;
-            IsPublishedAtRequired = isPublishedAtRequired;
-        }
+        public string? ModifiedAtCultureInfo { get; set; }
+
+        public string? ModifiedAtTimeZoneInfoId { get; set; }
+
+        public bool IsModifiedAtRequired { get; set; }
     }
 }

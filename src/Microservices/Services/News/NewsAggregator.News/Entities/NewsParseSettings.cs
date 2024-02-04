@@ -16,8 +16,12 @@ namespace NewsAggregator.News.Entities
 
         public virtual NewsParsePictureSettings? ParsePictureSettings { get; set; }
 
+        public virtual NewsParseVideoSettings? ParseVideoSettings { get; set; }
+
         public virtual NewsParseSubTitleSettings? ParseSubTitleSettings { get; set; }
 
         public virtual NewsParsePublishedAtSettings? ParsePublishedAtSettings { get; set; }
+
+        public virtual NewsParseModifiedAtSettings? ParseModifiedAtSettings { get; set; }
     }
 }

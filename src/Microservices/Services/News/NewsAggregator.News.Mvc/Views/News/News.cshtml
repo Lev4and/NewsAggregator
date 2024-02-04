@@ -6,7 +6,7 @@
 <div class="row g-5">
     <div class="col-md-8">
         <article class="blog-post">
-            <h1 class="display-5 link-body-emphasis mb-1">@Model.Title</h1>
+            <h1 class="display-5 link-body-emphasis mb-1" itemprop="headline">@Model.Title</h1>
             <p class="blog-post-meta">
                 @if (Model.PublishedAt is not null)
                 {
@@ -37,7 +37,7 @@
             </p>
             @if (Model.SubTitle is not null)
             {
-                <span itemprop="subTitle">@Model.SubTitle.Title</span>
+                <span itemprop="alternativeHeadline">@Model.SubTitle.Title</span>
             }
             <hr />
             @if (Model.Picture is not null)

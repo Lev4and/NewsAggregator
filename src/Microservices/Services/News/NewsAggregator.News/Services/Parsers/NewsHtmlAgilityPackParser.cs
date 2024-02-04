@@ -55,6 +55,18 @@ namespace NewsAggregator.News.Services.Parsers
                     : parsedNewsPictureUrl;
             }
 
+            var newsVideoUrl = null as string;
+
+            if (!string.IsNullOrEmpty(options.VideoUrlXPath))
+            {
+                var parsedNewsVideoUrl = htmlDocumentNavigator
+                    ?.SelectSingleNode(options.VideoUrlXPath)?.Value?.Trim();
+
+                newsVideoUrl = options.IsVideoUrlRequired
+                    ? parsedNewsVideoUrl ?? throw new NullReferenceException(nameof(parsedNewsVideoUrl))
+                    : parsedNewsVideoUrl;
+            }
+
             var newsEditorName = null as string;
 
             if (!string.IsNullOrEmpty(options.EditorNameXPath))
@@ -92,8 +104,33 @@ namespace NewsAggregator.News.Services.Parsers
                     : null;
             }
 
-            return Task.FromResult(new NewsDto(newsUrl, newsTitle, newsDescription, newsSubTitle, 
-                newsEditorName, newsPictureUrl, newsPublishedAt, DateTime.UtcNow));
+            var newsModifiedAt = null as DateTime?;
+
+            if (!string.IsNullOrEmpty(options.ModifiedAtXPath) && !string.IsNullOrEmpty(options.ModifiedAtCultureInfo) &&
+                options.ModifiedAtFormats?.Length > 0)
+            {
+                var parsedNewsModifiedAt = DateTime.UnixEpoch;
+
+                var isParsedNewsModifiedAt = DateTime.TryParseExact(
+                    htmlDocumentNavigator?.SelectSingleNode(options.ModifiedAtXPath)?.Value?.Trim() ?? "",
+                    options.ModifiedAtFormats,
+                    new CultureInfo(options.ModifiedAtCultureInfo),
+                    DateTimeStyles.None,
+                    out parsedNewsModifiedAt);
+
+                newsModifiedAt = options.IsModifiedAtRequired
+                    ? isParsedNewsModifiedAt
+                        ? !string.IsNullOrEmpty(options.ModifiedAtTimeZoneInfoId)
+                            ? TimeZoneInfo.ConvertTime(parsedNewsModifiedAt,
+                                TimeZoneInfo.FindSystemTimeZoneById(options.ModifiedAtTimeZoneInfoId),
+                                    TimeZoneInfo.Utc)
+                            : parsedNewsModifiedAt.ToUniversalTime()
+                        : throw new NullReferenceException(nameof(parsedNewsModifiedAt))
+                    : null;
+            }
+
+            return Task.FromResult(new NewsDto(newsUrl, newsTitle, newsDescription, newsSubTitle, newsEditorName,
+                newsPictureUrl, newsVideoUrl, newsPublishedAt, newsModifiedAt, DateTime.UtcNow));
         }
     }
 }

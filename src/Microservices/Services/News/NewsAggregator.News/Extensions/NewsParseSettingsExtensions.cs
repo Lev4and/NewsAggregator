@@ -16,6 +16,8 @@ namespace NewsAggregator.News.Extensions
                 IsSubTitleRequired = settings.ParseSubTitleSettings?.IsRequired ?? false,
                 PictureUrlXPath = settings.ParsePictureSettings?.UrlXPath,
                 IsPictureUrlRequired = settings.ParsePictureSettings?.IsRequired ?? false,
+                VideoUrlXPath = settings.ParseVideoSettings?.UrlXPath,
+                IsVideoUrlRequired = settings.ParseVideoSettings?.IsRequired ?? false,
                 EditorNameXPath = settings.ParseEditorSettings?.NameXPath,
                 IsEditorNameRequired = settings.ParseEditorSettings?.IsRequired ?? false,
                 PublishedAtXPath = settings.ParsePublishedAtSettings?.PublishedAtXPath,
@@ -23,6 +25,11 @@ namespace NewsAggregator.News.Extensions
                 PublishedAtCultureInfo = settings.ParsePublishedAtSettings?.PublishedAtCultureInfo,
                 PublishedAtTimeZoneInfoId = settings.ParsePublishedAtSettings?.PublishedAtTimeZoneInfoId,
                 IsPublishedAtRequired = settings.ParsePublishedAtSettings?.IsRequired ?? false,
+                ModifiedAtXPath = settings.ParseModifiedAtSettings?.ModifiedAtXPath,
+                ModifiedAtFormats = settings.ParseModifiedAtSettings?.Formats?.Select(format => format.Format).ToArray(),
+                ModifiedAtCultureInfo = settings.ParseModifiedAtSettings?.ModifiedAtCultureInfo,
+                ModifiedAtTimeZoneInfoId = settings.ParseModifiedAtSettings?.ModifiedAtTimeZoneInfoId,
+                IsModifiedAtRequired = settings.ParseModifiedAtSettings?.IsRequired ?? false
             };
         }
     }
