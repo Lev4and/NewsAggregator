@@ -64,7 +64,7 @@ div.recent-news-grid div.card {
     height: 150px;
 }
 
-div.authors-grid div.card {
+div.authors-list-container div.card {
     height: 150px;
 }
 
@@ -74,7 +74,7 @@ div#carouselRecentNews.carousel div.carousel-item img {
     object-fit: cover;
 }
 
-div.news-list img {
+div.news-list-container img {
     width: 250px;
     height: 250px;
     object-fit: cover;

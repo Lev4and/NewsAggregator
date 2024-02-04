@@ -21,6 +21,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "РИА Новости",
                 SiteUrl = "https://ria.ru/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://cdnn21.img.ria.ru/i/favicons/favicon.svg"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//div[@class='article__title']/text()",
@@ -62,6 +66,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "RT на русском",
                 SiteUrl = "https://russian.rt.com/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://russian.rt.com/static/img/listing-uwc-logo.png"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -98,6 +106,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "ТАСС",
                 SiteUrl = "https://tass.ru/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://tass.ru/favicon/180.svg"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -151,6 +163,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "Лента.Ру",
                 SiteUrl = "https://lenta.ru/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://icdn.lenta.ru/images/icons/icon-256x256.png"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1[@class='topic-body__titles']/span[@class='topic-body__title']/text()",
@@ -197,6 +213,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "Российская газета",
                 SiteUrl = "https://rg.ru/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://cdnstatic.rg.ru/images/touch-icon-iphone-retina.png"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -238,6 +258,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "Аргументы и факты",
                 SiteUrl = "https://aif.ru/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://chel.aif.ru/img/icon/apple-touch-icon.png?37f"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -279,6 +303,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "РБК",
                 SiteUrl = "https://www.rbc.ru/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://s.rbk.ru/v10_rbcnews_static/common/common-10.10.116/images/apple-touch-icon-120x120.png"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -319,6 +347,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "Storts.ru",
                 SiteUrl = "https://www.sports.ru/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://www.sports.ru/apple-touch-icon-120.png"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -354,6 +386,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "Коммерсантъ",
                 SiteUrl = "https://www.kommersant.ru/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://im.kommersant.ru/ContentFlex/images/favicons2020/apple-touch-icon-120.png"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -394,6 +430,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "Известия",
                 SiteUrl = "https://iz.ru/",
                 IsEnabled = false,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://cdn.iz.ru/profiles/portal/themes/purple/images/favicons/apple-icon-120x120.png"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/span/text()",
@@ -429,6 +469,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "Царьград",
                 SiteUrl = "https://tsargrad.tv/",
                 IsEnabled = false,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://ural.tsargrad.tv/favicons/apple-touch-icon-120x120.png?s2"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1[@class='article__title']/text()",
@@ -479,6 +523,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "БелТА",
                 SiteUrl = "https://www.belta.by/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://www.belta.by/images/storage/banners/000016_a133e848cb2e7b1debb7102d19e4d139_work.svg"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -515,6 +563,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "СвободнаяПресса",
                 SiteUrl = "https://svpressa.ru/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://svpressa.ru/favicon-96x96.png?v=1471426270000"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1[@class='b-text__title']/text()",
@@ -550,6 +602,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "Москва 24",
                 SiteUrl = "https://www.m24.ru/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://www.m24.ru/img/fav/apple-touch-icon.png"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -594,6 +650,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "ВЗГЛЯД.РУ",
                 SiteUrl = "https://vz.ru/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://vz.ru/apple-touch-icon.png"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -635,6 +695,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "Чемпионат.com",
                 SiteUrl = "https://www.championat.com/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://st.championat.com/i/favicon/apple-touch-icon.png"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//article/header/div[@class='article-head__title']/text()",
@@ -676,6 +740,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "Life",
                 SiteUrl = "https://life.ru/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://life.ru/appletouch/apple-icon-120х120.png"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -726,6 +794,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "3Dnews.ru",
                 SiteUrl = "https://3dnews.ru/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://3dnews.ru/assets/images/3dnews_logo_soc.png"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -771,6 +843,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "iXBT.com",
                 SiteUrl = "https://www.ixbt.com/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://www.ixbt.com/favicon.ico"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -811,15 +887,15 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "iXBT.games",
                 SiteUrl = "https://ixbt.games/",
-                IsEnabled = false,
+                IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://sun13-2.userapi.com/s/v1/ig2/_ID-2w6Llad8ig5_987dKAfh1pyLdj7HfLHqGx9HxyDjoEDN7wxR0ZWJm5ja1Ey6UuQXaEYEBW1Zd51cpRrjSGfS.jpg?size=100x100&quality=96&crop=22,22,626,626&ava=1"
+                    Url = "https://ixbt.games/images/favicon/gt/apple-touch-icon.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[@class='container-fluid shifted']/p[@class='announce lead']",
+                    DescriptionXPath = "//div[contains(@class, 'container-fluid shifted') and not(p[@class='announce lead']) and not(h1) and not(hr)]",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//div[@class='container-fluid publication-footer']//a[contains(@class, 'text-secondary')]/@title",
@@ -837,10 +913,10 @@ namespace NewsAggregator.News.NewsSources
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
-                        PublishedAtXPath = "//div[contains(@class, 'publication-footer')]//div[contains(@class, 'pubdatetime')]//div[contains(@class, 'badge-time')]/text()",
+                        PublishedAtXPath = "//div[contains(@class, 'pubdatetime')]/text()",
                         PublishedAtCultureInfo = "ru-RU",
                         PublishedAtTimeZoneInfoId = "Russian Standard Time",
-                        IsRequired = true,
+                        IsRequired = false,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
                             new NewsParsePublishedAtSettingsFormat
@@ -862,6 +938,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "Газета.Ru",
                 SiteUrl = "https://www.gazeta.ru/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://static.gazeta.ru/nm2021/img/icons/favicon.svg"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -907,6 +987,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "Интерфакс",
                 SiteUrl = "https://www.interfax.ru/",
                 IsEnabled = false,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://www.interfax.ru/touch-icon-iphone-retina.png"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -938,6 +1022,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "Правда.ру",
                 SiteUrl = "https://www.pravda.ru/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://www.pravda.ru/pix/apple-touch-icon.png"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
@@ -984,6 +1072,10 @@ namespace NewsAggregator.News.NewsSources
                 Title = "Ura.ru",
                 SiteUrl = "https://ura.news/",
                 IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://ura.news/apple-touch-icon.png"
+                },
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",

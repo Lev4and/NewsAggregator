@@ -17,6 +17,7 @@
 <div class="row">
     <div class="col-xl-4">
         <h1 class="mb-3">Filters</h1>
+        <hr />
         <form id="newsEditorListForm" class="needs-validation" novalidate="" method="get" asp-route="Authors">
             <input type="hidden" name="page" value="@Model.Filters.Page" />
             <div class="row g-3">
@@ -100,31 +101,33 @@
     <div class="col-xl-8">
         <h1>Show @((Model.Result.Page - 1) * Model.Result.PageSize + Model.Result.Items.Count) from @Model.Result.GetFormattedTotalItems() news editors</h1>
         <hr />
-        <div class="authors-grid row mb-3 text-center gy-5">
-            @foreach (var editor in Model.Result.Items)
-            {
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card overflow-hidden">
-                        <div class="card-body">
-                            <div class="row justify-content-around h-100">
-                                @if (editor.Source is not null)
-                                {
+        <div class="authors-list-container mb-3">
+            <div class="authors-list-container__grid row text-center g-3">
+                @foreach (var editor in Model.Result.Items)
+                {
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="row justify-content-around h-100">
+                                    @if (editor.Source is not null)
+                                    {
+                                        <div class="col-12 align-self-center">
+                                            <a class="text-decoration-none" asp-route="Source" asp-route-id="@editor.Source.Id">
+                                                @editor.Source.Title
+                                            </a>
+                                        </div>
+                                    }
                                     <div class="col-12 align-self-center">
-                                        <a class="text-decoration-none" asp-route="Source" asp-route-id="@editor.Source.Id">
-                                            @editor.Source.Title
+                                        <a class="text-decoration-none" asp-route="Author" asp-route-id="@editor.Id">
+                                            @editor.GetFormattedName()
                                         </a>
                                     </div>
-                                }
-                                <div class="col-12 align-self-center">
-                                    <a class="text-decoration-none" asp-route="Author" asp-route-id="@editor.Id">
-                                        @editor.GetFormattedName()
-                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
         <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center">

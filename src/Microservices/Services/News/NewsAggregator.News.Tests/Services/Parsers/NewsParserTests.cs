@@ -31,7 +31,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         }
 
         [Theory]
-        [InlineData("https://www.interfax.ru/business/942232")]
+        [InlineData("https://ixbt.games/news/2024/02/04/slux-playstation-6-poyavitsya-ranse-novoi-xbox-microsoft-ne-mozet-opredelitsya.html")]
         public async Task ParseAsync_SpecificNewsUrl_ReturnNotNullResult(string newsUrl)
         {
             var newsSource = _sources[new Uri(newsUrl)];
