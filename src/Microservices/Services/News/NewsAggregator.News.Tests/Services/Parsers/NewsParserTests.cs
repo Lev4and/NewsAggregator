@@ -31,7 +31,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         }
 
         [Theory]
-        [InlineData("https://tsargrad.tv/news/migrant-priznalsja-chto-ego-zastavili-ogovorit-russkih-delo-o-drake-v-cheljabinske-slushajut-v-sude_955355")]
+        [InlineData("https://edition.cnn.com/2024/02/05/europe/zelensky-leadership-team-intl/index.html")]
         public async Task ParseAsync_SpecificNewsUrl_ReturnNotNullResult(string newsUrl)
         {
             var newsSource = _sources[new Uri(newsUrl)];
@@ -55,7 +55,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         [Fact]
         public async Task ParseAsync_SpecificNewsSource_ReturnNotEmptyResult()
         {
-            var newsSource = _sources[new Uri("https://www.1obl.ru/")];
+            var newsSource = _sources[new Uri("https://www.hltv.org/")];
 
             var newsUrls = await ParseNewsUrlsAsync(newsSource);
             var newsUrlsEnumerator = newsUrls.GetEnumerator();

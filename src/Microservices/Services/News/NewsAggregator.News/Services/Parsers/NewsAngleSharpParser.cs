@@ -92,6 +92,8 @@ namespace NewsAggregator.News.Services.Parsers
             {
                 var parsedNewsPublishedAt = DateTime.UnixEpoch;
 
+                var text = htmlDocumentNavigator?.SelectSingleNode(options.PublishedAtXPath)?.Value?.Trim() ?? "";
+
                 var isParsedNewsPublishedAt = DateTime.TryParseExact(
                     htmlDocumentNavigator?.SelectSingleNode(options.PublishedAtXPath)?.Value?.Trim() ?? "",
                     options.PublishedAtFormats,

@@ -17,6 +17,11 @@ namespace NewsAggregator.News.Specifications
             AddInclude(news => news.Picture);
             AddInclude(news => news.Video);
 
+            if (filters.HasPublishedAtRequired)
+            {
+                ApplyFilter(news => news.PublishedAt != null);
+            }
+
             if (filters.HasSubTitleRequired)
             {
                 ApplyFilter(news => news.SubTitle != null);

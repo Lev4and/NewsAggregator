@@ -74,6 +74,12 @@
                     </select>
                 </div>
                 <div class="col-12">
+                    @Html.CheckBox("hasPublishedAtRequired", Model.Filters.HasPublishedAtRequired, new { @class = "form-check-input", id = "hasPublishedAtRequiredCheck" })
+                    <label class="form-check-label" for="hasPublishedAtRequiredCheck">
+                        Has published at required
+                    </label>
+                </div>
+                <div class="col-12">
                     @Html.CheckBox("hasSubTitleRequired", Model.Filters.HasSubTitleRequired, new { @class = "form-check-input", id = "hasSubTitleRequiredCheck" })
                     <label class="form-check-label" for="hasSubTitleRequiredCheck">
                         Has sub title required

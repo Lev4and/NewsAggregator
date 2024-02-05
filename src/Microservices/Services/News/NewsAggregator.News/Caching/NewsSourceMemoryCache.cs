@@ -21,13 +21,13 @@ namespace NewsAggregator.News.Caching
         public async Task<NewsSource> GetNewsSourceByIdAsync(Guid id, Func<Task<NewsSource>> factory,
             CancellationToken cancellationToken = default)
         {
-            return await _cache.GetAsync($"newssources:{id}", factory, cancellationToken);
+            return await _cache.GetAsync($"newssource:{id}", factory, cancellationToken);
         }
 
         public async Task<NewsSource> GetNewsSourceBySiteUrlAsync(string siteUrl, Func<Task<NewsSource>> factory, 
             CancellationToken cancellationToken = default)
         {
-            return await _cache.GetAsync($"newssources:{siteUrl}", factory, cancellationToken);
+            return await _cache.GetAsync($"newssource:{siteUrl}", factory, cancellationToken);
         }
 
         public async Task<IReadOnlyCollection<NewsSource>> GetAvailableNewsSourcesAsync(

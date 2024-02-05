@@ -1,4 +1,5 @@
 ﻿using NewsAggregator.News.Entities;
+using ZstdSharp.Unsafe;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -63,7 +64,7 @@ namespace NewsAggregator.News.NewsSources
                         {
                             new NewsParseModifiedAtSettingsFormat
                             {
-                                Format = "(обновлено: HH:mm dd.MM.yyyy)"
+                                Format = "(\"обновлено:\" HH:mm dd.MM.yyyy)"
                             }
                         }
                     }
@@ -140,7 +141,7 @@ namespace NewsAggregator.News.NewsSources
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
-                        PublishedAtXPath = "//div[contains(@class, 'NewsHeader')]//div[contains(@class, 'PublishedMark_publish')]//span[@ca-ts]/text()",
+                        PublishedAtXPath = "//div[contains(@class, 'NewsHeader')]//div[contains(@class, 'PublishedMark')]//span[@ca-ts]/text()",
                         PublishedAtCultureInfo = "ru-RU",
                         PublishedAtTimeZoneInfoId = "UTC",
                         IsRequired = true,
@@ -174,11 +175,11 @@ namespace NewsAggregator.News.NewsSources
                         {
                             new NewsParseModifiedAtSettingsFormat
                             {
-                                Format = "обновлено d MMMM yyyy, HH:mm"
+                                Format = "\"обновлено\" d MMMM yyyy, HH:mm"
                             },
                             new NewsParseModifiedAtSettingsFormat
                             {
-                                Format = "обновлено d MMMM, HH:mm"
+                                Format = "\"обновлено\" d MMMM, HH:mm"
                             }
                         }
                     },
@@ -409,7 +410,7 @@ namespace NewsAggregator.News.NewsSources
                 SearchSettings = new NewsSearchSettings
                 {
                     NewsSiteUrl = "https://www.sports.ru/news/",
-                    NewsUrlXPath = "//a[contains(@href, '.html') and not(contains(@href, '.html#comments'))]/@href"
+                    NewsUrlXPath = "//a[contains(@href, '.html') and not(contains(@href, '.html#comments')) and not (contains(@href, '/blogs/'))]/@href"
                 }
             });
 
@@ -459,11 +460,11 @@ namespace NewsAggregator.News.NewsSources
                         {
                             new NewsParseModifiedAtSettingsFormat
                             {
-                                Format = "обновлено HH:mm , dd.MM"
+                                Format = "\"обновлено\" HH:mm , dd.MM"
                             },
                             new NewsParseModifiedAtSettingsFormat
                             {
-                                Format = "обновлено HH:mm , dd.MM.yyyy"
+                                Format = "\"обновлено\" HH:mm , dd.MM.yyyy"
                             }
                         }
                     }
@@ -778,7 +779,7 @@ namespace NewsAggregator.News.NewsSources
                         {
                             new NewsParsePublishedAtSettingsFormat
                             {
-                                Format = "d MMMM yyyy, HH:mm МСК"
+                                Format = "d MMMM yyyy, HH:mm \"МСК\""
                             }
                         }
                     }
@@ -926,7 +927,7 @@ namespace NewsAggregator.News.NewsSources
                         {
                             new NewsParsePublishedAtSettingsFormat
                             {
-                                Format = "d MMMM yyyy в HH:mm"
+                                Format = "d MMMM yyyy \"в\" HH:mm"
                             }
                         }
                     }
@@ -1041,7 +1042,7 @@ namespace NewsAggregator.News.NewsSources
             {
                 Title = "Интерфакс",
                 SiteUrl = "https://www.interfax.ru/",
-                IsEnabled = false,
+                IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
                     Url = "https://www.interfax.ru/touch-icon-iphone-retina.png"
@@ -1198,7 +1199,7 @@ namespace NewsAggregator.News.NewsSources
                     {
                         PublishedAtXPath = "//div[@itemprop='datePublished']/time/@datetime",
                         PublishedAtCultureInfo = "ru-RU",
-                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
+                        PublishedAtTimeZoneInfoId = "Ekaterinburg Standard Time",
                         IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>
                         {
@@ -1263,6 +1264,199 @@ namespace NewsAggregator.News.NewsSources
                     NewsSiteUrl = "https://www.1obl.ru/news/",
                     NewsUrlXPath = "//a[starts-with(@href, '/news/') and not(contains(@href, '?'))]/@href"
                 }
+            });
+
+            Add(new NewsSource
+            {
+                Title = "Cybersport.ru",
+                SiteUrl = "https://www.cybersport.ru/",
+                IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://www.cybersport.ru/favicon-192x192.png"
+                },
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//h1/text()",
+                    DescriptionXPath = "//div[contains(@class, 'js-mediator-article')]/*[position()>1]",
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//meta[@property='og:image']/@content",
+                        IsRequired = true,
+                    },
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//div[contains(@class, 'js-mediator-article')]/*[position()=1]/text()",
+                        IsRequired = true,
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//article/header//time/@datetime",
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true,
+                        Formats = new List<NewsParsePublishedAtSettingsFormat>
+                        {
+                            new NewsParsePublishedAtSettingsFormat
+                            {
+                                Format = "yyyy-MM-ddTHH:mm:ss.fffZ"
+                            }
+                        }
+                    },
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsSiteUrl = "https://www.cybersport.ru/",
+                    NewsUrlXPath = "//a[contains(@href, '/tags/')]/@href",
+                },
+            });
+
+            Add(new NewsSource
+            {
+                Title = "HLTV.org",
+                SiteUrl = "https://www.hltv.org/",
+                IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://www.hltv.org/img/static/favicon/apple-touch-icon.png"
+                },
+                ParseSettings = new NewsParseSettings 
+                {
+                    TitleXPath = "//h1[@class='headline']/text()",
+                    DescriptionXPath = "//article//div[@class='newstext-con']/*[not(name()='p' and @class='headertext') and not(name()='div' and @class='image-con' and position()=1)]",
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//p[@class='headertext' and @itemprop='description']/text()",
+                        IsRequired = true
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//article//div[@class='image-con' and position() = 1]/picture/img/@src",
+                        IsRequired = false
+                    },
+                    ParseVideoSettings = new NewsParseVideoSettings
+                    {
+                        UrlXPath = "//article//div[@class='videoWrapper' and @itemprop='video']/iframe[@class='video']/@src",
+                        IsRequired = false
+                    },
+                    ParseEditorSettings = new NewsParseEditorSettings
+                    {
+                        NameXPath = "//article//span[@class='author']/a[@class='authorName']/span/text()",
+                        IsRequired = true,
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//article//div[@class='article-info']/div[@class='date']/text()",
+                        PublishedAtCultureInfo = "en-US",
+                        PublishedAtTimeZoneInfoId = "Central Europe Standard Time",
+                        IsRequired = true,
+                        Formats = new List<NewsParsePublishedAtSettingsFormat>
+                        {
+                            new NewsParsePublishedAtSettingsFormat
+                            {
+                                Format = "d-M-yyyy HH:mm"
+                            }
+                        }
+                    }
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsUrlXPath = "//a[contains(@href, '/news/')]/@href",
+                    NewsSiteUrl = "https://www.hltv.org/",
+                },
+            });
+
+            Add(new NewsSource
+            {
+                Title = "The New York Times",
+                SiteUrl = "https://www.nytimes.com/",
+                IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://www.nytimes.com/vi-assets/static-assets/apple-touch-icon-28865b72953380a40aa43318108876cb.png"
+                },
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//h1/text()",
+                    DescriptionXPath = "//section[@name='articleBody']/*",
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//header/p[@id='article-summary']/text()",
+                        IsRequired = true
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//header//figure//picture/img/@src",
+                        IsRequired = true
+                    },
+                    ParseEditorSettings = new NewsParseEditorSettings
+                    {
+                        NameXPath = "//span[@itemprop='name']/a/text()",
+                        IsRequired = true,
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//time/@datetime",
+                        PublishedAtCultureInfo = "en-US",
+                        IsRequired = true,
+                        Formats = new List<NewsParsePublishedAtSettingsFormat>
+                        {
+                            new NewsParsePublishedAtSettingsFormat
+                            {
+                                Format = "yyyy-MM-ddTHH:mm:sszzz"
+                            }
+                        }
+                    }
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsUrlXPath = "//a[contains(@href, '.html')]/@href",
+                    NewsSiteUrl = "https://www.nytimes.com/"
+                }
+            });
+
+            Add(new NewsSource
+            {
+                Title = "CNN",
+                SiteUrl = "https://edition.cnn.com/",
+                IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Url = "https://edition.cnn.com/media/sites/cnn/apple-touch-icon.png"
+                },
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//h1/text()",
+                    DescriptionXPath = "//div[@itemprop='articleBody']/*",
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//div[contains(@class, 'article__lede-wrapper')]//picture/img/@src",
+                        IsRequired = true
+                    },
+                    ParseEditorSettings = new NewsParseEditorSettings
+                    {
+                        NameXPath = "//div[@class='headline__footer']//div[@class='byline__names']/span[@class='byline__name']/text()",
+                        IsRequired = true
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//div[@class='headline__footer']//div[contains(@class, 'headline__byline-sub-text')]/div[@class='timestamp']/text()",
+                        PublishedAtCultureInfo = "en-US",
+                        PublishedAtTimeZoneInfoId = "Eastern Standard Time",
+                        IsRequired = true,
+                        Formats = new List<NewsParsePublishedAtSettingsFormat>()
+                        {
+                            new NewsParsePublishedAtSettingsFormat
+                            {
+                                Format = "\"Published\n       \" HH:mm tt \"EST\", ddd MMMM d, yyyy"
+                            }
+                        }
+                    },
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsUrlXPath = "//a[contains(@href, '.html')]/@href",
+                    NewsSiteUrl = "https://edition.cnn.com/"
+                },
             });
         }
     }

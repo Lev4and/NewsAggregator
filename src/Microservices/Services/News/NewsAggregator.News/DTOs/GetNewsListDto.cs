@@ -43,6 +43,8 @@ namespace NewsAggregator.News.DTOs
 
     public class GetNewsListFilters
     {
+        public bool HasPublishedAtRequired { get; set; } = true;
+
         public bool HasSubTitleRequired { get; set; } = false;
 
         public bool HasPictureRequired { get; set; } = false;
