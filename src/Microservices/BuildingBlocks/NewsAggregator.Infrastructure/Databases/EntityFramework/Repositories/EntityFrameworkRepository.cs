@@ -70,10 +70,14 @@ namespace NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories
 
             if (specification.Criterias is not null && specification.Criterias.Count() > 0)
             {
-                foreach (var criteria in specification.Criterias)
+                var criteria = specification.Criterias.First();
+
+                for (var i = 1; i < specification.Criterias.Count; i++)
                 {
-                    query = query.Union(query.Where(criteria));
+                    criteria = criteria.And(specification.Criterias.ElementAt(i));
                 }
+
+                query = query.Where(criteria);
             }
 
             if (specification.GroupBy is not null)
@@ -99,10 +103,14 @@ namespace NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories
 
             if (specification.Criterias is not null && specification.Criterias.Count() > 0)
             {
-                foreach (var criteria in specification.Criterias)
+                var criteria = specification.Criterias.First();
+
+                for (var i = 1; i < specification.Criterias.Count; i++)
                 {
-                    query = query.Union(query.Where(criteria));
+                    criteria = criteria.And(specification.Criterias.ElementAt(i));
                 }
+
+                query = query.Where(criteria);
             }
 
             if (specification.GroupBy is not null)

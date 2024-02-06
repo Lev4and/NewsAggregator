@@ -1,5 +1,4 @@
 ﻿using NewsAggregator.News.Entities;
-using ZstdSharp.Unsafe;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -1322,7 +1321,7 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings 
                 {
                     TitleXPath = "//h1[@class='headline']/text()",
-                    DescriptionXPath = "//article//div[@class='newstext-con']/*[not(name()='p' and @class='headertext') and not(name()='div' and @class='image-con' and position()=1)]",
+                    DescriptionXPath = "//article//div[@class='newstext-con']/*[position()>2]",
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
                         TitleXPath = "//p[@class='headertext' and @itemprop='description']/text()",

@@ -1,6 +1,8 @@
 ﻿using FluentValidation;
 using MediatR;
 using NewsAggregator.News.Repositories;
+using NewsAggregator.News.Specifications;
+using ZstdSharp.Unsafe;
 
 namespace NewsAggregator.News.UseCases.Queries
 {
@@ -39,8 +41,8 @@ namespace NewsAggregator.News.UseCases.Queries
             public async Task<IReadOnlyCollection<Entities.News>> Handle(GetRecentNewsQuery request,
                 CancellationToken cancellationToken)
             {
-                return await _repository.FindRecentNewsAsync(request.Count, request.SubTitleRequired, 
-                    request.PictureRequired, cancellationToken);
+                return await _repository.FindAsync(new GetRecentNewsGridSpecification(new GetRecentNewsGridSpecificationOptions(request.Count, 
+                    request.SubTitleRequired, request.PictureRequired)), cancellationToken);
             }
         }
     }

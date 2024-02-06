@@ -57,31 +57,5 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
                 .Include(news => news.Description)
                 .SingleOrDefaultAsync(news => news.Url == url, cancellationToken);
         }
-
-        public async Task<IReadOnlyCollection<Entities.News>> FindRecentNewsAsync(int count, bool subTitleRequired = false,
-            bool pictureRequired = false, CancellationToken cancellationToken = default)
-        {
-            var query = (IQueryable<Entities.News>)_dbContext.News.AsNoTracking()
-                .Include(news => news.Editor)
-                    .ThenInclude(editor => editor.Source)
-                        .ThenInclude(source => source.Logo)
-                .Include(news => news.SubTitle)
-                .Include(news => news.Picture);
-
-            if (subTitleRequired)
-            {
-                query = query.Where(news => news.SubTitle != null);
-            }
-
-            if (pictureRequired)
-            {
-                query = query.Where(news => news.Picture != null);
-            }
-
-            query = query.OrderByDescending(news => news.PublishedAt)
-                .Take(count);
-
-            return await query.ToListAsync(cancellationToken);
-        }
     }
 }

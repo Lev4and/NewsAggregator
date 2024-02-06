@@ -31,7 +31,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         }
 
         [Theory]
-        [InlineData("https://edition.cnn.com/2024/02/05/europe/zelensky-leadership-team-intl/index.html")]
+        [InlineData("https://www.hltv.org/news/38143/eternal-fires-katowice-run-ended-by-navi")]
         public async Task ParseAsync_SpecificNewsUrl_ReturnNotNullResult(string newsUrl)
         {
             var newsSource = _sources[new Uri(newsUrl)];
