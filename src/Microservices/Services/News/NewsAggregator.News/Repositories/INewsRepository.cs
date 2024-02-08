@@ -1,7 +1,4 @@
-﻿using AngleSharp.Dom;
-using NewsAggregator.Domain.Repositories;
-using NewsAggregator.Domain.Specification;
-using NewsAggregator.News.Specifications;
+﻿using NewsAggregator.Domain.Repositories;
 
 namespace NewsAggregator.News.Repositories
 {

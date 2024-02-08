@@ -2,11 +2,11 @@
 
 namespace NewsAggregator.News.Messages
 {
-    public class FoundNewsUrls : INotification
+    public class FoundNewsList : INotification
     {
         public IReadOnlyCollection<string> NewsUrls { get; }
 
-        public FoundNewsUrls(IReadOnlyCollection<string> newsUrls)
+        public FoundNewsList(IReadOnlyCollection<string> newsUrls)
         {
             NewsUrls = newsUrls;
         }

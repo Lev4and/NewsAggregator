@@ -17,6 +17,8 @@ namespace NewsAggregator.News.MessageConsumers
         public async Task Consume(ConsumeContext<ParsedNews> context)
         {
             await _mediator.Send(new AddNewsCommand(context.Message.News));
+
+            await _mediator.Publish(new AddedNews(context.Message.News.Url));
         }
     }
 }

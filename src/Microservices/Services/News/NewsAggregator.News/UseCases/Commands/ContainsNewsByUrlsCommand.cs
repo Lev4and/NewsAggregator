@@ -40,20 +40,21 @@ namespace NewsAggregator.News.UseCases.Commands
             }
         }
 
-        internal class NotContainedNewsHandler : INotificationHandler<NotContainedNews>
+        internal class FoundNotExistedNewsNotificationHandler : INotificationHandler<FoundNotExistedNews>
         {
             private readonly IMessageBus _messageBus;
-            private readonly ILogger<NotContainedNewsHandler> _logger;
+            private readonly ILogger<FoundNotExistedNewsNotificationHandler> _logger;
 
-            public NotContainedNewsHandler(IMessageBus messageBus, ILogger<NotContainedNewsHandler> logger)
+            public FoundNotExistedNewsNotificationHandler(IMessageBus messageBus, 
+                ILogger<FoundNotExistedNewsNotificationHandler> logger)
             {
                 _messageBus = messageBus;
                 _logger = logger;
             }
 
-            public async Task Handle(NotContainedNews notification, CancellationToken cancellationToken)
+            public async Task Handle(FoundNotExistedNews notification, CancellationToken cancellationToken)
             {
-                _logger.LogInformation("Found not contained news {0}", notification.NewsUrl);
+                _logger.LogInformation("Found not existed news {0}", notification.NewsUrl);
 
                 await _messageBus.SendAsync(notification, cancellationToken);
             }

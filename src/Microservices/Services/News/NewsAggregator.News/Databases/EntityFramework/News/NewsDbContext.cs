@@ -23,6 +23,10 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
 
         public DbSet<NewsParseModifiedAtSettingsFormat> NewsParseModifiedAtSettingsFormats { get; set; }
 
+        public DbSet<NewsParseNeed> NewsParseNeeds { get; set; }
+
+        public DbSet<NewsParseNetworkError> NewsParseNetworkErrors { get; set; }
+
         public DbSet<NewsParsePictureSettings> NewsParsePictureSettings { get; set; }
 
         public DbSet<NewsParsePublishedAtSettings> NewsParsePublishedAtSettings { get; set; }
@@ -78,6 +82,9 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
                 .HasIndex(news => news.PublishedAt);
 
             modelBuilder.Entity<Entities.News>()
+                .HasIndex(news => news.ModifiedAt);
+
+            modelBuilder.Entity<Entities.News>()
                 .HasIndex(news => news.ParsedAt);
 
             modelBuilder.Entity<Entities.News>()
@@ -121,6 +128,12 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
                 .HasMany(settings => settings.Formats)
                     .WithOne(format => format.Settings)
                         .HasForeignKey(format => format.NewsParseModifiedAtSettingsId);
+
+            modelBuilder.Entity<NewsParseNeed>()
+                .HasIndex(error => error.NewsUrl);
+
+            modelBuilder.Entity<NewsParseNetworkError>()
+                .HasIndex(error => error.NewsUrl);
 
             modelBuilder.Entity<NewsParsePublishedAtSettings>()
                 .HasMany(settings => settings.Formats)

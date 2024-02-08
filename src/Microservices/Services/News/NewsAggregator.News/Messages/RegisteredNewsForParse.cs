@@ -2,11 +2,11 @@
 
 namespace NewsAggregator.News.Messages
 {
-    public class NotContainedNews : INotification
+    public class RegisteredNewsForParse : INotification
     {
         public string NewsUrl { get; }
 
-        public NotContainedNews(string newsUrl)
+        public RegisteredNewsForParse(string newsUrl)
         {
             NewsUrl = newsUrl;
         }

@@ -35,5 +35,12 @@ namespace NewsAggregator.News.Caching
         {
             return await _cache.GetAsync("availablenewssources", factory, cancellationToken);
         }
+
+        public async Task ClearAsync(CancellationToken cancellationToken = default)
+        {
+            await _cache.RemoveByPrefixAsync("newssource");
+            await _cache.RemoveByPrefixAsync("newssources");
+            await _cache.RemoveByPrefixAsync("availablenewssources");
+        }
     }
 }

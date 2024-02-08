@@ -92,22 +92,43 @@ namespace NewsAggregator.News.UseCases.Commands
             }
         }
 
-        internal class NotParsedNewsNotificationHandler : INotificationHandler<NotParsedNews>
+        internal class ThrowedExceptionWhenParseNewsNotificationHandler : INotificationHandler<ThrowedExceptionWhenParseNews>
         {
             private readonly IMessageBus _messageBus;
-            private readonly ILogger<NotParsedNewsNotificationHandler> _logger;
+            private readonly ILogger<ThrowedExceptionWhenParseNewsNotificationHandler> _logger;
 
-            public NotParsedNewsNotificationHandler(IMessageBus messageBus, ILogger<NotParsedNewsNotificationHandler> logger)
+            public ThrowedExceptionWhenParseNewsNotificationHandler(IMessageBus messageBus,
+                ILogger<ThrowedExceptionWhenParseNewsNotificationHandler> logger)
             {
                 _messageBus = messageBus;
                 _logger = logger;
             }
 
-            public async Task Handle(NotParsedNews notification, CancellationToken cancellationToken)
+            public async Task Handle(ThrowedExceptionWhenParseNews notification, CancellationToken cancellationToken)
             {
                 _logger.LogError("The news {0} parsing failed with an error {1}", notification.NewsUrl, notification.Message);
 
                 await _messageBus.SendAsync(notification, cancellationToken);
+            }
+
+            internal class ThrowedHttpRequestExceptionWhenParseNewsNotificationHandler : INotificationHandler<ThrowedHttpRequestExceptionWhenParseNews>
+            {
+                private readonly IMessageBus _messageBus;
+                private readonly ILogger<ThrowedHttpRequestExceptionWhenParseNewsNotificationHandler> _logger;
+
+                public ThrowedHttpRequestExceptionWhenParseNewsNotificationHandler(IMessageBus messageBus,
+                    ILogger<ThrowedHttpRequestExceptionWhenParseNewsNotificationHandler> logger)
+                {
+                    _messageBus = messageBus;
+                    _logger = logger;
+                }
+
+                public async Task Handle(ThrowedHttpRequestExceptionWhenParseNews notification, CancellationToken cancellationToken)
+                {
+                    _logger.LogError("The news {0} parsing failed with an error {1}", notification.NewsUrl, notification.Message);
+
+                    await _messageBus.SendAsync(notification, cancellationToken);
+                }
             }
         }
     }

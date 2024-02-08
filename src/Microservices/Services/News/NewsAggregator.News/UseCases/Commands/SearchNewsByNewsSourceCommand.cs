@@ -53,18 +53,18 @@ namespace NewsAggregator.News.UseCases.Commands
             }
         }
 
-        internal class FoundNewsUrlsNotificationHandler : INotificationHandler<FoundNewsUrls>
+        internal class FoundNewsListNotificationHandler : INotificationHandler<FoundNewsList>
         {
             private readonly IMessageBus _messageBus;
-            private readonly ILogger<FoundNewsUrlsNotificationHandler> _logger;
+            private readonly ILogger<FoundNewsListNotificationHandler> _logger;
 
-            public FoundNewsUrlsNotificationHandler(IMessageBus messageBus, ILogger<FoundNewsUrlsNotificationHandler> logger)
+            public FoundNewsListNotificationHandler(IMessageBus messageBus, ILogger<FoundNewsListNotificationHandler> logger)
             {
                 _messageBus = messageBus;
                 _logger = logger;
             }
 
-            public async Task Handle(FoundNewsUrls notification, CancellationToken cancellationToken)
+            public async Task Handle(FoundNewsList notification, CancellationToken cancellationToken)
             {
                 foreach (var newsUrl in notification.NewsUrls) 
                 {

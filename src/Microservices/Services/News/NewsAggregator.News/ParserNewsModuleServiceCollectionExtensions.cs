@@ -26,7 +26,7 @@ namespace NewsAggregator.News
             {
                 busConfigurator.SetKebabCaseEndpointNameFormatter();
 
-                busConfigurator.AddConsumer<NotContainedNewsMessageConsumer>();
+                busConfigurator.AddConsumer<RegisteredNewsForParseMessageConsumer>();
 
                 busConfigurator.UsingRabbitMq((context, configurator) =>
                 {

@@ -1,6 +1,9 @@
-﻿using FluentValidation;
+﻿using Amazon.Runtime.Internal.Util;
+using FluentValidation;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using NewsAggregator.Domain.Infrastructure.Databases;
+using NewsAggregator.Domain.Infrastructure.MessageBrokers;
 using NewsAggregator.Domain.Repositories;
 using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Entities;
@@ -136,6 +139,25 @@ namespace NewsAggregator.News.UseCases.Commands
                         return false;
                     }
                 }
+            }
+        }
+
+        internal class AddedNewsNotificationHandler : INotificationHandler<AddedNews>
+        {
+            private readonly IMessageBus _messageBus;
+            private readonly ILogger<AddedNewsNotificationHandler> _logger;
+
+            public AddedNewsNotificationHandler(IMessageBus messageBus, ILogger<AddedNewsNotificationHandler> logger)
+            {
+                _messageBus = messageBus;
+                _logger = logger;
+            }
+
+            public async Task Handle(AddedNews notification, CancellationToken cancellationToken)
+            {
+                _logger.LogInformation("Added news {0}", notification.NewsUrl);
+
+                await _messageBus.SendAsync(notification, cancellationToken);
             }
         }
     }

@@ -5,19 +5,21 @@ using NewsAggregator.News.UseCases.Commands;
 
 namespace NewsAggregator.News.MessageConsumers
 {
-    public class NotParsedNewsMessageConsumer : IConsumer<NotParsedNews>
+    public class ThrowedExceptionWhenParseNewsMessageConsumer : IConsumer<ThrowedExceptionWhenParseNews>
     {
         private readonly IMediator _mediator;
 
-        public NotParsedNewsMessageConsumer(IMediator mediator)
+        public ThrowedExceptionWhenParseNewsMessageConsumer(IMediator mediator)
         {
             _mediator = mediator;
         }
 
-        public async Task Consume(ConsumeContext<NotParsedNews> context)
+        public async Task Consume(ConsumeContext<ThrowedExceptionWhenParseNews> context)
         {
             await _mediator.Send(new AddNewsParseErrorCommand(context.Message.NewsUrl, context.Message.Message, 
                 context.Message.CreatedAt));
+
+            await _mediator.Send(new RemoveNewsForParseCommand(context.Message.NewsUrl));
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
 using MassTransit;
 using MediatR;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,9 +27,12 @@ namespace NewsAggregator.News
             {
                 busConfigurator.SetKebabCaseEndpointNameFormatter();
 
-                busConfigurator.AddConsumer<FoundNewsUrlsMessageConsumer>();
-                busConfigurator.AddConsumer<NotParsedNewsMessageConsumer>();
+                busConfigurator.AddConsumer<AddedNewsMessageConsumer>();
+                busConfigurator.AddConsumer<FoundNewsListMessageConsumer>();
+                busConfigurator.AddConsumer<FoundNotExistedNewsMessageConsumer>();
                 busConfigurator.AddConsumer<ParsedNewsMessageConsumer>();
+                busConfigurator.AddConsumer<ThrowedExceptionWhenParseNewsMessageConsumer>();
+                busConfigurator.AddConsumer<ThrowedHttpRequestExceptionWhenParseNewsMessageConsumer>();
 
                 busConfigurator.UsingRabbitMq((context, configurator) =>
                 {
@@ -81,6 +83,19 @@ namespace NewsAggregator.News
             using (var serviceScope = host.Services.GetService<IServiceScopeFactory>()?.CreateScope())
             {
                 serviceScope?.ServiceProvider.GetRequiredService<NewsDbContext>().Database.Migrate();
+            }
+        }
+
+        public static async Task ClearNewsSourceMemoryCache(this IHost host)
+        {
+            using (var serviceScope = host.Services.GetService<IServiceScopeFactory>()?.CreateScope())
+            {
+                var memoryCache = serviceScope?.ServiceProvider.GetRequiredService<INewsSourceMemoryCache>();
+
+                if (memoryCache is not null)
+                {
+                    await memoryCache.ClearAsync();
+                }
             }
         }
     }

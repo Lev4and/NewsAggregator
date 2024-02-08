@@ -2,7 +2,7 @@
 
 namespace NewsAggregator.News.Messages
 {
-    public class NotParsedNews : INotification
+    public class ThrowedHttpRequestExceptionWhenParseNews : INotification
     {
         public string NewsUrl { get; }
 
@@ -10,7 +10,7 @@ namespace NewsAggregator.News.Messages
 
         public DateTime CreatedAt { get; }
 
-        public NotParsedNews(string newsUrl, string message, DateTime createdAt)
+        public ThrowedHttpRequestExceptionWhenParseNews(string newsUrl, string message, DateTime createdAt)
         {
             NewsUrl = newsUrl;
             Message = message;
