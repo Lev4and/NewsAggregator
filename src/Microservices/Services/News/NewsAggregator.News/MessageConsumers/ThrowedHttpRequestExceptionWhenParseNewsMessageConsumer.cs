@@ -18,6 +18,8 @@ namespace NewsAggregator.News.MessageConsumers
         {
             await _mediator.Send(new AddNewsParseNetworkErrorCommand(context.Message.NewsUrl, context.Message.Message,
                 context.Message.CreatedAt));
+
+            await _mediator.Send(new RemoveNewsForParseCommand(context.Message.NewsUrl));
         }
     }
 }
