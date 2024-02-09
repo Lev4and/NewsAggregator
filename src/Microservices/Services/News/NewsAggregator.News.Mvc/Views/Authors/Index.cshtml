@@ -99,7 +99,7 @@
         <hr class="d-xl-none" />
     </div>
     <div class="col-xl-8">
-        <h1>Show @((Model.Result.Page - 1) * Model.Result.PageSize + Model.Result.Items.Count) from @Model.Result.GetFormattedTotalItems() news editors</h1>
+        <h1>Show @Model.Result.GetFormattedShowedItems() from @Model.Result.GetFormattedTotalItems() news editors</h1>
         <hr />
         <div class="authors-list-container mb-3">
             <div class="authors-list-container__grid row text-center g-3">

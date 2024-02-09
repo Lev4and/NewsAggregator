@@ -39,8 +39,6 @@ namespace NewsAggregator.News.HostedServices
                             continue;
                         }
                     }
-
-                    await Task.Delay(60 * 1000);
                 }
             }
         }

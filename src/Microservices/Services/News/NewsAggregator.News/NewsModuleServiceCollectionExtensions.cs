@@ -15,6 +15,7 @@ using NewsAggregator.News.Databases.EntityFramework.News;
 using NewsAggregator.News.Extensions;
 using NewsAggregator.News.MessageConsumers;
 using NewsAggregator.News.Pipelines;
+using NewsAggregator.News.Repositories;
 using System.Reflection;
 
 namespace NewsAggregator.News
@@ -86,15 +87,33 @@ namespace NewsAggregator.News
             }
         }
 
-        public static async Task ClearNewsSourceMemoryCache(this IHost host)
+        public static async Task RefreshNewsSourceMemoryCacheAsync(this IHost host)
         {
             using (var serviceScope = host.Services.GetService<IServiceScopeFactory>()?.CreateScope())
             {
                 var memoryCache = serviceScope?.ServiceProvider.GetRequiredService<INewsSourceMemoryCache>();
+                var newsSourceRepository = serviceScope?.ServiceProvider.GetRequiredService<INewsSourceRepository>();
 
-                if (memoryCache is not null)
+                if (memoryCache is not null && newsSourceRepository is not null)
                 {
-                    await memoryCache.ClearAsync();
+                    var newsSources = await newsSourceRepository.FindAvailableNewsSourcesExtendedAsync();
+
+                    await memoryCache.RemoveAvailableNewsSourcesAsync();
+
+                    foreach (var newsSource in newsSources)
+                    {
+                        await memoryCache.RemoveNewsSourceByIdAsync(newsSource.Id);
+
+                        await memoryCache.RemoveNewsSourceBySiteUrlAsync(newsSource.SiteUrl);
+
+                        await memoryCache.GetNewsSourceByIdAsync(newsSource.Id,
+                            () => Task.FromResult(newsSource));
+
+                        await memoryCache.GetNewsSourceBySiteUrlAsync(newsSource.SiteUrl,
+                            () => Task.FromResult(newsSource));
+                    }
+
+                    await memoryCache.GetAvailableNewsSourcesAsync(() => Task.FromResult(newsSources));
                 }
             }
         }

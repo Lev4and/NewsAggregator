@@ -4,6 +4,7 @@ using NewsAggregator.News.Extensions;
 using NewsAggregator.News.NewsSources;
 using NewsAggregator.News.Services.Parsers;
 using NewsAggregator.News.Services.Providers;
+using System.Collections.Concurrent;
 using Xunit.Abstractions;
 
 namespace NewsAggregator.News.Tests.Services.Parsers
@@ -60,11 +61,11 @@ namespace NewsAggregator.News.Tests.Services.Parsers
             var newsUrls = await ParseNewsUrlsAsync(newsSource);
             var newsUrlsEnumerator = newsUrls.GetEnumerator();
 
-            var parsedNews = new List<NewsDto>();
-            var notParsedNews = new Dictionary<string, Exception>();
+            var parsedNews = new ConcurrentBag<NewsDto>();
+            var notParsedNews = new ConcurrentDictionary<string, Exception>();
 
             await ParseNewsMultithreadedAsync(newsUrlsEnumerator, newsSource, (newsUrl, task) => parsedNews.Add(task.Result), 
-                (newsUrl, task) => notParsedNews.Add(newsUrl, task.Exception));
+                (newsUrl, task) => notParsedNews.TryAdd(newsUrl, task.Exception));
 
             OutputReportParseNews(newsSource, newsUrls, parsedNews, notParsedNews);
 
@@ -78,11 +79,11 @@ namespace NewsAggregator.News.Tests.Services.Parsers
             var newsUrls = await ParseNewsUrlsAsync(newsSource);
             var newsUrlsEnumerator = newsUrls.GetEnumerator();
 
-            var parsedNews = new List<NewsDto>();
-            var notParsedNews = new Dictionary<string, Exception>();
+            var parsedNews = new ConcurrentBag<NewsDto>();
+            var notParsedNews = new ConcurrentDictionary<string, Exception>();
 
             await ParseNewsMultithreadedAsync(newsUrlsEnumerator, newsSource, (newsUrl, task) => parsedNews.Add(task.Result), 
-                (newsUrl, task) => notParsedNews.Add(newsUrl, task.Exception));
+                (newsUrl, task) => notParsedNews.TryAdd(newsUrl, task.Exception));
 
             OutputReportParseNews(newsSource, newsUrls, parsedNews, notParsedNews);
 

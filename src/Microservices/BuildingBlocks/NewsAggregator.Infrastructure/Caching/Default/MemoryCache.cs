@@ -7,8 +7,6 @@ namespace NewsAggregator.Infrastructure.Caching.Default
 {
     public class MemoryCache : IMemoryCache
     {
-        private static readonly ConcurrentDictionary<string, bool> _cacheKeys = new();
-
         private readonly IDistributedCache _distributedCache;
 
         public MemoryCache(IDistributedCache distributedCache)
@@ -46,23 +44,11 @@ namespace NewsAggregator.Infrastructure.Caching.Default
                         ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                     }),
                 cancellationToken);
-
-            _cacheKeys.TryAdd(key, false);
         }
 
         public async Task RemoveAsync(string key, CancellationToken cancellationToken = default)
         {
             await _distributedCache.RemoveAsync(key, cancellationToken);
-
-            _cacheKeys.TryRemove(key, out var _);
-        }
-
-        public async Task RemoveByPrefixAsync(string prefixKey, CancellationToken cancellationToken = default)
-        {
-            var tasks = _cacheKeys.Keys.Where(key => key.StartsWith(prefixKey))
-                .Select(key => RemoveAsync(key, cancellationToken));
-
-            await Task.WhenAll(tasks);
         }
     }
 }

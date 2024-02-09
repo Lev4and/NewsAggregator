@@ -36,11 +36,19 @@ namespace NewsAggregator.News.Caching
             return await _cache.GetAsync("availablenewssources", factory, cancellationToken);
         }
 
-        public async Task ClearAsync(CancellationToken cancellationToken = default)
+        public async Task RemoveNewsSourceByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
-            await _cache.RemoveByPrefixAsync("newssource");
-            await _cache.RemoveByPrefixAsync("newssources");
-            await _cache.RemoveByPrefixAsync("availablenewssources");
+            await _cache.RemoveAsync($"newssource:{id}", cancellationToken);
+        }
+
+        public async Task RemoveNewsSourceBySiteUrlAsync(string siteUrl, CancellationToken cancellationToken = default)
+        {
+            await _cache.RemoveAsync($"newssource:{siteUrl}", cancellationToken);
+        }
+
+        public async Task RemoveAvailableNewsSourcesAsync(CancellationToken cancellationToken = default)
+        {
+            await _cache.RemoveAsync("availablenewssources", cancellationToken);
         }
     }
 }

@@ -3,6 +3,7 @@ using NewsAggregator.News.Extensions;
 using NewsAggregator.News.NewsSources;
 using NewsAggregator.News.Services.Parsers;
 using NewsAggregator.News.Services.Providers;
+using System.Collections.Concurrent;
 using Xunit.Abstractions;
 
 namespace NewsAggregator.News.Tests.Services.Parsers
@@ -55,11 +56,11 @@ namespace NewsAggregator.News.Tests.Services.Parsers
             var newsSourceEnumerator = new Sources().Where(source => source.IsEnabled)
                 .GetEnumerator();
 
-            var result = new Dictionary<string, int>();
+            var result = new ConcurrentDictionary<string, int>();
 
             await ParseNewsUrlsMultithreadedAsync(newsSourceEnumerator, 
-                (newsSource, newsUrls) => result.Add(newsSource.Title, newsUrls.Result.Count),
-                (newsSource, newsUrls) => result.Add(newsSource.Title, 0));
+                (newsSource, newsUrls) => result.TryAdd(newsSource.Title, newsUrls.Result.Count),
+                (newsSource, newsUrls) => result.TryAdd(newsSource.Title, 0));
 
             _output.WriteLine("\nReport:\n");
 

@@ -16,6 +16,10 @@ namespace NewsAggregator.News.Caching
         Task<IReadOnlyCollection<NewsSource>> GetAvailableNewsSourcesAsync(Func<Task<IReadOnlyCollection<NewsSource>>> factory, 
             CancellationToken cancellationToken = default);
 
-        Task ClearAsync(CancellationToken cancellationToken = default);
+        Task RemoveNewsSourceByIdAsync(Guid id, CancellationToken cancellationToken = default);
+
+        Task RemoveNewsSourceBySiteUrlAsync(string siteUrl, CancellationToken cancellationToken = default);
+
+        Task RemoveAvailableNewsSourcesAsync(CancellationToken cancellationToken = default);
     }
 }

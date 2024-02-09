@@ -89,7 +89,7 @@
         <hr class="d-xl-none" />
     </div>
     <div class="col-xl-8">
-        <h1>Show @((Model.Result.Page - 1) * Model.Result.PageSize + Model.Result.Items.Count) from @Model.Result.GetFormattedTotalItems() news sources</h1>
+        <h1>Show @Model.Result.GetFormattedShowedItems() from @Model.Result.GetFormattedTotalItems() news sources</h1>
         <hr />
         <div class="news-sources-container mb-3">
             <div class="news-sources-container__grid row g-3">

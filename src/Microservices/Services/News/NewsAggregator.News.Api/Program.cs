@@ -24,7 +24,7 @@ var app = builder.Build();
 
 app.MigrateNewsDb();
 
-await app.ClearNewsSourceMemoryCache();
+await app.RefreshNewsSourceMemoryCacheAsync();
 
 app.UseSwagger();
 app.UseSwaggerUI();

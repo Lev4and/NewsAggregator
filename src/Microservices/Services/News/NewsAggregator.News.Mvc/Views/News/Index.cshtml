@@ -145,7 +145,7 @@
         <hr class="d-xl-none" />
     </div>
     <div class="col-xl-8">
-        <h1>Show @((Model.Result.Page - 1) * Model.Result.PageSize + Model.Result.Items.Count) from @Model.Result.GetFormattedTotalItems() news</h1>
+        <h1>Show @Model.Result.GetFormattedShowedItems() from @Model.Result.GetFormattedTotalItems() news</h1>
         <hr />
         <div class="news-list-container mb-3">
             <div class="news-list-container__grid row g-3">
