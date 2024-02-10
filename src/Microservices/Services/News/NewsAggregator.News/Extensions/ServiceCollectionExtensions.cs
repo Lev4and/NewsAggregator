@@ -8,6 +8,8 @@ using NewsAggregator.News.NewsSources;
 using NewsAggregator.News.Services.Parsers;
 using NewsAggregator.News.Services.Providers;
 using NewsAggregator.News.Web.Http;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
 namespace NewsAggregator.News.Extensions
 {
@@ -38,8 +40,10 @@ namespace NewsAggregator.News.Extensions
 
             services.AddSingleton<NewsHttpClient>();
 
-            services.AddSingleton<INewsHtmlPageProvider, NewsHtmlPageProvider>();
-            services.AddSingleton<INewsListHtmlPageProvider, NewsListHtmlPageProvider>();
+            services.AddSingleton<IWebDriver, ChromeDriver>();
+
+            services.AddSingleton<INewsHtmlPageProvider, SeleniumNewsHtmlPageProvider>();
+            services.AddSingleton<INewsListHtmlPageProvider, SeleniumNewsListHtmlPageProvider>();
 
             services.AddSingleton<INewsParser, NewsAngleSharpParser>();
             services.AddSingleton<INewsUrlsParser, NewsUrlsAngleSharpParser>();

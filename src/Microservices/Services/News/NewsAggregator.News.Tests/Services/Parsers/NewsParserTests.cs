@@ -32,7 +32,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         }
 
         [Theory]
-        [InlineData("https://www.hltv.org/news/38143/eternal-fires-katowice-run-ended-by-navi")]
+        [InlineData("https://ria.ru/20240210/udar-1926580118.html")]
         public async Task ParseAsync_SpecificNewsUrl_ReturnNotNullResult(string newsUrl)
         {
             var newsSource = _sources[new Uri(newsUrl)];

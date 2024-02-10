@@ -35,6 +35,11 @@ namespace NewsAggregator.News.NewsSources
                         UrlXPath = "//div[@class='photoview__open']/img/@src",
                         IsRequired = false
                     },
+                    ParseVideoSettings = new NewsParseVideoSettings
+                    {
+                        UrlXPath = "//div[@class='article__header']//div[@class='media__video']//video/@src",
+                        IsRequired = false
+                    },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
                         TitleXPath = "//h1[@class='article__second-title']/text()",
@@ -94,6 +99,11 @@ namespace NewsAggregator.News.NewsSources
                     {
                         TitleXPath = "//div[contains(@class, 'article__summary')]/text()",
                         IsRequired = true
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//div[contains(@class, 'article__cover')]/img[@class='article__cover-image ']/@src",
+                        IsRequired = false
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
@@ -217,6 +227,11 @@ namespace NewsAggregator.News.NewsSources
                         UrlXPath = "//div[contains(@class, 'topic-body__title-image')]//img[contains(@class, 'picture__image')]/@src",
                         IsRequired = false
                     },
+                    ParseVideoSettings = new NewsParseVideoSettings
+                    {
+                        UrlXPath = "//div[contains(@class='eagleplayer')]//video/@src",
+                        IsRequired = false
+                    },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
                         TitleXPath = "//div[contains(@class, 'topic-body__title')]/text()",
@@ -257,11 +272,17 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[contains(@class, 'PageContentCommonStyling_text')]",
+                    DescriptionXPath = "//div[contains(@class, 'PageContentCommonStyling_text')]/*[not(name() = 'rg-video')]",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//div[contains(@class, 'PageArticleContent_authors')]//a[contains(@class, 'LinksOfAuthor_item')]/text()",
                         IsRequired = true
+                    },
+
+                    ParseVideoSettings = new NewsParseVideoSettings
+                    {
+                        UrlXPath = "//div[contains(@class, 'PageContentCommonStyling_text')]/rg-video//video/@src",
+                        IsRequired = false
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
@@ -500,7 +521,7 @@ namespace NewsAggregator.News.NewsSources
                     DescriptionXPath = "//div[@itemprop='articleBody']/*",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//div[contains(@class, 'big_photo')]//div[@class='big_photo__img']//img/@src",
+                        UrlXPath = "//div[contains(@class, 'big_photo')]//div[@class='big_photo__img']//img/@data-src",
                         IsRequired = true
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
@@ -1262,7 +1283,7 @@ namespace NewsAggregator.News.NewsSources
                     },
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//div[contains(@class, 'newsMediaContainer')]/img/@src",
+                        UrlXPath = "//div[contains(@class, 'newsMediaContainer')]/img/@data-src",
                         IsRequired = true,
                     },
                     ParseSubTitleSettings = new NewsParseSubTitleSettings

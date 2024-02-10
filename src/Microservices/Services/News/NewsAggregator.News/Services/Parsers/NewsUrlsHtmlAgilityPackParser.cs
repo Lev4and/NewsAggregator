@@ -26,12 +26,16 @@ namespace NewsAggregator.News.Services.Parsers
             {
                 var newsUrl = item.ToString() ?? "";
 
-                result.Add(!newsUrl.Contains(newsSiteUri.Host.Replace("www.", ""))
+                newsUrl = newsUrl.Split('?').First();
+
+                newsUrl = !newsUrl.Contains(newsSiteUri.Host.Replace("www.", ""))
                     ? $"{newsSiteUri.Scheme}://{newsSiteUri.Host}/{newsUrl.Substring(1)}"
-                        : newsUrl);
+                    : newsUrl;
+
+                result.Add(newsUrl);
             }
 
-            return Task.FromResult((IReadOnlyCollection<string>)result);
+            return Task.FromResult((IReadOnlyCollection<string>)result.Distinct().ToList());
         }
     }
 }
