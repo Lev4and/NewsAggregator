@@ -129,7 +129,7 @@ namespace NewsAggregator.News.Services.Parsers
                     : null;
             }
 
-            return Task.FromResult(new NewsDto(newsUrl, newsTitle, newsDescription, newsSubTitle, newsEditorName,
+            return Task.FromResult(new NewsDto(newsUrl, newsTitle, newsDescription, newsSubTitle, newsEditorName ?? "Unknown",
                 newsPictureUrl, newsVideoUrl, newsPublishedAt, newsModifiedAt, DateTime.UtcNow));
         }
     }

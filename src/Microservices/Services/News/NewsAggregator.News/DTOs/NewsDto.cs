@@ -8,7 +8,7 @@
 
         public string? SubTitle { get; }
 
-        public string? EditorName { get; }
+        public string EditorName { get; }
 
         public string? PictureUrl { get; }
 
@@ -22,7 +22,7 @@
 
         public DateTime ParsedAt { get; }
 
-        public NewsDto(string url, string title, string description, string? subTitle, string? editorName, 
+        public NewsDto(string url, string title, string description, string? subTitle, string editorName, 
             string? pictureUrl, string? videoUrl, DateTime? publishedAt, DateTime? modifiedAt, DateTime parsedAt)
         {
             Url = url;

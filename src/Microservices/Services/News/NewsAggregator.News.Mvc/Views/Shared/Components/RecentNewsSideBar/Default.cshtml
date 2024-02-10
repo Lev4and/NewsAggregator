@@ -1,18 +1,21 @@
 ﻿@model IReadOnlyCollection<News>
 
-<div class="vh-100 overflow-auto">
+<div class="recent-news-side-bar">
     <h4 class="fst-italic">Recent news</h4>
     <ul class="list-unstyled">
         @foreach (var news in Model)
         {
-            <li>
+            <li class="recent-news-side-bar__item">
                 <div class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 border-top">
                     <div class="col">
                         @if (news.Editor?.Source is not null)
                         {
-                            <a class="text-decoration-none" asp-route="Source" asp-route-id="@news.Editor.Source.Id">
-                                <small>@news.Editor.Source.Title</small>
-                            </a>
+                            <div class="recent-news-side-bar__item__news-source">
+                                <img class="recent-news-side-bar__item__news-source__logo" src="@news.Editor.Source.Logo?.Small" />
+                                <a class="recent-news-side-bar__item__news-source__title text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@news.Editor.Source.Title" asp-route="Source" asp-route-id="@news.Editor.Source.Id">
+                                    <small>@news.Editor.Source.Title</small>
+                                </a>
+                            </div>
                         }
                         <a class="text-decoration-none" asp-route="News" asp-route-id="@news.Id">
                             <h6 class="mb-0">@news.Title</h6>

@@ -1,0 +1,17 @@
+﻿@model NewsSource
+
+<div class="col-12 col-md-6 col-lg-4 news-sources-container__grid__item">
+    <a class="card shadow-sm" asp-route="Source" asp-route-id="@Model.Id">
+        @if (Model.Logo is not null)
+        {
+            <img class="bd-placeholder-img card-img-top" width="100%" height="225" ole="img" aria-label="Placeholder: Thumbnail" src="@Model.Logo.Original" />
+        }
+        else
+        {
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        }
+        <div class="card-body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@Model.Title">
+            <p class="news-sources-container__grid__item__title card-text text-center">@Model.Title</p>
+        </div>
+    </a>
+</div>

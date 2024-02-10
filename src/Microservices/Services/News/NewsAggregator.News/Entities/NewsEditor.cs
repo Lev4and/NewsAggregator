@@ -7,7 +7,7 @@ namespace NewsAggregator.News.Entities
     {
         public Guid SourceId { get; set; }
 
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
         public virtual NewsSource? Source { get; set; }
 

@@ -1,0 +1,20 @@
+﻿@model RadioButtonGroupModel
+
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="@Model.Name" id="@(Model.Name)RadioDefault" value="" @(Model.Value == null ? "checked": "")>
+    <label class="form-check-label" for="@(Model.Name)RadioDefault">
+        Doesn`t matter
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="@Model.Name" id="@(Model.Name)RadioYes" value="true" @(Model.Value == true ? "checked" : "")>
+    <label class="form-check-label" for="@(Model.Name)RadioYes">
+        Yes
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="@Model.Name" id="@(Model.Name)RadioNo" value="false" @(Model.Value == false ? "checked" : "")>
+    <label class="form-check-label" for="@(Model.Name)RadioNo">
+        No
+    </label>
+</div>

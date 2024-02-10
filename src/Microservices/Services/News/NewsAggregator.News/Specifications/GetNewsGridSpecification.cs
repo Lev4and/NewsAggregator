@@ -17,19 +17,29 @@ namespace NewsAggregator.News.Specifications
             AddInclude(news => news.Picture);
             AddInclude(news => news.Video);
 
-            if (filters.HasPublishedAtRequired)
+            if (filters.HasPublishedAt is not null)
             {
-                ApplyFilter(news => news.PublishedAt != null);
+                ApplyFilter(news => (news.PublishedAt != null) == filters.HasPublishedAt);
             }
 
-            if (filters.HasSubTitleRequired)
+            if (filters.HasModifiedAt is not null)
             {
-                ApplyFilter(news => news.SubTitle != null);
+                ApplyFilter(news => (news.ModifiedAt != null) == filters.HasModifiedAt);
             }
 
-            if (filters.HasPictureRequired)
+            if (filters.HasSubTitle is not null)
             {
-                ApplyFilter(news => news.Picture != null);
+                ApplyFilter(news => (news.SubTitle != null) == filters.HasSubTitle);
+            }
+
+            if (filters.HasPicture is not null)
+            {
+                ApplyFilter(news => (news.Picture != null) == filters.HasPicture);
+            }
+
+            if (filters.HasVideo is not null)
+            {
+                ApplyFilter(news => (news.Video != null) == filters.HasVideo);
             }
 
             if (!string.IsNullOrEmpty(filters.SearchString))

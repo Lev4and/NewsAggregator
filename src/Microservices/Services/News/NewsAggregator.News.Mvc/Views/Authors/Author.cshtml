@@ -1,15 +1,15 @@
 ﻿@model NewsEditor
 @{
-    ViewData["Title"] = Model.GetFormattedName();
+    ViewData["Title"] = Model.Name;
 }
 
-<h1>@Model.GetFormattedName()</h1>
+<h1>@Model.Name</h1>
 <hr />
 <div class="row g-3">
     <div class="col-12 col-lg-4 d-flex align-self-center justify-content-center">
         @if (Model.Source?.Logo is not null)
         {
-            <img class="bd-placeholder-img card-img-top" style="width: 225px; height: 225px; object-fit: cover" ole="img" aria-label="Placeholder: Thumbnail" src="@Model.Source.Logo.Url" />
+            <img class="bd-placeholder-img card-img-top" style="width: 225px; height: 225px; object-fit: cover" ole="img" aria-label="Placeholder: Thumbnail" src="@Model.Source.Logo.Original" />
         }
         else
         {

@@ -47,14 +47,6 @@ namespace NewsAggregator.News.Api.Controllers
             return Ok(await _mediator.Send(new ContainsNewsByUrlCommand(url), cancellationToken));
         }
 
-        [HttpPost]
-        [ProducesResponseType(typeof(ApiResponse<bool>), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> AddNewsAsync([Required][FromBody] NewsDto news, 
-            CancellationToken cancellationToken = default)
-        {
-            return Ok(await _mediator.Send(new AddNewsCommand(news), cancellationToken));
-        }
-
         [HttpGet]
         [Route("sources")]
         [ProducesResponseType(typeof(ApiResponse<IReadOnlyCollection<NewsSource>>), (int)HttpStatusCode.OK)]

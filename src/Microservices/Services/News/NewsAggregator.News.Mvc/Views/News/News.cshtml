@@ -3,37 +3,62 @@
     ViewData["Title"] = Model.Title;
 }
 
+@section Styles 
+{
+    <style>
+        span[itemprop="source"] a img[itemprop="logo"] {
+            width: 16px;
+            height: 16px;
+            object-fit: cover;
+        }
+    </style>
+}
+
 <div class="row g-5">
     <div class="col-md-8">
-        <article class="blog-post">
+        <article class="blog-post" source="@Model.Editor?.Source?.Title">
             <h1 class="display-5 link-body-emphasis mb-1" itemprop="headline">@Model.Title</h1>
             <p class="blog-post-meta">
                 @if (Model.PublishedAt is not null)
                 {
                     <span itemprop="datePublished">
                         Date of publication:
-                        <time datetime="@Model.PublishedAt?.ToString("dd-MM-yyyyTHH:mm:sszzz")">
-                            @Model.GetFormattedPublishedAt()
+                        <a class="text-decoration-none" asp-route="NewsList" asp-route-startPublishedAt="@Model.PublishedAt?.Date.ToString("yyyy-MM-ddTHH:mm:ss")" asp-route-endPublishedAt="@Model.PublishedAt?.AddDays(1).Date.ToString("yyyy-MM-ddTHH:mm:ss")">
+                            <time datetime="@Model.PublishedAt?.ToString("dd-MM-yyyyTHH:mm:sszzz")">
+                                @Model.GetFormattedPublishedAt()
+                            </time>
+                        </a>
+                    </span>
+                }
+                @if (Model.ModifiedAt is not null)
+                {
+                    <span itemprop="dateModified">
+                        Date of modified:
+                        <time datetime="@Model.ModifiedAt?.ToString("dd-MM-yyyyTHH:mm:sszzz")">
+                            @Model.GetFormattedModifiedAt()
                         </time>
                     </span>
                 }
                 @if (Model.Editor is not null)
                 {
                     <span itemprop="author">
-                        Author: <a asp-route="Author" asp-route-id="@Model.Editor.Id" itemprop="name">@Model.Editor.GetFormattedName()</a>
-                    </span>
-
-                    @if (Model.Editor.Source is not null)
-                    {
-                        <span itemprop="source">
-                            Source: <a asp-route="Source" asp-route-id="@Model.Editor.Source.Id" itemprop="title">@Model.Editor.Source.Title</a>
-                        </span>
-                    }
-
-                    <span itemprop="original">
-                        Original: <a href="@Model.Url">@Model.Url</a>
+                        Author: <a class="text-decoration-none" asp-route="Author" asp-route-id="@Model.Editor.Id" itemprop="name">@Model.Editor.Name</a>
                     </span>
                 }
+                @if (Model.Editor?.Source is not null)
+                {
+                    <span itemprop="source">
+                        Source:
+                        <a class="text-decoration-none" asp-route="Source" asp-route-id="@Model.Editor.Source.Id">
+                            <img itemprop="logo" src="@Model.Editor.Source.Logo?.Small" />
+                            <span itemprop="title">@Model.Editor.Source.Title</span>
+                        </a>
+                    </span>
+                }
+
+                <span itemprop="original">
+                    Original: <a class="text-decoration-none" href="@Model.Url">@Model.Url</a>
+                </span>
             </p>
             @if (Model.SubTitle is not null)
             {

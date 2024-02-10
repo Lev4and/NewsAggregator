@@ -23,14 +23,17 @@
                     <div class="carousel-caption">
                         @if (Model.ElementAt(i).Editor?.Source is not null)
                         {
-                            <a class="text-decoration-none" asp-route="Source" asp-route-id="@Model.ElementAt(i).Editor?.Source?.Id">
-                                <h2>@Model.ElementAt(i).Editor?.Source?.Title</h2>
-                            </a>
+                            <div class="carousel-caption__news-source">
+                                <img class="carousel-caption__news-source__logo" src="@Model.ElementAt(i).Editor?.Source?.Logo?.Small" />
+                                <a class="carousel-caption__news-source__title" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@Model.ElementAt(i).Editor?.Source?.Title" asp-route="Source" asp-route-id="@Model.ElementAt(i).Editor?.Source?.Id">
+                                    <span class="h4">@Model.ElementAt(i).Editor?.Source?.Title</span>
+                                </a>
+                            </div>
                         }
-                        <h1>@Model.ElementAt(i).Title</h1>
+                        <h1 class="carousel-caption__title" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@Model.ElementAt(i).Title">@Model.ElementAt(i).Title</h1>
                         @if (Model.ElementAt(i).SubTitle is not null)
                         {
-                            <p class="opacity-75">@Model.ElementAt(i).SubTitle?.Title</p>
+                            <p class="carousel-caption__sub-title opacity-75" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@Model.ElementAt(i).SubTitle?.Title">@Model.ElementAt(i).SubTitle?.Title</p>
                         }
                         <p>
                             <a class="btn btn-lg btn-primary" asp-route="News" asp-route-id="@Model.ElementAt(i).Id">

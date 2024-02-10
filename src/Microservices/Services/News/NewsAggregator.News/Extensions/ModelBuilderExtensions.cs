@@ -31,7 +31,7 @@ namespace NewsAggregator.News.Extensions
                     IsEnabled = newsSource.IsEnabled
                 });
 
-            if (!string.IsNullOrEmpty(newsSource.Logo?.Url))
+            if (!string.IsNullOrEmpty(newsSource.Logo?.Original))
             {
                 newsSource.Logo.Id = Guid.NewGuid();
                 newsSource.Logo.SourceId = newsSource.Id;
@@ -40,7 +40,8 @@ namespace NewsAggregator.News.Extensions
                 {
                     Id = newsSource.Logo.Id,
                     SourceId = newsSource.Logo.SourceId,
-                    Url = newsSource.Logo.Url
+                    Small = newsSource.Logo.Small,
+                    Original = newsSource.Logo.Original
                 });
             }
 

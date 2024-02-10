@@ -137,7 +137,7 @@ namespace NewsAggregator.News.Services.Parsers
                     : null;
             }
 
-            return new NewsDto(newsUrl, newsTitle, newsDescription, newsSubTitle, newsEditorName,
+            return new NewsDto(newsUrl, newsTitle, newsDescription, newsSubTitle, newsEditorName ?? "Unknown",
                 newsPictureUrl, newsVideoUrl, newsPublishedAt, newsModifiedAt, DateTime.UtcNow);
         }
     }

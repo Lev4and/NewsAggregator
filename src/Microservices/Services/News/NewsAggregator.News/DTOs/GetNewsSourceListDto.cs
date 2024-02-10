@@ -29,7 +29,19 @@ namespace NewsAggregator.News.DTOs
 
     public class GetNewsSourceListFilters
     {
-        public bool IsEnabledRequired { get; set; } = false;
+        public bool? IsEnabled { get; set; } = null;
+
+        public bool? SupportedParseSubTitle { get; set; } = null;
+
+        public bool? SupportedParsePublishedAt { get; set; } = null;
+
+        public bool? SupportedParseModifiedAt { get; set; } = null;
+
+        public bool? SupportedParseEditor { get; set; } = null;
+
+        public bool? SupportedParsePicture { get; set; } = null;
+
+        public bool? SupportedParseVideo { get; set; } = null;
 
         public long Page { get; set; } = 1;
 

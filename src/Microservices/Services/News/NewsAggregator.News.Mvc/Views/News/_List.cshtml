@@ -1,0 +1,12 @@
+﻿@model GetNewsListDto
+
+<h1 class="news-list-header" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@($"Show {Model.Result.GetFormattedShowedItems()} from {Model.Result.GetFormattedTotalItems()} news")">Show @Model.Result.GetFormattedShowedItems() from @Model.Result.GetFormattedTotalItems() news</h1>
+<hr />
+<div class="news-list-container mb-3">
+    <div class="news-list-container__grid row g-3">
+        @foreach (var news in Model.Result.Items)
+        {
+            <partial name="_ListItem" model="@news" />
+        }
+    </div>
+</div>

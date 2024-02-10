@@ -6,13 +6,27 @@
 @section Styles
 {
     <style>
-        div.news-sources-container div.news-sources-container__grid__item img {
+        .news-sources-header {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            text-overflow: ellipsis;
+            line-clamp: 1;
+            -webkit-box-orient: vertical;
+        }
+
+        .news-sources-container .news-sources-container__grid__item img {
             object-fit: cover;
         }
 
-        nav[aria-label="Page navigation"] a[class="page-link"] {
-            cursor: pointer;
-        }
+            .news-sources-container .news-sources-container__grid__item .news-sources-container__grid__item__title {
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                text-overflow: ellipsis;
+                line-clamp: 1;
+                -webkit-box-orient: vertical;
+            }
     </style>
 }
 
@@ -20,134 +34,11 @@
 <hr />
 <div class="row">
     <div class="col-xl-4">
-        <h1 class="mb-3">Filters</h1>
-        <hr />
-        <form id="newsSourceListForm" class="needs-validation" novalidate="" method="get" asp-route="Sources">
-            <input type="hidden" name="page" value="@Model.Filters.Page" />
-            <div class="row g-3">
-                <div class="col-12">
-                    <label for="searchStringTextInput" class="form-label">Search string</label>
-                    <input id="searchStringTextInput" class="form-control" type="text" placeholder="" name="searchString" value="@Model.Filters.SearchString">
-                </div>
-                <div class="col-12">
-                    @Html.CheckBox("isEnabledRequired", Model.Filters.IsEnabledRequired, new { @class = "form-check-input", id = "isEnabledRequiredCheck" })
-                    <label class="form-check-label" for="isEnabledRequiredCheck">
-                        Is enabled required
-                    </label>
-                </div>
-                <div class="col-12">
-                    <label for="sortBySelect" class="form-label">Sort by</label>
-                    <select class="form-select" id="sortBySelect" name="sortBy">
-                        @foreach (var sortOption in Model.SortingOptions)
-                        {
-                            @if (Model.Filters.SortBy == sortOption.Key)
-                            {
-                                <option value="@sortOption.Key" selected>
-                                    @sortOption.Value
-                                </option>
-                            }
-                            else
-                            {
-                                <option value="@sortOption.Key">
-                                    @sortOption.Value
-                                </option>
-                            }
-                        }
-                    </select>
-                </div>
-                <div class="col-12">
-                    <label for="pageSizeSelect" class="form-label">Page size</label>
-                    <select id="pageSizeSelect" class="form-select" name="pageSize">
-                        @foreach (var pageSize in Model.PageSizes)
-                        {
-                            @if (pageSize == Model.Filters.PageSize)
-                            {
-                                <option value="@pageSize" selected>
-                                    @pageSize
-                                </option>
-                            }
-                            else
-                            {
-                                <option value="@pageSize">
-                                    @pageSize
-                                </option>
-                            }
-                        }
-                    </select>
-                </div>
-            </div>
-            <hr class="my-4" />
-            <div class="d-grid gap-2">
-                <button class="w-100 btn btn-danger btn-lg" type="reset">
-                    <a class="text-decoration-none text-reset" asp-route="Sources">
-                        Reset filters
-                    </a>
-                </button>
-                <button class="w-100 btn btn-primary btn-lg" type="submit">Apply filters</button>
-            </div>
-        </form>
+        <partial name="_Filters" model="@Model" />
         <hr class="d-xl-none" />
     </div>
     <div class="col-xl-8">
-        <h1>Show @Model.Result.GetFormattedShowedItems() from @Model.Result.GetFormattedTotalItems() news sources</h1>
-        <hr />
-        <div class="news-sources-container mb-3">
-            <div class="news-sources-container__grid row g-3">
-                @foreach (var newsSource in Model.Result.Items)
-                {
-                    <div class="col-12 col-md-6 col-lg-4 news-sources-container__grid__item">
-                        <a class="card shadow-sm" asp-route="Source" asp-route-id="@newsSource.Id">
-                            @if (newsSource.Logo is not null)
-                            {
-                                <img class="bd-placeholder-img card-img-top" width="100%" height="225" ole="img" aria-label="Placeholder: Thumbnail" src="@newsSource.Logo.Url" />
-                            }
-                            else
-                            {
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                            }
-                            <div class="card-body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@newsSource.Title">
-                                <p class="card-text text-center">@newsSource.Title</p>
-                            </div>
-                        </a>
-                    </div>
-                }
-            </div>
-        </div>
-        <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center">
-                <li class="page-item @(Model.Filters.Page == 1 ? "disabled" : "")">
-                    <a class="page-link" aria-label="Previous" onclick="onClickPageItem(@(Model.Filters.Page - 1))">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                @foreach (var pageNumber in Model.Result.GetPageNumbers())
-                {
-                    <li class="page-item @(Model.Filters.Page == pageNumber ? "active" : "")">
-                        <a class="page-link" onclick="onClickPageItem(@pageNumber)">
-                            @pageNumber
-                        </a>
-                    </li>
-                }
-                <li class="page-item @(Model.Filters.Page == Model.Result.TotalPages ? "disabled" : "")">
-                    <a class="page-link" aria-label="Next" onclick="onClickPageItem(@(Model.Filters.Page + 1))">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <partial name="_List" model="@Model" />
+        <partial name="_Pagination" model="@Model.Result.ToPaginationModel("newsSourceListForm")" />
     </div>
 </div>
-
-@section Scripts
-{
-    <script type="text/javascript">
-        function onClickPageItem(pageNumber) {
-            const form = document.querySelector('form[id="newsSourceListForm"]');
-            const buttonForm = form.querySelector('button[type="submit"]');
-            const pageHiddenInput = form.querySelector('input[type="hidden"][name="page"]');
-
-            pageHiddenInput.setAttribute('value', pageNumber);
-            buttonForm.click();
-        }
-    </script>
-}

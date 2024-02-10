@@ -1,0 +1,12 @@
+﻿@model GetNewsSourceListDto
+
+<h1 class="news-sources-header" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@($"Show {Model.Result.GetFormattedShowedItems()} from {Model.Result.GetFormattedTotalItems()} news sources")">Show @Model.Result.GetFormattedShowedItems() from @Model.Result.GetFormattedTotalItems() news sources</h1>
+<hr />
+<div class="news-sources-container mb-3">
+    <div class="news-sources-container__grid row g-3">
+        @foreach (var newsSource in Model.Result.Items)
+        {
+            <partial name="_ListItem" model="@newsSource" />
+        }
+    </div>
+</div>

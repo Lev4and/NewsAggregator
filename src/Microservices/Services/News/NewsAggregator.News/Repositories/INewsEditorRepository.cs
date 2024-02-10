@@ -9,7 +9,7 @@ namespace NewsAggregator.News.Repositories
 
         Task<NewsEditor?> FindNewsEditorByIdAsync(Guid id, CancellationToken cancellationToken = default);
 
-        Task<NewsEditor> FindOneBySourceIdAndNameOrAddAsync(NewsEditor entity, Guid sourceId, string? name,
+        Task<NewsEditor> FindOneBySourceIdAndNameOrAddAsync(NewsEditor entity, Guid sourceId, string name,
             CancellationToken cancellationToken = default);
     }
 }

@@ -23,7 +23,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://cdnn21.img.ria.ru/i/favicons/favicon.svg"
+                    Small = "https://cdnn21.img.ria.ru/i/favicons/favicon.ico",
+                    Original = "https://cdnn21.img.ria.ru/i/favicons/favicon.svg"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -82,7 +83,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://russian.rt.com/static/img/listing-uwc-logo.png"
+                    Small = "https://russian.rt.com/favicon.ico",
+                    Original = "https://russian.rt.com/static/blocks/touch-icon/apple-touch-icon-144x144-precomposed.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -122,7 +124,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://tass.ru/favicon/180.svg"
+                    Small = "https://tass.ru/favicon/57.png",
+                    Original = "https://tass.ru/favicon/180.svg"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -197,7 +200,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://icdn.lenta.ru/images/icons/icon-256x256.png"
+                    Small = "https://icdn.lenta.ru/favicon.ico",
+                    Original = "https://icdn.lenta.ru/images/icons/icon-256x256.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -247,7 +251,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://cdnstatic.rg.ru/images/touch-icon-iphone-retina.png"
+                    Small = "https://rg.ru/favicon.ico",
+                    Original = "https://cdnstatic.rg.ru/images/touch-icon-ipad-retina_512x512.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -292,7 +297,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://chel.aif.ru/img/icon/apple-touch-icon.png?37f"
+                    Small = "https://aif.ru/img/icon/favicon-32x32.png?44f",
+                    Original = "https://aif.ru/img/icon/apple-touch-icon.png?44f"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -337,7 +343,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://s.rbk.ru/v10_rbcnews_static/common/common-10.10.116/images/apple-touch-icon-120x120.png"
+                    Small = "https://s.rbk.ru/v10_rbcnews_static/common/common-10.10.120/images/favicon.png",
+                    Original = "https://s.rbk.ru/v10_rbcnews_static/common/common-10.10.120/images/android-chrome-512x512.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -381,7 +388,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://www.sports.ru/apple-touch-icon-120.png"
+                    Small = "https://www.sports.ru/apple-touch-icon-76.png",
+                    Original = "https://www.sports.ru/apple-touch-icon-1024.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -420,7 +428,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://im.kommersant.ru/ContentFlex/images/favicons2020/apple-touch-icon-120.png"
+                    Small = "https://im.kommersant.ru/ContentFlex/images/favicons2020/favicon-32.png",
+                    Original = "https://im.kommersant.ru/ContentFlex/images/favicons2020/apple-touch-icon-180.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -482,7 +491,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://cdn.iz.ru/profiles/portal/themes/purple/images/favicons/apple-icon-120x120.png"
+                    Small = "https://cdn.iz.ru/profiles/portal/themes/purple/images/favicons/favicon-32x32.png",
+                    Original = "https://cdn.iz.ru/profiles/portal/themes/purple/images/favicons/android-icon-192x192.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -521,7 +531,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://ural.tsargrad.tv/favicons/apple-touch-icon-120x120.png?s2"
+                    Small = "https://tsargrad.tv/favicons/favicon-32x32.png?s2",
+                    Original = "https://tsargrad.tv/favicons/apple-touch-icon-180x180.png?s2"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -575,7 +586,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://www.belta.by/images/storage/banners/000016_a133e848cb2e7b1debb7102d19e4d139_work.svg"
+                    Small = "https://www.belta.by/images/storage/banners/000016_a133e848cb2e7b1debb7102d19e4d139_work.svg",
+                    Original = "https://www.belta.by/images/storage/banners/000016_a133e848cb2e7b1debb7102d19e4d139_work.svg"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -615,7 +627,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://svpressa.ru/favicon-96x96.png?v=1471426270000"
+                    Small = "https://svpressa.ru/favicon-32x32.png?v=1471426270000",
+                    Original = "https://svpressa.ru/favicon-96x96.png?v=1471426270000"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -659,7 +672,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://www.m24.ru/img/fav/apple-touch-icon.png"
+                    Small = "https://www.m24.ru/img/fav/favicon-32x32.png",
+                    Original = "https://www.m24.ru/img/fav/apple-touch-icon.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -707,7 +721,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://vz.ru/apple-touch-icon.png"
+                    Small = "https://vz.ru/static/images/favicon.ico",
+                    Original = "https://vz.ru/apple-touch-icon.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -752,7 +767,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://st.championat.com/i/favicon/apple-touch-icon.png"
+                    Small = "https://st.championat.com/i/favicon/favicon-32x32.png",
+                    Original = "https://st.championat.com/i/favicon/apple-touch-icon.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -797,7 +813,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://life.ru/appletouch/apple-icon-120х120.png"
+                    Small = "https://life.ru/favicon-32%D1%8532.png",
+                    Original = "https://life.ru/appletouch/apple-icon-180%D1%85180.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -851,7 +868,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://3dnews.ru/assets/images/3dnews_logo_soc.png"
+                    Small = "https://3dnews.ru/assets/3dnews_logo_color.png",
+                    Original = "https://3dnews.ru/assets/images/3dnews_logo_soc.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -900,7 +918,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://www.ixbt.com/favicon.ico"
+                    Small = "https://www.ixbt.com/favicon.ico",
+                    Original = "https://www.ixbt.com/favicon.ico"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -945,7 +964,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://ixbt.games/images/favicon/gt/apple-touch-icon.png"
+                    Small = "https://ixbt.games/images/favicon/gt/apple-touch-icon.png",
+                    Original = "https://ixbt.games/images/favicon/gt/apple-touch-icon.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -995,7 +1015,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://static.gazeta.ru/nm2021/img/icons/favicon.svg"
+                    Small = "https://static.gazeta.ru/nm2021/img/icons/favicon.svg",
+                    Original = "https://static.gazeta.ru/nm2021/img/icons/favicon.svg"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -1044,7 +1065,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://www.interfax.ru/touch-icon-iphone-retina.png"
+                    Small = "https://www.interfax.ru/touch-icon-iphone.png",
+                    Original = "https://www.interfax.ru/touch-icon-ipad-retina.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -1079,7 +1101,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://www.pravda.ru/pix/apple-touch-icon.png"
+                    Small = "https://www.pravda.ru/favicon.ico",
+                    Original = "https://www.pravda.ru/pix/apple-touch-icon.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -1129,7 +1152,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://ura.news/apple-touch-icon.png"
+                    Small = "https://s.ura.news/favicon.ico?3",
+                    Original = "https://ura.news/apple-touch-icon.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -1173,7 +1197,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://static.ngs.ru/jtnews/dist/static/favicons/apple/apple-favicon-74-120.png"
+                    Small = "https://static.ngs.ru/jtnews/dist/static/favicons/favicon-rugion-32.ico",
+                    Original = "https://static.ngs.ru/jtnews/dist/static/favicons/apple/apple-favicon-74-180.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -1223,7 +1248,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://www.1obl.ru/apple-touch-icon.png"
+                    Small = "https://www.1obl.ru/favicon-32x32.png",
+                    Original = "https://www.1obl.ru/apple-touch-icon.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -1272,7 +1298,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://www.cybersport.ru/favicon-192x192.png"
+                    Small = "https://www.cybersport.ru/favicon-32x32.png",
+                    Original = "https://www.cybersport.ru/favicon-192x192.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -1316,7 +1343,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://www.hltv.org/img/static/favicon/apple-touch-icon.png"
+                    Small = "https://www.hltv.org/img/static/favicon/favicon-32x32.png",
+                    Original = "https://www.hltv.org/img/static/favicon/apple-touch-icon.png"
                 },
                 ParseSettings = new NewsParseSettings 
                 {
@@ -1371,7 +1399,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://www.nytimes.com/vi-assets/static-assets/apple-touch-icon-28865b72953380a40aa43318108876cb.png"
+                    Small = "https://www.nytimes.com/vi-assets/static-assets/ios-default-homescreen-57x57-dark-b395ebcad5b63aff9285aab58e31035e.png",
+                    Original = "https://www.nytimes.com/vi-assets/static-assets/apple-touch-icon-28865b72953380a40aa43318108876cb.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
@@ -1420,7 +1449,8 @@ namespace NewsAggregator.News.NewsSources
                 IsEnabled = true,
                 Logo = new NewsSourceLogo
                 {
-                    Url = "https://edition.cnn.com/media/sites/cnn/apple-touch-icon.png"
+                    Small = "https://edition.cnn.com/media/sites/cnn/favicon.ico",
+                    Original = "https://edition.cnn.com/media/sites/cnn/apple-touch-icon.png"
                 },
                 ParseSettings = new NewsParseSettings
                 {
