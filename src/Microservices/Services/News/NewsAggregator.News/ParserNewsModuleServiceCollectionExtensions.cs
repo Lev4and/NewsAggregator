@@ -27,10 +27,7 @@ namespace NewsAggregator.News
             {
                 busConfigurator.SetKebabCaseEndpointNameFormatter();
 
-                busConfigurator.AddConsumer<RegisteredNewsForParseMessageConsumer>((context, configurator) =>
-                {
-                    configurator.UseConcurrentMessageLimit(5);
-                });
+                busConfigurator.AddConsumer<RegisteredNewsForParseMessageConsumer>();
 
                 busConfigurator.UsingRabbitMq((context, configurator) =>
                 {
@@ -66,7 +63,7 @@ namespace NewsAggregator.News
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipeline<,>));
 
-            services.AddSeleniumNewsProviders();
+            services.AddHttpClientNewsProviders();
             services.AddNewsAngleSharpParsers();
 
             return services;

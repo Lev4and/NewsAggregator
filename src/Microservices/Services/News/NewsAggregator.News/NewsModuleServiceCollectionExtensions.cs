@@ -74,7 +74,7 @@ namespace NewsAggregator.News
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipeline<,>));
 
-            services.AddSeleniumNewsProviders();
+            services.AddHttpClientNewsProviders();
             services.AddNewsAngleSharpParsers();
 
             return services;
