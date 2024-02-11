@@ -32,21 +32,44 @@ namespace NewsAggregator.News.Extensions
             return services;
         }
 
-        public static IServiceCollection AddNewsParsers(this IServiceCollection services) 
+        public static IServiceCollection AddSeleniumNewsProviders(this IServiceCollection services) 
         {
             services.AddSingleton<Sources>();
 
-            services.AddSingleton<HtmlParser>();
+            services.AddScoped<IWebDriver, ChromeDriver>();
+
+            services.AddScoped<INewsHtmlPageProvider, SeleniumNewsHtmlPageProvider>();
+            services.AddScoped<INewsListHtmlPageProvider, SeleniumNewsListHtmlPageProvider>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddHttpClientNewsProviders(this IServiceCollection services)
+        {
+            services.AddSingleton<Sources>();
 
             services.AddSingleton<NewsHttpClient>();
 
-            services.AddSingleton<IWebDriver, ChromeDriver>();
+            services.AddScoped<INewsHtmlPageProvider, HttpClientNewsHtmlPageProvider>();
+            services.AddScoped<INewsListHtmlPageProvider, HttpClientNewsListHtmlPageProvider>();
 
-            services.AddSingleton<INewsHtmlPageProvider, SeleniumNewsHtmlPageProvider>();
-            services.AddSingleton<INewsListHtmlPageProvider, SeleniumNewsListHtmlPageProvider>();
+            return services;
+        }
 
-            services.AddSingleton<INewsParser, NewsAngleSharpParser>();
-            services.AddSingleton<INewsUrlsParser, NewsUrlsAngleSharpParser>();
+        public static IServiceCollection AddNewsAngleSharpParsers(this IServiceCollection services) 
+        {
+            services.AddScoped<HtmlParser>();
+
+            services.AddScoped<INewsParser, NewsAngleSharpParser>();
+            services.AddScoped<INewsUrlsParser, NewsUrlsAngleSharpParser>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddNewsHtmlAgilityPackParsers(this IServiceCollection services)
+        {
+            services.AddScoped<INewsParser, NewsHtmlAgilityPackParser>();
+            services.AddScoped<INewsUrlsParser, NewsUrlsHtmlAgilityPackParser>();
 
             return services;
         }

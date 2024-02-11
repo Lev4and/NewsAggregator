@@ -1,5 +1,6 @@
 ﻿using HtmlAgilityPack;
 using NewsAggregator.News.DTOs;
+using NewsAggregator.News.Entities;
 using System.Globalization;
 
 namespace NewsAggregator.News.Services.Parsers
@@ -129,7 +130,7 @@ namespace NewsAggregator.News.Services.Parsers
                     : null;
             }
 
-            return Task.FromResult(new NewsDto(newsUrl, newsTitle, newsDescription, newsSubTitle, newsEditorName ?? "Unknown",
+            return Task.FromResult(new NewsDto(newsUrl, newsTitle, newsDescription, newsSubTitle, newsEditorName ?? NewsEditor.Empty,
                 newsPictureUrl, newsVideoUrl, newsPublishedAt, newsModifiedAt, DateTime.UtcNow));
         }
     }

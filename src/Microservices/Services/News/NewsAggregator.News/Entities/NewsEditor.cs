@@ -5,6 +5,8 @@ namespace NewsAggregator.News.Entities
 {
     public class NewsEditor : EntityBase
     {
+        public const string Empty = "Unknown";
+
         public Guid SourceId { get; set; }
 
         public string Name { get; set; }

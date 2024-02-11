@@ -1,5 +1,6 @@
 ﻿using AngleSharp.Html.Parser;
 using AngleSharp.XPath;
+using NewsAggregator.News.Extensions;
 
 namespace NewsAggregator.News.Services.Parsers
 {
@@ -35,7 +36,7 @@ namespace NewsAggregator.News.Services.Parsers
                 newsUrl = newsUrl.Split('?').First();
 
                 newsUrl = !newsUrl.Contains(newsSiteUri.Host.Replace("www.", ""))
-                    ? $"{newsSiteUri.Scheme}://{newsSiteUri.Host}/{newsUrl.Substring(1)}"
+                    ? $"{newsSiteUri.GetSiteUrl()}{newsUrl.Substring(1)}"
                     : newsUrl;
 
                 result.Add(newsUrl);

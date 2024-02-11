@@ -2,11 +2,11 @@
 
 namespace NewsAggregator.News.Services.Providers
 {
-    public class NewsListHtmlPageProvider : INewsListHtmlPageProvider
+    public class HttpClientNewsHtmlPageProvider : INewsHtmlPageProvider
     {
         private readonly NewsHttpClient _httpClient;
 
-        public NewsListHtmlPageProvider(NewsHttpClient httpClient)
+        public HttpClientNewsHtmlPageProvider(NewsHttpClient httpClient)
         {
             _httpClient = httpClient;
         }

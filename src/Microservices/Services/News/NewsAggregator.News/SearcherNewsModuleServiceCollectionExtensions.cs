@@ -11,9 +11,14 @@ using NewsAggregator.Infrastructure.MessageBrokers.RabbitMQ;
 using NewsAggregator.News.Caching;
 using NewsAggregator.News.ConfigurationOptions;
 using NewsAggregator.News.Databases.EntityFramework.News;
+using NewsAggregator.News.DTOs;
+using NewsAggregator.News.Entities;
 using NewsAggregator.News.Extensions;
 using NewsAggregator.News.HostedServices;
+using NewsAggregator.News.Messages;
 using NewsAggregator.News.Pipelines;
+using NewsAggregator.News.UseCases.Commands;
+using NewsAggregator.News.UseCases.Queries;
 using System.Reflection;
 
 namespace NewsAggregator.News
@@ -40,20 +45,8 @@ namespace NewsAggregator.News
 
             services.AddTransient<IMessageBus, RabbitMQMessageBus>();
 
-            services.AddDbContext<NewsDbContext>((options) =>
-            {
-                options.UseNpgsql(settings.ConnectionStrings.NewsDbPostgreSql)
-                    .UseSnakeCaseNamingConvention();
-            });
-
-            services.AddScoped<IUnitOfWork>(serviceProvider => serviceProvider.GetRequiredService<NewsDbContext>());
-
-            services.AddRepositories();
-
             services.AddDistributedMemoryCache();
             services.AddSingleton<IMemoryCache, MemoryCache>();
-            services.AddSingleton<INewsMemoryCache, NewsMemoryCache>();
-            services.AddSingleton<INewsEditorMemoryCache, NewsEditorMemoryCache>();
             services.AddSingleton<INewsSourceMemoryCache, NewsSourceMemoryCache>();
 
             services.AddStackExchangeRedisCache(redisOptions =>
@@ -61,11 +54,18 @@ namespace NewsAggregator.News
                 redisOptions.Configuration = settings.Caching.Redis.ConnectionString;
             });
 
-            services.AddMediatR(config => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            services.AddMediatR(config => config.RegisterServicesFromAssembly(typeof(IMediator).Assembly));
+
+            services.AddScoped<IRequestHandler<GetAvailableNewsSourcesQuery, IReadOnlyCollection<NewsSource>>, GetAvailableNewsSourcesQuery.Handler>();
+            services.AddScoped<IRequestHandler<SearchNewsByNewsSourceCommand, IReadOnlyCollection<string>>, SearchNewsByNewsSourceCommand.Handler>();
+
+            services.AddScoped<INotificationHandler<FoundNewsList>, SearchNewsByNewsSourceCommand.FoundNewsListNotificationHandler>();
+
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipeline<,>));
 
-            services.AddNewsParsers();
+            services.AddHttpClientNewsProviders();
+            services.AddNewsAngleSharpParsers();
 
             services.AddHostedService<SearchingNewsWorker>();
 

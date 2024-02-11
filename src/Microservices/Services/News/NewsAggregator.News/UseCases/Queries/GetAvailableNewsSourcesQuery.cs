@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using NewsAggregator.News.Caching;
 using NewsAggregator.News.Entities;
-using NewsAggregator.News.Repositories;
 
 namespace NewsAggregator.News.UseCases.Queries
 {
@@ -10,23 +9,16 @@ namespace NewsAggregator.News.UseCases.Queries
         internal class Handler : IRequestHandler<GetAvailableNewsSourcesQuery, IReadOnlyCollection<NewsSource>>
         {
             private readonly INewsSourceMemoryCache _cache;
-            private readonly INewsSourceRepository _repository;
 
-            public Handler(INewsSourceMemoryCache cache, INewsSourceRepository repository)
+            public Handler(INewsSourceMemoryCache cache)
             {
                 _cache = cache;
-                _repository = repository;
             }
 
             public async Task<IReadOnlyCollection<NewsSource>> Handle(GetAvailableNewsSourcesQuery request,
                 CancellationToken cancellationToken)
             {
-                return await _cache.GetAvailableNewsSourcesAsync(
-                    async () =>
-                    {
-                        return await _repository.FindAvailableNewsSourcesExtendedAsync(cancellationToken);
-                    }, 
-                    cancellationToken);
+                return await _cache.GetAvailableNewsSourcesAsync(cancellationToken);
             }
         }
     }

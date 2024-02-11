@@ -3,6 +3,7 @@ using AngleSharp.Html.Dom;
 using AngleSharp.Html.Parser;
 using AngleSharp.XPath;
 using NewsAggregator.News.DTOs;
+using NewsAggregator.News.Entities;
 using NewsAggregator.News.Web.Http;
 using System.Globalization;
 
@@ -137,7 +138,7 @@ namespace NewsAggregator.News.Services.Parsers
                     : null;
             }
 
-            return new NewsDto(newsUrl, newsTitle, newsDescription, newsSubTitle, newsEditorName ?? "Unknown",
+            return new NewsDto(newsUrl, newsTitle, newsDescription, newsSubTitle, newsEditorName ?? NewsEditor.Empty,
                 newsPictureUrl, newsVideoUrl, newsPublishedAt, newsModifiedAt, DateTime.UtcNow);
         }
     }

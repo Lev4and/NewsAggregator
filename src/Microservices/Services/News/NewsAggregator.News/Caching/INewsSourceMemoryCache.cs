@@ -10,8 +10,13 @@ namespace NewsAggregator.News.Caching
         Task<NewsSource> GetNewsSourceByIdAsync(Guid id, Func<Task<NewsSource>> factory,
             CancellationToken cancellationToken = default);
 
+        Task<NewsSource?> GetNewsSourceBySiteUrlAsync(string siteUrl,
+            CancellationToken cancellationToken = default);
+
         Task<NewsSource> GetNewsSourceBySiteUrlAsync(string siteUrl, Func<Task<NewsSource>> factory,
             CancellationToken cancellationToken = default);
+
+        Task<IReadOnlyCollection<NewsSource>> GetAvailableNewsSourcesAsync(CancellationToken cancellationToken = default);
 
         Task<IReadOnlyCollection<NewsSource>> GetAvailableNewsSourcesAsync(Func<Task<IReadOnlyCollection<NewsSource>>> factory, 
             CancellationToken cancellationToken = default);

@@ -28,7 +28,7 @@ namespace NewsAggregator.News.Benchmarks.Services.Parsers
             _newsUrl = "https://www.championat.com/football/news-5402390-messi-i-di-mariya-mogut-sygrat-za-argentinu-na-olimpijskih-igrah-2024-v-parizhe.html";
             _newsSource = new Sources()[new Uri("https://www.championat.com/")];
 
-            _newsHtmlPageProvider = new NewsHtmlPageProvider(new NewsHttpClient());
+            _newsHtmlPageProvider = new HttpClientNewsHtmlPageProvider(new NewsHttpClient());
 
             _newsAngleSharpParser = new NewsAngleSharpParser(new HtmlParser());
             _newsHtmlAgilityPackParser = new NewsHtmlAgilityPackParser();

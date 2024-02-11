@@ -7,7 +7,6 @@ using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Exceptions;
 using NewsAggregator.News.Extensions;
 using NewsAggregator.News.Messages;
-using NewsAggregator.News.Repositories;
 using NewsAggregator.News.Services.Parsers;
 using NewsAggregator.News.Services.Providers;
 
@@ -33,16 +32,14 @@ namespace NewsAggregator.News.UseCases.Commands
         internal class Handler : IRequestHandler<ParseNewsCommand, NewsDto>
         {
             private readonly INewsSourceMemoryCache _cache;
-            private readonly INewsParser _parser;
-            private readonly INewsSourceRepository _repository;
+            private readonly INewsParser _newsParser;
             private readonly INewsHtmlPageProvider _newsHtmlPageProvider;
 
-            public Handler(INewsSourceMemoryCache cache, INewsParser parser, INewsSourceRepository repository, 
+            public Handler(INewsSourceMemoryCache cache, INewsParser newsParser, 
                 INewsHtmlPageProvider newsHtmlPageProvider)
             {
                 _cache = cache;
-                _parser = parser;
-                _repository = repository;
+                _newsParser = newsParser;
                 _newsHtmlPageProvider = newsHtmlPageProvider;
             }
 
@@ -50,12 +47,7 @@ namespace NewsAggregator.News.UseCases.Commands
             {
                 var newsUri = new Uri(request.NewsUrl);
 
-                var newsSource = await _cache.GetNewsSourceBySiteUrlAsync($"{newsUri.Scheme}://{newsUri.Host}/",
-                    async() =>
-                    {
-                        return await _repository.FindNewsSourceBySiteUrlAsync($"{newsUri.Scheme}://{newsUri.Host}/",
-                            cancellationToken) ?? throw new NewsSourceNotFoundException(newsUri.Host);
-                    },
+                var newsSource = await _cache.GetNewsSourceBySiteUrlAsync(newsUri.GetSiteUrl(),
                     cancellationToken);
 
                 if (newsSource is not null && newsSource.ParseSettings is not null)
@@ -63,7 +55,7 @@ namespace NewsAggregator.News.UseCases.Commands
                     var html = await _newsHtmlPageProvider.ProvideAsync(request.NewsUrl, 
                         cancellationToken);
 
-                    return await _parser.ParseAsync(request.NewsUrl, html, 
+                    return await _newsParser.ParseAsync(request.NewsUrl, html, 
                         newsSource.ParseSettings.ToNewsParserOptions(), cancellationToken);
                 }
                 else
@@ -110,25 +102,25 @@ namespace NewsAggregator.News.UseCases.Commands
 
                 await _messageBus.SendAsync(notification, cancellationToken);
             }
+        }
 
-            internal class ThrowedHttpRequestExceptionWhenParseNewsNotificationHandler : INotificationHandler<ThrowedHttpRequestExceptionWhenParseNews>
+        internal class ThrowedHttpRequestExceptionWhenParseNewsNotificationHandler : INotificationHandler<ThrowedHttpRequestExceptionWhenParseNews>
+        {
+            private readonly IMessageBus _messageBus;
+            private readonly ILogger<ThrowedHttpRequestExceptionWhenParseNewsNotificationHandler> _logger;
+
+            public ThrowedHttpRequestExceptionWhenParseNewsNotificationHandler(IMessageBus messageBus,
+                ILogger<ThrowedHttpRequestExceptionWhenParseNewsNotificationHandler> logger)
             {
-                private readonly IMessageBus _messageBus;
-                private readonly ILogger<ThrowedHttpRequestExceptionWhenParseNewsNotificationHandler> _logger;
+                _messageBus = messageBus;
+                _logger = logger;
+            }
 
-                public ThrowedHttpRequestExceptionWhenParseNewsNotificationHandler(IMessageBus messageBus,
-                    ILogger<ThrowedHttpRequestExceptionWhenParseNewsNotificationHandler> logger)
-                {
-                    _messageBus = messageBus;
-                    _logger = logger;
-                }
+            public async Task Handle(ThrowedHttpRequestExceptionWhenParseNews notification, CancellationToken cancellationToken)
+            {
+                _logger.LogError("The news {0} parsing failed with an error {1}", notification.NewsUrl, notification.Message);
 
-                public async Task Handle(ThrowedHttpRequestExceptionWhenParseNews notification, CancellationToken cancellationToken)
-                {
-                    _logger.LogError("The news {0} parsing failed with an error {1}", notification.NewsUrl, notification.Message);
-
-                    await _messageBus.SendAsync(notification, cancellationToken);
-                }
+                await _messageBus.SendAsync(notification, cancellationToken);
             }
         }
     }

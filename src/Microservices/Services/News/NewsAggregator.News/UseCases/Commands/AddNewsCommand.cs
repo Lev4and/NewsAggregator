@@ -8,8 +8,10 @@ using NewsAggregator.Domain.Repositories;
 using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Entities;
 using NewsAggregator.News.Exceptions;
+using NewsAggregator.News.Extensions;
 using NewsAggregator.News.Messages;
 using NewsAggregator.News.Repositories;
+using System.Runtime.CompilerServices;
 
 namespace NewsAggregator.News.UseCases.Commands
 {
@@ -55,7 +57,7 @@ namespace NewsAggregator.News.UseCases.Commands
                         var newsSourceSiteUri = new Uri(request.News.Url);
 
                         var newsSource = await _newsSourceRepository.FindNewsSourceBySiteUrlAsync(
-                            $"{newsSourceSiteUri.Scheme}://{newsSourceSiteUri.Host}/", cancellationToken);
+                            newsSourceSiteUri.GetSiteUrl(), cancellationToken);
 
                         if (newsSource is null)
                         {

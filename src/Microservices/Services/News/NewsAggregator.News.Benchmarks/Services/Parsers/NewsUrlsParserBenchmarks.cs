@@ -26,7 +26,7 @@ namespace NewsAggregator.News.Benchmarks.Services.Parsers
         {
             _newsSource = new Sources()[new Uri("https://www.championat.com/")];
 
-            _newsListHtmlPageProvider = new NewsListHtmlPageProvider(new NewsHttpClient());
+            _newsListHtmlPageProvider = new HttpClientNewsListHtmlPageProvider(new NewsHttpClient());
 
             _newsUrlsAngleSharpParser = new NewsUrlsAngleSharpParser(new HtmlParser());
             _newsUrlsHtmlAgilityPackParser = new NewsUrlsHtmlAgilityPackParser();

@@ -24,10 +24,23 @@ namespace NewsAggregator.News.Caching
             return await _cache.GetAsync($"newssource:{id}", factory, cancellationToken);
         }
 
+        public async Task<NewsSource?> GetNewsSourceBySiteUrlAsync(string siteUrl, 
+            CancellationToken cancellationToken = default)
+        {
+            return await _cache.GetAsync<NewsSource>($"newssource:{siteUrl}", cancellationToken);
+        }
+
         public async Task<NewsSource> GetNewsSourceBySiteUrlAsync(string siteUrl, Func<Task<NewsSource>> factory, 
             CancellationToken cancellationToken = default)
         {
             return await _cache.GetAsync($"newssource:{siteUrl}", factory, cancellationToken);
+        }
+
+        public async Task<IReadOnlyCollection<NewsSource>> GetAvailableNewsSourcesAsync(
+            CancellationToken cancellationToken = default)
+        {
+            return await _cache.GetAsync<IReadOnlyCollection<NewsSource>>("availablenewssources", cancellationToken)
+                ?? new List<NewsSource>();
         }
 
         public async Task<IReadOnlyCollection<NewsSource>> GetAvailableNewsSourcesAsync(

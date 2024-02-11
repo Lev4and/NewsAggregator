@@ -237,7 +237,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
                 }
             }
 
-            var newsUrlsWithoutEditorName = parsedNews.Where(news => news.EditorName == "Unknown")
+            var newsUrlsWithoutEditorName = parsedNews.Where(news => news.EditorName == NewsEditor.Empty)
                 .Select(news => news.Url)
                 .ToList();
 
