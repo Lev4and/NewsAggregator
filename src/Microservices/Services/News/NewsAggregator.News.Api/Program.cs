@@ -2,9 +2,13 @@ using NewsAggregator.Infrastructure.Web.Middlewares;
 using NewsAggregator.News;
 using NewsAggregator.News.ConfigurationOptions;
 using NewsAggregator.News.Web.Middlewares;
+using Serilog;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((context, loggerConfig) =>
+    loggerConfig.ReadFrom.Configuration(context.Configuration));
 
 var appSettings = new AppSettings();
 
@@ -30,6 +34,9 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
+
+app.UseSerilogRequestLogging();
+
 app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();

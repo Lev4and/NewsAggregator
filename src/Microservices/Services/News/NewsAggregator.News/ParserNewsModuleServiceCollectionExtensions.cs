@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using MassTransit;
+﻿using MassTransit;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +14,6 @@ using NewsAggregator.News.MessageConsumers;
 using NewsAggregator.News.Messages;
 using NewsAggregator.News.Pipelines;
 using NewsAggregator.News.UseCases.Commands;
-using System.Reflection;
 
 namespace NewsAggregator.News
 {

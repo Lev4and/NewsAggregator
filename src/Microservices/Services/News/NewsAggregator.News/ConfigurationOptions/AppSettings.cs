@@ -1,5 +1,6 @@
 ﻿using NewsAggregator.Infrastructure.Caching;
 using NewsAggregator.Infrastructure.MessageBrokers;
+using NewsAggregator.Infrastructure.WebScraping;
 using NewsAggregator.News.Databases;
 
 namespace NewsAggregator.News.ConfigurationOptions
@@ -11,5 +12,7 @@ namespace NewsAggregator.News.ConfigurationOptions
         public MessageBrokerOptions MessageBroker { get; set; }
 
         public CachingOptions Caching { get; set; }
+
+        public WebScrapingOptions WebScraping { get; set; }
     }
 }

@@ -19,6 +19,7 @@ using NewsAggregator.News.Messages;
 using NewsAggregator.News.Pipelines;
 using NewsAggregator.News.UseCases.Commands;
 using NewsAggregator.News.UseCases.Queries;
+using OpenQA.Selenium.Chrome;
 using System.Reflection;
 
 namespace NewsAggregator.News

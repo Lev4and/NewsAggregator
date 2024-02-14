@@ -3,6 +3,7 @@ version: "3.6"
 services:
   redis:
     image: redis/redis-stack:latest
+    container_name: redis
     restart: always
     ports:
       - 6379:6379

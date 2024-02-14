@@ -3,6 +3,7 @@ using HtmlAgilityPack;
 using MassTransit.Internals;
 using Microsoft.Extensions.DependencyInjection;
 using NewsAggregator.Domain.Repositories;
+using NewsAggregator.Infrastructure.WebScraping;
 using NewsAggregator.News.Databases.EntityFramework.News.Repositories;
 using NewsAggregator.News.NewsSources;
 using NewsAggregator.News.Services.Parsers;
@@ -10,6 +11,7 @@ using NewsAggregator.News.Services.Providers;
 using NewsAggregator.News.Web.Http;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
 
 namespace NewsAggregator.News.Extensions
 {
@@ -32,11 +34,11 @@ namespace NewsAggregator.News.Extensions
             return services;
         }
 
-        public static IServiceCollection AddSeleniumNewsProviders(this IServiceCollection services) 
+        public static IServiceCollection AddSeleniumNewsProviders(this IServiceCollection services, Uri seleniumHubRemoteUrl, DriverOptions driverOptions) 
         {
             services.AddSingleton<Sources>();
 
-            services.AddScoped<IWebDriver, ChromeDriver>();
+            services.AddScoped<IWebDriver, RemoteWebDriver>(factory => new RemoteWebDriver(seleniumHubRemoteUrl, driverOptions));
 
             services.AddScoped<INewsHtmlPageProvider, SeleniumNewsHtmlPageProvider>();
             services.AddScoped<INewsListHtmlPageProvider, SeleniumNewsListHtmlPageProvider>();

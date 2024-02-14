@@ -45,6 +45,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.News.Parser"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.News.Searcher", "src\Microservices\Services\News\NewsAggregator.News.Searcher\NewsAggregator.News.Searcher.csproj", "{DB49B646-4D54-448B-B72B-61A1D3E01AAA}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{615D7726-0F7C-439C-9300-6C369C4A0683}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{DB49B646-4D54-448B-B72B-61A1D3E01AAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB49B646-4D54-448B-B72B-61A1D3E01AAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB49B646-4D54-448B-B72B-61A1D3E01AAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{615D7726-0F7C-439C-9300-6C369C4A0683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{615D7726-0F7C-439C-9300-6C369C4A0683}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{615D7726-0F7C-439C-9300-6C369C4A0683}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{615D7726-0F7C-439C-9300-6C369C4A0683}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

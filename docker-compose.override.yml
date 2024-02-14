@@ -1,0 +1,131 @@
+version: '3.4'
+
+services:
+  newsaggregator.gateways.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+    ports:
+      - "5000:8080"
+      - "5001:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+  newsaggregator.news.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+    ports:
+      - "5100:8080"
+      - "5101:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  newsaggregator.news.mvc:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+    ports:
+      - "5200:8080"
+      - "5201:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  newsaggregator.news.parser:
+    environment:
+      - DOTNET_ENVIRONMENT=Development
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+
+  newsaggregator.news.searcher:
+    environment:
+      - DOTNET_ENVIRONMENT=Development
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+  
+  postgres:
+    environment:
+      POSTGRES_PASSWORD: sa
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+      - ./postgres-scripts:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432
+
+  pgadmin:
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@lev4and.ru
+      PGADMIN_DEFAULT_PASSWORD: sa
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - 5050:80
+    volumes:
+      - ./pgadmin-data:/var/lib/pgadmin
+  
+  rabbitmq:
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    volumes:
+      - ./rabbitmq:/var/lib/rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+  redis:
+    ports:
+      - 6379:6379
+      - 8001:8001
+  
+  chrome:
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=24
+
+  selenium.hub:
+    ports:
+      - 4442:4442
+      - 4443:4443
+      - 4444:4444
+
+  newsaggregator.gateways.api.seq:
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5341:5341
+      - 8081:80
+  
+  newsaggregator.news.api.seq:
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5342:5341
+      - 8082:80
+  
+  newsaggregator.news.mvc.seq:
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5343:5341
+      - 8083:80
+  
+  newsaggregator.news.parser.seq:
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5344:5341
+      - 8084:80
+  
+  newsaggregator.news.searcher.seq:
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5345:5341
+      - 8085:80

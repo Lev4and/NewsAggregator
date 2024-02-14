@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "newsaggregator.gateways.api": "StartDebugging",
+        "newsaggregator.news.api": "StartDebugging",
+        "newsaggregator.news.mvc": "StartDebugging",
+        "newsaggregator.news.parser": "StartDebugging",
+        "newsaggregator.news.searcher": "StartDebugging"
+      }
+    }
+  }
+}

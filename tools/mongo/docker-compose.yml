@@ -3,6 +3,7 @@ version: "3.6"
 services:
   mongo:
     image: mongo:latest
+    container_name: mongo
     restart: always
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
@@ -10,4 +11,4 @@ services:
     volumes:
       - ./mongo-data:/data/db
     ports:
-      - "27017:27017"
+      - 27017:27017
