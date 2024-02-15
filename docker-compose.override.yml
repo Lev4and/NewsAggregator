@@ -4,22 +4,23 @@ services:
   newsaggregator.gateways.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_HTTP_PORTS=8080
-      - ASPNETCORE_HTTPS_PORTS=8081
+      - ASPNETCORE_HTTP_PORTS=5000
+      - ASPNETCORE_HTTPS_PORTS=5001
     ports:
-      - "5000:8080"
-      - "5001:8081"
+      - "5000:5000"
+      - "5001:5001"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
   newsaggregator.news.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_HTTP_PORTS=8080
-      - ASPNETCORE_HTTPS_PORTS=8081
+      - ASPNETCORE_HTTP_PORTS=5100
+      - ASPNETCORE_HTTPS_PORTS=5101
     ports:
-      - "5100:8080"
-      - "5101:8081"
+      - "5100:5100"
+      - "5101:5101"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
@@ -27,11 +28,11 @@ services:
   newsaggregator.news.mvc:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_HTTP_PORTS=8080
-      - ASPNETCORE_HTTPS_PORTS=8081
+      - ASPNETCORE_HTTP_PORTS=5200
+      - ASPNETCORE_HTTPS_PORTS=5201
     ports:
-      - "5200:8080"
-      - "5201:8081"
+      - "5200:5200"
+      - "5201:5201"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
@@ -82,18 +83,18 @@ services:
       - 6379:6379
       - 8001:8001
   
-  chrome:
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-      - SE_NODE_MAX_SESSIONS=24
+  # chrome:
+  #   environment:
+  #     - SE_EVENT_BUS_HOST=selenium-hub
+  #     - SE_EVENT_BUS_PUBLISH_PORT=4442
+  #     - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  #     - SE_NODE_MAX_SESSIONS=24
 
-  selenium.hub:
-    ports:
-      - 4442:4442
-      - 4443:4443
-      - 4444:4444
+  # selenium.hub:
+  #   ports:
+  #     - 4442:4442
+  #     - 4443:4443
+  #     - 4444:4444
 
   newsaggregator.gateways.api.seq:
     environment:

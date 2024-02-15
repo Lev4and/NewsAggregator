@@ -23,8 +23,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
-
 app.UseSerilogRequestLogging();
 
 app.UseStaticFiles();

@@ -22,20 +22,20 @@ namespace NewsAggregator.News.Api.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(typeof(ApiResponse<GetNewsListDto>), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> GetNewsListByFiltersAsync([FromQuery] GetNewsListFilters filters,
+            CancellationToken cancellationToken = default)
+        {
+            return Ok(await _mediator.Send(new GetNewsListQuery(filters), cancellationToken));
+        }
+
+        [HttpGet]
         [Route("{id:guid:required}")]
         [ProducesResponseType(typeof(ApiResponse<Entities.News>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetNewsByIdAsync([Required][FromRoute(Name = "id")] Guid id,
             CancellationToken cancellationToken = default)
         {
             return Ok(await _mediator.Send(new GetNewsByIdQuery(id), cancellationToken));
-        }
-
-        [HttpGet]
-        [ProducesResponseType(typeof(ApiResponse<Entities.News>), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> GetNewsByUrlAsync([Required][FromQuery(Name = "url")] string url,
-            CancellationToken cancellationToken = default)
-        {
-            return Ok(await _mediator.Send(new GetNewsByUrlQuery(url), cancellationToken));
         }
 
         [HttpGet]
@@ -48,11 +48,30 @@ namespace NewsAggregator.News.Api.Controllers
         }
 
         [HttpGet]
-        [Route("sources")]
-        [ProducesResponseType(typeof(ApiResponse<IReadOnlyCollection<NewsSource>>), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> GetNewsSourcesAsync(CancellationToken cancellationToken = default)
+        [Route("editors")]
+        [ProducesResponseType(typeof(ApiResponse<GetNewsEditorListDto>), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> GetNewsEditorListByFiltersAsync([FromQuery] GetNewsEditorListFilters filters,
+            CancellationToken cancellationToken = default)
         {
-            return Ok(await _mediator.Send(new GetNewsSourcesQuery(), cancellationToken));
+            return Ok(await _mediator.Send(new GetNewsEditorListQuery(filters), cancellationToken));
+        }
+
+        [HttpGet]
+        [Route("editors/{id:guid:required}")]
+        [ProducesResponseType(typeof(ApiResponse<NewsEditor>), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> GetNewsEditorByIdAsync([Required][FromRoute(Name = "id")] Guid id, 
+            CancellationToken cancellationToken = default)
+        {
+            return Ok(await _mediator.Send(new GetNewsEditorByIdQuery(id), cancellationToken));
+        }
+
+        [HttpGet]
+        [Route("sources")]
+        [ProducesResponseType(typeof(ApiResponse<GetNewsSourceListDto>), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> GetNewsSourceListByFiltersAsync([FromQuery] GetNewsSourceListFilters filters, 
+            CancellationToken cancellationToken = default)
+        {
+            return Ok(await _mediator.Send(new GetNewsSourceListQuery(filters), cancellationToken));
         }
 
         [HttpGet]

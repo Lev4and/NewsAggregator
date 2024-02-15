@@ -33,8 +33,6 @@ await app.RefreshNewsSourceMemoryCacheAsync();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.UseHttpsRedirection();
-
 app.UseSerilogRequestLogging();
 
 app.UseRouting();

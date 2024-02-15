@@ -10,12 +10,15 @@ services:
     build:
       context: .
       dockerfile: src/Microservices/Gateways/NewsAggregator.Gateways.Api/Dockerfile
+    networks:
+      - newsaggregator-gateways-api-proxy
+      - newsaggregator-news-api-proxy
 
   newsaggregator.news.api:
     image: ${DOCKER_REGISTRY-}newsaggregatornewsapi
     container_name: newsaggregator-news-api
     depends_on:
-      - selenium.hub
+      # - selenium.hub
       - postgres
       - redis 
       - rabbitmq
@@ -24,17 +27,18 @@ services:
       context: .
       dockerfile: src/Microservices/Services/News/NewsAggregator.News.Api/Dockerfile
     networks:
-      - seleniumhubproxy
-      - postgresproxy
-      - redisproxy
-      - rabbitmqproxy
+      - newsaggregator-news-api-proxy
+      - selenium-hub-proxy
+      - postgres-proxy
+      - redis-proxy
+      - rabbitmq-proxy
 
 
   newsaggregator.news.mvc:
     image: ${DOCKER_REGISTRY-}newsaggregatornewsmvc
     container_name: newsaggregator-news-mvc
     depends_on:
-      - selenium.hub
+      # - selenium.hub
       - postgres
       - redis
       - newsaggregator.news.mvc.seq
@@ -42,17 +46,19 @@ services:
       context: .
       dockerfile: src/Microservices/Services/News/NewsAggregator.News.Mvc/Dockerfile
     networks:
-      - seleniumhubproxy
-      - postgresproxy
-      - redisproxy
-      - rabbitmqproxy
+      - newsaggregator-news-mvc-proxy
+      - selenium-hub-proxy
+      - postgres-proxy
+      - redis-proxy
+      - rabbitmq-proxy
 
 
   newsaggregator.news.parser:
     image: ${DOCKER_REGISTRY-}newsaggregatornewsparser
     container_name: newsaggregator-news-parser
     depends_on:
-      - selenium.hub
+      - newsaggregator.news.api
+      # - selenium.hub
       - redis
       - rabbitmq
       - newsaggregator.news.parser.seq
@@ -60,16 +66,18 @@ services:
       context: .
       dockerfile: src/Microservices/Services/News/NewsAggregator.News.Parser/Dockerfile
     networks:
-      - seleniumhubproxy
-      - redisproxy
-      - rabbitmqproxy
+      - newsaggregator-news-parser-proxy
+      - selenium-hub-proxy
+      - redis-proxy
+      - rabbitmq-proxy
 
 
   newsaggregator.news.searcher:
     image: ${DOCKER_REGISTRY-}newsaggregatornewssearcher
     container_name: newsaggregator-news-searcher
     depends_on:
-      - selenium.hub
+      - newsaggregator.news.api
+      # - selenium.hub
       - redis
       - rabbitmq
       - newsaggregator.news.searcher.seq
@@ -77,16 +85,17 @@ services:
       context: .
       dockerfile: src/Microservices/Services/News/NewsAggregator.News.Searcher/Dockerfile
     networks:
-      - seleniumhubproxy
-      - redisproxy
-      - rabbitmqproxy
+      - newsaggregator-news-searcher-proxy
+      - selenium-hub-proxy
+      - redis-proxy
+      - rabbitmq-proxy
   
   postgres:
     image: postgres:latest
     container_name: postgres
     restart: always
     networks:
-     - postgresproxy
+     - postgres-proxy
 
   pgadmin:
     image: dpage/pgadmin4:latest
@@ -101,55 +110,75 @@ services:
     hostname: rabbitmq
     restart: always
     networks:
-      - rabbitmqproxy
+      - rabbitmq-proxy
 
   redis:
     image: redis/redis-stack:latest
     container_name: redis
     restart: always
     networks:
-      - redisproxy
+      - redis-proxy
   
-  chrome:
-    image: selenium/node-chrome:dev
-    container_name: chrome
-    shm_size: 2gb
-    depends_on:
-      - selenium.hub
+  # chrome:
+  #   image: selenium/node-chrome:dev
+  #   container_name: chrome
+  #   shm_size: 2gb
+  #   depends_on:
+  #     - selenium.hub
 
-  selenium.hub:
-    image: selenium/hub:latest
-    container_name: selenium-hub
-    networks:
-      - seleniumhubproxy
+  # selenium.hub:
+  #   image: selenium/hub:latest
+  #   container_name: selenium-hub
+  #   networks:
+  #     - selenium-hub-proxy
 
   newsaggregator.gateways.api.seq:
     image: datalust/seq:latest
     container_name: newsaggregator-gateways-api-seq
+    networks:
+      - newsaggregator-gateways-api-proxy
   
   newsaggregator.news.api.seq:
     image: datalust/seq:latest
     container_name: newsaggregator-news-api-seq
+    networks:
+      - newsaggregator-news-api-proxy
   
   newsaggregator.news.mvc.seq:
     image: datalust/seq:latest
     container_name: newsaggregator-news-mvc-seq
+    networks:
+      - newsaggregator-news-mvc-proxy
   
   newsaggregator.news.parser.seq:
     image: datalust/seq:latest
     container_name: newsaggregator-news-parser-seq
+    networks:
+      - newsaggregator-news-parser-proxy
   
   newsaggregator.news.searcher.seq:
     image: datalust/seq:latest
     container_name: newsaggregator-news-searcher-seq
+    networks:
+      - newsaggregator-news-searcher-proxy
 
 networks:
-  seleniumhubproxy:
+  newsaggregator-gateways-api-proxy:
+    driver: bridge
+  newsaggregator-news-api-proxy:
+    driver: bridge
+  newsaggregator-news-mvc-proxy:
+    driver: bridge
+  newsaggregator-news-parser-proxy:
+    driver: bridge
+  newsaggregator-news-searcher-proxy:
+    driver: bridge
+  selenium-hub-proxy:
     driver: bridge 
-  postgresproxy:
+  postgres-proxy:
     driver: bridge
-  redisproxy:
+  redis-proxy:
     driver: bridge
-  rabbitmqproxy:
+  rabbitmq-proxy:
     driver: bridge
 
