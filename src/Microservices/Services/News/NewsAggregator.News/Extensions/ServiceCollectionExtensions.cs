@@ -34,11 +34,13 @@ namespace NewsAggregator.News.Extensions
             return services;
         }
 
-        public static IServiceCollection AddSeleniumNewsProviders(this IServiceCollection services, Uri seleniumHubRemoteUrl, DriverOptions driverOptions) 
+        public static IServiceCollection AddSeleniumNewsProviders(this IServiceCollection services, Uri seleniumHubRemoteUrl, 
+            DriverOptions driverOptions) 
         {
             services.AddSingleton<Sources>();
 
-            services.AddScoped<IWebDriver, RemoteWebDriver>(factory => new RemoteWebDriver(seleniumHubRemoteUrl, driverOptions));
+            services.AddScoped<IWebDriver, RemoteWebDriver>(factory => 
+                new RemoteWebDriver(seleniumHubRemoteUrl, driverOptions));
 
             services.AddScoped<INewsHtmlPageProvider, SeleniumNewsHtmlPageProvider>();
             services.AddScoped<INewsListHtmlPageProvider, SeleniumNewsListHtmlPageProvider>();

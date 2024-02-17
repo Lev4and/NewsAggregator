@@ -125,6 +125,8 @@ services:
   #   shm_size: 2gb
   #   depends_on:
   #     - selenium.hub
+  #   networks:
+  #     - selenium-hub-proxy
 
   # selenium.hub:
   #   image: selenium/hub:latest
