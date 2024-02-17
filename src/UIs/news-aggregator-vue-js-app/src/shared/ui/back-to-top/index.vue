@@ -1,11 +1,13 @@
 <script lang="ts" setup>
-   import { Routing } from '@/pages'
+
 </script>
 
 <template>
-  <routing />
+  <p class="mb-0">
+    <a href="#">Back to top</a>
+  </p>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss" setup>
   @import './index.scss';
 </style>
