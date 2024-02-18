@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using NewsAggregator.Domain.Enums;
 using NewsAggregator.Domain.Specification;
 using NewsAggregator.News.DTOs;
@@ -44,8 +45,8 @@ namespace NewsAggregator.News.Specifications
 
             if (!string.IsNullOrEmpty(filters.SearchString))
             {
-                ApplyFilter(news => EF.Functions.Like(news.Title, $"%{filters.SearchString}%") || 
-                    EF.Functions.Like(news.SubTitle.Title, $"%{filters.SearchString}%"));
+                ApplyFilter(news => news.Title.ToLower().Contains(filters.SearchString.ToLower()) ||
+                    news.SubTitle.Title.ToLower().Contains(filters.SearchString.ToLower()));
             }
 
             if (filters.StartPublishedAt is not null && filters.EndPublishedAt is not null) 

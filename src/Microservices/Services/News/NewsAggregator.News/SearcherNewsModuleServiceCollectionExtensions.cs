@@ -57,10 +57,14 @@ namespace NewsAggregator.News
 
             services.AddMediatR(config => config.RegisterServicesFromAssembly(typeof(IMediator).Assembly));
 
-            services.AddScoped<IRequestHandler<GetAvailableNewsSourcesQuery, IReadOnlyCollection<NewsSource>>, GetAvailableNewsSourcesQuery.Handler>();
-            services.AddScoped<IRequestHandler<SearchNewsByNewsSourceCommand, IReadOnlyCollection<string>>, SearchNewsByNewsSourceCommand.Handler>();
+            services.AddScoped<IRequestHandler<GetAvailableNewsSourcesQuery, IReadOnlyCollection<NewsSource>>, 
+                GetAvailableNewsSourcesQuery.Handler>();
 
-            services.AddScoped<INotificationHandler<FoundNewsList>, SearchNewsByNewsSourceCommand.FoundNewsListNotificationHandler>();
+            services.AddScoped<IRequestHandler<SearchNewsByNewsSourceCommand, IReadOnlyCollection<string>>, 
+                SearchNewsByNewsSourceCommand.Handler>();
+
+            services.AddScoped<INotificationHandler<FoundNewsList>, 
+                SearchNewsByNewsSourceCommand.FoundNewsListNotificationHandler>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipeline<,>));

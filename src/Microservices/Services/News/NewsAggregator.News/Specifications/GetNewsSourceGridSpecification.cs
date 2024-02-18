@@ -60,7 +60,7 @@ namespace NewsAggregator.News.Specifications
 
             if (!string.IsNullOrEmpty(filters.SearchString))
             {
-                ApplyFilter(source => EF.Functions.Like(source.Title, $"%{filters.SearchString}%"));
+                ApplyFilter(source => source.Title.ToLower().Contains(filters.SearchString.ToLower()));
             }
 
             ApplyPaging(filters.Page * filters.PageSize - filters.PageSize, filters.PageSize);

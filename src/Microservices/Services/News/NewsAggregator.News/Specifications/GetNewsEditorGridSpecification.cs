@@ -16,7 +16,7 @@ namespace NewsAggregator.News.Specifications
 
             if (!string.IsNullOrEmpty(filters.SearchString))
             {
-                ApplyFilter(editor => EF.Functions.Like(editor.Name, $"%{filters.SearchString}%"));
+                ApplyFilter(editor => editor.Name.ToLower().Contains(filters.SearchString.ToLower()));
             }
 
             if (filters.NewsSourcesIds is not null && filters.NewsSourcesIds?.Length > 0)

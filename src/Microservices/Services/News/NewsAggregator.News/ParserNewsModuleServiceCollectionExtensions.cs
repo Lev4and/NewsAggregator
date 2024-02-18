@@ -55,9 +55,14 @@ namespace NewsAggregator.News
 
             services.AddScoped<IRequestHandler<ParseNewsCommand, NewsDto>, ParseNewsCommand.Handler>();
 
-            services.AddScoped<INotificationHandler<ParsedNews>, ParseNewsCommand.ParsedNewsNotificationHandler>();
-            services.AddScoped<INotificationHandler<ThrowedExceptionWhenParseNews>, ParseNewsCommand.ThrowedExceptionWhenParseNewsNotificationHandler>();
-            services.AddScoped<INotificationHandler<ThrowedHttpRequestExceptionWhenParseNews>, ParseNewsCommand.ThrowedHttpRequestExceptionWhenParseNewsNotificationHandler>();
+            services.AddScoped<INotificationHandler<ParsedNews>, 
+                ParseNewsCommand.ParsedNewsNotificationHandler>();
+
+            services.AddScoped<INotificationHandler<ThrowedExceptionWhenParseNews>, 
+                ParseNewsCommand.ThrowedExceptionWhenParseNewsNotificationHandler>();
+
+            services.AddScoped<INotificationHandler<ThrowedHttpRequestExceptionWhenParseNews>, 
+                ParseNewsCommand.ThrowedHttpRequestExceptionWhenParseNewsNotificationHandler>();
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipeline<,>));
 

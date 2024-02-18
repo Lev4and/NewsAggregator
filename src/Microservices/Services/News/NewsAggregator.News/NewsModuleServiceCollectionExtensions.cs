@@ -57,6 +57,7 @@ namespace NewsAggregator.News
 
             services.AddScoped<IUnitOfWork>(serviceProvider => serviceProvider.GetRequiredService<NewsDbContext>());
 
+            services.AddDefaultNewsSources();
             services.AddRepositories();
 
             services.AddDistributedMemoryCache();
