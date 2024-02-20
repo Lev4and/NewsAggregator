@@ -8,7 +8,8 @@
         "newsaggregator.news.api": "StartDebugging",
         "newsaggregator.news.mvc": "StartDebugging",
         "newsaggregator.news.parser": "StartDebugging",
-        "newsaggregator.news.searcher": "StartDebugging"
+        "newsaggregator.news.searcher": "StartDebugging",
+        "newsaggregator.notification.api": "StartDebugging"
       }
     }
   }

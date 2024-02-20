@@ -22,5 +22,18 @@ document.addEventListener('DOMContentLoaded', function (e) {
     });
 });
 
+document.addEventListener('DOMContentLoaded', async function (e) {
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl('http://localhost:5301/api/notification/news')
+        .configureLogging(signalR.LogLevel.Information)
+        .build();
+
+    await connection.start();
+
+    connection.on('AddedNews', (message) => {
+        console.log(message);
+    });
+});
+
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));

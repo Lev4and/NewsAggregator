@@ -1,6 +1,7 @@
 ﻿
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
+using NewsAggregator.Domain.Specification;
 using NewsAggregator.News.Repositories;
 
 namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
@@ -14,8 +15,8 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
 
         public async Task<bool> ContainsNewsByUrlAsync(string url, CancellationToken cancellationToken = default)
         {
-            return await _dbContext.News.AsNoTracking().SingleOrDefaultAsync(news => news.Url == url, cancellationToken) != null ||
-                await _dbContext.NewsParseErrors.AsNoTracking().SingleOrDefaultAsync(error => error.NewsUrl == url, cancellationToken) != null;
+            return await _dbContext.News.AsNoTracking()
+                .SingleOrDefaultAsync(news => news.Url == url, cancellationToken) != null;
         }
 
         public async Task<IReadOnlyDictionary<string, bool>> ContainsNewsByUrlsAsync(IReadOnlyCollection<string> urls, 
@@ -39,29 +40,20 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
             return urls.Distinct().ToDictionary(key => key, newsUrls.Contains);
         }
 
-        public async Task<Entities.News?> FindNewsByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        public async Task<Entities.News?> FindNewsBySpecificationAsync(ISpecification<Entities.News> specification, 
+            CancellationToken cancellationToken = default)
         {
-            return await _dbContext.News
-                .Include(news => news.Editor)
-                    .ThenInclude(editor => editor.Source)
-                        .ThenInclude(source => source.Logo)
-                .Include(news => news.SubTitle)
-                .Include(news => news.Picture)
-                .Include(news => news.Description)
-                .AsNoTracking()
-                .SingleOrDefaultAsync(news => news.Id == id, cancellationToken);
-        }
+            var query = _dbContext.News.AsNoTracking();
 
-        public async Task<Entities.News?> FindNewsByUrlAsync(string url, CancellationToken cancellationToken = default)
-        {
-            return await _dbContext.News.AsNoTracking()
-                .Include(news => news.Editor)
-                    .ThenInclude(editor => editor.Source)
-                        .ThenInclude(source => source.Logo)
-                .Include(news => news.SubTitle)
-                .Include(news => news.Picture)
-                .Include(news => news.Description)
-                .SingleOrDefaultAsync(news => news.Url == url, cancellationToken);
+            if (specification.Includes is not null && specification.Includes.Count() > 0)
+            {
+                foreach (var include in specification.Includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+
+            return await query.SingleOrDefaultAsync(specification.Criteria, cancellationToken);
         }
     }
 }

@@ -6,6 +6,7 @@ services:
     container_name: newsaggregator-gateways-api
     depends_on:
         - newsaggregator.news.api
+        - newsaggregator.notification.api
         - newsaggregator.gateways.api.seq
     build:
       context: .
@@ -13,6 +14,7 @@ services:
     networks:
       - newsaggregator-gateways-api-proxy
       - newsaggregator-news-api-proxy
+      - newsaggregator-notification-api-proxy
 
   newsaggregator.news.api:
     image: ${DOCKER_REGISTRY-}newsaggregatornewsapi
@@ -89,6 +91,19 @@ services:
       - selenium-hub-proxy
       - redis-proxy
       - rabbitmq-proxy
+
+  newsaggregator.notification.api:
+    image: ${DOCKER_REGISTRY-}newsaggregatornotificationapi
+    container_name: newsaggregator-notification-api
+    depends_on:
+      - rabbitmq
+      - newsaggregator.notification.api.seq
+    build:
+      context: .
+      dockerfile: src/Microservices/Services/Notification/NewsAggregator.Notification.Api/Dockerfile
+    networks:
+      - newsaggregator-notification-api-proxy
+      - rabbitmq-proxy
   
   postgres:
     image: postgres:latest
@@ -119,29 +134,29 @@ services:
     networks:
       - redis-proxy
   
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.1
-    container_name: elasticsearch
-    networks:
-      - elasticsearch-proxy
+  # elasticsearch:
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:8.12.1
+  #   container_name: elasticsearch
+  #   networks:
+  #     - elasticsearch-proxy
 
-  kibana:
-    image: docker.elastic.co/kibana/kibana:8.12.1
-    container_name: kibana
-    depends_on:
-      - elasticsearch
-    networks:
-      - elasticsearch-proxy
+  # kibana:
+  #   image: docker.elastic.co/kibana/kibana:8.12.1
+  #   container_name: kibana
+  #   depends_on:
+  #     - elasticsearch
+  #   networks:
+  #     - elasticsearch-proxy
 
-  logstash:
-    image: docker.elastic.co/logstash/logstash:8.12.1
-    container_name: logstash
-    links:
-      - elasticsearch
-    depends_on:
-      - elasticsearch
-    networks:
-      - elasticsearch-proxy
+  # logstash:
+  #   image: docker.elastic.co/logstash/logstash:8.12.1
+  #   container_name: logstash
+  #   links:
+  #     - elasticsearch
+  #   depends_on:
+  #     - elasticsearch
+  #   networks:
+  #     - elasticsearch-proxy
   
   # chrome:
   #   image: selenium/node-chrome:dev
@@ -187,6 +202,12 @@ services:
     container_name: newsaggregator-news-searcher-seq
     networks:
       - newsaggregator-news-searcher-proxy
+ 
+  newsaggregator.notification.api.seq:
+    image: datalust/seq:latest
+    container_name: newsaggregator-notification-api-seq
+    networks:
+      - newsaggregator-notification-api-proxy
 
 networks:
   newsaggregator-gateways-api-proxy:
@@ -199,6 +220,8 @@ networks:
     driver: bridge
   newsaggregator-news-searcher-proxy:
     driver: bridge
+  newsaggregator-notification-api-proxy:
+    driver: bridge
   selenium-hub-proxy:
     driver: bridge 
   postgres-proxy:
@@ -209,4 +232,5 @@ networks:
     driver: bridge
   elasticsearch-proxy:
     driver: bridge
+
 

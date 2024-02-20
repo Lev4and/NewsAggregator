@@ -17,6 +17,7 @@ using NewsAggregator.News.MessageConsumers;
 using NewsAggregator.News.Pipelines;
 using NewsAggregator.News.Repositories;
 using System.Reflection;
+using System.Text.Json.Serialization;
 
 namespace NewsAggregator.News
 {
@@ -37,6 +38,13 @@ namespace NewsAggregator.News
 
                 busConfigurator.UsingRabbitMq((context, configurator) =>
                 {
+                    configurator.ConfigureJsonSerializerOptions(options =>
+                    {
+                        options.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+
+                        return options;
+                    });
+
                     configurator.Host(new Uri(settings.MessageBroker.RabbitMQ.Host), hostConfigurator =>
                     {
                         hostConfigurator.Username(settings.MessageBroker.RabbitMQ.Username);

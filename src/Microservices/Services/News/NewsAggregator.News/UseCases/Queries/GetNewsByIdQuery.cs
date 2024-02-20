@@ -4,6 +4,7 @@ using NewsAggregator.Domain.Infrastructure.Caching;
 using NewsAggregator.News.Caching;
 using NewsAggregator.News.Exceptions;
 using NewsAggregator.News.Repositories;
+using NewsAggregator.News.Specifications;
 
 namespace NewsAggregator.News.UseCases.Queries
 {
@@ -40,8 +41,9 @@ namespace NewsAggregator.News.UseCases.Queries
                 return await _cache.GetNewsByIdAsync(request.Id,
                     async () =>
                     {
-                        return await _repository.FindNewsByIdAsync(request.Id, cancellationToken)
-                            ?? throw new NewsNotFoundException(request.Id);
+                        return await _repository.FindNewsBySpecificationAsync(
+                            new GetExtendedNewsSpecification(news => news.Id == request.Id), 
+                                cancellationToken) ?? throw new NewsNotFoundException(request.Id);
                     },
                     cancellationToken);
             }

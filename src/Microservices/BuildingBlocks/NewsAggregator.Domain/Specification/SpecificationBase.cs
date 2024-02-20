@@ -4,14 +4,9 @@ namespace NewsAggregator.Domain.Specification
 {
     public class SpecificationBase<T> : ISpecification<T>
     {
-        private Func<T, bool> _compiledExpression;
+        private Expression<Func<T, bool>> _criteriaExpression;
 
-        private Func<T, bool> CompiledExpression
-        {
-            get { return _compiledExpression ??= Criteria.Compile(); }
-        }
-
-        public Expression<Func<T, bool>> Criteria { get; }
+        public Expression<Func<T, bool>> Criteria => _criteriaExpression;
 
         public List<Expression<Func<T, object>>> Includes { get; } = new List<Expression<Func<T, object>>>();
 
@@ -55,6 +50,11 @@ namespace NewsAggregator.Domain.Specification
             IncludeStrings.Add(includeString);
         }
 
+        protected void ApplyFilter(Expression<Func<T, bool>> filter)
+        {
+            _criteriaExpression = filter;
+        }
+
         protected void ApplyPaging(int skip, int take)
         {
             Skip = skip;
@@ -75,11 +75,6 @@ namespace NewsAggregator.Domain.Specification
         protected void ApplyGroupBy(Expression<Func<T, object>> groupByExpression)
         {
             GroupBy = groupByExpression;
-        }
-
-        public bool IsSatisfiedBy(T obj)
-        {
-            return CompiledExpression(obj);
         }
     }
 }

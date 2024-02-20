@@ -6,16 +6,16 @@ using NewsAggregator.News.Specifications;
 
 namespace NewsAggregator.News.UseCases.Queries
 {
-    public class GetNewsByUrlQuery : IRequest<Entities.News>
+    public class GetLiteNewsByUrlQuery : IRequest<Entities.News>
     {
         public string Url { get; }
 
-        public GetNewsByUrlQuery(string url)
+        public GetLiteNewsByUrlQuery(string url)
         {
             Url = url;
         }
 
-        public class Validator : AbstractValidator<GetNewsByUrlQuery>
+        public class Validator : AbstractValidator<GetLiteNewsByUrlQuery>
         {
             public Validator()
             {
@@ -23,7 +23,7 @@ namespace NewsAggregator.News.UseCases.Queries
             }
         }
 
-        internal class Handler : IRequestHandler<GetNewsByUrlQuery, Entities.News>
+        internal class Handler : IRequestHandler<GetLiteNewsByUrlQuery, Entities.News>
         {
             private readonly INewsRepository _repository;
 
@@ -32,10 +32,10 @@ namespace NewsAggregator.News.UseCases.Queries
                 _repository = repository;
             }
 
-            public async Task<Entities.News> Handle(GetNewsByUrlQuery request, CancellationToken cancellationToken)
+            public async Task<Entities.News> Handle(GetLiteNewsByUrlQuery request, CancellationToken cancellationToken)
             {
                 return await _repository.FindNewsBySpecificationAsync(
-                    new GetExtendedNewsSpecification(news => news.Url == request.Url), 
+                    new GetLiteNewsSpecification(news => news.Url == request.Url),
                         cancellationToken) ?? throw new NewsNotFoundException(request.Url);
             }
         }

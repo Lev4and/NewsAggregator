@@ -21,7 +21,5 @@ namespace NewsAggregator.Domain.Specification
         int Skip { get; }
 
         bool IsPagingEnabled { get; }
-
-        bool IsSatisfiedBy(T obj);
     }
 }

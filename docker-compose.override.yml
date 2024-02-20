@@ -49,6 +49,18 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
   
+  newsaggregator.notification.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=5300
+      - ASPNETCORE_HTTPS_PORTS=5301
+    ports:
+      - "5300"
+      - "5301"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+  
   postgres:
     environment:
       POSTGRES_PASSWORD: sa
@@ -83,19 +95,19 @@ services:
       - 6379:6379
       - 8001:8001
   
-  elasticsearch:
-    ports:
-      - 9200:9200
-    volumes:
-      - ./elasticsearch:/usr/share/elasticsearch/data
-    environment:
-      - discovery.type=single-node
+  # elasticsearch:
+  #   ports:
+  #     - 9200:9200
+  #   volumes:
+  #     - ./elasticsearch:/usr/share/elasticsearch/data
+  #   environment:
+  #     - discovery.type=single-node
 
-  kibana:
-    ports:
-      - 5601:5601
-    environment:
-      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+  # kibana:
+  #   ports:
+  #     - 5601:5601
+  #   environment:
+  #     - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
   
   # chrome:
   #   environment:
@@ -144,3 +156,10 @@ services:
     ports:
       - 5345:5341
       - 8085:80
+  
+  newsaggregator.notification.api.seq:
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5346:5341
+      - 8086:80

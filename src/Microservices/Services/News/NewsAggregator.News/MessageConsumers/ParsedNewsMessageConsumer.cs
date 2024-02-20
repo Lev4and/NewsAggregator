@@ -2,6 +2,7 @@
 using MediatR;
 using NewsAggregator.News.Messages;
 using NewsAggregator.News.UseCases.Commands;
+using NewsAggregator.News.UseCases.Queries;
 
 namespace NewsAggregator.News.MessageConsumers
 {
@@ -18,7 +19,9 @@ namespace NewsAggregator.News.MessageConsumers
         {
             await _mediator.Send(new AddNewsCommand(context.Message.News));
 
-            await _mediator.Publish(new AddedNews(context.Message.News.Url));
+            var addedNews = await _mediator.Send(new GetLiteNewsByUrlQuery(context.Message.News.Url));
+
+            await _mediator.Publish(new AddedNews(addedNews));
         }
     }
 }

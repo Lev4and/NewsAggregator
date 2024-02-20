@@ -157,7 +157,7 @@ namespace NewsAggregator.News.UseCases.Commands
 
             public async Task Handle(AddedNews notification, CancellationToken cancellationToken)
             {
-                _logger.LogInformation("Added news {0}", notification.NewsUrl);
+                _logger.LogInformation("Added news {0}", notification.News.Url);
 
                 await _messageBus.SendAsync(notification, cancellationToken);
             }

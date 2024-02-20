@@ -1,4 +1,5 @@
 ﻿using NewsAggregator.Domain.Repositories;
+using NewsAggregator.Domain.Specification;
 
 namespace NewsAggregator.News.Repositories
 {
@@ -9,8 +10,7 @@ namespace NewsAggregator.News.Repositories
         Task<IReadOnlyDictionary<string, bool>> ContainsNewsByUrlsAsync(IReadOnlyCollection<string> urls, 
             CancellationToken cancellationToken = default);
 
-        Task<Entities.News?> FindNewsByIdAsync(Guid id, CancellationToken cancellationToken = default);
-
-        Task<Entities.News?> FindNewsByUrlAsync(string url, CancellationToken cancellationToken = default);
+        Task<Entities.News?> FindNewsBySpecificationAsync(ISpecification<Entities.News> specification, 
+            CancellationToken cancellationToken = default);
     }
 }

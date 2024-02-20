@@ -4,11 +4,11 @@ namespace NewsAggregator.News.Messages
 {
     public class AddedNews : INotification
     {
-        public string NewsUrl { get; }
+        public Entities.News News { get; }
 
-        public AddedNews(string newsUrl)
+        public AddedNews(Entities.News news)
         {
-            NewsUrl = newsUrl;
+            News = news;
         }
     }
 }

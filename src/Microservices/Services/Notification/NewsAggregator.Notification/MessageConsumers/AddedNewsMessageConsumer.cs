@@ -1,9 +1,9 @@
 ﻿using MassTransit;
 using MediatR;
-using NewsAggregator.News.Messages;
-using NewsAggregator.News.UseCases.Commands;
+using NewsAggregator.Notification.Messages;
+using NewsAggregator.Notification.UseCases.Commands;
 
-namespace NewsAggregator.News.MessageConsumers
+namespace NewsAggregator.Notification.MessageConsumers
 {
     public class AddedNewsMessageConsumer : IConsumer<AddedNews>
     {
@@ -16,7 +16,7 @@ namespace NewsAggregator.News.MessageConsumers
 
         public async Task Consume(ConsumeContext<AddedNews> context)
         {
-            await _mediator.Send(new RemoveNewsForParseCommand(context.Message.News.Url));
+            await _mediator.Send(new SendWebsocketAddedNewsNotificationCommand(context.Message.News));
         }
     }
 }
