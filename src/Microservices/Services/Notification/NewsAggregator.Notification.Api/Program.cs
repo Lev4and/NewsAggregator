@@ -14,6 +14,15 @@ builder.Configuration.Bind(appSettings);
 
 builder.Services.AddNotificationModule(appSettings);
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyHeader().AllowAnyMethod()
+            .SetIsOriginAllowed((host) => true).AllowCredentials();
+    });
+});
+
 builder.Services.AddSignalR();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -24,10 +33,12 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+app.UseCors();
+
 app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapHub<NewsNotificationHub>("api/notification/news");
+app.MapHub<NewsNotificationHub>("/api/notification/news");
 
 app.Run();

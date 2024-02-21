@@ -14,6 +14,7 @@ using NewsAggregator.News.ConfigurationOptions;
 using NewsAggregator.News.Databases.EntityFramework.News;
 using NewsAggregator.News.Extensions;
 using NewsAggregator.News.MessageConsumers;
+using NewsAggregator.News.Messages;
 using NewsAggregator.News.Pipelines;
 using NewsAggregator.News.Repositories;
 using System.Reflection;
@@ -27,8 +28,6 @@ namespace NewsAggregator.News
         {
             services.AddMassTransit(busConfigurator =>
             {
-                busConfigurator.SetKebabCaseEndpointNameFormatter();
-
                 busConfigurator.AddConsumer<AddedNewsMessageConsumer>();
                 busConfigurator.AddConsumer<FoundNewsListMessageConsumer>();
                 busConfigurator.AddConsumer<FoundNotExistedNewsMessageConsumer>();
@@ -38,6 +37,12 @@ namespace NewsAggregator.News
 
                 busConfigurator.UsingRabbitMq((context, configurator) =>
                 {
+                    configurator.Host(new Uri(settings.MessageBroker.RabbitMQ.Host), hostConfigurator =>
+                    {
+                        hostConfigurator.Username(settings.MessageBroker.RabbitMQ.Username);
+                        hostConfigurator.Password(settings.MessageBroker.RabbitMQ.Password);
+                    });
+
                     configurator.ConfigureJsonSerializerOptions(options =>
                     {
                         options.ReferenceHandler = ReferenceHandler.IgnoreCycles;
@@ -45,13 +50,91 @@ namespace NewsAggregator.News
                         return options;
                     });
 
-                    configurator.Host(new Uri(settings.MessageBroker.RabbitMQ.Host), hostConfigurator =>
+                    configurator.ReceiveEndpoint("contains-news-by-urls", endpointConfugurator =>
                     {
-                        hostConfigurator.Username(settings.MessageBroker.RabbitMQ.Username);
-                        hostConfigurator.Password(settings.MessageBroker.RabbitMQ.Password);
+                        endpointConfugurator.Bind("news.events", 
+                            exchangeConfigurator =>
+                            {
+                                endpointConfugurator.Durable = true;
+                                endpointConfugurator.ExchangeType = "direct";
+                                exchangeConfigurator.RoutingKey = "news.list.found";
+                            });
+
+                        endpointConfugurator.Bind<FoundNewsList>();
                     });
 
-                    configurator.ConfigureEndpoints(context);
+                    configurator.Send<FoundNotExistedNews>(configurator =>
+                        configurator.UseRoutingKeyFormatter(formatter =>
+                            "news.found"));
+
+                    configurator.Message<FoundNotExistedNews>(configurator =>
+                        configurator.SetEntityName("news.events"));
+
+                    configurator.ReceiveEndpoint("register-news-for-parse", endpointConfugurator =>
+                    {
+                        endpointConfugurator.Bind("news.events",
+                            exchangeConfigurator =>
+                            {
+                                endpointConfugurator.Durable = true;
+                                endpointConfugurator.ExchangeType = "direct";
+                                exchangeConfigurator.RoutingKey = "news.found";
+                            });
+
+                        endpointConfugurator.Bind<FoundNotExistedNews>();
+                    });
+
+                    configurator.Send<RegisteredNewsForParse>(configurator =>
+                        configurator.UseRoutingKeyFormatter(formatter =>
+                            "news.registered"));
+
+                    configurator.Message<RegisteredNewsForParse>(configurator =>
+                        configurator.SetEntityName("news.events"));
+
+                    configurator.ReceiveEndpoint("add-parsed-news", endpointConfugurator =>
+                    {
+                        endpointConfugurator.Bind("news.events",
+                            exchangeConfigurator =>
+                            {
+                                endpointConfugurator.Durable = true;
+                                endpointConfugurator.ExchangeType = "direct";
+                                exchangeConfigurator.RoutingKey = "news.parsed";
+                            });
+
+                        endpointConfugurator.Bind<ParsedNews>();
+                    });
+
+                    configurator.Send<AddedNews>(configurator =>
+                        configurator.UseRoutingKeyFormatter(formatter =>
+                            "news.added"));
+
+                    configurator.Message<AddedNews>(configurator =>
+                        configurator.SetEntityName("news.events"));
+
+                    configurator.ReceiveEndpoint("add-parsed-news-with-error", endpointConfugurator =>
+                    {
+                        endpointConfugurator.Bind("news.events",
+                            exchangeConfigurator =>
+                            {
+                                endpointConfugurator.Durable = true;
+                                endpointConfugurator.ExchangeType = "direct";
+                                exchangeConfigurator.RoutingKey = "news.parsed.with.error";
+                            });
+
+                        endpointConfugurator.Bind<ThrowedExceptionWhenParseNews>();
+                    });
+
+                    configurator.ReceiveEndpoint("add-parsed-news-with-network-error", endpointConfugurator =>
+                    {
+                        endpointConfugurator.Bind("news.events",
+                            exchangeConfigurator =>
+                            {
+                                endpointConfugurator.Durable = true;
+                                endpointConfugurator.ExchangeType = "direct";
+                                exchangeConfigurator.RoutingKey = "news.parsed.with.network.error";
+                            });
+
+                        endpointConfugurator.Bind<ThrowedHttpRequestExceptionWhenParseNews>();
+                    });
                 });
             });
 

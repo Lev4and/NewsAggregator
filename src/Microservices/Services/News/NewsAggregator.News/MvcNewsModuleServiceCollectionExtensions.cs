@@ -24,24 +24,20 @@ namespace NewsAggregator.News
         {
             services.AddMassTransit(busConfigurator =>
             {
-                busConfigurator.SetKebabCaseEndpointNameFormatter();
-
                 busConfigurator.UsingRabbitMq((context, configurator) =>
                 {
-                    configurator.ConfigureJsonSerializerOptions(options =>
-                    {
-                        options.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-
-                        return options;
-                    });
-
                     configurator.Host(new Uri(settings.MessageBroker.RabbitMQ.Host), hostConfigurator =>
                     {
                         hostConfigurator.Username(settings.MessageBroker.RabbitMQ.Username);
                         hostConfigurator.Password(settings.MessageBroker.RabbitMQ.Password);
                     });
 
-                    configurator.ConfigureEndpoints(context);
+                    configurator.ConfigureJsonSerializerOptions(options =>
+                    {
+                        options.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+
+                        return options;
+                    });
                 });
             });
 

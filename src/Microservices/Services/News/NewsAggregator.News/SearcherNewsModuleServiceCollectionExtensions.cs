@@ -4,14 +4,11 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using NewsAggregator.Domain.Infrastructure.Caching;
-using NewsAggregator.Domain.Infrastructure.Databases;
 using NewsAggregator.Domain.Infrastructure.MessageBrokers;
 using NewsAggregator.Infrastructure.Caching.Default;
 using NewsAggregator.Infrastructure.MessageBrokers.RabbitMQ;
 using NewsAggregator.News.Caching;
 using NewsAggregator.News.ConfigurationOptions;
-using NewsAggregator.News.Databases.EntityFramework.News;
-using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Entities;
 using NewsAggregator.News.Extensions;
 using NewsAggregator.News.HostedServices;
@@ -19,7 +16,6 @@ using NewsAggregator.News.Messages;
 using NewsAggregator.News.Pipelines;
 using NewsAggregator.News.UseCases.Commands;
 using NewsAggregator.News.UseCases.Queries;
-using OpenQA.Selenium.Chrome;
 using System.Reflection;
 using System.Text.Json.Serialization;
 
@@ -31,10 +27,14 @@ namespace NewsAggregator.News
         {
             services.AddMassTransit(busConfigurator =>
             {
-                busConfigurator.SetKebabCaseEndpointNameFormatter();
-
                 busConfigurator.UsingRabbitMq((context, configurator) =>
                 {
+                    configurator.Host(new Uri(settings.MessageBroker.RabbitMQ.Host), hostConfigurator =>
+                    {
+                        hostConfigurator.Username(settings.MessageBroker.RabbitMQ.Username);
+                        hostConfigurator.Password(settings.MessageBroker.RabbitMQ.Password);
+                    });
+
                     configurator.ConfigureJsonSerializerOptions(options =>
                     {
                         options.ReferenceHandler = ReferenceHandler.IgnoreCycles;
@@ -42,13 +42,12 @@ namespace NewsAggregator.News
                         return options;
                     });
 
-                    configurator.Host(new Uri(settings.MessageBroker.RabbitMQ.Host), hostConfigurator =>
-                    {
-                        hostConfigurator.Username(settings.MessageBroker.RabbitMQ.Username);
-                        hostConfigurator.Password(settings.MessageBroker.RabbitMQ.Password);
-                    });
+                    configurator.Send<FoundNewsList>(configurator =>
+                        configurator.UseRoutingKeyFormatter(formatter =>
+                            "news.list.found"));
 
-                    configurator.ConfigureEndpoints(context);
+                    configurator.Message<FoundNewsList>(configurator =>
+                        configurator.SetEntityName("news.events"));
                 });
             });
 

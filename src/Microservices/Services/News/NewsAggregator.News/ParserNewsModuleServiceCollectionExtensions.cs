@@ -24,12 +24,16 @@ namespace NewsAggregator.News
         {
             services.AddMassTransit(busConfigurator =>
             {
-                busConfigurator.SetKebabCaseEndpointNameFormatter();
-
                 busConfigurator.AddConsumer<RegisteredNewsForParseMessageConsumer>();
 
                 busConfigurator.UsingRabbitMq((context, configurator) =>
                 {
+                    configurator.Host(new Uri(settings.MessageBroker.RabbitMQ.Host), hostConfigurator =>
+                    {
+                        hostConfigurator.Username(settings.MessageBroker.RabbitMQ.Username);
+                        hostConfigurator.Password(settings.MessageBroker.RabbitMQ.Password);
+                    });
+
                     configurator.ConfigureJsonSerializerOptions(options =>
                     {
                         options.ReferenceHandler = ReferenceHandler.IgnoreCycles;
@@ -37,13 +41,37 @@ namespace NewsAggregator.News
                         return options;
                     });
 
-                    configurator.Host(new Uri(settings.MessageBroker.RabbitMQ.Host), hostConfigurator =>
+                    configurator.ReceiveEndpoint("parse-news", endpointConfugurator =>
                     {
-                        hostConfigurator.Username(settings.MessageBroker.RabbitMQ.Username);
-                        hostConfigurator.Password(settings.MessageBroker.RabbitMQ.Password);
+                        endpointConfugurator.Bind("news.events",
+                            exchangeConfigurator =>
+                            {
+                                endpointConfugurator.Durable = true;
+                                endpointConfugurator.ExchangeType = "direct";
+                                exchangeConfigurator.RoutingKey = "news.registered";
+                            });
                     });
 
-                    configurator.ConfigureEndpoints(context);
+                    configurator.Send<ParsedNews>(configurator =>
+                        configurator.UseRoutingKeyFormatter(formatter =>
+                            "news.parsed"));
+
+                    configurator.Message<ParsedNews>(configurator =>
+                        configurator.SetEntityName("news.events"));
+
+                    configurator.Send<ThrowedExceptionWhenParseNews>(configurator =>
+                        configurator.UseRoutingKeyFormatter(formatter =>
+                            "news.parsed.with.error"));
+
+                    configurator.Message<ThrowedExceptionWhenParseNews>(configurator =>
+                        configurator.SetEntityName("news.events"));
+
+                    configurator.Send<ThrowedHttpRequestExceptionWhenParseNews>(configurator =>
+                        configurator.UseRoutingKeyFormatter(formatter =>
+                            "news.parsed.with.network.error"));
+
+                    configurator.Message<ThrowedHttpRequestExceptionWhenParseNews>(configurator =>
+                        configurator.SetEntityName("news.events"));
                 });
             });
 

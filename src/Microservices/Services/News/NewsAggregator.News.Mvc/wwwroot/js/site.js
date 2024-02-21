@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
 document.addEventListener('DOMContentLoaded', async function (e) {
     const connection = new signalR.HubConnectionBuilder()
-        .withUrl('http://localhost:5301/api/notification/news')
+        .withUrl('http://localhost:5000/api/notification/news')
         .configureLogging(signalR.LogLevel.Information)
         .build();
 

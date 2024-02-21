@@ -6,6 +6,7 @@ using NewsAggregator.Domain.Infrastructure.MessageBrokers;
 using NewsAggregator.Infrastructure.MessageBrokers.RabbitMQ;
 using NewsAggregator.Notification.ConfigurationOptions;
 using NewsAggregator.Notification.MessageConsumers;
+using NewsAggregator.Notification.Messages;
 using NewsAggregator.Notification.Pipelines;
 using System.Reflection;
 using System.Text.Json.Serialization;
@@ -18,12 +19,16 @@ namespace NewsAggregator.Notification
         {
             services.AddMassTransit(busConfigurator =>
             {
-                busConfigurator.SetKebabCaseEndpointNameFormatter();
-
-                busConfigurator.AddConsumer<AddedNewsMessageConsumer>();
+                busConfigurator.AddConsumer <AddedNewsMessageConsumer>();
 
                 busConfigurator.UsingRabbitMq((context, configurator) =>
                 {
+                    configurator.Host(new Uri(settings.MessageBroker.RabbitMQ.Host), hostConfigurator =>
+                    {
+                        hostConfigurator.Username(settings.MessageBroker.RabbitMQ.Username);
+                        hostConfigurator.Password(settings.MessageBroker.RabbitMQ.Password);
+                    });
+
                     configurator.ConfigureJsonSerializerOptions(options =>
                     {
                         options.ReferenceHandler = ReferenceHandler.IgnoreCycles;
@@ -31,13 +36,18 @@ namespace NewsAggregator.Notification
                         return options;
                     });
 
-                    configurator.Host(new Uri(settings.MessageBroker.RabbitMQ.Host), hostConfigurator =>
+                    configurator.ReceiveEndpoint("send-websocket-added-news-notification", endpointConfugurator =>
                     {
-                        hostConfigurator.Username(settings.MessageBroker.RabbitMQ.Username);
-                        hostConfigurator.Password(settings.MessageBroker.RabbitMQ.Password);
-                    });
+                        endpointConfugurator.Bind("news.events",
+                            exchangeConfigurator =>
+                            {
+                                endpointConfugurator.Durable = true;
+                                endpointConfugurator.ExchangeType = "direct";
+                                exchangeConfigurator.RoutingKey = "news.added";
+                            });
 
-                    configurator.ConfigureEndpoints(context);
+                        endpointConfugurator.Bind<AddedNews>();
+                    });
                 });
             });
 
