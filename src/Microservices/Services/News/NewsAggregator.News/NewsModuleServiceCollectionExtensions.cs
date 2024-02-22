@@ -19,6 +19,7 @@ using NewsAggregator.News.Pipelines;
 using NewsAggregator.News.Repositories;
 using System.Reflection;
 using System.Text.Json.Serialization;
+using static MassTransit.MessageHeaders;
 
 namespace NewsAggregator.News
 {
@@ -28,10 +29,10 @@ namespace NewsAggregator.News
         {
             services.AddMassTransit(busConfigurator =>
             {
-                busConfigurator.AddConsumer<AddedNewsMessageConsumer>();
                 busConfigurator.AddConsumer<FoundNewsListMessageConsumer>();
                 busConfigurator.AddConsumer<FoundNotExistedNewsMessageConsumer>();
                 busConfigurator.AddConsumer<ParsedNewsMessageConsumer>();
+                busConfigurator.AddConsumer<AddedNewsMessageConsumer>();
                 busConfigurator.AddConsumer<ThrowedExceptionWhenParseNewsMessageConsumer>();
                 busConfigurator.AddConsumer<ThrowedHttpRequestExceptionWhenParseNewsMessageConsumer>();
 
@@ -50,90 +51,189 @@ namespace NewsAggregator.News
                         return options;
                     });
 
-                    configurator.ReceiveEndpoint("contains-news-by-urls", endpointConfugurator =>
+                    configurator.Message<FoundNewsList>(messageConfigurator =>
                     {
-                        endpointConfugurator.Bind("news.events", 
-                            exchangeConfigurator =>
-                            {
-                                endpointConfugurator.Durable = true;
-                                endpointConfugurator.ExchangeType = "direct";
-                                exchangeConfigurator.RoutingKey = "news.list.found";
-                            });
-
-                        endpointConfugurator.Bind<FoundNewsList>();
+                        messageConfigurator.SetEntityName("news.events");
                     });
 
-                    configurator.Send<FoundNotExistedNews>(configurator =>
-                        configurator.UseRoutingKeyFormatter(formatter =>
-                            "news.found"));
-
-                    configurator.Message<FoundNotExistedNews>(configurator =>
-                        configurator.SetEntityName("news.events"));
-
-                    configurator.ReceiveEndpoint("register-news-for-parse", endpointConfugurator =>
+                    configurator.ReceiveEndpoint("contains-news-by-urls", endpointConfigurator =>
                     {
-                        endpointConfugurator.Bind("news.events",
-                            exchangeConfigurator =>
-                            {
-                                endpointConfugurator.Durable = true;
-                                endpointConfugurator.ExchangeType = "direct";
-                                exchangeConfigurator.RoutingKey = "news.found";
-                            });
+                        endpointConfigurator.Durable = true;
+                        endpointConfigurator.ConfigureConsumeTopology = false;
 
-                        endpointConfugurator.Bind<FoundNotExistedNews>();
+                        endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
+                        {
+                            exchangeBindingConfigurator.ExchangeType = "direct";
+                            exchangeBindingConfigurator.RoutingKey = "news.list.found";
+                        });
+
+                        endpointConfigurator.Consumer<FoundNewsListMessageConsumer>(context);
                     });
 
-                    configurator.Send<RegisteredNewsForParse>(configurator =>
-                        configurator.UseRoutingKeyFormatter(formatter =>
-                            "news.registered"));
-
-                    configurator.Message<RegisteredNewsForParse>(configurator =>
-                        configurator.SetEntityName("news.events"));
-
-                    configurator.ReceiveEndpoint("add-parsed-news", endpointConfugurator =>
+                    configurator.Send<FoundNotExistedNews>(messageSendConfigurator =>
                     {
-                        endpointConfugurator.Bind("news.events",
-                            exchangeConfigurator =>
-                            {
-                                endpointConfugurator.Durable = true;
-                                endpointConfugurator.ExchangeType = "direct";
-                                exchangeConfigurator.RoutingKey = "news.parsed";
-                            });
-
-                        endpointConfugurator.Bind<ParsedNews>();
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.found");
                     });
 
-                    configurator.Send<AddedNews>(configurator =>
-                        configurator.UseRoutingKeyFormatter(formatter =>
-                            "news.added"));
-
-                    configurator.Message<AddedNews>(configurator =>
-                        configurator.SetEntityName("news.events"));
-
-                    configurator.ReceiveEndpoint("add-parsed-news-with-error", endpointConfugurator =>
+                    configurator.Message<FoundNotExistedNews>(messageConfigurator =>
                     {
-                        endpointConfugurator.Bind("news.events",
-                            exchangeConfigurator =>
-                            {
-                                endpointConfugurator.Durable = true;
-                                endpointConfugurator.ExchangeType = "direct";
-                                exchangeConfigurator.RoutingKey = "news.parsed.with.error";
-                            });
-
-                        endpointConfugurator.Bind<ThrowedExceptionWhenParseNews>();
+                        messageConfigurator.SetEntityName("news.events");
                     });
 
-                    configurator.ReceiveEndpoint("add-parsed-news-with-network-error", endpointConfugurator =>
+                    configurator.Publish<FoundNotExistedNews>(messagePublishConfigurator =>
                     {
-                        endpointConfugurator.Bind("news.events",
-                            exchangeConfigurator =>
-                            {
-                                endpointConfugurator.Durable = true;
-                                endpointConfugurator.ExchangeType = "direct";
-                                exchangeConfigurator.RoutingKey = "news.parsed.with.network.error";
-                            });
+                        messagePublishConfigurator.Durable = true;
+                        messagePublishConfigurator.ExchangeType = "direct";
+                    });
 
-                        endpointConfugurator.Bind<ThrowedHttpRequestExceptionWhenParseNews>();
+                    configurator.ReceiveEndpoint("register-news", endpointConfigurator =>
+                    {
+                        endpointConfigurator.Durable = true;
+                        endpointConfigurator.ConfigureConsumeTopology = false;
+
+                        endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
+                        {
+                            exchangeBindingConfigurator.ExchangeType = "direct";
+                            exchangeBindingConfigurator.RoutingKey = "news.found";
+                        });
+
+                        endpointConfigurator.Consumer<FoundNotExistedNewsMessageConsumer>(context);
+                    });
+
+                    configurator.Send<RegisteredNewsForParse>(messageSendConfigurator =>
+                    {
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.registered");
+                    });
+
+                    configurator.Message<RegisteredNewsForParse>(messageConfigurator =>
+                    {
+                        messageConfigurator.SetEntityName("news.events");
+                    });
+
+                    configurator.Publish<RegisteredNewsForParse>(messagePublishConfigurator =>
+                    {
+                        messagePublishConfigurator.Durable = true;
+                        messagePublishConfigurator.ExchangeType = "direct";
+                    });
+
+                    configurator.Send<ParsedNews>(messageSendConfigurator =>
+                    {
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.parsed");
+                    });
+
+                    configurator.Message<ParsedNews>(messageConfigurator =>
+                    {
+                        messageConfigurator.SetEntityName("news.events");
+                    });
+
+                    configurator.Publish<ParsedNews>(messagePublishConfigurator =>
+                    {
+                        messagePublishConfigurator.Durable = true;
+                        messagePublishConfigurator.ExchangeType = "direct";
+                    });
+
+                    configurator.ReceiveEndpoint("add-news", endpointConfigurator =>
+                    {
+                        endpointConfigurator.Durable = true;
+                        endpointConfigurator.ConfigureConsumeTopology = false;
+
+                        endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
+                        {
+                            exchangeBindingConfigurator.ExchangeType = "direct";
+                            exchangeBindingConfigurator.RoutingKey = "news.parsed";
+                        });
+
+                        endpointConfigurator.Consumer<ParsedNewsMessageConsumer>(context);
+                    });
+
+                    configurator.Send<AddedNews>(messageSendConfigurator =>
+                    {
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.added");
+                    });
+
+                    configurator.Message<AddedNews>(messageConfigurator =>
+                    {
+                        messageConfigurator.SetEntityName("news.events");
+                    });
+
+                    configurator.Publish<AddedNews>(messagePublishConfigurator =>
+                    {
+                        messagePublishConfigurator.Durable = true;
+                        messagePublishConfigurator.ExchangeType = "direct";
+                    });
+
+                    configurator.ReceiveEndpoint("unregister-news", endpointConfigurator =>
+                    {
+                        endpointConfigurator.Durable = true;
+                        endpointConfigurator.ConfigureConsumeTopology = false;
+
+                        endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
+                        {
+                            exchangeBindingConfigurator.ExchangeType = "direct";
+                            exchangeBindingConfigurator.RoutingKey = "news.added";
+                        });
+
+                        endpointConfigurator.Consumer<AddedNewsMessageConsumer>(context);
+                    });
+
+                    configurator.Send<ThrowedExceptionWhenParseNews>(messageSendConfigurator =>
+                    {
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.parsed.with.error");
+                    });
+
+                    configurator.Message<ThrowedExceptionWhenParseNews>(messageConfigurator =>
+                    {
+                        messageConfigurator.SetEntityName("news.events");
+                    });
+
+                    configurator.Publish<ThrowedExceptionWhenParseNews>(messagePublishConfigurator =>
+                    {
+                        messagePublishConfigurator.Durable = true;
+                        messagePublishConfigurator.ExchangeType = "direct";
+                    });
+
+                    configurator.ReceiveEndpoint("add-news-with-error-when-parse", endpointConfigurator =>
+                    {
+                        endpointConfigurator.Durable = true;
+                        endpointConfigurator.ConfigureConsumeTopology = false;
+
+                        endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
+                        {
+                            exchangeBindingConfigurator.ExchangeType = "direct";
+                            exchangeBindingConfigurator.RoutingKey = "news.parsed.with.error";
+                        });
+
+                        endpointConfigurator.Consumer<ThrowedExceptionWhenParseNewsMessageConsumer>(context);
+                    });
+
+                    configurator.Send<ThrowedHttpRequestExceptionWhenParseNews>(messageSendConfigurator =>
+                    {
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.parsed.with.network.error");
+                    });
+
+                    configurator.Message<ThrowedHttpRequestExceptionWhenParseNews>(messageConfigurator =>
+                    {
+                        messageConfigurator.SetEntityName("news.events");
+                    });
+
+                    configurator.Publish<ThrowedHttpRequestExceptionWhenParseNews>(messagePublishConfigurator =>
+                    {
+                        messagePublishConfigurator.Durable = true;
+                        messagePublishConfigurator.ExchangeType = "direct";
+                    });
+
+                    configurator.ReceiveEndpoint("add-news-with-network-error-when-parse", endpointConfigurator =>
+                    {
+                        endpointConfigurator.Durable = true;
+                        endpointConfigurator.ConfigureConsumeTopology = false;
+
+                        endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
+                        {
+                            exchangeBindingConfigurator.ExchangeType = "direct";
+                            exchangeBindingConfigurator.RoutingKey = "news.parsed.with.network.error";
+                        });
+
+                        endpointConfigurator.Consumer<ThrowedHttpRequestExceptionWhenParseNewsMessageConsumer>(context);
                     });
                 });
             });

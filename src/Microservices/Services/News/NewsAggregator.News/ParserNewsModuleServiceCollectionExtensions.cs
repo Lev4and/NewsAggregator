@@ -41,37 +41,72 @@ namespace NewsAggregator.News
                         return options;
                     });
 
-                    configurator.ReceiveEndpoint("parse-news", endpointConfugurator =>
+                    configurator.Message<RegisteredNewsForParse>(messageConfigurator =>
                     {
-                        endpointConfugurator.Bind("news.events",
-                            exchangeConfigurator =>
-                            {
-                                endpointConfugurator.Durable = true;
-                                endpointConfugurator.ExchangeType = "direct";
-                                exchangeConfigurator.RoutingKey = "news.registered";
-                            });
+                        messageConfigurator.SetEntityName("news.events");
                     });
 
-                    configurator.Send<ParsedNews>(configurator =>
-                        configurator.UseRoutingKeyFormatter(formatter =>
-                            "news.parsed"));
+                    configurator.ReceiveEndpoint("parse-news", endpointConfigurator =>
+                    {
+                        endpointConfigurator.Durable = true;
+                        endpointConfigurator.ConfigureConsumeTopology = false;
 
-                    configurator.Message<ParsedNews>(configurator =>
-                        configurator.SetEntityName("news.events"));
+                        endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
+                        {
+                            exchangeBindingConfigurator.ExchangeType = "direct";
+                            exchangeBindingConfigurator.RoutingKey = "news.registered";
+                        });
 
-                    configurator.Send<ThrowedExceptionWhenParseNews>(configurator =>
-                        configurator.UseRoutingKeyFormatter(formatter =>
-                            "news.parsed.with.error"));
+                        endpointConfigurator.Consumer<RegisteredNewsForParseMessageConsumer>(context);
+                    });
 
-                    configurator.Message<ThrowedExceptionWhenParseNews>(configurator =>
-                        configurator.SetEntityName("news.events"));
+                    configurator.Send<ParsedNews>(messageSendConfigurator =>
+                    {
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.parsed");
+                    });
 
-                    configurator.Send<ThrowedHttpRequestExceptionWhenParseNews>(configurator =>
-                        configurator.UseRoutingKeyFormatter(formatter =>
-                            "news.parsed.with.network.error"));
+                    configurator.Message<ParsedNews>(messageConfigurator =>
+                    {
+                        messageConfigurator.SetEntityName("news.events");
+                    });
 
-                    configurator.Message<ThrowedHttpRequestExceptionWhenParseNews>(configurator =>
-                        configurator.SetEntityName("news.events"));
+                    configurator.Publish<ParsedNews>(messagePublishConfigurator =>
+                    {
+                        messagePublishConfigurator.Durable = true;
+                        messagePublishConfigurator.ExchangeType = "direct";
+                    });
+
+                    configurator.Send<ThrowedExceptionWhenParseNews>(messageSendConfigurator =>
+                    {
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.parsed.with.error");
+                    });
+
+                    configurator.Message<ThrowedExceptionWhenParseNews>(messageConfigurator =>
+                    {
+                        messageConfigurator.SetEntityName("news.events");
+                    });
+
+                    configurator.Publish<ThrowedExceptionWhenParseNews>(messagePublishConfigurator =>
+                    {
+                        messagePublishConfigurator.Durable = true;
+                        messagePublishConfigurator.ExchangeType = "direct";
+                    });
+
+                    configurator.Send<ThrowedHttpRequestExceptionWhenParseNews>(messageSendConfigurator =>
+                    {
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.parsed.with.network.error");
+                    });
+
+                    configurator.Message<ThrowedHttpRequestExceptionWhenParseNews>(messageConfigurator =>
+                    {
+                        messageConfigurator.SetEntityName("news.events");
+                    });
+
+                    configurator.Publish<ThrowedHttpRequestExceptionWhenParseNews>(messagePublishConfigurator =>
+                    {
+                        messagePublishConfigurator.Durable = true;
+                        messagePublishConfigurator.ExchangeType = "direct";
+                    });
                 });
             });
 

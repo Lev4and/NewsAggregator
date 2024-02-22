@@ -42,12 +42,21 @@ namespace NewsAggregator.News
                         return options;
                     });
 
-                    configurator.Send<FoundNewsList>(configurator =>
-                        configurator.UseRoutingKeyFormatter(formatter =>
-                            "news.list.found"));
+                    configurator.Send<FoundNewsList>(messageSendConfigurator =>
+                    {
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.list.found");
+                    });
 
-                    configurator.Message<FoundNewsList>(configurator =>
-                        configurator.SetEntityName("news.events"));
+                    configurator.Message<FoundNewsList>(messageConfigurator =>
+                    {
+                        messageConfigurator.SetEntityName("news.events");
+                    });
+
+                    configurator.Publish<FoundNewsList>(messagePublishConfigurator =>
+                    {
+                        messagePublishConfigurator.Durable = true;
+                        messagePublishConfigurator.ExchangeType = "direct";
+                    });
                 });
             });
 
