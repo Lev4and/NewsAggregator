@@ -65,15 +65,70 @@ div.nav-scroller {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
 }
 
-    .hotline-header .spinner-grow {
-        margin-bottom: 0.5rem;
+    .hotline-header .hotline-header__header {
+        gap: 15px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
     }
 
+        .hotline-header .hotline-header__header .spinner-grow {
+            margin-bottom: 0.5rem;
+        }
+
 .hotline-container {
-    
+    display: flex;
+    overflow: auto;
+    max-height: 300px;
+    flex-direction: column;
 }
+
+    .hotline-container .hotline-container__item {
+        gap: 10px;
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        min-height: 50px;
+    }
+
+        .hotline-container .hotline-container__item + .hotline-container__item {
+            border-top: 1px solid var(--bs-border-color);
+        }
+
+        .hotline-container .hotline-container__item .hotline-container__item__added-time {
+            width: 100px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            min-width: 100px;
+        }
+
+        .hotline-container .hotline-container__item .hotline-container__item__content {
+            gap: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+            .hotline-container .hotline-container__item .hotline-container__item__content .hotline-container__item__content__news-source img {
+                width: 32px;
+                height: 32px;
+                object-fit: cover;
+            }
+
+            .hotline-container .hotline-container__item .hotline-container__item__content .hotline-container__item__content__news-title {
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                text-overflow: ellipsis;
+                line-clamp: 1;
+                -webkit-box-orient: vertical;
+                text-decoration: none;
+            }
 
 nav[aria-label="Page navigation"] a[class="page-link"] {
     cursor: pointer;
