@@ -5,11 +5,11 @@ using NewsAggregator.News.UseCases.Commands;
 
 namespace NewsAggregator.News.MessageConsumers
 {
-    public class ThrowedHttpRequestExceptionWhenParseNewsMessageConsumer : IConsumer<ThrowedHttpRequestExceptionWhenParseNews>
+    public class AddNewsParseNetworkErrorConsumer : IConsumer<ThrowedHttpRequestExceptionWhenParseNews>
     {
         private readonly IMediator _mediator;
 
-        public ThrowedHttpRequestExceptionWhenParseNewsMessageConsumer(IMediator mediator)
+        public AddNewsParseNetworkErrorConsumer(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -19,7 +19,7 @@ namespace NewsAggregator.News.MessageConsumers
             await _mediator.Send(new AddNewsParseNetworkErrorCommand(context.Message.NewsUrl, context.Message.Message,
                 context.Message.CreatedAt));
 
-            await _mediator.Send(new RemoveNewsForParseCommand(context.Message.NewsUrl));
+            await _mediator.Publish(new ProcessedNews(context.Message.NewsUrl));
         }
     }
 }

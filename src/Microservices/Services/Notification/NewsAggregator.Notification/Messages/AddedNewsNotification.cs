@@ -4,12 +4,12 @@ using NewsAggregator.Notification.DTOs;
 
 namespace NewsAggregator.Notification.Messages
 {
-    [MessageUrn("news-added")]
-    public class AddedNews : INotification
+    [MessageUrn("news-added-notification-generated")]
+    public class AddedNewsNotification : INotification
     {
         public News News { get; }
 
-        public AddedNews(News news)
+        public AddedNewsNotification(News news)
         {
             News = news;
         }

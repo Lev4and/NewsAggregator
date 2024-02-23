@@ -4,12 +4,44 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "newsaggregator.gateways.api": "StartDebugging",
-        "newsaggregator.news.api": "StartDebugging",
-        "newsaggregator.news.mvc": "StartDebugging",
-        "newsaggregator.news.parser": "StartDebugging",
-        "newsaggregator.news.searcher": "StartDebugging",
-        "newsaggregator.notification.api": "StartDebugging"
+        "newsaggregator.gateways.api": "DoNotStart",
+        "newsaggregator.news.api": "DoNotStart",
+        "newsaggregator.news.mvc": "DoNotStart",
+        "newsaggregator.news.parser": "DoNotStart",
+        "newsaggregator.news.searcher": "DoNotStart",
+        "newsaggregator.notification.api": "DoNotStart",
+        "newsaggregator.gateways.api.seq": "DoNotStart",
+        "newsaggregator.news.api.seq": "DoNotStart",
+        "newsaggregator.news.mvc.seq": "DoNotStart",
+        "newsaggregator.news.parser.seq": "DoNotStart",
+        "newsaggregator.news.searcher.seq": "DoNotStart",
+        "newsaggregator.notification.api.seq": "DoNotStart",
+        "pgadmin": "StartWithoutDebugging",
+        "postgres": "StartWithoutDebugging",
+        "rabbitmq": "StartWithoutDebugging",
+        "redis": "StartWithoutDebugging"
+      }
+    },
+    "Full production": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "newsaggregator.gateways.api": "StartWithoutDebugging",
+        "newsaggregator.gateways.api.seq": "StartWithoutDebugging",
+        "newsaggregator.news.api": "StartWithoutDebugging",
+        "newsaggregator.news.api.seq": "StartWithoutDebugging",
+        "newsaggregator.news.mvc": "StartWithoutDebugging",
+        "newsaggregator.news.mvc.seq": "StartWithoutDebugging",
+        "newsaggregator.news.parser": "StartWithoutDebugging",
+        "newsaggregator.news.parser.seq": "StartWithoutDebugging",
+        "newsaggregator.news.searcher": "StartWithoutDebugging",
+        "newsaggregator.news.searcher.seq": "StartWithoutDebugging",
+        "newsaggregator.notification.api": "StartWithoutDebugging",
+        "newsaggregator.notification.api.seq": "StartWithoutDebugging",
+        "pgadmin": "StartWithoutDebugging",
+        "postgres": "StartWithoutDebugging",
+        "rabbitmq": "StartWithoutDebugging",
+        "redis": "StartWithoutDebugging"
       }
     }
   }

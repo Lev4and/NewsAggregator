@@ -5,11 +5,11 @@ using NewsAggregator.News.UseCases.Commands;
 
 namespace NewsAggregator.News.MessageConsumers
 {
-    public class FoundNewsListMessageConsumer : IConsumer<FoundNewsList>
+    public class ContainsNewsByUrlsConsumer : IConsumer<FoundNewsList>
     {
         private readonly IMediator _mediator;
 
-        public FoundNewsListMessageConsumer(IMediator mediator)
+        public ContainsNewsByUrlsConsumer(IMediator mediator)
         {
             _mediator = mediator;
         }

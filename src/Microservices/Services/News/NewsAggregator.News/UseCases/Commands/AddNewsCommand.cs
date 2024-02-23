@@ -39,14 +39,16 @@ namespace NewsAggregator.News.UseCases.Commands
             private readonly IRepository _repository;
             private readonly INewsEditorRepository _newsEditorRepository;
             private readonly INewsSourceRepository _newsSourceRepository;
+            private readonly ILogger<Handler> _logger;
 
             public Handler(IUnitOfWork unitOfWork, IRepository repository,
-                INewsEditorRepository newsEditorRepository, INewsSourceRepository newsSourceRepository)
+                INewsEditorRepository newsEditorRepository, INewsSourceRepository newsSourceRepository, ILogger<Handler> logger)
             {
                 _unitOfWork = unitOfWork;
                 _repository = repository;
                 _newsEditorRepository = newsEditorRepository;
                 _newsSourceRepository = newsSourceRepository;
+                _logger = logger;
             }
 
             public async Task<bool> Handle(AddNewsCommand request, CancellationToken cancellationToken)
@@ -139,6 +141,8 @@ namespace NewsAggregator.News.UseCases.Commands
                     }
                     catch (Exception ex)
                     {
+                        _logger.LogError("The add news {0} failed with an error {1}", request.News.Url, ex.Message);
+
                         return false;
                     }
                 }
@@ -158,7 +162,26 @@ namespace NewsAggregator.News.UseCases.Commands
 
             public async Task Handle(AddedNews notification, CancellationToken cancellationToken)
             {
-                _logger.LogInformation("Added news {0}", notification.News.Url);
+                _logger.LogInformation("Added news {0}", notification.NewsUrl);
+
+                await _messageBus.SendAsync(notification, cancellationToken);
+            }
+        }
+
+        internal class ProcessedNewsNotificationHandler : INotificationHandler<ProcessedNews>
+        {
+            private readonly IMessageBus _messageBus;
+            private readonly ILogger<ProcessedNewsNotificationHandler> _logger;
+
+            public ProcessedNewsNotificationHandler(IMessageBus messageBus, ILogger<ProcessedNewsNotificationHandler> logger)
+            {
+                _messageBus = messageBus;
+                _logger = logger;
+            }
+
+            public async Task Handle(ProcessedNews notification, CancellationToken cancellationToken)
+            {
+                _logger.LogInformation("Processed news {0}", notification.NewsUrl);
 
                 await _messageBus.SendAsync(notification, cancellationToken);
             }

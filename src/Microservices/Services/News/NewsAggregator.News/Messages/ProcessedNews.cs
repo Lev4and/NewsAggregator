@@ -3,12 +3,12 @@ using MediatR;
 
 namespace NewsAggregator.News.Messages
 {
-    [MessageUrn("news-added")]
-    public class AddedNews : INotification
+    [MessageUrn("news-processed")]
+    public class ProcessedNews : INotification
     {
         public string NewsUrl { get; }
 
-        public AddedNews(string newsUrl)
+        public ProcessedNews(string newsUrl)
         {
             NewsUrl = newsUrl;
         }

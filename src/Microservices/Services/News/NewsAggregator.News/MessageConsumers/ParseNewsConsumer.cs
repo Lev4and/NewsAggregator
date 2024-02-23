@@ -5,11 +5,11 @@ using NewsAggregator.News.UseCases.Commands;
 
 namespace NewsAggregator.News.MessageConsumers
 {
-    public class RegisteredNewsForParseMessageConsumer : IConsumer<RegisteredNewsForParse>
+    public class ParseNewsConsumer : IConsumer<RegisteredNewsForParse>
     {
         private readonly IMediator _mediator;
 
-        public RegisteredNewsForParseMessageConsumer(IMediator mediator)
+        public ParseNewsConsumer(IMediator mediator)
         {
             _mediator = mediator;
         }

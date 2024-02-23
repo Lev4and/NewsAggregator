@@ -25,7 +25,7 @@ namespace NewsAggregator.News
         {
             services.AddMassTransit(busConfigurator =>
             {
-                busConfigurator.AddConsumer<RegisteredNewsForParseMessageConsumer>();
+                busConfigurator.AddConsumer<ParseNewsConsumer>();
 
                 busConfigurator.UsingRabbitMq((context, configurator) =>
                 {
@@ -60,7 +60,7 @@ namespace NewsAggregator.News
                             exchangeBindingConfigurator.RoutingKey = "news.registered";
                         });
 
-                        endpointConfigurator.Consumer<RegisteredNewsForParseMessageConsumer>(context);
+                        endpointConfigurator.Consumer<ParseNewsConsumer>(context);
                     });
 
                     configurator.Send<ParsedNews>(messageSendConfigurator =>

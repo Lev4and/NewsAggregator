@@ -20,9 +20,9 @@ namespace NewsAggregator.Notification
         {
             services.AddMassTransit(busConfigurator =>
             {
-                busConfigurator.AddConsumer<AddedNewsMessageConsumer>(consumerConfigurator =>
+                busConfigurator.AddConsumer<SendByWebsocketAddedNewsNotificationConsumer>(consumerConfigurator =>
                 {
-                    consumerConfigurator.ConsumerMessage<AddedNews>();
+                    consumerConfigurator.ConsumerMessage<AddedNewsNotification>();
                 });
 
                 busConfigurator.UsingRabbitMq((context, configurator) =>
@@ -42,7 +42,7 @@ namespace NewsAggregator.Notification
                         return options;
                     });
 
-                    configurator.Message<AddedNews>(messageConfigurator =>
+                    configurator.Message<AddedNewsNotification>(messageConfigurator =>
                     {
                         messageConfigurator.SetEntityName("news.events");
                     });
@@ -55,10 +55,10 @@ namespace NewsAggregator.Notification
                         endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
                         {
                             exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
-                            exchangeBindingConfigurator.RoutingKey = "news.added";
+                            exchangeBindingConfigurator.RoutingKey = "news.added.notification.generated";
                         });
 
-                        endpointConfigurator.Consumer<AddedNewsMessageConsumer>(context);
+                        endpointConfigurator.Consumer<SendByWebsocketAddedNewsNotificationConsumer>(context);
                     });
                 });
             });
