@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async function (e) {
     const hotlineHeaderLocalTimeElement = document.querySelector('.hotline-header__local-time strong');
 
     setInterval(() => {
-        hotlineHeaderLocalTimeElement.innerHTML = new Date().toLocaleTimeString('en-US');
+        hotlineHeaderLocalTimeElement.innerHTML = new Date().toLocaleString('en-US');
     }, 250);
 
     const connection = new signalR.HubConnectionBuilder()

@@ -12,6 +12,7 @@ using NewsAggregator.News.Extensions;
 using NewsAggregator.News.Messages;
 using NewsAggregator.News.Repositories;
 using System.Runtime.CompilerServices;
+using System.Transactions;
 
 namespace NewsAggregator.News.UseCases.Commands
 {
@@ -50,7 +51,9 @@ namespace NewsAggregator.News.UseCases.Commands
 
             public async Task<bool> Handle(AddNewsCommand request, CancellationToken cancellationToken)
             {
-                using (var transaction = await _unitOfWork.BeginTransactionAsync(cancellationToken))
+                using (var transaction = new TransactionScope(TransactionScopeOption.Required,
+                    new TransactionOptions() { IsolationLevel = IsolationLevel.RepeatableRead },
+                        TransactionScopeAsyncFlowOption.Enabled))
                 {
                     try
                     {
@@ -71,8 +74,8 @@ namespace NewsAggregator.News.UseCases.Commands
                                     SourceId = newsSource.Id,
                                     Name = request.News.EditorName
                                 },
-                                newsSource.Id, 
-                                request.News.EditorName, 
+                                newsSource.Id,
+                                request.News.EditorName,
                                 cancellationToken);
 
                         var news = new Entities.News
@@ -91,20 +94,20 @@ namespace NewsAggregator.News.UseCases.Commands
                         if (!string.IsNullOrEmpty(request.News.SubTitle))
                         {
                             _repository.Add(
-                                new NewsSubTitle 
-                                { 
-                                    NewsId = news.Id, 
-                                    Title = request.News.SubTitle 
+                                new NewsSubTitle
+                                {
+                                    NewsId = news.Id,
+                                    Title = request.News.SubTitle
                                 });
                         }
 
                         if (!string.IsNullOrEmpty(request.News.PictureUrl))
                         {
                             _repository.Add(
-                                new NewsPicture 
-                                { 
-                                    NewsId = news.Id, 
-                                    Url = request.News.PictureUrl 
+                                new NewsPicture
+                                {
+                                    NewsId = news.Id,
+                                    Url = request.News.PictureUrl
                                 });
                         }
 
@@ -121,23 +124,21 @@ namespace NewsAggregator.News.UseCases.Commands
                         if (!string.IsNullOrEmpty(request.News.Description))
                         {
                             _repository.Add(
-                                new NewsDescription 
-                                { 
-                                    NewsId = news.Id, 
-                                    Description = request.News.Description 
+                                new NewsDescription
+                                {
+                                    NewsId = news.Id,
+                                    Description = request.News.Description
                                 });
                         }
 
                         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-                        await transaction.CommitAsync(cancellationToken);
+                        transaction.Complete();
 
                         return true;
                     }
                     catch (Exception ex)
                     {
-                        await transaction.RollbackAsync(cancellationToken);
-
                         return false;
                     }
                 }

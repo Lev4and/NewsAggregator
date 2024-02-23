@@ -5,6 +5,7 @@ using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Entities;
 using NewsAggregator.News.Repositories;
 using NewsAggregator.News.Specifications;
+using System.Transactions;
 
 namespace NewsAggregator.News.UseCases.Queries
 {
@@ -41,15 +42,33 @@ namespace NewsAggregator.News.UseCases.Queries
 
             public async Task<GetNewsEditorListDto> Handle(GetNewsEditorListQuery request, CancellationToken cancellationToken)
             {
-                var specification = new GetNewsEditorGridSpecification(request.Filters);
+                using (var transaction = new TransactionScope(TransactionScopeOption.Required,
+                    new TransactionOptions() { IsolationLevel = IsolationLevel.RepeatableRead },
+                        TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    try
+                    {
+                        var specification = new GetNewsEditorGridSpecification(request.Filters);
 
-                var newsEditorCount = await _newsEditorRepository.CountAsync(specification, cancellationToken);
-                var newsEditorList = await _newsEditorRepository.FindAsync(specification, cancellationToken);
+                        var newsEditorCount = await _newsEditorRepository.CountAsync(specification, cancellationToken);
+                        var newsEditorList = await _newsEditorRepository.FindAsync(specification, cancellationToken);
 
-                var newsSources = await _newsSourceRepository.FindNewsSourcesAsync(cancellationToken);
+                        var newsSources = await _newsSourceRepository.FindNewsSourcesAsync(cancellationToken);
 
-                return new GetNewsEditorListDto(request.Filters, new PagedResultModel<NewsEditor>(newsEditorList,
-                    request.Filters.Page, request.Filters.PageSize, newsEditorCount), newsSources);
+                        var getNewsEditorListDto = new GetNewsEditorListDto(request.Filters, 
+                            new PagedResultModel<NewsEditor>(newsEditorList, request.Filters.Page, 
+                                request.Filters.PageSize, newsEditorCount), newsSources);
+
+                        transaction.Complete();
+
+                        return getNewsEditorListDto;
+                    }
+                    catch (Exception ex) 
+                    {
+                        return new GetNewsEditorListDto(new GetNewsEditorListFilters(),
+                            new PagedResultModel<NewsEditor>(new List<NewsEditor>(), 1, 0, 0), new List<NewsSource>());
+                    }
+                }
             }
         }
     }

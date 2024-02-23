@@ -5,6 +5,7 @@ using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Entities;
 using NewsAggregator.News.Repositories;
 using NewsAggregator.News.Specifications;
+using System.Transactions;
 
 namespace NewsAggregator.News.UseCases.Queries
 {
@@ -40,13 +41,31 @@ namespace NewsAggregator.News.UseCases.Queries
             public async Task<GetNewsSourceListDto> Handle(GetNewsSourceListQuery request, 
                 CancellationToken cancellationToken)
             {
-                var specification = new GetNewsSourceGridSpecification(request.Filters);
+                using (var transaction = new TransactionScope(TransactionScopeOption.Required,
+                    new TransactionOptions() { IsolationLevel = IsolationLevel.RepeatableRead },
+                        TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    try
+                    {
+                        var specification = new GetNewsSourceGridSpecification(request.Filters);
 
-                var newsSourceCount = await _newsSourceRepository.CountAsync(specification, cancellationToken);
-                var newsSourceList = await _newsSourceRepository.FindAsync(specification, cancellationToken);
+                        var newsSourceCount = await _newsSourceRepository.CountAsync(specification, cancellationToken);
+                        var newsSourceList = await _newsSourceRepository.FindAsync(specification, cancellationToken);
 
-                return new GetNewsSourceListDto(request.Filters, new PagedResultModel<NewsSource>(newsSourceList,
-                    request.Filters.Page, request.Filters.PageSize, newsSourceCount));
+                        var getNewsSourceListDto = new GetNewsSourceListDto(request.Filters, 
+                            new PagedResultModel<NewsSource>(newsSourceList, request.Filters.Page, request.Filters.PageSize, 
+                                newsSourceCount));
+
+                        transaction.Complete();
+
+                        return getNewsSourceListDto;
+                    }
+                    catch (Exception ex)
+                    {
+                        return new GetNewsSourceListDto(new GetNewsSourceListFilters(),
+                            new PagedResultModel<NewsSource>(new List<NewsSource>(), 1, 1, 0));
+                    }
+                }
             }
         }
     }
