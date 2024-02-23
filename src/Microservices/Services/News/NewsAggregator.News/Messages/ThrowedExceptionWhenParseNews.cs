@@ -1,7 +1,9 @@
-﻿using MediatR;
+﻿using MassTransit;
+using MediatR;
 
 namespace NewsAggregator.News.Messages
 {
+    [MessageUrn("news-parsed-with-error")]
     public class ThrowedExceptionWhenParseNews : INotification
     {
         public string NewsUrl { get; }

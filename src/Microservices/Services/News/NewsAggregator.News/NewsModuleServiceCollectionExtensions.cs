@@ -17,6 +17,7 @@ using NewsAggregator.News.MessageConsumers;
 using NewsAggregator.News.Messages;
 using NewsAggregator.News.Pipelines;
 using NewsAggregator.News.Repositories;
+using RabbitMQ.Client;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using static MassTransit.MessageHeaders;
@@ -44,6 +45,8 @@ namespace NewsAggregator.News
                         hostConfigurator.Password(settings.MessageBroker.RabbitMQ.Password);
                     });
 
+                    configurator.UseRawJsonDeserializer(RawSerializerOptions.AnyMessageType);
+
                     configurator.ConfigureJsonSerializerOptions(options =>
                     {
                         options.ReferenceHandler = ReferenceHandler.IgnoreCycles;
@@ -63,7 +66,7 @@ namespace NewsAggregator.News
 
                         endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
                         {
-                            exchangeBindingConfigurator.ExchangeType = "direct";
+                            exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
                             exchangeBindingConfigurator.RoutingKey = "news.list.found";
                         });
 
@@ -83,7 +86,7 @@ namespace NewsAggregator.News
                     configurator.Publish<FoundNotExistedNews>(messagePublishConfigurator =>
                     {
                         messagePublishConfigurator.Durable = true;
-                        messagePublishConfigurator.ExchangeType = "direct";
+                        messagePublishConfigurator.ExchangeType = ExchangeType.Direct;
                     });
 
                     configurator.ReceiveEndpoint("register-news", endpointConfigurator =>
@@ -93,7 +96,7 @@ namespace NewsAggregator.News
 
                         endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
                         {
-                            exchangeBindingConfigurator.ExchangeType = "direct";
+                            exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
                             exchangeBindingConfigurator.RoutingKey = "news.found";
                         });
 
@@ -113,23 +116,12 @@ namespace NewsAggregator.News
                     configurator.Publish<RegisteredNewsForParse>(messagePublishConfigurator =>
                     {
                         messagePublishConfigurator.Durable = true;
-                        messagePublishConfigurator.ExchangeType = "direct";
-                    });
-
-                    configurator.Send<ParsedNews>(messageSendConfigurator =>
-                    {
-                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.parsed");
+                        messagePublishConfigurator.ExchangeType = ExchangeType.Direct;
                     });
 
                     configurator.Message<ParsedNews>(messageConfigurator =>
                     {
                         messageConfigurator.SetEntityName("news.events");
-                    });
-
-                    configurator.Publish<ParsedNews>(messagePublishConfigurator =>
-                    {
-                        messagePublishConfigurator.Durable = true;
-                        messagePublishConfigurator.ExchangeType = "direct";
                     });
 
                     configurator.ReceiveEndpoint("add-news", endpointConfigurator =>
@@ -139,7 +131,7 @@ namespace NewsAggregator.News
 
                         endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
                         {
-                            exchangeBindingConfigurator.ExchangeType = "direct";
+                            exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
                             exchangeBindingConfigurator.RoutingKey = "news.parsed";
                         });
 
@@ -159,7 +151,7 @@ namespace NewsAggregator.News
                     configurator.Publish<AddedNews>(messagePublishConfigurator =>
                     {
                         messagePublishConfigurator.Durable = true;
-                        messagePublishConfigurator.ExchangeType = "direct";
+                        messagePublishConfigurator.ExchangeType = ExchangeType.Direct;
                     });
 
                     configurator.ReceiveEndpoint("unregister-news", endpointConfigurator =>
@@ -169,27 +161,16 @@ namespace NewsAggregator.News
 
                         endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
                         {
-                            exchangeBindingConfigurator.ExchangeType = "direct";
+                            exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
                             exchangeBindingConfigurator.RoutingKey = "news.added";
                         });
 
                         endpointConfigurator.Consumer<AddedNewsMessageConsumer>(context);
                     });
 
-                    configurator.Send<ThrowedExceptionWhenParseNews>(messageSendConfigurator =>
-                    {
-                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.parsed.with.error");
-                    });
-
                     configurator.Message<ThrowedExceptionWhenParseNews>(messageConfigurator =>
                     {
                         messageConfigurator.SetEntityName("news.events");
-                    });
-
-                    configurator.Publish<ThrowedExceptionWhenParseNews>(messagePublishConfigurator =>
-                    {
-                        messagePublishConfigurator.Durable = true;
-                        messagePublishConfigurator.ExchangeType = "direct";
                     });
 
                     configurator.ReceiveEndpoint("add-news-with-error-when-parse", endpointConfigurator =>
@@ -199,27 +180,16 @@ namespace NewsAggregator.News
 
                         endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
                         {
-                            exchangeBindingConfigurator.ExchangeType = "direct";
+                            exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
                             exchangeBindingConfigurator.RoutingKey = "news.parsed.with.error";
                         });
 
                         endpointConfigurator.Consumer<ThrowedExceptionWhenParseNewsMessageConsumer>(context);
                     });
 
-                    configurator.Send<ThrowedHttpRequestExceptionWhenParseNews>(messageSendConfigurator =>
-                    {
-                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.parsed.with.network.error");
-                    });
-
                     configurator.Message<ThrowedHttpRequestExceptionWhenParseNews>(messageConfigurator =>
                     {
                         messageConfigurator.SetEntityName("news.events");
-                    });
-
-                    configurator.Publish<ThrowedHttpRequestExceptionWhenParseNews>(messagePublishConfigurator =>
-                    {
-                        messagePublishConfigurator.Durable = true;
-                        messagePublishConfigurator.ExchangeType = "direct";
                     });
 
                     configurator.ReceiveEndpoint("add-news-with-network-error-when-parse", endpointConfigurator =>
@@ -229,7 +199,7 @@ namespace NewsAggregator.News
 
                         endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
                         {
-                            exchangeBindingConfigurator.ExchangeType = "direct";
+                            exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
                             exchangeBindingConfigurator.RoutingKey = "news.parsed.with.network.error";
                         });
 

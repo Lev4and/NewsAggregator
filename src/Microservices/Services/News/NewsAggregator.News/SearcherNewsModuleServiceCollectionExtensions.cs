@@ -16,6 +16,7 @@ using NewsAggregator.News.Messages;
 using NewsAggregator.News.Pipelines;
 using NewsAggregator.News.UseCases.Commands;
 using NewsAggregator.News.UseCases.Queries;
+using RabbitMQ.Client;
 using System.Reflection;
 using System.Text.Json.Serialization;
 
@@ -34,6 +35,8 @@ namespace NewsAggregator.News
                         hostConfigurator.Username(settings.MessageBroker.RabbitMQ.Username);
                         hostConfigurator.Password(settings.MessageBroker.RabbitMQ.Password);
                     });
+
+                    configurator.UseRawJsonDeserializer(RawSerializerOptions.AnyMessageType);
 
                     configurator.ConfigureJsonSerializerOptions(options =>
                     {
@@ -55,7 +58,7 @@ namespace NewsAggregator.News
                     configurator.Publish<FoundNewsList>(messagePublishConfigurator =>
                     {
                         messagePublishConfigurator.Durable = true;
-                        messagePublishConfigurator.ExchangeType = "direct";
+                        messagePublishConfigurator.ExchangeType = ExchangeType.Direct;
                     });
                 });
             });

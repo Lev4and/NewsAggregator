@@ -8,6 +8,7 @@ using NewsAggregator.Notification.ConfigurationOptions;
 using NewsAggregator.Notification.MessageConsumers;
 using NewsAggregator.Notification.Messages;
 using NewsAggregator.Notification.Pipelines;
+using RabbitMQ.Client;
 using System.Reflection;
 using System.Text.Json.Serialization;
 
@@ -19,7 +20,10 @@ namespace NewsAggregator.Notification
         {
             services.AddMassTransit(busConfigurator =>
             {
-                busConfigurator.AddConsumer<AddedNewsMessageConsumer>();
+                busConfigurator.AddConsumer<AddedNewsMessageConsumer>(consumerConfigurator =>
+                {
+                    consumerConfigurator.ConsumerMessage<AddedNews>();
+                });
 
                 busConfigurator.UsingRabbitMq((context, configurator) =>
                 {
@@ -29,11 +33,18 @@ namespace NewsAggregator.Notification
                         hostConfigurator.Password(settings.MessageBroker.RabbitMQ.Password);
                     });
 
+                    configurator.UseRawJsonDeserializer(RawSerializerOptions.AnyMessageType);
+
                     configurator.ConfigureJsonSerializerOptions(options =>
                     {
                         options.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 
                         return options;
+                    });
+
+                    configurator.Message<AddedNews>(messageConfigurator =>
+                    {
+                        messageConfigurator.SetEntityName("news.events");
                     });
 
                     configurator.ReceiveEndpoint("send-by-websocket-added-news-notification", endpointConfigurator =>
@@ -43,7 +54,7 @@ namespace NewsAggregator.Notification
 
                         endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
                         {
-                            exchangeBindingConfigurator.ExchangeType = "direct";
+                            exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
                             exchangeBindingConfigurator.RoutingKey = "news.added";
                         });
 

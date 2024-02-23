@@ -14,6 +14,7 @@ using NewsAggregator.News.MessageConsumers;
 using NewsAggregator.News.Messages;
 using NewsAggregator.News.Pipelines;
 using NewsAggregator.News.UseCases.Commands;
+using RabbitMQ.Client;
 using System.Text.Json.Serialization;
 
 namespace NewsAggregator.News
@@ -34,6 +35,8 @@ namespace NewsAggregator.News
                         hostConfigurator.Password(settings.MessageBroker.RabbitMQ.Password);
                     });
 
+                    configurator.UseRawJsonDeserializer(RawSerializerOptions.AnyMessageType);
+
                     configurator.ConfigureJsonSerializerOptions(options =>
                     {
                         options.ReferenceHandler = ReferenceHandler.IgnoreCycles;
@@ -53,7 +56,7 @@ namespace NewsAggregator.News
 
                         endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
                         {
-                            exchangeBindingConfigurator.ExchangeType = "direct";
+                            exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
                             exchangeBindingConfigurator.RoutingKey = "news.registered";
                         });
 
@@ -73,7 +76,7 @@ namespace NewsAggregator.News
                     configurator.Publish<ParsedNews>(messagePublishConfigurator =>
                     {
                         messagePublishConfigurator.Durable = true;
-                        messagePublishConfigurator.ExchangeType = "direct";
+                        messagePublishConfigurator.ExchangeType = ExchangeType.Direct;
                     });
 
                     configurator.Send<ThrowedExceptionWhenParseNews>(messageSendConfigurator =>
@@ -89,7 +92,7 @@ namespace NewsAggregator.News
                     configurator.Publish<ThrowedExceptionWhenParseNews>(messagePublishConfigurator =>
                     {
                         messagePublishConfigurator.Durable = true;
-                        messagePublishConfigurator.ExchangeType = "direct";
+                        messagePublishConfigurator.ExchangeType = ExchangeType.Direct;
                     });
 
                     configurator.Send<ThrowedHttpRequestExceptionWhenParseNews>(messageSendConfigurator =>
@@ -105,7 +108,7 @@ namespace NewsAggregator.News
                     configurator.Publish<ThrowedHttpRequestExceptionWhenParseNews>(messagePublishConfigurator =>
                     {
                         messagePublishConfigurator.Durable = true;
-                        messagePublishConfigurator.ExchangeType = "direct";
+                        messagePublishConfigurator.ExchangeType = ExchangeType.Direct;
                     });
                 });
             });
