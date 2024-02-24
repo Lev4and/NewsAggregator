@@ -23,6 +23,12 @@ namespace NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories
             return _dbContext.Set<TEntity>().Add(entity).Entity;
         }
 
+        public async Task<TEntity> AddAsync<TEntity>(TEntity entity, CancellationToken cancellationToken = default) 
+            where TEntity : EntityBase
+        {
+            return (await _dbContext.Set<TEntity>().AddAsync(entity, cancellationToken)).Entity;
+        }
+
         public async Task<TEntity?> FindOneByIdAsync<TEntity>(Guid id, CancellationToken cancellationToken = default)
             where TEntity : EntityBase
         {
@@ -50,9 +56,25 @@ namespace NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories
             _dbContext.Set<TEntity>().Update(entity);
         }
 
+        public async Task UpdateAsync<TEntity>(TEntity entity, CancellationToken cancellationToken = default) 
+            where TEntity : EntityBase
+        {
+            _dbContext.Set<TEntity>().Update(entity);
+
+            await _dbContext.SaveChangesAsync(cancellationToken);
+        }
+
         public void Remove<TEntity>(TEntity entity) where TEntity : EntityBase
         {
             _dbContext.Set<TEntity>().Remove(entity);
+        }
+
+        public async Task RemoveAsync<TEntity>(TEntity entity, CancellationToken cancellationToken = default) 
+            where TEntity : EntityBase
+        {
+            _dbContext.Set<TEntity>().Remove(entity);
+
+            await _dbContext.SaveChangesAsync(cancellationToken);
         }
 
         public async ValueTask<long> CountAsync<TEntity>(IGridSpecification<TEntity> specification, 
@@ -153,6 +175,11 @@ namespace NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories
             return _dbContext.Set<TEntity>().Add(entity).Entity;
         }
 
+        public async Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken = default)
+        {
+            return (await _dbContext.Set<TEntity>().AddAsync(entity, cancellationToken)).Entity;
+        }
+
         public async Task<TEntity?> FindOneByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
             return await _dbContext.Set<TEntity>().AsNoTracking()
@@ -178,9 +205,23 @@ namespace NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories
             _dbContext.Set<TEntity>().Update(entity);
         }
 
+        public async Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
+        {
+            _dbContext.Set<TEntity>().Update(entity);
+
+            await _dbContext.SaveChangesAsync(cancellationToken);
+        }
+
         public void Remove(TEntity entity)
         {
             _dbContext.Set<TEntity>().Remove(entity);
+        }
+
+        public async Task RemoveAsync(TEntity entity, CancellationToken cancellationToken = default)
+        {
+            _dbContext.Set<TEntity>().Remove(entity);
+
+            await _dbContext.SaveChangesAsync(cancellationToken);
         }
 
         public async ValueTask<long> CountAsync(IGridSpecification<TEntity> specification, 
