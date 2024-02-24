@@ -19,7 +19,9 @@
         "pgadmin": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "redis": "StartWithoutDebugging"
+        "redis": "StartWithoutDebugging",
+        "elasticsearch": "StartWithoutDebugging",
+        "kibana": "StartWithoutDebugging"
       }
     },
     "Full production": {
@@ -41,7 +43,9 @@
         "pgadmin": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "redis": "StartWithoutDebugging"
+        "redis": "StartWithoutDebugging",
+        "elasticsearch": "StartWithoutDebugging",
+        "kibana": "StartWithoutDebugging"
       }
     }
   }
