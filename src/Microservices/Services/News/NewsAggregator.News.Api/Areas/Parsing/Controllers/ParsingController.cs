@@ -5,7 +5,7 @@ namespace NewsAggregator.News.Api.Areas.Parsing.Controllers
 {
     [ApiController]
     [Area("parsing")]
-    [Route("api/news/parsing/")]
+    [Route("api/news/v{apiVersion:apiVersion}/parsing")]
     public class ParsingController : ControllerBase
     {
         private readonly IMediator _mediator;

@@ -11,7 +11,7 @@ using System.Net;
 namespace NewsAggregator.News.Api.Controllers
 {
     [ApiController]
-    [Route("api/news/")]
+    [Route("api/news/v{apiVersion:apiVersion}/")]
     public class NewsController : ControllerBase
     {
         private readonly IMediator _mediator;

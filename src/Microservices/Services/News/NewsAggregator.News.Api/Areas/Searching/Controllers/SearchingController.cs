@@ -5,7 +5,7 @@ namespace NewsAggregator.News.Api.Areas.Searching.Controllers
 {
     [ApiController]
     [Area("searching")]
-    [Route("api/news/searching/")]
+    [Route("api/news/v{apiVersion:apiVersion}/searching")]
     public class SearchingController : ControllerBase
     {
         private readonly IMediator _mediator;

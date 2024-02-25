@@ -1,5 +1,7 @@
+using Asp.Versioning;
 using NewsAggregator.Infrastructure.Web.Middlewares;
 using NewsAggregator.News;
+using NewsAggregator.News.Api.OpenApi;
 using NewsAggregator.News.ConfigurationOptions;
 using NewsAggregator.News.Web.Middlewares;
 using Serilog;
@@ -24,6 +26,19 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGenNewtonsoftSupport();
 
+builder.Services.AddApiVersioning(options =>
+{
+    options.DefaultApiVersion = new ApiVersion(1);
+    options.ApiVersionReader = new UrlSegmentApiVersionReader();
+})
+.AddApiExplorer(options => 
+{
+    options.GroupNameFormat = "'v'V";
+    options.SubstituteApiVersionInUrl = true;
+});
+
+builder.Services.ConfigureOptions<ConfigureSwaggerGenOptions>();
+
 var app = builder.Build();
 
 app.MigrateNewsDb();
@@ -31,7 +46,18 @@ app.MigrateNewsDb();
 await app.RefreshNewsSourceMemoryCacheAsync();
 
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(options =>
+{
+    var descriptions = app.DescribeApiVersions();
+
+    foreach (var description in descriptions)
+    {
+        var url = $"/swagger/{description.GroupName}/swagger.json";
+        var name = description.GroupName.ToUpperInvariant();
+
+        options.SwaggerEndpoint(url, name);
+    }
+});
 
 app.UseSerilogRequestLogging();
 
@@ -45,10 +71,10 @@ app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 app.UseEndpoints(builder =>
 {
     _ = builder.MapAreaControllerRoute("parsingArea", "parsing",
-        "api/news/parsing/{controller=Home}/{action=Index}/{id?}");
+        "api/news/v{apiVersion:apiVersion}/parsing/{controller=Home}/{action=Index}/{id?}");
 
     _ = builder.MapAreaControllerRoute("searchingArea", "searching",
-        "api/news/searching/{controller=Home}/{action=Index}/{id?}");
+        "api/news/v{apiVersion:apiVersion}/searching/{controller=Home}/{action=Index}/{id?}");
 });
 
 app.Run();
