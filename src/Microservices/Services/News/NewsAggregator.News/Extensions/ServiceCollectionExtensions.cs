@@ -1,4 +1,5 @@
 ﻿using AngleSharp.Html.Parser;
+using Elastic.Clients.Elasticsearch;
 using FluentValidation;
 using MassTransit.Internals;
 using MediatR;
@@ -55,7 +56,12 @@ namespace NewsAggregator.News.Extensions
 
         public static IServiceCollection AddNewsDbElasticsearch(this IServiceCollection services, string connectionString)
         {
-            return services.AddElasticsearch(connectionString);
+            var settings = new ElasticsearchClientSettings(new Uri(connectionString))
+                .DefaultMappingFor<Entities.News>(selector => selector
+                    .IndexName("news")
+                        .IdProperty(property => property.Id));
+
+            return services.AddElasticsearch(settings);
         }
 
         public static IServiceCollection AddNewsDbElasticsearchRepositories(this IServiceCollection services)

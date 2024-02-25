@@ -1,26 +1,22 @@
-﻿using Elastic.Clients.Elasticsearch;
-using MassTransit;
+﻿using MassTransit;
+using MediatR;
 using NewsAggregator.News.Messages;
+using NewsAggregator.News.UseCases.Commands;
 
 namespace NewsAggregator.News.MessageConsumers
 {
     public class IndexAddedNewsConsumer : IConsumer<AddedNewsPreparedToIndexing>
     {
-        private readonly ElasticsearchClient _client;
+        private readonly IMediator _mediator;
 
-        public IndexAddedNewsConsumer(ElasticsearchClient client)
+        public IndexAddedNewsConsumer(IMediator mediator)
         {
-            _client = client;
+            _mediator = mediator;
         }
 
         public async Task Consume(ConsumeContext<AddedNewsPreparedToIndexing> context)
         {
-            var response = await _client.IndexAsync(context.Message.News, "news");
-
-            if (response.IsValidResponse)
-            {
-
-            }
+            await _mediator.Send(new IndexNewsCommand(context.Message.News));
         }
     }
 }

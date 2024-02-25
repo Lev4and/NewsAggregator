@@ -17,9 +17,10 @@ namespace NewsAggregator.Infrastructure.Extensions
             return services;
         }
 
-        public static IServiceCollection AddElasticsearch(this IServiceCollection services, string connectionString) 
+        public static IServiceCollection AddElasticsearch(this IServiceCollection services, 
+            ElasticsearchClientSettings settings) 
         {
-            services.AddSingleton(factory => new ElasticsearchClient(new Uri(connectionString)));
+            services.AddSingleton(factory => new ElasticsearchClient(settings));
 
             return services;
         }
