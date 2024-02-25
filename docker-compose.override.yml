@@ -102,13 +102,16 @@ services:
       - ./elasticsearch:/usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node
+      - xpack.security.enabled=false
       - ES_JAVA_OPTS=-Xms512m -Xmx512m
 
   kibana:
     ports:
       - 5601:5601
     environment:
-      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    volumes:
+      - ./kibanadata:/usr/share/kibana/data
   
   # chrome:
   #   environment:

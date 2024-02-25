@@ -1,15 +1,11 @@
-﻿using FluentValidation;
-using MassTransit;
-using MediatR;
+﻿using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
-using NewsAggregator.Domain.Infrastructure.MessageBrokers;
-using NewsAggregator.Infrastructure.MessageBrokers.RabbitMQ;
+using NewsAggregator.Infrastructure.Extensions;
 using NewsAggregator.Notification.ConfigurationOptions;
+using NewsAggregator.Notification.Extensions;
 using NewsAggregator.Notification.MessageConsumers;
 using NewsAggregator.Notification.Messages;
-using NewsAggregator.Notification.Pipelines;
 using RabbitMQ.Client;
-using System.Reflection;
 using System.Text.Json.Serialization;
 
 namespace NewsAggregator.Notification
@@ -20,10 +16,7 @@ namespace NewsAggregator.Notification
         {
             services.AddMassTransit(busConfigurator =>
             {
-                busConfigurator.AddConsumer<SendByWebsocketAddedNewsNotificationConsumer>(consumerConfigurator =>
-                {
-                    consumerConfigurator.ConsumerMessage<AddedNewsNotification>();
-                });
+                busConfigurator.AddConsumer<SendByWebsocketAddedNewsNotificationConsumer>();
 
                 busConfigurator.UsingRabbitMq((context, configurator) =>
                 {
@@ -63,11 +56,9 @@ namespace NewsAggregator.Notification
                 });
             });
 
-            services.AddTransient<IMessageBus, RabbitMQMessageBus>();
+            services.AddRabbitMQMessageBus();
 
-            services.AddMediatR(config => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipeline<,>));
+            services.AddCqrs();
 
             return services;
         }

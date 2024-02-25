@@ -1,19 +1,9 @@
-﻿using FluentValidation;
-using MassTransit;
-using MediatR;
+﻿using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using NewsAggregator.Domain.Infrastructure.Caching;
-using NewsAggregator.Domain.Infrastructure.Databases;
-using NewsAggregator.Domain.Infrastructure.MessageBrokers;
-using NewsAggregator.Infrastructure.Caching.Default;
-using NewsAggregator.Infrastructure.MessageBrokers.RabbitMQ;
-using NewsAggregator.News.Caching;
+using NewsAggregator.Infrastructure.Extensions;
 using NewsAggregator.News.ConfigurationOptions;
-using NewsAggregator.News.Databases.EntityFramework.News;
 using NewsAggregator.News.Extensions;
-using NewsAggregator.News.Pipelines;
-using System.Reflection;
 using System.Text.Json.Serialization;
 
 namespace NewsAggregator.News
@@ -32,6 +22,8 @@ namespace NewsAggregator.News
                         hostConfigurator.Password(settings.MessageBroker.RabbitMQ.Password);
                     });
 
+                    configurator.UseRawJsonDeserializer(RawSerializerOptions.AnyMessageType);
+
                     configurator.ConfigureJsonSerializerOptions(options =>
                     {
                         options.ReferenceHandler = ReferenceHandler.IgnoreCycles;
@@ -41,33 +33,18 @@ namespace NewsAggregator.News
                 });
             });
 
-            services.AddTransient<IMessageBus, RabbitMQMessageBus>();
+            services.AddRabbitMQMessageBus();
 
-            services.AddDbContext<NewsDbContext>((options) =>
-            {
-                options.UseNpgsql(settings.ConnectionStrings.NewsDbPostgreSql)
-                    .UseSnakeCaseNamingConvention();
-            });
+            services.AddNewsDbPostgreSql(settings.ConnectionStrings.NewsDbPostgreSql);
+            services.AddNewsDbEntityFrameworkRepositories();
 
-            services.AddScoped<IUnitOfWork>(serviceProvider => serviceProvider.GetRequiredService<NewsDbContext>());
+            services.AddNewsDbElasticsearch(settings.ConnectionStrings.NewsDbElasticsearch);
+            services.AddNewsDbElasticsearchRepositories();
 
-            services.AddDefaultNewsSources();
-            services.AddRepositories();
+            services.AddRedisMemoryCache(settings.Caching.Redis);
+            services.AddNewsMemoryCache();
 
-            services.AddDistributedMemoryCache();
-            services.AddSingleton<IMemoryCache, MemoryCache>();
-            services.AddSingleton<INewsMemoryCache, NewsMemoryCache>();
-            services.AddSingleton<INewsEditorMemoryCache, NewsEditorMemoryCache>();
-            services.AddSingleton<INewsSourceMemoryCache, NewsSourceMemoryCache>();
-
-            services.AddStackExchangeRedisCache(redisOptions =>
-            {
-                redisOptions.Configuration = settings.Caching.Redis.ConnectionString;
-            });
-
-            services.AddMediatR(config => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipeline<,>));
+            services.AddCqrs();
 
             services.AddHttpClientNewsProviders();
             services.AddNewsAngleSharpParsers();

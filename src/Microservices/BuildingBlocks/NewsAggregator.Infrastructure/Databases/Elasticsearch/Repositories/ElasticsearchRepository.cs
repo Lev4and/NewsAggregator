@@ -1,13 +1,14 @@
 ﻿using Elastic.Clients.Elasticsearch;
 using NewsAggregator.Domain.Entities;
 using NewsAggregator.Domain.Repositories;
+using NewsAggregator.Domain.Specification;
 using System.Linq.Expressions;
 
 namespace NewsAggregator.Infrastructure.Databases.Elasticsearch.Repositories
 {
-    public abstract class ElasticsearchRepository : IRepository
+    public abstract class ElasticsearchRepository : IRepository, IGridRepository
     {
-        private readonly ElasticsearchClient _client;
+        protected readonly ElasticsearchClient _client;
 
         protected ElasticsearchRepository(ElasticsearchClient client)
         {
@@ -59,28 +60,42 @@ namespace NewsAggregator.Infrastructure.Databases.Elasticsearch.Repositories
 
         public void Remove<TEntity>(TEntity entity) where TEntity : EntityBase
         {
-            _client.Delete<TEntity>(entity.Id);
+            _client.Delete<TEntity>(Id.From(entity));
         }
 
         public async Task RemoveAsync<TEntity>(TEntity entity, CancellationToken cancellationToken = default) 
             where TEntity : EntityBase
         {
-            await _client.DeleteAsync<TEntity>(entity.Id, cancellationToken);
+            await _client.DeleteAsync<TEntity>(Id.From(entity), cancellationToken);
         }
 
         public void Update<TEntity>(TEntity entity) where TEntity : EntityBase
         {
+            _client.Update<TEntity, object>(IndexName.From<TEntity>(), Id.From(entity), 
+                descriptor => descriptor.Doc(entity));
+        }
+
+        public async Task UpdateAsync<TEntity>(TEntity entity, CancellationToken cancellationToken = default) 
+            where TEntity : EntityBase
+        {
+            await _client.UpdateAsync<TEntity, object>(IndexName.From<TEntity>(), Id.From(entity),
+                descriptor => descriptor.Doc(entity), cancellationToken);
+        }
+
+        public ValueTask<long> CountAsync<TEntity>(IGridSpecification<TEntity> specification, 
+            CancellationToken cancellationToken = default) where TEntity : EntityBase
+        {
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync<TEntity>(TEntity entity, CancellationToken cancellationToken = default) 
-            where TEntity : EntityBase
+        public Task<IReadOnlyCollection<TEntity>> FindAsync<TEntity>(IGridSpecification<TEntity> specification, 
+            CancellationToken cancellationToken = default) where TEntity : EntityBase
         {
             throw new NotImplementedException();
         }
     }
 
-    public abstract class ElasticsearchRepository<TEntity> : IRepository<TEntity>
+    public abstract class ElasticsearchRepository<TEntity> : IRepository<TEntity>, IGridRepository<TEntity>
         where TEntity : EntityBase
     {
         private readonly ElasticsearchClient _client;
@@ -132,20 +147,34 @@ namespace NewsAggregator.Infrastructure.Databases.Elasticsearch.Repositories
 
         public void Remove(TEntity entity)
         {
-            _client.Delete<TEntity>(entity.Id);
+            _client.Delete<TEntity>(Id.From(entity));
         }
 
         public async Task RemoveAsync(TEntity entity, CancellationToken cancellationToken = default)
         {
-            await _client.DeleteAsync<TEntity>(entity.Id, cancellationToken);
+            await _client.DeleteAsync<TEntity>(Id.From(entity), cancellationToken);
         }
 
         public void Update(TEntity entity)
         {
+            _client.Update<TEntity, object>(IndexName.From<TEntity>(), Id.From(entity),
+                descriptor => descriptor.Doc(entity));
+        }
+
+        public async Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
+        {
+            await _client.UpdateAsync<TEntity, object>(IndexName.From<TEntity>(), Id.From(entity),
+                descriptor => descriptor.Doc(entity), cancellationToken);
+        }
+
+        public ValueTask<long> CountAsync(IGridSpecification<TEntity> specification,
+            CancellationToken cancellationToken = default)
+        {
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
+        public Task<IReadOnlyCollection<TEntity>> FindAsync(IGridSpecification<TEntity> specification,
+            CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }

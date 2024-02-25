@@ -3,11 +3,7 @@ using MassTransit;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using NewsAggregator.Domain.Infrastructure.Caching;
-using NewsAggregator.Domain.Infrastructure.MessageBrokers;
-using NewsAggregator.Infrastructure.Caching.Default;
-using NewsAggregator.Infrastructure.MessageBrokers.RabbitMQ;
-using NewsAggregator.News.Caching;
+using NewsAggregator.Infrastructure.Extensions;
 using NewsAggregator.News.ConfigurationOptions;
 using NewsAggregator.News.Entities;
 using NewsAggregator.News.Extensions;
@@ -63,16 +59,10 @@ namespace NewsAggregator.News
                 });
             });
 
-            services.AddTransient<IMessageBus, RabbitMQMessageBus>();
+            services.AddRabbitMQMessageBus();
 
-            services.AddDistributedMemoryCache();
-            services.AddSingleton<IMemoryCache, MemoryCache>();
-            services.AddSingleton<INewsSourceMemoryCache, NewsSourceMemoryCache>();
-
-            services.AddStackExchangeRedisCache(redisOptions =>
-            {
-                redisOptions.Configuration = settings.Caching.Redis.ConnectionString;
-            });
+            services.AddRedisMemoryCache(settings.Caching.Redis);
+            services.AddNewsMemoryCache();
 
             services.AddMediatR(config => config.RegisterServicesFromAssembly(typeof(IMediator).Assembly));
 

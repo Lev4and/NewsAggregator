@@ -367,3 +367,4 @@ postgres/
 postgres-scripts/
 rabbitmq/
 elasticsearch/
+kibanadata/

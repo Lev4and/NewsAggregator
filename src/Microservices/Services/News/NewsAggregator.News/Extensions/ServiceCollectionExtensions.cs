@@ -1,23 +1,42 @@
 ﻿using AngleSharp.Html.Parser;
-using HtmlAgilityPack;
+using FluentValidation;
 using MassTransit.Internals;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using NewsAggregator.Domain.Infrastructure.Databases;
 using NewsAggregator.Domain.Repositories;
-using NewsAggregator.Infrastructure.WebScraping;
+using NewsAggregator.Infrastructure.Extensions;
+using NewsAggregator.News.Caching;
+using NewsAggregator.News.Databases.EntityFramework.News;
 using NewsAggregator.News.Databases.EntityFramework.News.Repositories;
 using NewsAggregator.News.NewsSources;
+using NewsAggregator.News.Pipelines;
 using NewsAggregator.News.Services.Parsers;
 using NewsAggregator.News.Services.Providers;
 using NewsAggregator.News.Web.Http;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
+using System.Reflection;
 
 namespace NewsAggregator.News.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddRepositories(this IServiceCollection services)
+        public static IServiceCollection AddNewsDbPostgreSql(this IServiceCollection services, string connectionString)
+        {
+            services.AddDbContext<NewsDbContext>((options) =>
+            {
+                options.UseNpgsql(connectionString).UseSnakeCaseNamingConvention();
+            });
+
+            services.AddScoped<IUnitOfWork>(serviceProvider => 
+                serviceProvider.GetRequiredService<NewsDbContext>());
+
+            return services;
+        }
+
+        public static IServiceCollection AddNewsDbEntityFrameworkRepositories(this IServiceCollection services)
         {
             foreach (var repositoryInterface in typeof(ServiceCollectionExtensions).Assembly.GetTypes()
                 .Where(type => type.IsInterface && type.HasInterface(typeof(IRepository<>))))
@@ -29,7 +48,35 @@ namespace NewsAggregator.News.Extensions
                 }
             }
 
-            services.AddTransient<IRepository, NewsDbRepository>();
+            services.AddTransient<IRepository, NewsDbEntityFrameworkRepository>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddNewsDbElasticsearch(this IServiceCollection services, string connectionString)
+        {
+            return services.AddElasticsearch(connectionString);
+        }
+
+        public static IServiceCollection AddNewsDbElasticsearchRepositories(this IServiceCollection services)
+        {
+            return services;
+        }
+
+        public static IServiceCollection AddNewsMemoryCache(this IServiceCollection services)
+        {
+            services.AddSingleton<INewsMemoryCache, NewsMemoryCache>();
+            services.AddSingleton<INewsEditorMemoryCache, NewsEditorMemoryCache>();
+            services.AddSingleton<INewsSourceMemoryCache, NewsSourceMemoryCache>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddCqrs(this IServiceCollection services)
+        {
+            services.AddMediatR(config => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipeline<,>));
 
             return services;
         }

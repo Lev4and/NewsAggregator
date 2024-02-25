@@ -1,24 +1,16 @@
-﻿using FluentValidation;
-using MassTransit;
-using MediatR;
+﻿using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using NewsAggregator.Domain.Infrastructure.Caching;
-using NewsAggregator.Domain.Infrastructure.Databases;
-using NewsAggregator.Domain.Infrastructure.MessageBrokers;
-using NewsAggregator.Infrastructure.Caching.Default;
-using NewsAggregator.Infrastructure.MessageBrokers.RabbitMQ;
+using NewsAggregator.Infrastructure.Extensions;
 using NewsAggregator.News.Caching;
 using NewsAggregator.News.ConfigurationOptions;
 using NewsAggregator.News.Databases.EntityFramework.News;
 using NewsAggregator.News.Extensions;
 using NewsAggregator.News.MessageConsumers;
 using NewsAggregator.News.Messages;
-using NewsAggregator.News.Pipelines;
 using NewsAggregator.News.Repositories;
 using RabbitMQ.Client;
-using System.Reflection;
 using System.Text.Json.Serialization;
 
 namespace NewsAggregator.News
@@ -36,6 +28,8 @@ namespace NewsAggregator.News
                 busConfigurator.AddConsumer<AddNewsParseNetworkErrorConsumer>();
                 busConfigurator.AddConsumer<UnregisterNewsConsumer>();
                 busConfigurator.AddConsumer<SendAddedNewsNotificationConsumer>();
+                busConfigurator.AddConsumer<PrepareAddedNewsToIndexingConsumer>();
+                busConfigurator.AddConsumer<IndexAddedNewsConsumer>();
 
                 busConfigurator.UsingRabbitMq((context, configurator) =>
                 {
@@ -251,36 +245,67 @@ namespace NewsAggregator.News
                         messagePublishConfigurator.Durable = true;
                         messagePublishConfigurator.ExchangeType = ExchangeType.Direct;
                     });
+
+                    configurator.ReceiveEndpoint("prepare-added-news-to-indexing", endpointConfigurator =>
+                    {
+                        endpointConfigurator.Durable = true;
+                        endpointConfigurator.ConfigureConsumeTopology = false;
+
+                        endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
+                        {
+                            exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
+                            exchangeBindingConfigurator.RoutingKey = "news.added";
+                        });
+
+                        endpointConfigurator.Consumer<PrepareAddedNewsToIndexingConsumer>(context);
+                    });
+
+                    configurator.Send<AddedNewsPreparedToIndexing>(messageSendConfigurator =>
+                    {
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.added.prepared.to.indexing");
+                    });
+
+                    configurator.Message<AddedNewsPreparedToIndexing>(messageConfigurator =>
+                    {
+                        messageConfigurator.SetEntityName("news.events");
+                    });
+
+                    configurator.Publish<AddedNewsPreparedToIndexing>(messagePublishConfigurator =>
+                    {
+                        messagePublishConfigurator.Durable = true;
+                        messagePublishConfigurator.ExchangeType = ExchangeType.Direct;
+                    });
+
+                    configurator.ReceiveEndpoint("index-added-news", endpointConfigurator =>
+                    {
+                        endpointConfigurator.Durable = true;
+                        endpointConfigurator.ConfigureConsumeTopology = false;
+
+                        endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
+                        {
+                            exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
+                            exchangeBindingConfigurator.RoutingKey = "news.added.prepared.to.indexing";
+                        });
+
+                        endpointConfigurator.Consumer<IndexAddedNewsConsumer>(context);
+                    });
                 });
             });
 
-            services.AddTransient<IMessageBus, RabbitMQMessageBus>();
+            services.AddRabbitMQMessageBus();
 
-            services.AddDbContext<NewsDbContext>((options) =>
-            {
-                options.UseNpgsql(settings.ConnectionStrings.NewsDbPostgreSql)
-                    .UseSnakeCaseNamingConvention();
-            });
+            services.AddNewsDbPostgreSql(settings.ConnectionStrings.NewsDbPostgreSql);
+            services.AddNewsDbEntityFrameworkRepositories();
 
-            services.AddScoped<IUnitOfWork>(serviceProvider => serviceProvider.GetRequiredService<NewsDbContext>());
+            services.AddNewsDbElasticsearch(settings.ConnectionStrings.NewsDbElasticsearch);
+            services.AddNewsDbElasticsearchRepositories();
 
             services.AddDefaultNewsSources();
-            services.AddRepositories();
 
-            services.AddDistributedMemoryCache();
-            services.AddSingleton<IMemoryCache, MemoryCache>();
-            services.AddSingleton<INewsMemoryCache, NewsMemoryCache>();
-            services.AddSingleton<INewsEditorMemoryCache, NewsEditorMemoryCache>();
-            services.AddSingleton<INewsSourceMemoryCache, NewsSourceMemoryCache>();
+            services.AddRedisMemoryCache(settings.Caching.Redis);
+            services.AddNewsMemoryCache();
 
-            services.AddStackExchangeRedisCache(redisOptions =>
-            {
-                redisOptions.Configuration = settings.Caching.Redis.ConnectionString;
-            });
-
-            services.AddMediatR(config => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipeline<,>));
+            services.AddCqrs();
 
             services.AddHttpClientNewsProviders();
             services.AddNewsAngleSharpParsers();
