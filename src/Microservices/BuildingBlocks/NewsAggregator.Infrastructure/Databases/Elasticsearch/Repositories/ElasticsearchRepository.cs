@@ -1,12 +1,11 @@
 ﻿using Elastic.Clients.Elasticsearch;
 using NewsAggregator.Domain.Entities;
-using NewsAggregator.Domain.Repositories;
 using NewsAggregator.Domain.Specification;
 using System.Linq.Expressions;
 
 namespace NewsAggregator.Infrastructure.Databases.Elasticsearch.Repositories
 {
-    public abstract class ElasticsearchRepository : IRepository, IGridRepository
+    public abstract class ElasticsearchRepository : IElasticsearchRepository
     {
         protected readonly ElasticsearchClient _client;
 
@@ -95,7 +94,7 @@ namespace NewsAggregator.Infrastructure.Databases.Elasticsearch.Repositories
         }
     }
 
-    public abstract class ElasticsearchRepository<TEntity> : IRepository<TEntity>, IGridRepository<TEntity>
+    public abstract class ElasticsearchRepository<TEntity> : IElasticsearchRepository<TEntity>
         where TEntity : EntityBase
     {
         private readonly ElasticsearchClient _client;

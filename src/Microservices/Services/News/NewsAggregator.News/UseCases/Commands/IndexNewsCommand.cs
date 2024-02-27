@@ -1,6 +1,6 @@
-﻿using Elastic.Clients.Elasticsearch;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
+using NewsAggregator.Domain.Indexers;
 
 namespace NewsAggregator.News.UseCases.Commands
 {
@@ -23,19 +23,25 @@ namespace NewsAggregator.News.UseCases.Commands
 
         internal class Handler : IRequestHandler<IndexNewsCommand, bool> 
         {
-            private readonly ElasticsearchClient _client;
+            private readonly IIndexer _indexer;
 
-            public Handler(ElasticsearchClient client)
+            public Handler(IIndexer indexer)
             {
-                _client = client;
+                _indexer = indexer;
             }
 
             public async Task<bool> Handle(IndexNewsCommand request, CancellationToken cancellationToken)
             {
-                var response = await _client.IndexAsync(request.News, IndexName.From<Entities.News>(), 
-                    cancellationToken);
+                try
+                {
+                    await _indexer.IndexAsync(request.News, cancellationToken);
 
-                return response.IsValidResponse;
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
             }
         }
     }

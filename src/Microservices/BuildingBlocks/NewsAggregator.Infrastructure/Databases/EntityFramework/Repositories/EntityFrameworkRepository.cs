@@ -2,13 +2,12 @@
 using NewsAggregator.Domain.Entities;
 using NewsAggregator.Domain.Extensions;
 using NewsAggregator.Domain.Infrastructure.Databases;
-using NewsAggregator.Domain.Repositories;
 using NewsAggregator.Domain.Specification;
 using System.Linq.Expressions;
 
 namespace NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories
 {
-    public abstract class EntityFrameworkRepository<TDbContext> : IRepository, IGridRepository
+    public abstract class EntityFrameworkRepository<TDbContext> : IEntityFrameworkRepository
         where TDbContext : DbContext, IUnitOfWork
     {
         protected readonly TDbContext _dbContext;
@@ -160,7 +159,7 @@ namespace NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories
         }
     }
 
-    public abstract class EntityFrameworkRepository<TDbContext, TEntity> : IRepository<TEntity>, IGridRepository<TEntity>
+    public abstract class EntityFrameworkRepository<TDbContext, TEntity> : IEntityFrameworkRepository<TEntity>
         where TDbContext : DbContext, IUnitOfWork where TEntity : EntityBase
     {
         protected readonly TDbContext _dbContext;

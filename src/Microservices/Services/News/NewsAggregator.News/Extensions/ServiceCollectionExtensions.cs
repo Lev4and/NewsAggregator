@@ -5,12 +5,23 @@ using MassTransit.Internals;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using NewsAggregator.Domain.Indexers;
 using NewsAggregator.Domain.Infrastructure.Databases;
 using NewsAggregator.Domain.Repositories;
+using NewsAggregator.Domain.Searchers;
+using NewsAggregator.Infrastructure.Databases.Elasticsearch.Repositories;
+using NewsAggregator.Infrastructure.Databases.Elasticsearch.Searchers;
+using NewsAggregator.Infrastructure.Databases.EntityFramework.Repositories;
+using NewsAggregator.Infrastructure.Databases.EntityFramework.Searchers;
 using NewsAggregator.Infrastructure.Extensions;
 using NewsAggregator.News.Caching;
+using NewsAggregator.News.Databases.Elasticsearch.News.Indexers;
+using NewsAggregator.News.Databases.Elasticsearch.News.Repositories;
+using NewsAggregator.News.Databases.Elasticsearch.News.Searchers;
 using NewsAggregator.News.Databases.EntityFramework.News;
 using NewsAggregator.News.Databases.EntityFramework.News.Repositories;
+using NewsAggregator.News.Databases.EntityFramework.News.Searchers;
+using NewsAggregator.News.Databases.Fake.News.Indexers;
 using NewsAggregator.News.NewsSources;
 using NewsAggregator.News.Pipelines;
 using NewsAggregator.News.Services.Parsers;
@@ -43,13 +54,32 @@ namespace NewsAggregator.News.Extensions
                 .Where(type => type.IsInterface && type.HasInterface(typeof(IRepository<>))))
             {
                 foreach (var repository in typeof(ServiceCollectionExtensions).Assembly.GetTypes()
-                    .Where(type => type.IsClass && type.HasInterface(repositoryInterface)))
+                    .Where(type => type.IsClass && type.HasInterface(repositoryInterface)
+                        && type.HasInterface(typeof(IEntityFrameworkRepository<>))))
                 {
                     services.AddTransient(repositoryInterface, repository);
                 }
             }
 
             services.AddTransient<IRepository, NewsDbEntityFrameworkRepository>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddNewsDbEntityFrameworkSearchers(this IServiceCollection services) 
+        {
+            foreach (var repositoryInterface in typeof(ServiceCollectionExtensions).Assembly.GetTypes()
+                .Where(type => type.IsInterface && type.HasInterface(typeof(ISearcher<>))))
+            {
+                foreach (var repository in typeof(ServiceCollectionExtensions).Assembly.GetTypes()
+                    .Where(type => type.IsClass && type.HasInterface(repositoryInterface)
+                        && type.HasInterface(typeof(IEntityFrameworkSearcher<>))))
+                {
+                    services.AddTransient(repositoryInterface, repository);
+                }
+            }
+
+            services.AddTransient<ISearcher, NewsDbEntityFrameworkSearcher>();
 
             return services;
         }
@@ -64,8 +94,53 @@ namespace NewsAggregator.News.Extensions
             return services.AddElasticsearch(settings);
         }
 
+        public static IServiceCollection AddNewsDbElasticsearchIndexers(this IServiceCollection services)
+        {
+            services.AddSingleton<IIndexer, NewsDbElasticsearchIndexer>();
+
+            return services;
+        }
+
         public static IServiceCollection AddNewsDbElasticsearchRepositories(this IServiceCollection services)
         {
+            foreach (var repositoryInterface in typeof(ServiceCollectionExtensions).Assembly.GetTypes()
+                .Where(type => type.IsInterface && type.HasInterface(typeof(IRepository<>))))
+            {
+                foreach (var repository in typeof(ServiceCollectionExtensions).Assembly.GetTypes()
+                    .Where(type => type.IsClass && type.HasInterface(repositoryInterface) 
+                        && type.HasInterface(typeof(IElasticsearchRepository<>))))
+                {
+                    services.AddTransient(repositoryInterface, repository);
+                }
+            }
+
+            services.AddTransient<IRepository, NewsDbElasticsearchRepository>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddNewsDbElasticsearchSearchers(this IServiceCollection services)
+        {
+            foreach (var repositoryInterface in typeof(ServiceCollectionExtensions).Assembly.GetTypes()
+                .Where(type => type.IsInterface && type.HasInterface(typeof(ISearcher<>))))
+            {
+                foreach (var repository in typeof(ServiceCollectionExtensions).Assembly.GetTypes()
+                    .Where(type => type.IsClass && type.HasInterface(repositoryInterface)
+                        && type.HasInterface(typeof(IElasticsearchSearcher<>))))
+                {
+                    services.AddTransient(repositoryInterface, repository);
+                }
+            }
+
+            services.AddTransient<ISearcher, NewsDbElasticsearchSearcher>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddNewsDbFakeIndexers(this IServiceCollection services)
+        {
+            services.AddSingleton<IIndexer, NewsDbFakeIndexer>();
+
             return services;
         }
 

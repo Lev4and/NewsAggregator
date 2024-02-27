@@ -22,7 +22,7 @@ namespace NewsAggregator.News
             services.AddMassTransit(busConfigurator =>
             {
                 busConfigurator.AddConsumer<ContainsNewsByUrlsConsumer>();
-                busConfigurator.AddConsumer<RegisterNewsConsumer>();
+                busConfigurator.AddConsumer<RegisterNonExistentNewsListConsumer>();
                 busConfigurator.AddConsumer<AddNewsConsumer>();
                 busConfigurator.AddConsumer<AddNewsParseErrorConsumer>();
                 busConfigurator.AddConsumer<AddNewsParseNetworkErrorConsumer>();
@@ -67,23 +67,23 @@ namespace NewsAggregator.News
                         endpointConfigurator.Consumer<ContainsNewsByUrlsConsumer>(context);
                     });
 
-                    configurator.Send<FoundNotExistedNews>(messageSendConfigurator =>
+                    configurator.Send<ListNonExistentNewsFormed>(messageSendConfigurator =>
                     {
                         messageSendConfigurator.UseRoutingKeyFormatter(context => "news.found");
                     });
 
-                    configurator.Message<FoundNotExistedNews>(messageConfigurator =>
+                    configurator.Message<ListNonExistentNewsFormed>(messageConfigurator =>
                     {
                         messageConfigurator.SetEntityName("news.events");
                     });
 
-                    configurator.Publish<FoundNotExistedNews>(messagePublishConfigurator =>
+                    configurator.Publish<ListNonExistentNewsFormed>(messagePublishConfigurator =>
                     {
                         messagePublishConfigurator.Durable = true;
                         messagePublishConfigurator.ExchangeType = ExchangeType.Direct;
                     });
 
-                    configurator.ReceiveEndpoint("register-news", endpointConfigurator =>
+                    configurator.ReceiveEndpoint("register-non-existent-news-list", endpointConfigurator =>
                     {
                         endpointConfigurator.Durable = true;
                         endpointConfigurator.ConfigureConsumeTopology = false;
@@ -94,7 +94,7 @@ namespace NewsAggregator.News
                             exchangeBindingConfigurator.RoutingKey = "news.found";
                         });
 
-                        endpointConfigurator.Consumer<RegisterNewsConsumer>(context);
+                        endpointConfigurator.Consumer<RegisterNonExistentNewsListConsumer>(context);
                     });
 
                     configurator.Send<RegisteredNewsForParse>(messageSendConfigurator =>
@@ -296,9 +296,11 @@ namespace NewsAggregator.News
 
             services.AddNewsDbPostgreSql(settings.ConnectionStrings.NewsDbPostgreSql);
             services.AddNewsDbEntityFrameworkRepositories();
+            services.AddNewsDbEntityFrameworkSearchers();
 
             services.AddNewsDbElasticsearch(settings.ConnectionStrings.NewsDbElasticsearch);
-            services.AddNewsDbElasticsearchRepositories();
+
+            services.AddNewsDbFakeIndexers();
 
             services.AddDefaultNewsSources();
 

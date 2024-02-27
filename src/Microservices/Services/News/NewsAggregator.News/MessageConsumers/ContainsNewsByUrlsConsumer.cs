@@ -18,14 +18,11 @@ namespace NewsAggregator.News.MessageConsumers
         {
             var dictionary = await _mediator.Send(new ContainsNewsByUrlsCommand(context.Message.NewsUrls));
 
-            var notExistedNews = dictionary.Where(pair => !pair.Value)
+            var nonExistentNews = dictionary.Where(pair => !pair.Value)
                 .Select(pair => pair.Key)
                 .ToList();
 
-            foreach (var newsUrl in notExistedNews)
-            {
-                await _mediator.Publish(new FoundNotExistedNews(newsUrl));
-            }
+            await _mediator.Publish(new ListNonExistentNewsFormed(nonExistentNews));
         }
     }
 }

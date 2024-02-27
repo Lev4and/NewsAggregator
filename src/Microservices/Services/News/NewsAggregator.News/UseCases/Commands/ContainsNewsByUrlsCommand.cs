@@ -40,7 +40,7 @@ namespace NewsAggregator.News.UseCases.Commands
             }
         }
 
-        internal class FoundNotExistedNewsNotificationHandler : INotificationHandler<FoundNotExistedNews>
+        internal class FoundNotExistedNewsNotificationHandler : INotificationHandler<ListNonExistentNewsFormed>
         {
             private readonly IMessageBus _messageBus;
             private readonly ILogger<FoundNotExistedNewsNotificationHandler> _logger;
@@ -52,9 +52,13 @@ namespace NewsAggregator.News.UseCases.Commands
                 _logger = logger;
             }
 
-            public async Task Handle(FoundNotExistedNews notification, CancellationToken cancellationToken)
+            public async Task Handle(ListNonExistentNewsFormed notification, CancellationToken cancellationToken)
             {
-                _logger.LogInformation("Found not existed news {0}", notification.NewsUrl);
+                foreach (var newsUrl in notification.NewsUrls) 
+                {
+                    _logger.LogInformation("Found not existed news {0}", newsUrl);
+                }
+
 
                 await _messageBus.SendAsync(notification, cancellationToken);
             }

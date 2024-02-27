@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async function (e) {
         hotlineContainer.insertAdjacentHTML('afterbegin', `
             <div class="hotline-container__item">
                 <div class="hotline-container__item__added-time">
-                    <strong data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="${new Date(message.addedAt).toLocaleTimeString('en-US')}">${new Date(message.addedAt).toLocaleTimeString('en-US')}</strong>
+                    <strong data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="${new Date(message.addedAt).toUTCString()}">${new Date(message.addedAt).toLocaleTimeString('en-US')}</strong>
                 </div>
                 <div class="hotline-container__item__content">
                     <div class="hotline-container__item__content__news-source">
@@ -56,6 +56,9 @@ document.addEventListener('DOMContentLoaded', async function (e) {
                 </div>
             </div>
         `);
+
+        const tooltipTriggerList = hotlineContainer.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl)); 
     });
 });
 

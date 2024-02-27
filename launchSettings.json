@@ -19,9 +19,7 @@
         "pgadmin": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "redis": "StartWithoutDebugging",
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging"
+        "redis": "StartWithoutDebugging"
       }
     },
     "Full production": {
@@ -30,7 +28,7 @@
       "serviceActions": {
         "newsaggregator.gateways.api": "StartWithoutDebugging",
         "newsaggregator.gateways.api.seq": "StartWithoutDebugging",
-        "newsaggregator.news.api": "StartDebugging",
+        "newsaggregator.news.api": "StartWithoutDebugging",
         "newsaggregator.news.api.seq": "StartWithoutDebugging",
         "newsaggregator.news.mvc": "StartWithoutDebugging",
         "newsaggregator.news.mvc.seq": "StartWithoutDebugging",
@@ -43,17 +41,13 @@
         "pgadmin": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "redis": "StartWithoutDebugging",
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging"
+        "redis": "StartWithoutDebugging"
       }
     },
     "Only News API": {
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging",
         "newsaggregator.gateways.api": "DoNotStart",
         "newsaggregator.gateways.api.seq": "DoNotStart",
         "newsaggregator.news.api": "StartDebugging",
@@ -76,8 +70,6 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging",
         "newsaggregator.gateways.api": "DoNotStart",
         "newsaggregator.gateways.api.seq": "DoNotStart",
         "newsaggregator.news.api": "DoNotStart",
@@ -100,8 +92,6 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging",
         "newsaggregator.gateways.api": "DoNotStart",
         "newsaggregator.gateways.api.seq": "DoNotStart",
         "newsaggregator.news.api": "DoNotStart",
@@ -124,8 +114,6 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging",
         "newsaggregator.gateways.api": "DoNotStart",
         "newsaggregator.gateways.api.seq": "DoNotStart",
         "newsaggregator.news.api": "DoNotStart",
@@ -148,8 +136,6 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging",
         "newsaggregator.gateways.api": "DoNotStart",
         "newsaggregator.gateways.api.seq": "DoNotStart",
         "newsaggregator.news.api": "DoNotStart",

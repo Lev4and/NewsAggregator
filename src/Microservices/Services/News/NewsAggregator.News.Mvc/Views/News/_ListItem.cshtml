@@ -29,8 +29,13 @@
                     @Model.GetFormattedPublishedAt()
                 </div>
             }
-            <p class="news-list-container__grid__item__sub-title card-text mb-auto" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@Model.SubTitle?.Title">@Model.SubTitle?.Title</p>
-            <a asp-route="News" asp-route-id="@Model.Id">Continue reading</a>
+            @if (Model.SubTitle is not null)
+            {
+                <p class="news-list-container__grid__item__sub-title card-text mb-auto" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@Model.SubTitle?.Title">
+                    @Model.SubTitle?.Title
+                </p>
+            }
+            <a class="mt-auto" asp-route="News" asp-route-id="@Model.Id">Continue reading</a>
         </div>
     </div>
 </div>
