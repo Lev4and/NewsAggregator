@@ -22,18 +22,22 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
         public async Task<IReadOnlyDictionary<string, bool>> ContainsNewsByUrlsAsync(IReadOnlyCollection<string> urls, 
             CancellationToken cancellationToken = default)
         {
-            var newsUrls = await _dbContext.News.AsNoTracking()
-                .Where(news => urls.Contains(news.Url))
-                .Select(news => news.Url)
-                .Union(_dbContext.NewsParseNeeds.AsNoTracking()
-                    .Where(news => urls.Contains(news.NewsUrl))
-                    .Select(news => news.NewsUrl))
-                .Union(_dbContext.NewsParseErrors.AsNoTracking()
-                    .Where(news => urls.Contains(news.NewsUrl))
-                    .Select(news => news.NewsUrl))
-                .Union(_dbContext.NewsParseNetworkErrors.AsNoTracking()
-                    .Where(news => urls.Contains(news.NewsUrl))
-                    .Select(news => news.NewsUrl))
+            var newsUrls = await _dbContext.News
+                .AsNoTracking()
+                    .Where(news => urls.Contains(news.Url))
+                        .Select(news => news.Url)
+                .Union(_dbContext.NewsParseNeeds
+                    .AsNoTracking()
+                        .Where(news => urls.Contains(news.NewsUrl))
+                            .Select(news => news.NewsUrl))
+                .Union(_dbContext.NewsParseErrors
+                    .AsNoTracking()
+                        .Where(news => urls.Contains(news.NewsUrl))
+                            .Select(news => news.NewsUrl))
+                .Union(_dbContext.NewsParseNetworkErrors
+                    .AsNoTracking()
+                        .Where(news => urls.Contains(news.NewsUrl))
+                            .Select(news => news.NewsUrl))
                 .Distinct()
                 .ToListAsync();
 

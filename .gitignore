@@ -362,9 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-pgadmin/
-postgres/
-postgres-scripts/
-rabbitmq/
-elasticsearch/
-kibanadata/
+docker-data/

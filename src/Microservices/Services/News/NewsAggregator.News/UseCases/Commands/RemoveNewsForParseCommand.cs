@@ -47,7 +47,7 @@ namespace NewsAggregator.News.UseCases.Commands
                         var newsParseNeed = await _repository.FindOneByExpressionAsync<NewsParseNeed>(news =>
                             news.NewsUrl == request.NewsUrl);
 
-                        if (newsParseNeed != null) 
+                        if (newsParseNeed is not null) 
                         {
                             _repository.Remove(newsParseNeed);
                         }

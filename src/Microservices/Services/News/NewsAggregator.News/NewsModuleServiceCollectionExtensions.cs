@@ -21,8 +21,7 @@ namespace NewsAggregator.News
         {
             services.AddMassTransit(busConfigurator =>
             {
-                busConfigurator.AddConsumer<ContainsNewsByUrlsConsumer>();
-                busConfigurator.AddConsumer<RegisterNonExistentNewsListConsumer>();
+                busConfigurator.AddConsumer<CheckAndRegisterNonExistentNewsConsumer>();
                 busConfigurator.AddConsumer<AddNewsConsumer>();
                 busConfigurator.AddConsumer<AddNewsParseErrorConsumer>();
                 busConfigurator.AddConsumer<AddNewsParseNetworkErrorConsumer>();
@@ -53,7 +52,7 @@ namespace NewsAggregator.News
                         messageConfigurator.SetEntityName("news.events");
                     });
 
-                    configurator.ReceiveEndpoint("contains-news-by-urls", endpointConfigurator =>
+                    configurator.ReceiveEndpoint("check-and-register-non-existent-news", endpointConfigurator =>
                     {
                         endpointConfigurator.Durable = true;
                         endpointConfigurator.ConfigureConsumeTopology = false;
@@ -64,37 +63,10 @@ namespace NewsAggregator.News
                             exchangeBindingConfigurator.RoutingKey = "news.list.found";
                         });
 
-                        endpointConfigurator.Consumer<ContainsNewsByUrlsConsumer>(context);
-                    });
-
-                    configurator.Send<ListNonExistentNewsFormed>(messageSendConfigurator =>
-                    {
-                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.found");
-                    });
-
-                    configurator.Message<ListNonExistentNewsFormed>(messageConfigurator =>
-                    {
-                        messageConfigurator.SetEntityName("news.events");
-                    });
-
-                    configurator.Publish<ListNonExistentNewsFormed>(messagePublishConfigurator =>
-                    {
-                        messagePublishConfigurator.Durable = true;
-                        messagePublishConfigurator.ExchangeType = ExchangeType.Direct;
-                    });
-
-                    configurator.ReceiveEndpoint("register-non-existent-news-list", endpointConfigurator =>
-                    {
-                        endpointConfigurator.Durable = true;
-                        endpointConfigurator.ConfigureConsumeTopology = false;
-
-                        endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
+                        endpointConfigurator.Consumer<CheckAndRegisterNonExistentNewsConsumer>(context, configurator =>
                         {
-                            exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
-                            exchangeBindingConfigurator.RoutingKey = "news.found";
+                            configurator.UseConcurrencyLimit(1);
                         });
-
-                        endpointConfigurator.Consumer<RegisterNonExistentNewsListConsumer>(context);
                     });
 
                     configurator.Send<RegisteredNewsForParse>(messageSendConfigurator =>
@@ -129,7 +101,10 @@ namespace NewsAggregator.News
                             exchangeBindingConfigurator.RoutingKey = "news.parsed";
                         });
 
-                        endpointConfigurator.Consumer<AddNewsConsumer>(context);
+                        endpointConfigurator.Consumer<AddNewsConsumer>(context, configurator =>
+                        {
+                            configurator.UseConcurrencyLimit(1);
+                        });
                     });
 
                     configurator.Send<AddedNews>(messageSendConfigurator =>
@@ -175,7 +150,10 @@ namespace NewsAggregator.News
                             exchangeBindingConfigurator.RoutingKey = "news.processed";
                         });
 
-                        endpointConfigurator.Consumer<UnregisterNewsConsumer>(context);
+                        endpointConfigurator.Consumer<UnregisterNewsConsumer>(context, configurator =>
+                        {
+                            configurator.UseConcurrencyLimit(1);
+                        });
                     });
 
                     configurator.Message<ThrowedExceptionWhenParseNews>(messageConfigurator =>
@@ -194,7 +172,10 @@ namespace NewsAggregator.News
                             exchangeBindingConfigurator.RoutingKey = "news.parsed.with.error";
                         });
 
-                        endpointConfigurator.Consumer<AddNewsParseErrorConsumer>(context);
+                        endpointConfigurator.Consumer<AddNewsParseErrorConsumer>(context, configurator =>
+                        {
+                            configurator.UseConcurrencyLimit(1);
+                        });
                     });
 
                     configurator.Message<ThrowedHttpRequestExceptionWhenParseNews>(messageConfigurator =>
@@ -213,7 +194,10 @@ namespace NewsAggregator.News
                             exchangeBindingConfigurator.RoutingKey = "news.parsed.with.network.error";
                         });
 
-                        endpointConfigurator.Consumer<AddNewsParseNetworkErrorConsumer>(context);
+                        endpointConfigurator.Consumer<AddNewsParseNetworkErrorConsumer>(context, configurator =>
+                        {
+                            configurator.UseConcurrencyLimit(1);
+                        });
                     });
 
                     configurator.ReceiveEndpoint("send-added-news-notification", endpointConfigurator =>
@@ -287,7 +271,10 @@ namespace NewsAggregator.News
                             exchangeBindingConfigurator.RoutingKey = "news.added.prepared.to.indexing";
                         });
 
-                        endpointConfigurator.Consumer<IndexAddedNewsConsumer>(context);
+                        endpointConfigurator.Consumer<IndexAddedNewsConsumer>(context, configurator =>
+                        {
+                            configurator.UseConcurrencyLimit(1);
+                        });
                     });
                 });
             });
