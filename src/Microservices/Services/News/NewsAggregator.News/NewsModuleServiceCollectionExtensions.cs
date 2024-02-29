@@ -101,10 +101,7 @@ namespace NewsAggregator.News
                             exchangeBindingConfigurator.RoutingKey = "news.parsed";
                         });
 
-                        endpointConfigurator.Consumer<AddNewsConsumer>(context, configurator =>
-                        {
-                            configurator.UseConcurrencyLimit(1);
-                        });
+                        endpointConfigurator.Consumer<AddNewsConsumer>(context);
                     });
 
                     configurator.Send<AddedNews>(messageSendConfigurator =>
@@ -150,10 +147,7 @@ namespace NewsAggregator.News
                             exchangeBindingConfigurator.RoutingKey = "news.processed";
                         });
 
-                        endpointConfigurator.Consumer<UnregisterNewsConsumer>(context, configurator =>
-                        {
-                            configurator.UseConcurrencyLimit(1);
-                        });
+                        endpointConfigurator.Consumer<UnregisterNewsConsumer>(context);
                     });
 
                     configurator.Message<ThrowedExceptionWhenParseNews>(messageConfigurator =>
@@ -172,10 +166,7 @@ namespace NewsAggregator.News
                             exchangeBindingConfigurator.RoutingKey = "news.parsed.with.error";
                         });
 
-                        endpointConfigurator.Consumer<AddNewsParseErrorConsumer>(context, configurator =>
-                        {
-                            configurator.UseConcurrencyLimit(1);
-                        });
+                        endpointConfigurator.Consumer<AddNewsParseErrorConsumer>(context);
                     });
 
                     configurator.Message<ThrowedHttpRequestExceptionWhenParseNews>(messageConfigurator =>
@@ -194,10 +185,7 @@ namespace NewsAggregator.News
                             exchangeBindingConfigurator.RoutingKey = "news.parsed.with.network.error";
                         });
 
-                        endpointConfigurator.Consumer<AddNewsParseNetworkErrorConsumer>(context, configurator =>
-                        {
-                            configurator.UseConcurrencyLimit(1);
-                        });
+                        endpointConfigurator.Consumer<AddNewsParseNetworkErrorConsumer>(context);
                     });
 
                     configurator.ReceiveEndpoint("send-added-news-notification", endpointConfigurator =>
@@ -271,10 +259,7 @@ namespace NewsAggregator.News
                             exchangeBindingConfigurator.RoutingKey = "news.added.prepared.to.indexing";
                         });
 
-                        endpointConfigurator.Consumer<IndexAddedNewsConsumer>(context, configurator =>
-                        {
-                            configurator.UseConcurrencyLimit(1);
-                        });
+                        endpointConfigurator.Consumer<IndexAddedNewsConsumer>(context);
                     });
                 });
             });

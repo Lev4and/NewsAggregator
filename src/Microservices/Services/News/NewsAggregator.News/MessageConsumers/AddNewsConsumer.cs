@@ -21,8 +21,9 @@ namespace NewsAggregator.News.MessageConsumers
             if (result)
             {
                 await _mediator.Publish(new AddedNews(context.Message.News.Url));
-                await _mediator.Publish(new ProcessedNews(context.Message.News.Url));
             }
+
+            await _mediator.Publish(new ProcessedNews(context.Message.News.Url));
         }
     }
 }

@@ -63,20 +63,5 @@ namespace NewsAggregator.News.UseCases.Commands
                 }
             }
         }
-
-        internal class RegisteredNewsForParseNotificationHandler : INotificationHandler<RegisteredNewsForParse>
-        {
-            private readonly IMessageBus _messageBus;
-
-            public RegisteredNewsForParseNotificationHandler(IMessageBus messageBus)
-            {
-                _messageBus = messageBus;
-            }
-
-            public async Task Handle(RegisteredNewsForParse notification, CancellationToken cancellationToken)
-            {
-                await _messageBus.SendAsync(notification, cancellationToken);
-            }
-        }
     }
 }

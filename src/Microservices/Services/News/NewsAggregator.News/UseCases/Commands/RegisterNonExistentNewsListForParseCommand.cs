@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using NewsAggregator.Domain.Infrastructure.Databases;
 using NewsAggregator.Domain.Infrastructure.MessageBrokers;
 using NewsAggregator.Domain.Repositories;
@@ -70,14 +71,18 @@ namespace NewsAggregator.News.UseCases.Commands
         internal class RegisteredNewsForParseNotificationHandler : INotificationHandler<RegisteredNewsForParse>
         {
             private readonly IMessageBus _messageBus;
+            private readonly ILogger<RegisteredNewsForParseNotificationHandler> _logger;
 
-            public RegisteredNewsForParseNotificationHandler(IMessageBus messageBus)
+            public RegisteredNewsForParseNotificationHandler(IMessageBus messageBus, ILogger<RegisteredNewsForParseNotificationHandler> logger)
             {
                 _messageBus = messageBus;
+                _logger = logger;
             }
 
             public async Task Handle(RegisteredNewsForParse notification, CancellationToken cancellationToken)
             {
+                _logger.LogInformation("Registered news {0} for parse", notification.NewsUrl);
+
                 await _messageBus.SendAsync(notification, cancellationToken);
             }
         }

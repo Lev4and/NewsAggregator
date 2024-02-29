@@ -28,7 +28,7 @@
       "serviceActions": {
         "newsaggregator.gateways.api": "StartWithoutDebugging",
         "newsaggregator.gateways.api.seq": "StartWithoutDebugging",
-        "newsaggregator.news.api": "StartDebugging",
+        "newsaggregator.news.api": "StartWithoutDebugging",
         "newsaggregator.news.api.seq": "StartWithoutDebugging",
         "newsaggregator.news.mvc": "StartWithoutDebugging",
         "newsaggregator.news.mvc.seq": "StartWithoutDebugging",

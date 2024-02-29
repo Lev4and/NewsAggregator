@@ -29,8 +29,10 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
         public async Task<NewsEditor> FindOneBySourceIdAndNameOrAddAsync(NewsEditor entity, Guid sourceId, string name, 
             CancellationToken cancellationToken = default)
         {
-            return await FindOneByExpressionOrAddAsync(entity, editor => editor.SourceId == sourceId &&
-                editor.Name == name, cancellationToken);
+            return await _dbContext.Set<NewsEditor>().AsNoTracking()
+                .FirstOrDefaultAsync(editor => editor.SourceId == sourceId &&
+                    editor.Name == name, cancellationToken) 
+                ?? Add(entity);
         }
     }
 }

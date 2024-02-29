@@ -27,7 +27,7 @@ namespace NewsAggregator.News.MessageConsumers
 
             if (registerNewsListResult)
             {
-                foreach (var newsUrl in context.Message.NewsUrls)
+                foreach (var newsUrl in nonExistentNews)
                 {
                     await _mediator.Publish(new RegisteredNewsForParse(newsUrl));
                 }
