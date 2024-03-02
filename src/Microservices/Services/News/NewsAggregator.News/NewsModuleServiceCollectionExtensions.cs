@@ -60,7 +60,7 @@ namespace NewsAggregator.News
                         endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
                         {
                             exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
-                            exchangeBindingConfigurator.RoutingKey = "news.list.found";
+                            exchangeBindingConfigurator.RoutingKey = "news_list.found";
                         });
 
                         endpointConfigurator.Consumer<CheckAndRegisterNonExistentNewsConsumer>(context, configurator =>
@@ -163,7 +163,7 @@ namespace NewsAggregator.News
                         endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
                         {
                             exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
-                            exchangeBindingConfigurator.RoutingKey = "news.parsed.with.error";
+                            exchangeBindingConfigurator.RoutingKey = "news.parsed_with_error";
                         });
 
                         endpointConfigurator.Consumer<AddNewsParseErrorConsumer>(context);
@@ -182,7 +182,7 @@ namespace NewsAggregator.News
                         endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
                         {
                             exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
-                            exchangeBindingConfigurator.RoutingKey = "news.parsed.with.network.error";
+                            exchangeBindingConfigurator.RoutingKey = "news.parsed_with_network_error";
                         });
 
                         endpointConfigurator.Consumer<AddNewsParseNetworkErrorConsumer>(context);
@@ -204,7 +204,7 @@ namespace NewsAggregator.News
 
                     configurator.Send<AddedNewsNotificationGenerated>(messageSendConfigurator =>
                     {
-                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.added.notification.generated");
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.added.notification_generated");
                     });
 
                     configurator.Message<AddedNewsNotificationGenerated>(messageConfigurator =>
@@ -234,7 +234,7 @@ namespace NewsAggregator.News
 
                     configurator.Send<AddedNewsPreparedToIndexing>(messageSendConfigurator =>
                     {
-                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.added.prepared.to.indexing");
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.added.prepared_to_indexing");
                     });
 
                     configurator.Message<AddedNewsPreparedToIndexing>(messageConfigurator =>
@@ -256,7 +256,7 @@ namespace NewsAggregator.News
                         endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
                         {
                             exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
-                            exchangeBindingConfigurator.RoutingKey = "news.added.prepared.to.indexing";
+                            exchangeBindingConfigurator.RoutingKey = "news.added.prepared_to_indexing";
                         });
 
                         endpointConfigurator.Consumer<IndexAddedNewsConsumer>(context);

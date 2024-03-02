@@ -48,7 +48,7 @@ namespace NewsAggregator.Notification
                         endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
                         {
                             exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
-                            exchangeBindingConfigurator.RoutingKey = "news.added.notification.generated";
+                            exchangeBindingConfigurator.RoutingKey = "news.added.notification_generated";
                         });
 
                         endpointConfigurator.Consumer<SendByWebsocketAddedNewsNotificationConsumer>(context);

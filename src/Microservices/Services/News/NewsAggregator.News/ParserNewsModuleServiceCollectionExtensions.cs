@@ -77,7 +77,7 @@ namespace NewsAggregator.News
 
                     configurator.Send<ThrowedExceptionWhenParseNews>(messageSendConfigurator =>
                     {
-                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.parsed.with.error");
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.parsed_with_error");
                     });
 
                     configurator.Message<ThrowedExceptionWhenParseNews>(messageConfigurator =>
@@ -93,7 +93,7 @@ namespace NewsAggregator.News
 
                     configurator.Send<ThrowedHttpRequestExceptionWhenParseNews>(messageSendConfigurator =>
                     {
-                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.parsed.with.network.error");
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.parsed_with_network_error");
                     });
 
                     configurator.Message<ThrowedHttpRequestExceptionWhenParseNews>(messageConfigurator =>

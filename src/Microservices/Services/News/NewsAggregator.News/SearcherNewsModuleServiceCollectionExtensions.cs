@@ -43,7 +43,7 @@ namespace NewsAggregator.News
 
                     configurator.Send<FoundNewsList>(messageSendConfigurator =>
                     {
-                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.list.found");
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news_list.found");
                     });
 
                     configurator.Message<FoundNewsList>(messageConfigurator =>
