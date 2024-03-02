@@ -1,6 +1,7 @@
 <script lang="ts" setup>
+  import { RouterLink } from 'vue-router'
   import { SearchNewsModalToggle } from '@/features/search-news-modal-toggle/ui'
-  import { DefaultNavigation } from '@/features/default-navigation/ui'
+  import { HomeNavigation } from '@/features/home-navigation/ui'
   import { SearchNewsModal } from '@/features/search-news-modal/ui'
 </script>
 
@@ -12,7 +13,9 @@
           <a class="link-secondary" href="#">Subscribe</a>
         </div>
         <div class="col-4 text-center">
-          <a class="blog-header-logo text-body-emphasis text-decoration-none">NewsAggregator</a>
+          <router-link class="blog-header-logo text-body-emphasis text-decoration-none" to="/">
+            NewsAggregator
+          </router-link>
         </div>
         <div class="col-4 d-flex justify-content-end align-items-center">
           <search-news-modal-toggle />
@@ -20,7 +23,7 @@
         </div>
       </div>
     </header>
-    <default-navigation />
+    <home-navigation />
     <search-news-modal />
   </div>
 </template>

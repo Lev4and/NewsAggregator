@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-
+  import { RouterLink } from 'vue-router'
 </script>
 
 <template>
   <div class="nav-scroller py-1 mb-3 border-bottom">
     <nav class="nav nav-underline justify-content-between">
-      <a class="nav-item nav-link link-body-emphasis">
+      <router-link class="nav-item nav-link link-body-emphasis" to="/">
         Home
-      </a>
+      </router-link>
       <a class="nav-item nav-link link-body-emphasis">
         News
       </a>
