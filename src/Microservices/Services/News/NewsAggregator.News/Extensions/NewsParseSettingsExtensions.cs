@@ -11,7 +11,8 @@ namespace NewsAggregator.News.Extensions
             return new NewsParserOptions
             {
                 TitleXPath = settings.TitleXPath,
-                DescriptionXPath = settings.DescriptionXPath,
+                HtmlDescriptionXPath = settings.HtmlDescriptionXPath,
+                TextDescriptionXPath = settings.TextDescriptionXPath,
                 SubTitleXPath = settings.ParseSubTitleSettings?.TitleXPath,
                 IsSubTitleRequired = settings.ParseSubTitleSettings?.IsRequired ?? false,
                 PictureUrlXPath = settings.ParsePictureSettings?.UrlXPath,

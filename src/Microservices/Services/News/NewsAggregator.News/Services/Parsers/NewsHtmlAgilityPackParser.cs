@@ -2,6 +2,7 @@
 using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Entities;
 using System.Globalization;
+using System.Text;
 
 namespace NewsAggregator.News.Services.Parsers
 {
@@ -29,8 +30,15 @@ namespace NewsAggregator.News.Services.Parsers
             var newsTitle = htmlDocumentNavigator?.SelectSingleNode(options.TitleXPath)
                 ?.Value?.Trim() ?? throw new NullReferenceException("newsTitle");
 
-            var newsDescription = string.Join("", htmlDocument.DocumentNode.SelectNodes(options.DescriptionXPath)
+            var newsHtmlDescription = string.Join("", htmlDocument.DocumentNode.SelectNodes(options.HtmlDescriptionXPath)
                 ?.Select(node => node.OuterHtml.Trim()) ?? throw new NullReferenceException("newsDescription"));
+
+            var newsTextDescription = new StringBuilder();
+
+            foreach (var item in htmlDocumentNavigator.Select(options.TextDescriptionXPath))
+            {
+                newsTextDescription.Append(item.ToString());
+            }
 
             var newsSubTitle = null as string;
 
@@ -130,7 +138,7 @@ namespace NewsAggregator.News.Services.Parsers
                     : null;
             }
 
-            return Task.FromResult(new NewsDto(newsUrl, newsTitle, newsDescription, newsSubTitle, newsEditorName ?? NewsEditor.Empty,
+            return Task.FromResult(new NewsDto(newsUrl, newsTitle, newsHtmlDescription, newsTextDescription.ToString(), newsSubTitle, newsEditorName ?? NewsEditor.Empty,
                 newsPictureUrl, newsVideoUrl, newsPublishedAt, newsModifiedAt, DateTime.UtcNow));
         }
     }

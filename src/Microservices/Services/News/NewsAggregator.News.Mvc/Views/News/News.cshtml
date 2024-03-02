@@ -3,6 +3,75 @@
     ViewData["Title"] = Model.Title;
 }
 
+@section MetaTags
+{
+    <meta itemprop="item" content="@Model.Url">
+    <meta itemprop="name" content="@Model.Title">
+    @if (Model.SubTitle is not null)
+    {
+        <meta itemprop="description" content="@Model.SubTitle.Title">
+        <meta itemprop="alternativeHeadline" content="@Model.SubTitle.Title">
+    }
+    <meta itemprop="dateCreated" content="@Model.AddedAt.ToString("yyyy-MM-ddTHH:mm:sszzz")">
+    @if (Model.PublishedAt is not null)
+    {
+        <meta itemprop="datePublished" content="@Model.PublishedAt?.ToString("yyyy-MM-ddTHH:mm:sszzz")">
+    }
+    @if (Model.ModifiedAt is not null)
+    {
+        <meta itemprop="dateModified" content="@Model.ModifiedAt?.ToString("yyyy-MM-ddTHH:mm:sszzz")">
+    }
+    @if (Model.Editor is not null)
+    {
+        <meta itemprop="author" content="@Model.Editor.Name">
+    }
+    @if (Model.Picture is not null)
+    {
+        <meta itemprop="image" content="@Model.Picture.Url">
+    }
+    @if (Model.Video is not null)
+    {
+        <meta itemprop="video" content="@Model.Video.Url">
+    }
+    <meta itemprop="article:id" content="@Model.Id">
+    <meta itemprop="article:originalUrl" content="@Model.Url">
+    <meta itemprop="article:title" content="@Model.Title">
+    @if (Model.SubTitle is not null)
+    {
+        <meta itemprop="article:alternativeHeadline" content="@Model.SubTitle.Title">
+    }
+    <meta itemprop="article:dateCreated" content="@Model.AddedAt.ToString("yyyy-MM-ddTHH:mm:sszzz")">
+    @if (Model.PublishedAt is not null)
+    {
+        <meta itemprop="article:datePublished" content="@Model.PublishedAt?.ToString("yyyy-MM-ddTHH:mm:sszzz")">
+    }
+    @if (Model.ModifiedAt is not null)
+    {
+        <meta itemprop="article:dateModified" content="@Model.ModifiedAt?.ToString("yyyy-MM-ddTHH:mm:sszzz")">
+    }
+    @if (Model.Editor is not null)
+    {
+        <meta itemprop="article:author" content="@Model.Editor.Name">
+
+        @if (Model.Editor.Source is not null)
+        {
+            <meta itemprop="article:source" content="@Model.Editor.Source.Title">
+        }
+    }
+    @if (Model.Picture is not null)
+    {
+        <meta itemprop="article:image" content="@Model.Picture.Url">
+    }
+    @if (Model.Video is not null)
+    {
+        <meta itemprop="article:video" content="@Model.Video.Url">
+    }
+    @if (Model.TextDescription is not null)
+    {
+        <meta itemprop="article:description" content="@Model.TextDescription.Description">
+    }
+}
+
 @section Styles 
 {
     <style>
@@ -16,6 +85,10 @@
             width: 100%;
             height: auto;
             object-fit: cover;
+        }
+
+        video[itemprop="video"] {
+            width: 100%;
         }
     </style>
 }
@@ -71,14 +144,18 @@
                 <span itemprop="alternativeHeadline">@Model.SubTitle.Title</span>
             }
             <hr />
-            @if (Model.Picture is not null)
+            @if (Model.Picture is not null && Model.Video is null)
             {
                 <img itemprop="image" src="@Model.Picture.Url" class="w-100" />
             }
-            @if (Model.Description is not null)
+            @if (Model.Video is not null)
+            {
+                <video itemprop="video" src="@Model.Video.Url" controls />
+            }
+            @if (Model.HtmlDescription is not null)
             {
                 <div itemprop="articleBody">
-                    @Html.Raw(Model.Description.Description)
+                    @Html.Raw(Model.HtmlDescription.Description)
                 </div>
             }
         </article>

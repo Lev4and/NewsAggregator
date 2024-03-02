@@ -32,7 +32,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         }
 
         [Theory]
-        [InlineData("https://ria.ru/20240210/udar-1926580118.html")]
+        [InlineData("https://www.kp.ru/online/news/5699121/")]
         public async Task ParseAsync_SpecificNewsUrl_ReturnNotNullResult(string newsUrl)
         {
             var newsSource = _sources[new Uri(newsUrl)];
@@ -56,7 +56,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         [Fact]
         public async Task ParseAsync_SpecificNewsSource_ReturnNotEmptyResult()
         {
-            var newsSource = _sources[new Uri("https://www.hltv.org/")];
+            var newsSource = _sources[new Uri("https://www.kp.ru/")];
 
             var newsUrls = await ParseNewsUrlsAsync(newsSource);
             var newsUrlsEnumerator = newsUrls.GetEnumerator();
@@ -222,7 +222,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
                 }
             }
 
-            var newsUrlsWithoutDescription = parsedNews.Where(news => string.IsNullOrEmpty(news.Description))
+            var newsUrlsWithoutDescription = parsedNews.Where(news => string.IsNullOrEmpty(news.HtmlDescription))
                 .Select(news => news.Url)
                 .ToList();
 

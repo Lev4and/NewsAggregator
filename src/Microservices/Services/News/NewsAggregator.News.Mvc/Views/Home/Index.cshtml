@@ -2,6 +2,15 @@
     ViewData["Title"] = "Home";
 }
 
+@section MetaTags 
+{
+    <meta itemprop="name" content="NewsAggregator">
+    <meta itemprop="headline" content="NewsAggregator">
+    <meta itemprop="description" content="NewsAggregator">
+    <meta itemprop="genre" content="News">
+    <meta itemprop="keywords" content="news, news aggregator">
+}
+
 <vc:carousel-recent-news count="25" />
 <partial name="_Hotline" />
 <vc:recent-news-grid count="100" />

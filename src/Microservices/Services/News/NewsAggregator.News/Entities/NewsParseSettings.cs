@@ -8,7 +8,9 @@ namespace NewsAggregator.News.Entities
 
         public string TitleXPath { get; set; }
 
-        public string DescriptionXPath { get; set; }
+        public string HtmlDescriptionXPath { get; set; }
+
+        public string TextDescriptionXPath { get; set; }
 
         public virtual NewsSource? Source { get; set; }
 

@@ -2,7 +2,7 @@
 
 namespace NewsAggregator.News.Entities
 {
-    public class NewsDescription : EntityBase
+    public class NewsTextDescription : EntityBase
     {
         public Guid NewsId { get; set; }
 

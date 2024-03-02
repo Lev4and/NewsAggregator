@@ -123,13 +123,23 @@ namespace NewsAggregator.News.UseCases.Commands
                                 });
                         }
 
-                        if (!string.IsNullOrEmpty(request.News.Description))
+                        if (!string.IsNullOrEmpty(request.News.HtmlDescription))
                         {
                             _repository.Add(
-                                new NewsDescription
+                                new NewsHtmlDescription
                                 {
                                     NewsId = news.Id,
-                                    Description = request.News.Description
+                                    Description = request.News.HtmlDescription
+                                });
+                        }
+
+                        if (!string.IsNullOrEmpty(request.News.TextDescription))
+                        {
+                            _repository.Add(
+                                new NewsTextDescription
+                                {
+                                    NewsId = news.Id,
+                                    Description = request.News.TextDescription
                                 });
                         }
 

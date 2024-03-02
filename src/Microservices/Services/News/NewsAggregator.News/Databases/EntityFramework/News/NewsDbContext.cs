@@ -11,7 +11,7 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
     {
         public DbSet<Entities.News> News { get; set; }
 
-        public DbSet<NewsDescription> NewsDescriptions { get; set; }
+        public DbSet<NewsHtmlDescription> NewsHtmlDescriptions { get; set; }
 
         public DbSet<NewsEditor> NewsEditors { get; set; }
 
@@ -48,6 +48,8 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
         public DbSet<NewsSourceLogo> NewsSourceLogos { get; set; }
 
         public DbSet<NewsSubTitle> NewsSubTitles { get; set; }
+
+        public DbSet<NewsTextDescription> NewsTextDescriptions { get; set; }
 
         public DbSet<NewsVideo> NewsVideos { get; set; }
 
@@ -106,9 +108,14 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
                         .HasForeignKey<NewsVideo>(video => video.NewsId);
 
             modelBuilder.Entity<Entities.News>()
-                .HasOne(news => news.Description)
+                .HasOne(news => news.HtmlDescription)
                     .WithOne(description => description.News)
-                        .HasForeignKey<NewsDescription>(description => description.NewsId);
+                        .HasForeignKey<NewsHtmlDescription>(description => description.NewsId);
+
+            modelBuilder.Entity<Entities.News>()
+                .HasOne(news => news.TextDescription)
+                    .WithOne(description => description.News)
+                        .HasForeignKey<NewsTextDescription>(description => description.NewsId);
 
             modelBuilder.Entity<NewsEditor>()
                 .HasIndex(editor => editor.Name);

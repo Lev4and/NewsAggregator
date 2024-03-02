@@ -10,7 +10,8 @@ namespace NewsAggregator.News.Specifications
             AddInclude(news => news.Editor.Source);
             AddInclude(news => news.Editor.Source.Logo);
             AddInclude(news => news.SubTitle);
-            AddInclude(news => news.Description);
+            AddInclude(news => news.HtmlDescription);
+            AddInclude(news => news.TextDescription);
             AddInclude(news => news.Picture);
             AddInclude(news => news.Video);
         }

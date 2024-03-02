@@ -14,7 +14,9 @@
 
         public string? VideoUrl { get; }
 
-        public string Description { get; }
+        public string HtmlDescription { get; }
+
+        public string TextDescription { get; }
 
         public DateTime? PublishedAt { get; }
 
@@ -22,7 +24,7 @@
 
         public DateTime ParsedAt { get; }
 
-        public NewsDto(string url, string title, string description, string? subTitle, string editorName, 
+        public NewsDto(string url, string title, string htmlDescription, string textDescription, string? subTitle, string editorName, 
             string? pictureUrl, string? videoUrl, DateTime? publishedAt, DateTime? modifiedAt, DateTime parsedAt)
         {
             Url = url;
@@ -31,7 +33,8 @@
             EditorName = editorName;
             PictureUrl = pictureUrl;
             VideoUrl = videoUrl;
-            Description = description;
+            HtmlDescription = htmlDescription;
+            TextDescription = textDescription;
             PublishedAt = publishedAt;
             ModifiedAt = modifiedAt;
             ParsedAt = parsedAt;

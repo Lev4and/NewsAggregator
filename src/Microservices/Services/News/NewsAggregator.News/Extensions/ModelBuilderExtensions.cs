@@ -56,7 +56,8 @@ namespace NewsAggregator.News.Extensions
                         Id = newsSource.ParseSettings.Id,
                         SourceId = newsSource.ParseSettings.SourceId,
                         TitleXPath = newsSource.ParseSettings.TitleXPath,
-                        DescriptionXPath = newsSource.ParseSettings.DescriptionXPath
+                        HtmlDescriptionXPath = newsSource.ParseSettings.HtmlDescriptionXPath,
+                        TextDescriptionXPath = newsSource.ParseSettings.TextDescriptionXPath
                     });
 
                 if (!string.IsNullOrEmpty(newsSource.ParseSettings.ParseSubTitleSettings?.TitleXPath))

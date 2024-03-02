@@ -29,7 +29,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//div[@class='article__title']/text()",
-                    DescriptionXPath  = "//div[contains(@class, 'article__body')]",
+                    HtmlDescriptionXPath = "//div[contains(@class, 'article__body')]",
+                    TextDescriptionXPath = "//div[contains(@class, 'article__body')]/text()",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
                         UrlXPath = "//div[@class='photoview__open']/img/@src",
@@ -94,7 +95,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[contains(@class, 'article__text ')]",
+                    HtmlDescriptionXPath = "//div[contains(@class, 'article__text ')]",
+                    TextDescriptionXPath = "//div[contains(@class, 'article__text ')]/text()",
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
                         TitleXPath = "//div[contains(@class, 'article__summary')]/text()",
@@ -140,7 +142,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//article/*",
+                    HtmlDescriptionXPath = "//article/*",
+                    TextDescriptionXPath = "//article/*/text()",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
                         UrlXPath = "//div[contains(@class, 'HeaderMedia_image')]//img[contains(@class, 'Image_image')]/@src",
@@ -216,7 +219,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1[@class='topic-body__titles']/span[@class='topic-body__title']/text()",
-                    DescriptionXPath = "//div[@class='topic-body__content']",
+                    HtmlDescriptionXPath = "//div[@class='topic-body__content']",
+                    TextDescriptionXPath = "//div[@class='topic-body__content']/text()",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//div[@class='topic-authors']/a[@class='topic-authors__author']/text()",
@@ -272,7 +276,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[contains(@class, 'PageContentCommonStyling_text')]/*[not(name() = 'rg-video')]",
+                    HtmlDescriptionXPath = "//div[contains(@class, 'PageContentCommonStyling_text')]/*[not(name() = 'rg-video')]",
+                    TextDescriptionXPath = "//div[contains(@class, 'PageContentCommonStyling_text')]/*[not(name() = 'rg-video')]/text()",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//div[contains(@class, 'PageArticleContent_authors')]//a[contains(@class, 'LinksOfAuthor_item')]/text()",
@@ -324,7 +329,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[@class='article_text']",
+                    HtmlDescriptionXPath = "//div[@class='article_text']",
+                    TextDescriptionXPath = "//div[@class='article_text']/text()",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//div[@class='article_top']//div[@class='authors']//div[@class='autor']//span/text()",
@@ -370,7 +376,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[@class='article__text article__text_free']/*[not(contains(@class, 'article__text__overview'))]",
+                    HtmlDescriptionXPath = "//div[@class='article__text article__text_free']/*[not(contains(@class, 'article__text__overview'))]",
+                    TextDescriptionXPath = "//div[@class='article__text article__text_free']/*[not(contains(@class, 'article__text__overview'))]/text()",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//div[@class='article__authors']//*[@class='article__authors__author']/span[@class='article__authors__author__name']/text()",
@@ -415,7 +422,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[contains(@class, 'news-item__content')]",
+                    HtmlDescriptionXPath = "//div[contains(@class, 'news-item__content')]",
+                    TextDescriptionXPath = "//div[contains(@class, 'news-item__content')]/text()",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//footer[@class='news-item__footer']/div[@class='news-item__footer-after-news']/p[position()=1]//span/text()",
@@ -455,7 +463,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[@class='article_text_wrapper js-search-mark']/*[not(contains(@class, 'doc__text document_authors'))]",
+                    HtmlDescriptionXPath = "//div[@class='article_text_wrapper js-search-mark']/*[not(contains(@class, 'doc__text document_authors'))]",
+                    TextDescriptionXPath = "//div[@class='article_text_wrapper js-search-mark']/*[not(contains(@class, 'doc__text document_authors'))]/text()",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//p[@class='doc__text document_authors']/text()",
@@ -518,7 +527,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/span/text()",
-                    DescriptionXPath = "//div[@itemprop='articleBody']/*",
+                    HtmlDescriptionXPath = "//div[@itemprop='articleBody']/*",
+                    TextDescriptionXPath = "//div[@itemprop='articleBody']/*/text()",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
                         UrlXPath = "//div[contains(@class, 'big_photo')]//div[@class='big_photo__img']//img/@data-src",
@@ -558,7 +568,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1[@class='article__title']/text()",
-                    DescriptionXPath = "//div[@class='article__content']/*[not(contains(@class, 'article__title')) and not(contains(@class, 'article__intro'))]",
+                    HtmlDescriptionXPath = "//div[@class='article__content']/*[not(contains(@class, 'article__title')) and not(contains(@class, 'article__intro'))]",
+                    TextDescriptionXPath = "//div[@class='article__content']/*[not(contains(@class, 'article__title')) and not(contains(@class, 'article__intro'))]/text()",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//a[@class='article__author']/text()",
@@ -613,7 +624,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[@class='js-mediator-article']",
+                    HtmlDescriptionXPath = "//div[@class='js-mediator-article']",
+                    TextDescriptionXPath = "//div[@class='js-mediator-article']/text()",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
                         UrlXPath = "//div[@class='inner_content']//div[@class='main_img']//img/@src",
@@ -654,7 +666,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1[@class='b-text__title']/text()",
-                    DescriptionXPath = "//div[@class='b-text__content']/div[contains(@class, 'b-text__block')]",
+                    HtmlDescriptionXPath = "//div[@class='b-text__content']/div[contains(@class, 'b-text__block')]",
+                    TextDescriptionXPath = "//div[@class='b-text__content']/div[contains(@class, 'b-text__block')]/text()",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
                         UrlXPath = "//picture/img/@src",
@@ -699,7 +712,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[@class='b-material-body']/div/*[not(@class='b-material-incut-m-image')]",
+                    HtmlDescriptionXPath = "//div[@class='b-material-body']/div/*[not(@class='b-material-incut-m-image')]",
+                    TextDescriptionXPath = "//div[@class='b-material-body']/div/*[not(@class='b-material-incut-m-image')]/text()",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
                         UrlXPath = "//div[@class='b-material-incut-m-image']//@src",
@@ -748,7 +762,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//article/div[@class='news_text']",
+                    HtmlDescriptionXPath = "//article/div[@class='news_text']",
+                    TextDescriptionXPath = "//article/div[@class='news_text']/text()",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
                         UrlXPath = "//article/figure/img/@src",
@@ -794,7 +809,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//article/header/div[@class='article-head__title']/text()",
-                    DescriptionXPath = "//article/div[@class='article-content']/*[not(@class)]",
+                    HtmlDescriptionXPath = "//article/div[@class='article-content']/*[not(@class)]",
+                    TextDescriptionXPath = "//article/div[@class='article-content']/*[not(@class)]/text()",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//article//header//div[@class='article-head__author-name']/a[@rel='author']/span/text()",
@@ -840,7 +856,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[contains(@class, 'styles_bodyWrapper')]/div[not(@class)]",
+                    HtmlDescriptionXPath = "//div[contains(@class, 'styles_bodyWrapper')]/div[not(@class)]",
+                    TextDescriptionXPath = "//div[contains(@class, 'styles_bodyWrapper')]/div[not(@class)]/text()",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//div[contains(@class, 'styles_bodyWrapper')]//div[contains(@class, 'styles_authorsLinks')]/a/text()",
@@ -895,7 +912,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[contains(@class, 'article-entry')]//div[@class='js-mediator-article']/p[position()>1]",
+                    HtmlDescriptionXPath = "//div[contains(@class, 'article-entry')]//div[@class='js-mediator-article']/p[position()>1]",
+                    TextDescriptionXPath = "//div[contains(@class, 'article-entry')]//div[@class='js-mediator-article']/p[position()>1]/text()",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//div[contains(@class, 'article-entry')]//div[@class='entry-info']//a[@itemprop='author']//span[@itemprop='name']/text()",
@@ -945,7 +963,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[@itemprop='articleBody']/*",
+                    HtmlDescriptionXPath = "//div[@itemprop='articleBody']/*",
+                    TextDescriptionXPath = "//div[@itemprop='articleBody']/*/text()",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//span[@itemprop='author']/span[@itemprop='name']/@content",
@@ -991,7 +1010,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[contains(@class, 'container-fluid shifted') and not(p[@class='announce lead']) and not(h1) and not(hr)]",
+                    HtmlDescriptionXPath = "//div[contains(@class, 'container-fluid shifted') and not(p[@class='announce lead']) and not(h1) and not(hr)]",
+                    TextDescriptionXPath = "//div[contains(@class, 'container-fluid shifted') and not(p[@class='announce lead']) and not(h1) and not(hr)]/text()",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//div[@class='container-fluid publication-footer']//a[contains(@class, 'text-secondary')]/@title",
@@ -1042,7 +1062,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[@itemprop='articleBody']/*",
+                    HtmlDescriptionXPath = "//div[@itemprop='articleBody']/*",
+                    TextDescriptionXPath = "//div[@itemprop='articleBody']/*/text()",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//div[@class='author']/span[@itemprop='author']/span[@itemprop='name']/a/text()",
@@ -1092,7 +1113,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//article[@itemprop='articleBody']/*[not(name() = 'h1') and not(name() = 'aside') and not(name() = 'meta') and not(name() = 'link') and not(@itemprop)]",
+                    HtmlDescriptionXPath = "//article[@itemprop='articleBody']/*[not(name() = 'h1') and not(name() = 'aside') and not(name() = 'meta') and not(name() = 'link') and not(@itemprop)]",
+                    TextDescriptionXPath = "//article[@itemprop='articleBody']/*[not(name() = 'h1') and not(name() = 'aside') and not(name() = 'meta') and not(name() = 'link') and not(@itemprop)]/text()",
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
                         PublishedAtXPath = "//article[@itemprop='articleBody']/meta[@itemprop='datePublished']/@content",
@@ -1128,7 +1150,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[contains(@class, 'full-article')]/*[not(name()='h1') and not(name()='style') and not(name()='div')]",
+                    HtmlDescriptionXPath = "//div[contains(@class, 'full-article')]/*[not(name()='h1') and not(name()='style') and not(name()='div')]",
+                    TextDescriptionXPath = "//div[contains(@class, 'full-article')]/*[not(name()='h1') and not(name()='style') and not(name()='div')]/text()",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//div[contains(@class, 'full-article')]/div[@class='authors-block']//span[text()='Автор']/../a/text()",
@@ -1179,7 +1202,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[@itemprop='articleBody']/*[not(name()='div')]",
+                    HtmlDescriptionXPath = "//div[@itemprop='articleBody']/*[not(name()='div')]",
+                    TextDescriptionXPath = "//div[@itemprop='articleBody']/*[not(name()='div')]/text()",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//div[@itemprop='author']/span[@itemprop='name']/text()",
@@ -1224,7 +1248,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1[@itemprop='headline']/span/text()",
-                    DescriptionXPath = "//div[@itemprop='articleBody']/*[not(name() = 'figure')]",
+                    HtmlDescriptionXPath = "//div[@itemprop='articleBody']/*[not(name() = 'figure')]",
+                    TextDescriptionXPath = "//div[@itemprop='articleBody']/*[not(name() = 'figure')]/text()",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//div[@itemprop='author']//p[@itemprop='name']/text()",
@@ -1275,7 +1300,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1[@itemprop='headline']/text()",
-                    DescriptionXPath = "//div[@itemprop='articleBody']/*",
+                    HtmlDescriptionXPath = "//div[@itemprop='articleBody']/*",
+                    TextDescriptionXPath = "//div[@itemprop='articleBody']/*/text()",
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
                         NameXPath = "//*[@itemprop='author']/*[@itemprop='name']//text()",
@@ -1325,7 +1351,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[contains(@class, 'js-mediator-article')]/*[position()>1]",
+                    HtmlDescriptionXPath = "//div[contains(@class, 'js-mediator-article')]/*[position()>1]",
+                    TextDescriptionXPath = "//div[contains(@class, 'js-mediator-article')]/*[position()>1]/text()",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
                         UrlXPath = "//meta[@property='og:image']/@content",
@@ -1370,7 +1397,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings 
                 {
                     TitleXPath = "//h1[@class='headline']/text()",
-                    DescriptionXPath = "//article//div[@class='newstext-con']/*[position()>2]",
+                    HtmlDescriptionXPath = "//article//div[@class='newstext-con']/*[position()>2]",
+                    TextDescriptionXPath = "//article//div[@class='newstext-con']/*[position()>2]/text()",
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
                         TitleXPath = "//p[@class='headertext' and @itemprop='description']/text()",
@@ -1426,7 +1454,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//section[@name='articleBody']/*",
+                    HtmlDescriptionXPath = "//section[@name='articleBody']/*",
+                    TextDescriptionXPath = "//section[@name='articleBody']/*/text()",
                     ParseSubTitleSettings = new NewsParseSubTitleSettings
                     {
                         TitleXPath = "//header/p[@id='article-summary']/text()",
@@ -1476,7 +1505,8 @@ namespace NewsAggregator.News.NewsSources
                 ParseSettings = new NewsParseSettings
                 {
                     TitleXPath = "//h1/text()",
-                    DescriptionXPath = "//div[@itemprop='articleBody']/*",
+                    HtmlDescriptionXPath = "//div[@itemprop='articleBody']/*",
+                    TextDescriptionXPath = "//div[@itemprop='articleBody']/*/text()",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
                         UrlXPath = "//div[contains(@class, 'article__lede-wrapper')]//picture/img/@src",
@@ -1506,6 +1536,67 @@ namespace NewsAggregator.News.NewsSources
                 {
                     NewsUrlXPath = "//a[contains(@href, '.html')]/@href",
                     NewsSiteUrl = "https://edition.cnn.com/"
+                },
+            });
+
+            Add(new NewsSource
+            {
+                Title = "Комсомольская правда",
+                SiteUrl = "https://www.kp.ru/",
+                IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Small = "https://s01.stc.yc.kpcdn.net/s0/2.1.321/adaptive/favicon-32.png",
+                    Original = "https://s01.stc.yc.kpcdn.net/s0/2.1.321/adaptive/favicon-128.png"
+                },
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//h1/text()",
+                    HtmlDescriptionXPath = "//div[@data-gtm-el='content-body']/*[not(name()='div' and @data-wide='true')]",
+                    TextDescriptionXPath = "//div[@data-gtm-el='content-body']/*[not(name()='div' and @data-wide='true')]/text()",
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//meta[@name='description']/@content",
+                        IsRequired = true
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//div[@data-gtm-el='content-body']//picture/img/@src",
+                        IsRequired = true
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//meta[@property='article:published_time']/@content",
+                        PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
+                        IsRequired = true,
+                        Formats = new List<NewsParsePublishedAtSettingsFormat>
+                        {
+                            new NewsParsePublishedAtSettingsFormat
+                            {
+                                Format = "yyyy-MM-ddTHH:mm:ss.fff\"Z+0300\""
+                            }
+                        }
+                    },
+                    ParseModifiedAtSettings = new NewsParseModifiedAtSettings
+                    {
+                        ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
+                        ModifiedAtCultureInfo = "ru-RU",
+                        ModifiedAtTimeZoneInfoId = "Russian Standard Time",
+                        IsRequired = true,
+                        Formats = new List<NewsParseModifiedAtSettingsFormat>
+                        {
+                            new NewsParseModifiedAtSettingsFormat
+                            {
+                                Format = "yyyy-MM-ddTHH:mm:ss.fff\"Z+0300\""
+                            }
+                        }
+                    },
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsUrlXPath = "//a[contains(@href, '/news/')]/@href",
+                    NewsSiteUrl = "https://www.kp.ru/"
                 },
             });
         }

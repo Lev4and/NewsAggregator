@@ -7,6 +7,7 @@ namespace NewsAggregator.News.Tests
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDefaultNewsSources();
             services.AddHttpClientNewsProviders();
             services.AddNewsAngleSharpParsers();
         }

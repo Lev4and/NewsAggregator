@@ -4,7 +4,9 @@
     {
         public string TitleXPath { get; set; }
 
-        public string DescriptionXPath { get; set; }
+        public string HtmlDescriptionXPath { get; set; }
+
+        public string TextDescriptionXPath { get; set; }
 
         public string? SubTitleXPath { get; set; }
 

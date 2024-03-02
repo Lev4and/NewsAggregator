@@ -27,6 +27,8 @@ namespace NewsAggregator.News.Entities
 
         public virtual NewsVideo? Video { get; set; }
 
-        public virtual NewsDescription? Description { get; set; }
+        public virtual NewsHtmlDescription? HtmlDescription { get; set; }
+
+        public virtual NewsTextDescription? TextDescription { get; set; }
     }
 }
