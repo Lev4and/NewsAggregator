@@ -47,7 +47,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.News.Searche
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{615D7726-0F7C-439C-9300-6C369C4A0683}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsAggregator.Notification.Api", "src\Microservices\Services\Notification\NewsAggregator.Notification.Api\NewsAggregator.Notification.Api.csproj", "{1DA9EEBE-FCB1-4C83-AAAE-89631785FEEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsAggregator.Notification.Api", "src\Microservices\Services\Notification\NewsAggregator.Notification.Api\NewsAggregator.Notification.Api.csproj", "{1DA9EEBE-FCB1-4C83-AAAE-89631785FEEB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
