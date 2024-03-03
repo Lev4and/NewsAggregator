@@ -1,4 +1,5 @@
 ﻿using NewsAggregator.News.Entities;
+using OpenQA.Selenium.DevTools.V119.Database;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -1649,6 +1650,362 @@ namespace NewsAggregator.News.NewsSources
                 {
                     NewsUrlXPath = "//a[contains(@href, '/news/')]/@href",
                     NewsSiteUrl = "https://www.kp.ru/"
+                },
+            });
+
+            Add(new NewsSource
+            {
+                Title = "Журнал \"За рулем\"",
+                SiteUrl = "https://www.zr.ru/",
+                IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Small = "https://www.zr.ru/favicons/favicon.ico",
+                    Original = "https://www.zr.ru/favicons/safari-pinned-tab.svg",
+                },
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//meta[@name='og:title']/@content",
+                    HtmlDescriptionXPath = "//div[contains(@class, 'styled__StoryBody')]/*[not(name()='p' and contains(@class, 'styled__StoryParagraph') and position()=1) and not(name()='div' and contains(@class, 'styled__StoryImgContainer') and position()=2)]",
+                    TextDescriptionXPath = "//div[contains(@class, 'styled__StoryBody')]/*[not(name()='p' and contains(@class, 'styled__StoryParagraph') and position()=1) and not(name()='div' and contains(@class, 'styled__StoryImgContainer') and position()=2)]/text()",
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//div[contains(@class, 'styled__StoryBody')]/p[contains(@class, 'styled__StoryParagraph') and position()=1]/text()",
+                        IsRequired = false
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//meta[@name='og:image']/@content",
+                        IsRequired = false
+                    },
+                    ParseEditorSettings = new NewsParseEditorSettings
+                    {
+                        NameXPath = "//div[contains(@class, 'styled__StoryInfoAuthors')]/div[contains(@class, 'styled__InfoAuthor')]//span[contains(@class, 'styled__AuthorName')]/text()",
+                        IsRequired = false,
+                    },
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsUrlXPath = "//a[contains(@href, '/news/') and not(starts-with(@href, '/news/')) and not(starts-with(@href, 'https://'))]/@href",
+                    NewsSiteUrl = "https://www.zr.ru/news/"
+                },
+            });
+
+            Add(new NewsSource
+            {
+                Title = "АвтоВзгляд",
+                SiteUrl = "https://www.avtovzglyad.ru/",
+                IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Small = "https://www.avtovzglyad.ru/static/images/favicon/favicon-32x32.png",
+                    Original = "https://www.avtovzglyad.ru/static/images/favicon/safari-pinned-tab.svg"
+                },
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//meta[@property='og:title']/@content",
+                    HtmlDescriptionXPath = "//section[@itemprop='articleBody']/*",
+                    TextDescriptionXPath = "//section[@itemprop='articleBody']/*[not(name()='script')]/text()",
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//meta[@name='description']/@content",
+                        IsRequired = false,
+                    },
+                    ParseEditorSettings = new NewsParseEditorSettings
+                    {
+                        NameXPath = "//div[@class='preview__author-block']//div[@class='author__about']/a[@itemprop='name']/@content",
+                        IsRequired = false,
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//meta[@property='og:image']/@content",
+                        IsRequired = false,
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//div[@class='article-details']/span[@class='article-details__time']/time/@datetime",
+                        PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
+                        IsRequired = true,
+                        Formats = new List<NewsParsePublishedAtSettingsFormat>
+                        {
+                            new NewsParsePublishedAtSettingsFormat
+                            {
+                                Format = "d MMMM yyyy"
+                            }
+                        }
+                    },
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsUrlXPath = "//a[@class='news-card__link']/@href",
+                    NewsSiteUrl = "https://www.avtovzglyad.ru/news/"
+                },
+            });
+
+            Add(new NewsSource
+            {
+                Title = "Overclockers",
+                SiteUrl = "https://overclockers.ru/",
+                IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Small = "https://overclockers.ru/assets/apple-touch-icon.png",
+                    Original = "https://overclockers.ru/assets/apple-touch-icon-120x120.png"
+                },
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//a[@class='header']/text()",
+                    HtmlDescriptionXPath = "//div[contains(@class, 'material-content')]/*",
+                    TextDescriptionXPath = "//div[contains(@class, 'material-content')]/p/text()",
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//meta[@name='description']/@content",
+                        IsRequired = false
+                    },
+                    ParseEditorSettings = new NewsParseEditorSettings
+                    {
+                        NameXPath = "//span[@class='author']/a/text()",
+                        IsRequired = false
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//meta[@property='og:image']/@content",
+                        IsRequired = false
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//span[@class='date']/time/@datetime",
+                        PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
+                        IsRequired = true,
+                        Formats = new List<NewsParsePublishedAtSettingsFormat>
+                        {
+                            new NewsParsePublishedAtSettingsFormat
+                            {
+                                Format = "yyyy-MM-dd HH:mm"
+                            }
+                        }
+                    },
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsUrlXPath = "//div[contains(@class, 'event')]//a[not(contains(@href, '#comments'))]/@href",
+                    NewsSiteUrl = "https://overclockers.ru/news"
+                },
+            });
+
+            Add(new NewsSource
+            {
+                Title = "KinoNews.ru",
+                SiteUrl = "https://www.kinonews.ru/",
+                IsEnabled = false,
+                Logo = new NewsSourceLogo
+                {
+                    Small = "https://www.kinonews.ru/favicon.ico",
+                    Original = "https://www.kinonews.ru/favicon.ico"
+                },
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//meta[@property='og:title']/@content",
+                    HtmlDescriptionXPath = "//div[@class='textart']/div[not(@class)]/*",
+                    TextDescriptionXPath = "//div[@class='textart']/div[not(@class)]//text()",
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//div[@class='block-page-new']/h2/text()",
+                        IsRequired = false,
+                    },
+                    ParseEditorSettings = new NewsParseEditorSettings
+                    {
+                        NameXPath = "//meta[@property='article:author']/@content",
+                        IsRequired = false,
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//meta[@property='og:image']/@content",
+                        IsRequired = false,
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//meta[@property='article:published_time']/@content",
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true,
+                        Formats = new List<NewsParsePublishedAtSettingsFormat>
+                        {
+                            new NewsParsePublishedAtSettingsFormat
+                            {
+                                Format = "yyyy-MM-ddTHH:mm:sszzz"
+                            }
+                        }
+                    }
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsUrlXPath = "//a[contains(@href, '/news_') and not(contains(@href, 'comments')) and not(contains(@href, 'news_p'))]/@href",
+                    NewsSiteUrl = "https://www.kinonews.ru/news/"
+                },
+            });
+
+            Add(new NewsSource
+            {
+                Title = "7дней.ru",
+                SiteUrl = "https://7days.ru/",
+                IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Small = "https://7days.ru/favicon-32x32.png",
+                    Original = "https://7days.ru/android-icon-192x192.png"
+                },
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//meta[@property='og:title']/@content",
+                    HtmlDescriptionXPath = "//div[@class='material-7days__paragraf-content']/*[not(name()='div' and @itemprop='image' and position()=1)]",
+                    TextDescriptionXPath = "//div[@class='material-7days__paragraf-content']//p/text()",
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//meta[@property='og:description']/@content",
+                        IsRequired = false
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//meta[@property='og:image']/@content",
+                        IsRequired = false
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//meta[@itemprop='datePublished']/@content",
+                        PublishedAtCultureInfo = "ru-RU",
+                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
+                        IsRequired = true,
+                        Formats = new List<NewsParsePublishedAtSettingsFormat>
+                        {
+                            new NewsParsePublishedAtSettingsFormat
+                            {
+                                Format = "yyyy-MM-dd"
+                            }
+                        }
+                    },
+                    ParseModifiedAtSettings = new NewsParseModifiedAtSettings
+                    {
+                        ModifiedAtXPath = "//meta[@itemprop='dateModified']/@content",
+                        ModifiedAtCultureInfo = "ru-RU",
+                        ModifiedAtTimeZoneInfoId = "Russian Standard Time",
+                        IsRequired = false,
+                        Formats = new List<NewsParseModifiedAtSettingsFormat>
+                        {
+                            new NewsParseModifiedAtSettingsFormat
+                            {
+                                Format = "yyyy-MM-dd"
+                            }
+                        }
+                    },
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsUrlXPath = "//a[contains(@class, '7days__item_href') and starts-with(@href, '/news/')]/@href",
+                    NewsSiteUrl = "https://7days.ru/news/"
+                }
+            });
+
+            Add(new NewsSource
+            {
+                Title = "Сетевое издание «Онлайн журнал StarHit (СтарХит)",
+                SiteUrl = "https://www.starhit.ru/",
+                IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Small = "https://cdn.hsmedia.ru/public/favicon/starhit/favicon.png",
+                    Original = "https://cdn.hsmedia.ru/public/favicon/starhit/apple-touch-icon.png"
+                },
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//meta[@property='og:title']/@content",
+                    HtmlDescriptionXPath = "//section[@itemprop='articleBody']/div[@class='ds-article-content-block-and-creative-container']/*[not(name()='div' and contains(@class, 'ds-article-content__block_image') and position()=1)]",
+                    TextDescriptionXPath = "//section[@itemprop='articleBody']//div[contains(@class, 'ds-article-content__block_text')]//text()",
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//p[contains(@itemprop, 'alternativeHeadline')]/text()",
+                        IsRequired = false,
+                    },
+                    ParseEditorSettings = new NewsParseEditorSettings
+                    {
+                        NameXPath = "//meta[@name='author']/@content",
+                        IsRequired = false,
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//meta[@property='og:image']/@content",
+                        IsRequired = false,
+                    },
+                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
+                    {
+                        PublishedAtXPath = "//meta[@itemprop='datePublished']/@content",
+                        PublishedAtCultureInfo = "ru-RU",
+                        IsRequired = true,
+                        Formats = new List<NewsParsePublishedAtSettingsFormat>
+                        {
+                            new NewsParsePublishedAtSettingsFormat
+                            {
+                                Format = "yyyy-MM-ddTHH:mm:ssZ"
+                            }
+                        }
+                    },
+                    ParseModifiedAtSettings = new NewsParseModifiedAtSettings
+                    {
+                        ModifiedAtXPath = "//meta[@itemprop='dateModified']/@content",
+                        ModifiedAtCultureInfo = "ru-RU",
+                        IsRequired = false,
+                        Formats = new List<NewsParseModifiedAtSettingsFormat>
+                        {
+                            new NewsParseModifiedAtSettingsFormat
+                            {
+                                Format = "yyyy-MM-ddTHH:mm:ssZ"
+                            }
+                        }
+                    },
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsUrlXPath = "//a[@class='announce-inline-tile__label-container']/@href",
+                    NewsSiteUrl = "https://www.starhit.ru/novosti/"
+                },
+            });
+
+            Add(new NewsSource
+            {
+                Title = "StopGame",
+                SiteUrl = "https://stopgame.ru/",
+                IsEnabled = true,
+                Logo = new NewsSourceLogo
+                {
+                    Small = "https://stopgame.ru/favicon.ico",
+                    Original = "https://stopgame.ru/favicon_512.png"
+                },
+                ParseSettings = new NewsParseSettings
+                {
+                    TitleXPath = "//meta[@property='og:title']/@content",
+                    HtmlDescriptionXPath = "//section[contains(@class, '_page-section')]/div[contains(@class, '_content_')]/*",
+                    TextDescriptionXPath = "//section[contains(@class, '_page-section')]/div[contains(@class, '_content_')]/*[contains(@class, '_text_')]//text()",
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//meta[@property='og:description']/@content",
+                        IsRequired = false,
+                    },
+                    ParseEditorSettings = new NewsParseEditorSettings
+                    {
+                        NameXPath = "//section[contains(@class, '_page-section')]//div[contains(@class, '_bottom-info_')]//span[contains(@class, '_user-info__name_')]/text()",
+                        IsRequired = false,
+                    },
+                    ParsePictureSettings = new NewsParsePictureSettings
+                    {
+                        UrlXPath = "//meta[@property='og:image']/@content",
+                        IsRequired = false,
+                    }
+                },
+                SearchSettings = new NewsSearchSettings
+                {
+                    NewsUrlXPath = "//div[contains(@class, 'list-view')]//div[contains(@class, '_card')]/a/@href",
+                    NewsSiteUrl = "https://stopgame.ru/news"
                 },
             });
         }
