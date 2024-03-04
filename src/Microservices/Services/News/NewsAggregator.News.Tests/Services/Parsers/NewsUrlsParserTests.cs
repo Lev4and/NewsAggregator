@@ -27,7 +27,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         [Fact]
         public async Task ParseAsync_SpecificNewsSource_ReturnNotEmptyResult()
         {
-            var newsSource = new Sources()[new Uri("https://ria.ru/")];
+            var newsSource = new Sources()[new Uri("https://vz.ru/")];
             var newsUrls = await ParseNewsUrlsAsync(newsSource);
 
             _output.WriteLine("\nReport:\n");

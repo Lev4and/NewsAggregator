@@ -32,7 +32,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         }
 
         [Theory]
-        [InlineData("https://www.m24.ru/news/mehr-Moskvy/02032024/670915")]
+        [InlineData("https://vz.ru/news/2024/3/4/1256470.html")]
         public async Task ParseAsync_SpecificNewsUrl_ReturnNotNullResult(string newsUrl)
         {
             var newsSource = _sources[new Uri(newsUrl)];

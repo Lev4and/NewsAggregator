@@ -682,7 +682,7 @@ namespace NewsAggregator.News.NewsSources
                 SearchSettings = new NewsSearchSettings
                 {
                     NewsSiteUrl = "https://www.belta.by/",
-                    NewsUrlXPath = "//a[contains(@href, 'https://www.belta.by/') and contains(@href, '/view/')]/@href"
+                    NewsUrlXPath = "//a[contains(@href, 'www.belta.by') and contains(@href, '/view/')]/@href"
                 }
             });
 
@@ -832,7 +832,7 @@ namespace NewsAggregator.News.NewsSources
                         {
                             new NewsParsePublishedAtSettingsFormat
                             {
-                                Format = "d MMMM yyyy, HH:mm"
+                                Format = "d MMMM yyyy, HH:mm\" •\""
                             }
                         }
                     }
@@ -1562,25 +1562,42 @@ namespace NewsAggregator.News.NewsSources
                     TextDescriptionXPath = "//div[@itemprop='articleBody']/*/text()",
                     ParsePictureSettings = new NewsParsePictureSettings
                     {
-                        UrlXPath = "//div[contains(@class, 'article__lede-wrapper')]//picture/img/@src",
-                        IsRequired = true
+                        UrlXPath = "//meta[@property='og:image']/@content",
+                        IsRequired = false
+                    },
+                    ParseSubTitleSettings = new NewsParseSubTitleSettings
+                    {
+                        TitleXPath = "//meta[@name='description']/@content",
+                        IsRequired = false,
                     },
                     ParseEditorSettings = new NewsParseEditorSettings
                     {
-                        NameXPath = "//div[@class='headline__footer']//div[@class='byline__names']/span[@class='byline__name']/text()",
-                        IsRequired = true
+                        NameXPath = "//meta[@name='author']/@content",
+                        IsRequired = false
                     },
                     ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                     {
-                        PublishedAtXPath = "//div[@class='headline__footer']//div[contains(@class, 'headline__byline-sub-text')]/div[@class='timestamp']/text()",
+                        PublishedAtXPath = "//meta[@property='article:published_time']/@content",
                         PublishedAtCultureInfo = "en-US",
-                        PublishedAtTimeZoneInfoId = "Eastern Standard Time",
                         IsRequired = true,
                         Formats = new List<NewsParsePublishedAtSettingsFormat>()
                         {
                             new NewsParsePublishedAtSettingsFormat
                             {
-                                Format = "\"Published\n       \" HH:mm tt \"EST\", ddd MMMM d, yyyy"
+                                Format = "yyyy-MM-ddTHH:mm:ss.fffZ"
+                            }
+                        }
+                    },
+                    ParseModifiedAtSettings = new NewsParseModifiedAtSettings
+                    {
+                        ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
+                        ModifiedAtCultureInfo = "en-US",
+                        IsRequired = false,
+                        Formats = new List<NewsParseModifiedAtSettingsFormat>() 
+                        {
+                            new NewsParseModifiedAtSettingsFormat
+                            {
+                                Format = "yyyy-MM-ddTHH:mm:ss.fffZ"
                             }
                         }
                     },

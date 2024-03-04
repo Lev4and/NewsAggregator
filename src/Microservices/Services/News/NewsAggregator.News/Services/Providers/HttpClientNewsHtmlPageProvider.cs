@@ -13,7 +13,7 @@ namespace NewsAggregator.News.Services.Providers
 
         public async Task<string> ProvideAsync(string url, CancellationToken cancellationToken = default)
         {
-            return await _httpClient.GetUtf8StringAsync(url, cancellationToken);
+            return await _httpClient.GetHtmlAsync(url, cancellationToken);
         }
     }
 }

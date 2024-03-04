@@ -30,11 +30,11 @@ namespace NewsAggregator.News.Web.Http
             Timeout = new TimeSpan(0, 0, 5);
         }
 
-        public async Task<string> GetUtf8StringAsync(string requestUri, CancellationToken cancellationToken = default)
+        public async Task<string> GetHtmlAsync(string requestUri, CancellationToken cancellationToken = default)
         {
-            var byteArray = await GetByteArrayAsync(requestUri, cancellationToken);
+            var response = await GetAsync(requestUri, cancellationToken);
 
-            return Encoding.UTF8.GetString(byteArray, 0, byteArray.Length - 1);
+            return await response.Content.ReadAsStringAsync(cancellationToken);
         }
     }
 }

@@ -108,15 +108,15 @@ namespace NewsAggregator.News.Services.Parsers
                     DateTimeStyles.None,
                     out parsedNewsPublishedAt);
 
-                newsPublishedAt = options.IsPublishedAtRequired
-                    ? isParsedNewsPublishedAt
-                        ? !string.IsNullOrEmpty(options.PublishedAtTimeZoneInfoId)
+                newsPublishedAt = isParsedNewsPublishedAt
+                    ? !string.IsNullOrEmpty(options.PublishedAtTimeZoneInfoId)
                             ? TimeZoneInfo.ConvertTime(parsedNewsPublishedAt,
                                 TimeZoneInfo.FindSystemTimeZoneById(options.PublishedAtTimeZoneInfoId),
                                     TimeZoneInfo.Utc)
                             : parsedNewsPublishedAt.ToUniversalTime()
-                        : throw new NullReferenceException(nameof(parsedNewsPublishedAt))
-                    : null;
+                    : options.IsPublishedAtRequired
+                        ? throw new NullReferenceException(nameof(parsedNewsPublishedAt))
+                        : null;
             }
 
             var newsModifiedAt = null as DateTime?;
@@ -133,15 +133,15 @@ namespace NewsAggregator.News.Services.Parsers
                     DateTimeStyles.None,
                     out parsedNewsModifiedAt);
 
-                newsModifiedAt = options.IsModifiedAtRequired
-                    ? isParsedNewsModifiedAt
-                        ? !string.IsNullOrEmpty(options.ModifiedAtTimeZoneInfoId)
+                newsModifiedAt = isParsedNewsModifiedAt
+                    ? !string.IsNullOrEmpty(options.ModifiedAtTimeZoneInfoId)
                             ? TimeZoneInfo.ConvertTime(parsedNewsModifiedAt,
                                 TimeZoneInfo.FindSystemTimeZoneById(options.ModifiedAtTimeZoneInfoId),
                                     TimeZoneInfo.Utc)
                             : parsedNewsModifiedAt.ToUniversalTime()
-                        : throw new NullReferenceException(nameof(parsedNewsModifiedAt))
-                    : null;
+                    : options.IsModifiedAtRequired
+                        ? throw new NullReferenceException(nameof(parsedNewsModifiedAt))
+                        : null;
             }
 
             return new NewsDto(newsUrl, newsTitle, newsHtmlDescription, newsTextDescription.ToString(), newsSubTitle, newsEditorName ?? NewsEditor.Empty,
