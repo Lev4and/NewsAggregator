@@ -312,9 +312,14 @@ namespace NewsAggregator.News
                     {
                         await memoryCache.RemoveNewsSourceByIdAsync(newsSource.Id);
 
+                        await memoryCache.RemoveNewsSourceByDomainAsync(new Uri(newsSource.SiteUrl).GetDomain());
+
                         await memoryCache.RemoveNewsSourceBySiteUrlAsync(newsSource.SiteUrl);
 
                         await memoryCache.GetNewsSourceByIdAsync(newsSource.Id,
+                            () => Task.FromResult(newsSource));
+
+                        await memoryCache.GetNewsSourceByDomainAsync(new Uri(newsSource.SiteUrl).GetDomain(),
                             () => Task.FromResult(newsSource));
 
                         await memoryCache.GetNewsSourceBySiteUrlAsync(newsSource.SiteUrl,

@@ -6,5 +6,10 @@
         {
             return $"{url.Scheme}://{url.Host}/";
         }
+
+        public static string GetDomain(this Uri url) 
+        {
+            return string.Join('.', url.Host.Split('.').TakeLast(2));
+        }
     }
 }

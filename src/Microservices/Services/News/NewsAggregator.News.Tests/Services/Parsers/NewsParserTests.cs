@@ -32,7 +32,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         }
 
         [Theory]
-        [InlineData("https://vz.ru/news/2024/3/4/1256470.html")]
+        [InlineData("https://bel.aif.ru/society/details/spryatatsya_v_podezde_belgorodcev_prodolzhayut_uchit_deystviyam_pri_obstrele")]
         public async Task ParseAsync_SpecificNewsUrl_ReturnNotNullResult(string newsUrl)
         {
             var newsSource = _sources[new Uri(newsUrl)];

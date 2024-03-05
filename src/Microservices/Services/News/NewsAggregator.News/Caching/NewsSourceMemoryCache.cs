@@ -24,6 +24,18 @@ namespace NewsAggregator.News.Caching
             return await _cache.GetAsync($"newssource:{id}", factory, cancellationToken);
         }
 
+        public async Task<NewsSource?> GetNewsSourceByDomainAsync(string domain, 
+            CancellationToken cancellationToken = default)
+        {
+            return await _cache.GetAsync<NewsSource>($"newssource:{domain}", cancellationToken);
+        }
+
+        public async Task<NewsSource> GetNewsSourceByDomainAsync(string domain, Func<Task<NewsSource>> factory, 
+            CancellationToken cancellationToken = default)
+        {
+            return await _cache.GetAsync($"newssource:{domain}", factory, cancellationToken);
+        }
+
         public async Task<NewsSource?> GetNewsSourceBySiteUrlAsync(string siteUrl, 
             CancellationToken cancellationToken = default)
         {
@@ -52,6 +64,11 @@ namespace NewsAggregator.News.Caching
         public async Task RemoveNewsSourceByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
             await _cache.RemoveAsync($"newssource:{id}", cancellationToken);
+        }
+
+        public async Task RemoveNewsSourceByDomainAsync(string domain, CancellationToken cancellationToken = default)
+        {
+            await _cache.RemoveAsync($"newssource:{domain}", cancellationToken);
         }
 
         public async Task RemoveNewsSourceBySiteUrlAsync(string siteUrl, CancellationToken cancellationToken = default)

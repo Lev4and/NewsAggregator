@@ -47,7 +47,7 @@ namespace NewsAggregator.News.UseCases.Commands
             {
                 var newsUri = new Uri(request.NewsUrl);
 
-                var newsSource = await _cache.GetNewsSourceBySiteUrlAsync(newsUri.GetSiteUrl(),
+                var newsSource = await _cache.GetNewsSourceByDomainAsync(newsUri.GetDomain(),
                     cancellationToken);
 
                 if (newsSource is not null && newsSource.ParseSettings is not null)
