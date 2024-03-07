@@ -37,11 +37,10 @@ namespace NewsAggregator.News
 
             services.AddNewsDbPostgreSql(settings.ConnectionStrings.NewsDbPostgreSql);
             services.AddNewsDbEntityFrameworkRepositories();
-            services.AddNewsDbEntityFrameworkSearchers();
 
             services.AddNewsDbElasticsearch(settings.ConnectionStrings.NewsDbElasticsearch);
-
-            services.AddNewsDbFakeIndexers();
+            services.AddNewsDbElasticsearchIndexers();
+            services.AddNewsDbElasticsearchSearchers();
 
             services.AddRedisMemoryCache(settings.Caching.Redis);
             services.AddNewsMemoryCache();

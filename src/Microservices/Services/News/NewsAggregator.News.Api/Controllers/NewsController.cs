@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using NewsAggregator.Domain.Entities;
 using NewsAggregator.Infrastructure.Web.Http;
 using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Entities;
@@ -27,6 +28,15 @@ namespace NewsAggregator.News.Api.Controllers
             CancellationToken cancellationToken = default)
         {
             return Ok(await _mediator.Send(new GetNewsListQuery(filters), cancellationToken));
+        }
+
+        [HttpGet]
+        [Route("search")]
+        [ProducesResponseType(typeof(ApiResponse<PagedResultModel<Entities.News>>), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> SearchNewsByFiltersAsync([FromQuery] GetNewsListFilters filters,
+            CancellationToken cancellationToken = default)
+        {
+            return Ok(await _mediator.Send(new SearchNewsByFiltersQuery(filters), cancellationToken));
         }
 
         [HttpGet]

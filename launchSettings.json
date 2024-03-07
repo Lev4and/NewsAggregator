@@ -7,19 +7,21 @@
         "newsaggregator.gateways.api": "DoNotStart",
         "newsaggregator.news.api": "DoNotStart",
         "newsaggregator.news.mvc": "DoNotStart",
-        "newsaggregator.news.parser": "StartDebugging",
+        "newsaggregator.news.parser": "DoNotStart",
         "newsaggregator.news.searcher": "DoNotStart",
         "newsaggregator.notification.api": "DoNotStart",
         "newsaggregator.gateways.api.seq": "DoNotStart",
         "newsaggregator.news.api.seq": "DoNotStart",
         "newsaggregator.news.mvc.seq": "DoNotStart",
-        "newsaggregator.news.parser.seq": "StartWithoutDebugging",
+        "newsaggregator.news.parser.seq": "DoNotStart",
         "newsaggregator.news.searcher.seq": "DoNotStart",
         "newsaggregator.notification.api.seq": "DoNotStart",
         "pgadmin": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "redis": "StartWithoutDebugging"
+        "redis": "StartWithoutDebugging",
+        "elasticsearch": "StartWithoutDebugging",
+        "kibana": "StartWithoutDebugging"
       }
     },
     "Full production": {
@@ -41,7 +43,9 @@
         "pgadmin": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "redis": "StartWithoutDebugging"
+        "redis": "StartWithoutDebugging",
+        "elasticsearch": "StartWithoutDebugging",
+        "kibana": "StartWithoutDebugging"
       }
     },
     "Only News API": {
@@ -63,7 +67,9 @@
         "pgadmin": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "redis": "StartWithoutDebugging"
+        "redis": "StartWithoutDebugging",
+        "elasticsearch": "StartWithoutDebugging",
+        "kibana": "DoNotStart"
       }
     },
     "Only News MVC": {
@@ -85,7 +91,9 @@
         "pgadmin": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "redis": "StartWithoutDebugging"
+        "redis": "StartWithoutDebugging",
+        "elasticsearch": "StartWithoutDebugging",
+        "kibana": "StartWithoutDebugging"
       }
     },
     "Only News parser": {
@@ -107,7 +115,9 @@
         "pgadmin": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "redis": "StartWithoutDebugging"
+        "redis": "StartWithoutDebugging",
+        "elasticsearch": "StartWithoutDebugging",
+        "kibana": "StartWithoutDebugging"
       }
     },
     "Only News searcher": {
@@ -129,7 +139,9 @@
         "pgadmin": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "redis": "StartWithoutDebugging"
+        "redis": "StartWithoutDebugging",
+        "elasticsearch": "StartWithoutDebugging",
+        "kibana": "StartWithoutDebugging"
       }
     },
     "Only Notification API": {
@@ -151,7 +163,9 @@
         "pgadmin": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "redis": "StartWithoutDebugging"
+        "redis": "StartWithoutDebugging",
+        "elasticsearch": "StartWithoutDebugging",
+        "kibana": "StartWithoutDebugging"
       }
     }
   }

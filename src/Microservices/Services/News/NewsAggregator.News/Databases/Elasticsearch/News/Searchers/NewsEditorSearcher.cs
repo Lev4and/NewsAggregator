@@ -1,4 +1,5 @@
 ﻿using Elastic.Clients.Elasticsearch;
+using NewsAggregator.Domain.Entities;
 using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Entities;
 using NewsAggregator.News.Searchers;
@@ -12,13 +13,7 @@ namespace NewsAggregator.News.Databases.Elasticsearch.News.Searchers
 
         }
 
-        public Task<long> CountByFiltersAsync(GetNewsEditorListFilters filters, 
-            CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IReadOnlyCollection<NewsEditor>> SearchByFiltersAsync(GetNewsEditorListFilters filters, 
+        public async Task<PagedResultModel<NewsEditor>> SearchByFiltersAsync(GetNewsEditorListFilters filters, 
             CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
