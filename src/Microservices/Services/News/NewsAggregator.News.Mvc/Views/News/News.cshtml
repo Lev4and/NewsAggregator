@@ -66,10 +66,6 @@
     {
         <meta itemprop="article:video" content="@Model.Video.Url">
     }
-    @if (Model.TextDescription is not null)
-    {
-        <meta itemprop="article:description" content="@Model.TextDescription.Description">
-    }
 }
 
 @section Styles 
@@ -150,12 +146,22 @@
             }
             @if (Model.Video is not null)
             {
-                <video itemprop="video" src="@Model.Video.Url" controls />
+                <video itemprop="video" src="@Model.Video.Url" controls>
+
+                </video>
             }
             @if (Model.HtmlDescription is not null)
             {
                 <div itemprop="articleBody">
                     @Html.Raw(Model.HtmlDescription.Description)
+                </div>
+            }
+            @if (Model.TextDescription is not null)
+            {
+                <h1 class="display-5 link-body-emphasis mb-1">Text description</h1>
+                <hr />
+                <div>
+                    @Html.Raw(Model.TextDescription.Description)
                 </div>
             }
         </article>

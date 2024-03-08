@@ -22,6 +22,8 @@ namespace NewsAggregator.News.Services.Parsers
         public async Task<NewsDto> ParseAsync(string newsUrl, string html, NewsParserOptions options, 
             CancellationToken cancellationToken = default)
         {
+            var newsUri = new Uri(newsUrl);
+
             var htmlDocument = await _parser.ParseDocumentAsync(html, cancellationToken);
 
             var htmlDocumentNavigator = htmlDocument.CreateNavigator();
@@ -34,8 +36,24 @@ namespace NewsAggregator.News.Services.Parsers
             var newsTitle = htmlDocumentNavigator?.SelectSingleNode(options.TitleXPath)
                 ?.Value?.Trim() ?? throw new NullReferenceException("newsTitle");
 
-            var newsHtmlDescription = string.Join("", htmlDocument.Body.SelectNodes(options.HtmlDescriptionXPath)
-                ?.Select(node => ((IElement)node).OuterHtml.Trim()) ?? throw new NullReferenceException("newsDescription"));
+            var newsHtmlDescription = new StringBuilder();
+
+            foreach (var node in htmlDocument.Body.SelectNodes(options.HtmlDescriptionXPath))
+            {
+                ((IElement)node).SelectNodes("//img[@src and starts-with(@src, '/') and not(starts-with(@src, '//'))]")
+                    ?.ForEach(image =>
+                    {
+                        var imageElement = image as IElement;
+
+                        imageElement?.SetAttribute("src", $"{newsUri.Scheme}://{newsUri.Host}" +
+                            $"{imageElement.GetAttribute("src")}");
+                    });
+
+                newsHtmlDescription.Append(((IElement)node).OuterHtml.Trim());
+            }
+
+            var newsHtmlDescriptionText = newsHtmlDescription.ToString() 
+                ?? throw new NullReferenceException("newsHtmlDescription");
 
             var newsTextDescription = new StringBuilder();
 
@@ -43,6 +61,9 @@ namespace NewsAggregator.News.Services.Parsers
             {
                 newsTextDescription.Append(item.ToString());
             }
+
+            var newsTextDescriptionText = newsTextDescription.ToString() 
+                ?? throw new NullReferenceException("newsTextDescription");
 
             var newsSubTitle = null as string;
 
@@ -63,6 +84,13 @@ namespace NewsAggregator.News.Services.Parsers
                 var parsedNewsPictureUrl = htmlDocumentNavigator
                     ?.SelectSingleNode(options.PictureUrlXPath)?.Value?.Trim();
 
+                if (!string.IsNullOrEmpty(parsedNewsPictureUrl) && parsedNewsPictureUrl.StartsWith("/") 
+                    && !parsedNewsPictureUrl.StartsWith("//")) 
+                {
+                    parsedNewsPictureUrl = $"{newsUri.Scheme}://{newsUri.Host}" +
+                        $"{parsedNewsPictureUrl}";
+                }
+
                 newsPictureUrl = options.IsPictureUrlRequired
                     ? parsedNewsPictureUrl ?? throw new NullReferenceException(nameof(parsedNewsPictureUrl))
                     : parsedNewsPictureUrl;
@@ -74,6 +102,13 @@ namespace NewsAggregator.News.Services.Parsers
             {
                 var parsedNewsVideoUrl = htmlDocumentNavigator
                     ?.SelectSingleNode(options.VideoUrlXPath)?.Value?.Trim();
+
+                if (!string.IsNullOrEmpty(parsedNewsVideoUrl) && parsedNewsVideoUrl.StartsWith("/")
+                    && !parsedNewsVideoUrl.StartsWith("//"))
+                {
+                    parsedNewsVideoUrl = $"{newsUri.Scheme}://{newsUri.Host}" +
+                        $"{parsedNewsVideoUrl}";
+                }
 
                 newsVideoUrl = options.IsVideoUrlRequired
                     ? parsedNewsVideoUrl ?? throw new NullReferenceException(nameof(parsedNewsVideoUrl))
@@ -144,7 +179,7 @@ namespace NewsAggregator.News.Services.Parsers
                         : null;
             }
 
-            return new NewsDto(newsUrl, newsTitle, newsHtmlDescription, newsTextDescription.ToString(), newsSubTitle, newsEditorName ?? NewsEditor.Empty,
+            return new NewsDto(newsUrl, newsTitle, newsHtmlDescriptionText, newsTextDescriptionText, newsSubTitle, newsEditorName ?? NewsEditor.Empty,
                 newsPictureUrl, newsVideoUrl, newsPublishedAt, newsModifiedAt, DateTime.UtcNow);
         }
     }

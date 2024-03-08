@@ -32,7 +32,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         }
 
         [Theory]
-        [InlineData("https://bel.aif.ru/society/details/spryatatsya_v_podezde_belgorodcev_prodolzhayut_uchit_deystviyam_pri_obstrele")]
+        [InlineData("https://www.novorosinform.org/predchuvstvie-novoj-vojny-russkij-general-dopustil-vozmozhnost-polnomasshtabnogo-konflikta-v-evrope-125428.html")]
         public async Task ParseAsync_SpecificNewsUrl_ReturnNotNullResult(string newsUrl)
         {
             var newsSource = _sources[new Uri(newsUrl)];

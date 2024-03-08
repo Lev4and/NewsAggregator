@@ -271,8 +271,9 @@ namespace NewsAggregator.News
             services.AddNewsDbEntityFrameworkSearchers();
 
             services.AddNewsDbElasticsearch(settings.ConnectionStrings.NewsDbElasticsearch);
-            services.AddNewsDbElasticsearchIndexers();
             services.AddNewsDbElasticsearchSearchers();
+
+            services.AddNewsDbFakeIndexers();
 
             services.AddDefaultNewsSources();
 

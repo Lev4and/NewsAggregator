@@ -44,8 +44,8 @@
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
         "redis": "StartWithoutDebugging",
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging"
+        "elasticsearch": "DoNotStart",
+        "kibana": "DoNotStart"
       }
     },
     "Only News API": {
@@ -92,8 +92,8 @@
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
         "redis": "StartWithoutDebugging",
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging"
+        "elasticsearch": "DoNotStart",
+        "kibana": "DoNotStart"
       }
     },
     "Only News parser": {

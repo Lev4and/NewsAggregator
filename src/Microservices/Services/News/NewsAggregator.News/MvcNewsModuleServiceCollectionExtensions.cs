@@ -39,8 +39,9 @@ namespace NewsAggregator.News
             services.AddNewsDbEntityFrameworkRepositories();
 
             services.AddNewsDbElasticsearch(settings.ConnectionStrings.NewsDbElasticsearch);
-            services.AddNewsDbElasticsearchIndexers();
             services.AddNewsDbElasticsearchSearchers();
+
+            services.AddNewsDbFakeIndexers();
 
             services.AddRedisMemoryCache(settings.Caching.Redis);
             services.AddNewsMemoryCache();
