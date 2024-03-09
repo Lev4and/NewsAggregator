@@ -172,290 +172,290 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("593bd9c7-7c93-49f1-9e4a-415c113130dc"),
+                            Id = new Guid("0530e3a0-fc83-4165-8cf5-d5398c953692"),
                             IsRequired = false,
                             NameXPath = "//meta[@name='mediator_author']/@content",
-                            ParseSettingsId = new Guid("6318fb5a-64ae-4196-8220-7cc9a5a2efdc")
+                            ParseSettingsId = new Guid("df6c1dc1-f352-4b80-84a8-54a4fd90246c")
                         },
                         new
                         {
-                            Id = new Guid("34e9907b-83d3-4466-b8d6-3590d327807d"),
+                            Id = new Guid("9dbf2bd4-4bd7-4620-8ba2-2daa30d1ebdf"),
                             IsRequired = false,
                             NameXPath = "//div[@class='topic-authors']/a[@class='topic-authors__author']/text()",
-                            ParseSettingsId = new Guid("306cc38e-3f24-4f5e-a4bf-507f46d7c885")
+                            ParseSettingsId = new Guid("f62b9c01-f69e-4ca1-b306-772184659e30")
                         },
                         new
                         {
-                            Id = new Guid("755b10dd-4b26-4931-adac-cd882479e13d"),
+                            Id = new Guid("0a5daf71-a530-432c-b544-b5bf4407e650"),
                             IsRequired = false,
                             NameXPath = "//div[contains(@class, 'PageArticleContent_authors')]//a[contains(@class, 'LinksOfAuthor_item')]/text()",
-                            ParseSettingsId = new Guid("ac578b21-3c65-4ec9-b9fb-009aebe5bcc7")
+                            ParseSettingsId = new Guid("4e81b91f-d336-4b9c-a506-7b92ec6094d3")
                         },
                         new
                         {
-                            Id = new Guid("b381b53d-33f3-443d-aa31-599efb115088"),
+                            Id = new Guid("0ed90b8c-ec81-43e2-a923-fabf02043ead"),
                             IsRequired = false,
                             NameXPath = "//div[@class='article_top']//div[@class='authors']//div[@class='autor']//span/text()",
-                            ParseSettingsId = new Guid("156719cd-f144-4bd4-9b16-98ae0b5cc3ab")
+                            ParseSettingsId = new Guid("0a8ab6d7-8dfd-4e89-b17a-d930991e5c57")
                         },
                         new
                         {
-                            Id = new Guid("bfa44a8a-e719-4873-8ec1-9aff9a5b6f28"),
+                            Id = new Guid("a8d7646d-247c-4a06-9c7f-f6f451132ddd"),
                             IsRequired = false,
                             NameXPath = "//div[@class='article__authors']//*[@class='article__authors__author']/span[@class='article__authors__author__name']/text()",
-                            ParseSettingsId = new Guid("8b6e31eb-20a6-497a-bd8f-6e9f4f93b1de")
+                            ParseSettingsId = new Guid("276af382-dc02-4eb4-94fe-dcdadb713afe")
                         },
                         new
                         {
-                            Id = new Guid("2d714a97-93b3-4fc1-afa7-c388e110c9af"),
+                            Id = new Guid("68153356-1fc3-429f-a8e0-17aa6e6ddeb9"),
                             IsRequired = false,
                             NameXPath = "//footer[@class='news-item__footer']/div[@class='news-item__footer-after-news']/p[position()=1]//span/text()",
-                            ParseSettingsId = new Guid("6ce32b95-fa84-41ea-9bea-dbb808394cc1")
+                            ParseSettingsId = new Guid("c76d5ca3-52df-4f4f-991a-05b65407daf7")
                         },
                         new
                         {
-                            Id = new Guid("311bc0a4-49d2-4030-a12d-2108fc6c144e"),
+                            Id = new Guid("0616d011-5d62-4e44-aaab-35c9f81fb75e"),
                             IsRequired = false,
                             NameXPath = "//p[@class='doc__text document_authors']/text()",
-                            ParseSettingsId = new Guid("c5ab1cb6-5085-4fef-9229-9118e5948251")
+                            ParseSettingsId = new Guid("22036ea4-0190-4ccc-bc0f-5a77c4b78deb")
                         },
                         new
                         {
-                            Id = new Guid("cee45efa-c5eb-45fd-8ad6-75583ae19314"),
+                            Id = new Guid("dd31d8f2-4b32-4ca4-b870-6139d1b493ca"),
                             IsRequired = false,
                             NameXPath = "//meta[@property='article:author']/@content",
-                            ParseSettingsId = new Guid("ec76a389-1ee4-41ed-8a9a-2d2491451918")
+                            ParseSettingsId = new Guid("339b5526-f1f9-4d89-9f07-68611ccb5919")
                         },
                         new
                         {
-                            Id = new Guid("b283be08-b458-4861-8913-eb3fe71df423"),
+                            Id = new Guid("3c340edd-32cb-4b28-9e70-d008055dc684"),
                             IsRequired = false,
                             NameXPath = "//a[@class='article__author']/text()",
-                            ParseSettingsId = new Guid("679f0b16-d471-403d-a539-2095de1336a3")
+                            ParseSettingsId = new Guid("48a43db8-ac32-409d-b5d9-3cb2aef71912")
                         },
                         new
                         {
-                            Id = new Guid("307e5606-8cef-4cec-9482-fa086740493c"),
+                            Id = new Guid("aedb95cb-3c34-43b2-8f5f-6db28c0812d4"),
                             IsRequired = false,
                             NameXPath = "//article//header//div[@class='b-authors']/div[@class='b-author' and position()=1]//text()",
-                            ParseSettingsId = new Guid("e4655368-4d2c-4502-958c-a99c0d9d1471")
+                            ParseSettingsId = new Guid("5ba45cbe-6e75-4175-85dd-1c9eff7d3d3b")
                         },
                         new
                         {
-                            Id = new Guid("a3844c0d-1fca-4127-9459-84bd7443b9fc"),
+                            Id = new Guid("817dee6b-2180-4102-8776-f455978c0d48"),
                             IsRequired = false,
                             NameXPath = "//article/p[@class='author']/text()",
-                            ParseSettingsId = new Guid("821e1e9a-2d0f-4bff-adb3-7fabe3b4b5ff")
+                            ParseSettingsId = new Guid("926554c1-213a-4dfd-96ed-c5b0db283ff2")
                         },
                         new
                         {
-                            Id = new Guid("480a8e45-88e8-4dbf-80b5-64b2c1c1dd9e"),
+                            Id = new Guid("60dcb0bf-1237-46f6-ad69-0ad3b8668749"),
                             IsRequired = false,
                             NameXPath = "//meta[@property='article:author']/@content",
-                            ParseSettingsId = new Guid("4b6b8db8-7417-4bd5-a58b-f64b64e78bc2")
+                            ParseSettingsId = new Guid("8686874a-05a4-42ea-80bc-c9ad27c3d8ff")
                         },
                         new
                         {
-                            Id = new Guid("e837c5c9-d52b-42fd-8587-3442e919c6c2"),
+                            Id = new Guid("ce3342b4-3f6f-4074-a5c6-31368f890987"),
                             IsRequired = false,
                             NameXPath = "//div[contains(@class, 'styles_bodyWrapper')]//div[contains(@class, 'styles_authorsLinks')]/a/text()",
-                            ParseSettingsId = new Guid("19127150-51c8-4c1f-bc51-654223610c6e")
+                            ParseSettingsId = new Guid("3b5c605f-a7a1-4d17-98c9-e49c74d10e9f")
                         },
                         new
                         {
-                            Id = new Guid("11c95a88-d610-442c-8084-56a04d28c9bf"),
+                            Id = new Guid("5116108b-f25a-4366-a551-27c67151d14f"),
                             IsRequired = false,
                             NameXPath = "//meta[@name='mediator_author']/@content",
-                            ParseSettingsId = new Guid("70d810d5-c12c-4a38-a868-8a06ecf3d658")
+                            ParseSettingsId = new Guid("755c983a-6e37-411f-a6b5-1ef28fcb2abe")
                         },
                         new
                         {
-                            Id = new Guid("743d48f7-fa92-473c-b5f0-4d0da2039a66"),
+                            Id = new Guid("83848f79-09d8-45b6-ae88-003290883b51"),
                             IsRequired = false,
                             NameXPath = "//span[@itemprop='author']/span[@itemprop='name']/@content",
-                            ParseSettingsId = new Guid("e08416a9-e75f-4514-bc80-bd081a71f202")
+                            ParseSettingsId = new Guid("981e6415-1c99-49e7-9faf-55c35eed1c83")
                         },
                         new
                         {
-                            Id = new Guid("552a9c85-1375-4e56-a5ff-97094d5f9546"),
+                            Id = new Guid("ca498443-faf9-4a5f-a8fc-a84bb1d254d5"),
                             IsRequired = false,
                             NameXPath = "//div[@class='container-fluid publication-footer']//a[contains(@class, 'text-secondary')]/@title",
-                            ParseSettingsId = new Guid("a2f84687-7724-4640-be47-79ffb765d81f")
+                            ParseSettingsId = new Guid("f7fc7d0c-b481-4c99-9e58-a516a14cb4b0")
                         },
                         new
                         {
-                            Id = new Guid("eea738ff-d96c-419c-8794-5a67d8814340"),
+                            Id = new Guid("223a3b07-2f91-4064-bc36-d4c0b16d8ebe"),
                             IsRequired = false,
                             NameXPath = "//div[@class='author']/span[@itemprop='author']/span[@itemprop='name']/a/text()",
-                            ParseSettingsId = new Guid("995d5406-8855-46fb-aa46-59ace5ddcf6e")
+                            ParseSettingsId = new Guid("f59e0993-0b63-4be7-9f13-49a92f8b8301")
                         },
                         new
                         {
-                            Id = new Guid("d02be6bc-f72c-4f58-bef7-1510697bb095"),
+                            Id = new Guid("eaafb744-5813-46ca-bd71-0a1900277fb4"),
                             IsRequired = false,
                             NameXPath = "//meta[@name='author']/@content",
-                            ParseSettingsId = new Guid("c7f81de1-20cd-4e2a-b2d4-430a306acf51")
+                            ParseSettingsId = new Guid("9f42918a-5400-4abe-8c96-efde954ab87e")
                         },
                         new
                         {
-                            Id = new Guid("ad8414b8-b636-4563-9b2b-5dcf155da0ca"),
+                            Id = new Guid("96b190b5-146c-4b88-9738-feb83beef28b"),
                             IsRequired = false,
                             NameXPath = "//div[@itemprop='author']/span[@itemprop='name']/text()",
-                            ParseSettingsId = new Guid("2107b9c3-4d7d-4944-ac87-c764eb2d8d60")
+                            ParseSettingsId = new Guid("d28c88f1-9cb9-4a86-a2bf-d5debde5a805")
                         },
                         new
                         {
-                            Id = new Guid("3ad1a7f5-52bb-4534-b41c-30bdff21f795"),
+                            Id = new Guid("b75ea3d6-4e91-4c2e-9ddd-c9f21d1b6ae4"),
                             IsRequired = false,
                             NameXPath = "//div[@itemprop='author']//p[@itemprop='name']/text()",
-                            ParseSettingsId = new Guid("75b4334a-b28d-408a-a5fe-38f22d6ddc9b")
+                            ParseSettingsId = new Guid("a0f009fa-c0de-48bf-973a-a0751d04b717")
                         },
                         new
                         {
-                            Id = new Guid("dfc60f79-cca7-4ef9-82b3-dad553da8528"),
+                            Id = new Guid("b5822411-8ae5-46cc-b686-920ee77a14e7"),
                             IsRequired = false,
                             NameXPath = "//*[@itemprop='author']/*[@itemprop='name']//text()",
-                            ParseSettingsId = new Guid("03b00068-703d-4914-8aac-417321efa4a9")
+                            ParseSettingsId = new Guid("44766c3e-3618-47e4-b1c5-e27f4b079424")
                         },
                         new
                         {
-                            Id = new Guid("e201e510-491c-47e4-b724-f7a10435a0a5"),
+                            Id = new Guid("32a0b18a-17df-4fdf-8fd2-e396f260ef85"),
                             IsRequired = false,
                             NameXPath = "//article//span[@class='author']/a[@class='authorName']/span/text()",
-                            ParseSettingsId = new Guid("f0629df9-ac23-4b35-9009-3eb3df7069c9")
+                            ParseSettingsId = new Guid("b94ffa83-703d-49d0-982d-ec5c8a5bd084")
                         },
                         new
                         {
-                            Id = new Guid("850ae3a4-45ce-469d-9277-ffdf1fa1a4a4"),
+                            Id = new Guid("f7409a1d-6e72-4fd0-8602-7b0b1d207ea3"),
                             IsRequired = false,
                             NameXPath = "//span[@itemprop='name']/a/text()",
-                            ParseSettingsId = new Guid("42afad4c-6ae3-40ea-b5f6-cf16b62e0850")
+                            ParseSettingsId = new Guid("8fbb4720-0c12-4be3-a087-fdfd04595e67")
                         },
                         new
                         {
-                            Id = new Guid("bedec32a-a334-484d-9557-c6880bccad41"),
+                            Id = new Guid("f6e427ac-e48d-4d04-8afc-2e54b31bdd13"),
                             IsRequired = false,
                             NameXPath = "//meta[@name='author']/@content",
-                            ParseSettingsId = new Guid("3d33915f-3ab0-434d-b52f-138593f0d065")
+                            ParseSettingsId = new Guid("d29bb306-e411-466c-8862-3515266e4a4b")
                         },
                         new
                         {
-                            Id = new Guid("8d7305a8-550f-4546-b706-757d0117a86d"),
+                            Id = new Guid("83163e10-ed3a-43e3-b1ab-b1eada16d6c6"),
                             IsRequired = false,
                             NameXPath = "//div[contains(@class, 'styled__StoryInfoAuthors')]/div[contains(@class, 'styled__InfoAuthor')]//span[contains(@class, 'styled__AuthorName')]/text()",
-                            ParseSettingsId = new Guid("55b29016-4fa6-4d26-878a-3a118bb2677d")
+                            ParseSettingsId = new Guid("d6297613-fd5c-4d45-ba9c-4a8e78b558a3")
                         },
                         new
                         {
-                            Id = new Guid("7ed8a79c-8432-428b-9f46-d060620b4835"),
+                            Id = new Guid("4b01430d-dcc1-477b-a3af-10182b3cefb4"),
                             IsRequired = false,
                             NameXPath = "//div[@class='preview__author-block']//div[@class='author__about']/a[@itemprop='name']/@content",
-                            ParseSettingsId = new Guid("7054689b-8c29-4c3e-b100-777bb5b84ac9")
+                            ParseSettingsId = new Guid("16e4ff95-a5bf-489a-a59b-dc1b455c8a62")
                         },
                         new
                         {
-                            Id = new Guid("489f1d76-e528-49af-bd4b-2f37f7787a18"),
+                            Id = new Guid("b0970ca9-c76e-4477-9fcb-357d331d5ebe"),
                             IsRequired = false,
                             NameXPath = "//span[@class='author']/a/text()",
-                            ParseSettingsId = new Guid("8e37382a-44cc-44f0-9690-45aa7c60744d")
+                            ParseSettingsId = new Guid("517c7c39-9682-4e85-962b-ace3a1144ea7")
                         },
                         new
                         {
-                            Id = new Guid("433bd8dd-e5cf-431f-b8ad-82815d5603ae"),
+                            Id = new Guid("d16bf610-110b-4b5d-b276-9a20649916d6"),
                             IsRequired = false,
                             NameXPath = "//meta[@property='article:author']/@content",
-                            ParseSettingsId = new Guid("35c0f63c-2a03-4414-bcfd-b35d3daeab29")
+                            ParseSettingsId = new Guid("cb551d20-f4cf-47a6-bcba-5428dbb555e1")
                         },
                         new
                         {
-                            Id = new Guid("661ae3ee-f34c-44b9-8f04-45bd05357509"),
+                            Id = new Guid("1ce467c5-a12a-4f99-8afb-538fa636b486"),
                             IsRequired = false,
                             NameXPath = "//meta[@name='author']/@content",
-                            ParseSettingsId = new Guid("b49ca6f0-c0f3-4791-aca2-5648202243d1")
+                            ParseSettingsId = new Guid("fb70f1d7-bdb3-4352-bfde-704e077b7c7c")
                         },
                         new
                         {
-                            Id = new Guid("109003c1-3fdb-4aa5-8fb6-84dcecebb425"),
+                            Id = new Guid("f82d98a0-d8a8-42a6-859a-f73c752c992f"),
                             IsRequired = false,
                             NameXPath = "//section[contains(@class, '_page-section')]//div[contains(@class, '_bottom-info_')]//span[contains(@class, '_user-info__name_')]/text()",
-                            ParseSettingsId = new Guid("59d85dc4-4116-4785-8dbd-3bb18a472330")
+                            ParseSettingsId = new Guid("f50e1187-7865-47c5-9364-b981c479421b")
                         },
                         new
                         {
-                            Id = new Guid("329188d8-e480-4de9-a38b-668d43cf617e"),
+                            Id = new Guid("82ce9085-d7ee-4fb6-a376-de986682dfc7"),
                             IsRequired = false,
                             NameXPath = "//div[@class='article__content']//strong[text()='Автор:']/../text()",
-                            ParseSettingsId = new Guid("f73a6421-12af-4481-acef-b880a91d643d")
+                            ParseSettingsId = new Guid("37ea2837-b550-4a69-a54e-1d17e387ff7c")
                         },
                         new
                         {
-                            Id = new Guid("f5200373-ca28-421d-a702-87434d5c0677"),
+                            Id = new Guid("57e6af13-e9db-4d4f-b8ae-ece43185c974"),
                             IsRequired = false,
                             NameXPath = "//meta[@name='article:author']/@content",
-                            ParseSettingsId = new Guid("d2c8667d-3ff9-4d72-80a9-5a4423e4c2bd")
+                            ParseSettingsId = new Guid("5f4d0a7f-fcb4-41ae-987f-2fdf3f456e9d")
                         },
                         new
                         {
-                            Id = new Guid("6cf7d71c-77f2-4df7-a530-772129fddda8"),
+                            Id = new Guid("a529ff0a-e84e-4f70-ba42-125d552cb432"),
                             IsRequired = false,
                             NameXPath = "//meta[@property='author']/@content",
-                            ParseSettingsId = new Guid("2e3f695a-3da6-4548-b327-f8e7ab704eb1")
+                            ParseSettingsId = new Guid("a2d6e3f4-6fda-46e2-aa85-39eb18c85de9")
                         },
                         new
                         {
-                            Id = new Guid("9f7cedf3-ebc0-4921-8b96-81cbb6eb2870"),
+                            Id = new Guid("78dbad09-c5ca-4248-b562-9356d8189e57"),
                             IsRequired = false,
                             NameXPath = "//meta[@property='ajur:article:authors']/@content",
-                            ParseSettingsId = new Guid("ef2cbff3-870a-45f3-95dd-fe20f7cea27d")
+                            ParseSettingsId = new Guid("4389214c-a07b-471a-bc95-73b7c495d580")
                         },
                         new
                         {
-                            Id = new Guid("556a54c4-f28b-49f6-ad89-57ad669a2a68"),
+                            Id = new Guid("fa755afb-86f7-4a66-b1bf-43b282e5db20"),
                             IsRequired = false,
                             NameXPath = "//div[@class='article__announce-authors']/a[@itemprop='author']/span[@itemprop='name']/text()",
-                            ParseSettingsId = new Guid("2d66b024-5877-485b-8999-bd58ca67096f")
+                            ParseSettingsId = new Guid("6c0da7df-74ef-4b96-b3cd-1a3817de9170")
                         },
                         new
                         {
-                            Id = new Guid("29e9b3b6-a587-4bac-b5e0-c78ab71d9bae"),
+                            Id = new Guid("bbdb6742-c281-4d3b-93f8-fbed50eb7f0f"),
                             IsRequired = false,
                             NameXPath = "//div[@class='blog-post-info']//div[@itemprop='author']//span[@itemprop='name']/text()",
-                            ParseSettingsId = new Guid("2008019e-0565-498c-aa87-525ccff923c2")
+                            ParseSettingsId = new Guid("880d766c-5672-457f-98ca-60ca11637984")
                         },
                         new
                         {
-                            Id = new Guid("6b589ef9-cbc2-4a77-baa2-af5f8cffb2bb"),
+                            Id = new Guid("c9c01f96-293d-475b-853b-a97c59b0604c"),
                             IsRequired = false,
                             NameXPath = "//div[@id='content']//div[contains(@class, 'topic')]/ul[contains(@class, 'blog_more')]//li[@class='author']//text()",
-                            ParseSettingsId = new Guid("a62509ee-9637-4d1b-8947-c9f712eaddb5")
+                            ParseSettingsId = new Guid("8ac035cc-a118-4e61-bbf3-db636e336f4f")
                         },
                         new
                         {
-                            Id = new Guid("4c94b26c-2811-4c8d-a3c5-8c9a7cc9f9d6"),
+                            Id = new Guid("6794fa05-aba0-46cc-8993-2e392dd0682a"),
                             IsRequired = false,
                             NameXPath = "//meta[@property='article:author']/@content",
-                            ParseSettingsId = new Guid("83f8b67e-fa3e-4d64-81e0-09a172db2318")
+                            ParseSettingsId = new Guid("f672a55c-4c9e-4684-8973-16306be0902a")
                         },
                         new
                         {
-                            Id = new Guid("b3d0a349-d061-43f1-abe7-1a20489e86c5"),
+                            Id = new Guid("2cfbfbf1-0e9c-418e-a03e-5214c76fae33"),
                             IsRequired = false,
                             NameXPath = "//div[@class='newsDetail-body__item-header']/a[contains(@class, 'newsDetail-person')]//p[contains(@class, 'newsDetail-person__info-name')]/text()",
-                            ParseSettingsId = new Guid("0897a798-2068-4eec-a0c2-8e870f890d1a")
+                            ParseSettingsId = new Guid("6428b94e-7c36-4f75-b45c-ae076d55dd01")
                         },
                         new
                         {
-                            Id = new Guid("f859f415-5aab-4199-9c0a-c71c06e45577"),
+                            Id = new Guid("f15f215b-aec7-43ba-be7a-a6af118248f8"),
                             IsRequired = false,
                             NameXPath = "//meta[@property='article:author']/@content",
-                            ParseSettingsId = new Guid("4dfd8e60-07e6-4c61-9faf-ef3b4d848df5")
+                            ParseSettingsId = new Guid("2dd377de-9eb7-4b27-adf4-398755baaaee")
                         },
                         new
                         {
-                            Id = new Guid("c6984acb-cc56-453f-8605-357ebd3f69b5"),
+                            Id = new Guid("181d0aac-5e57-4bcd-b381-89ebe290ff28"),
                             IsRequired = false,
                             NameXPath = "//div[@class='GeneralMaterial-module-materialHeader']//div[contains(@class, 'MetaItem-module_hasSource') and not(time)]/text()",
-                            ParseSettingsId = new Guid("81713e54-2a73-4102-85ce-9b766f3e13ff")
+                            ParseSettingsId = new Guid("e01cf720-5a6c-4f99-9acc-b45ff8b0b277")
                         });
                 });
 
@@ -533,206 +533,206 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("6771b8c6-2418-432d-bcc6-1083035eb7c0"),
+                            Id = new Guid("649f4984-5d0d-4888-acf5-2e74aa1d72b5"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtTimeZoneInfoId = "Russian Standard Time",
                             ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
-                            ParseSettingsId = new Guid("6ecfaab6-6a48-4d8e-95a2-87788c567cb3")
+                            ParseSettingsId = new Guid("c80caa5e-9567-4654-94c6-1f6828fc2d0e")
                         },
                         new
                         {
-                            Id = new Guid("b7ab0434-cd8f-43cd-a77e-146f95638775"),
+                            Id = new Guid("e7dd8c17-706d-4827-a169-315fe30643ef"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtTimeZoneInfoId = "UTC",
                             ModifiedAtXPath = "//div[contains(@class, 'NewsHeader')]//div[contains(@class, 'PublishedMark_update')]//span[@ca-ts]/text()",
-                            ParseSettingsId = new Guid("7bed5daf-f215-43a7-b5a5-d7415990edb1")
+                            ParseSettingsId = new Guid("a2bfe55a-6d48-4d2e-8b27-907233517a3e")
                         },
                         new
                         {
-                            Id = new Guid("175c664b-f971-4fc8-8b47-8fbb14e24771"),
+                            Id = new Guid("cbaabdd3-8363-4c46-8851-94a093c6bfb8"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtTimeZoneInfoId = "Russian Standard Time",
                             ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
-                            ParseSettingsId = new Guid("ac578b21-3c65-4ec9-b9fb-009aebe5bcc7")
+                            ParseSettingsId = new Guid("4e81b91f-d336-4b9c-a506-7b92ec6094d3")
                         },
                         new
                         {
-                            Id = new Guid("5c6e6321-a8bc-47bf-bdaf-e7306d1b7e0a"),
+                            Id = new Guid("5e7de5e1-e085-4292-a2b3-1d078946a666"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtXPath = "//meta[@itemprop='dateModified']/@content",
-                            ParseSettingsId = new Guid("8b6e31eb-20a6-497a-bd8f-6e9f4f93b1de")
+                            ParseSettingsId = new Guid("276af382-dc02-4eb4-94fe-dcdadb713afe")
                         },
                         new
                         {
-                            Id = new Guid("4ea1a7db-bdb4-4949-a906-1638536a5ebe"),
+                            Id = new Guid("8d2f3849-9516-4038-ae4a-e943e3c9c646"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
-                            ParseSettingsId = new Guid("c5ab1cb6-5085-4fef-9229-9118e5948251")
+                            ParseSettingsId = new Guid("22036ea4-0190-4ccc-bc0f-5a77c4b78deb")
                         },
                         new
                         {
-                            Id = new Guid("29c93386-2dcd-431f-a8c0-aaba98c67aa6"),
+                            Id = new Guid("e76fa99b-25f9-4ccf-a924-a847ada87fe9"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
-                            ParseSettingsId = new Guid("ec76a389-1ee4-41ed-8a9a-2d2491451918")
+                            ParseSettingsId = new Guid("339b5526-f1f9-4d89-9f07-68611ccb5919")
                         },
                         new
                         {
-                            Id = new Guid("1c96ff0d-45fa-4254-822d-9f127848003a"),
+                            Id = new Guid("2fb44e75-27f0-410f-b9ef-cc7c80457f08"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
-                            ParseSettingsId = new Guid("679f0b16-d471-403d-a539-2095de1336a3")
+                            ParseSettingsId = new Guid("48a43db8-ac32-409d-b5d9-3cb2aef71912")
                         },
                         new
                         {
-                            Id = new Guid("e7093f76-d7ca-43c6-a4de-2b6f9e1cb8e6"),
+                            Id = new Guid("98951eef-10b0-44c4-ab26-18eeab0c80d7"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtTimeZoneInfoId = "Russian Standard Time",
                             ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
-                            ParseSettingsId = new Guid("62978095-e4c3-4f20-a5fc-04b2da4fc359")
+                            ParseSettingsId = new Guid("b0ad231f-52d9-4cdc-ab56-4e1b73411aed")
                         },
                         new
                         {
-                            Id = new Guid("a3e0bda5-75b2-43bc-a2cb-ab856acd16a0"),
+                            Id = new Guid("8d5f5fa4-e890-4770-aa1b-7291ba2d04ca"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtTimeZoneInfoId = "Russian Standard Time",
                             ModifiedAtXPath = "//meta[@itemprop='dateModified']/@content",
-                            ParseSettingsId = new Guid("c2dd81db-dd40-4716-b221-55a7e0b24190")
+                            ParseSettingsId = new Guid("ae9c317a-7ef6-41a4-95f1-3ca87eed0277")
                         },
                         new
                         {
-                            Id = new Guid("b84c235e-a043-43f3-b0d3-021d80915af6"),
+                            Id = new Guid("4fc08b5f-3019-4024-acd7-1a73afa4f79a"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
-                            ParseSettingsId = new Guid("c7f81de1-20cd-4e2a-b2d4-430a306acf51")
+                            ParseSettingsId = new Guid("9f42918a-5400-4abe-8c96-efde954ab87e")
                         },
                         new
                         {
-                            Id = new Guid("b2bb22cf-f26a-4791-b5c7-9ba1c8b10de6"),
+                            Id = new Guid("541f9351-3d63-4a22-9d31-4882b0d88aff"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtXPath = "//meta[@itemprop='dateModified']/@content",
-                            ParseSettingsId = new Guid("75b4334a-b28d-408a-a5fe-38f22d6ddc9b")
+                            ParseSettingsId = new Guid("a0f009fa-c0de-48bf-973a-a0751d04b717")
                         },
                         new
                         {
-                            Id = new Guid("51d3b0fc-ddd4-4ef8-9974-fa31685f6c3e"),
+                            Id = new Guid("28f61e5b-8adf-4dee-8c57-37d55d930d2d"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtXPath = "//meta[@itemprop='dateModified']/@content",
-                            ParseSettingsId = new Guid("03b00068-703d-4914-8aac-417321efa4a9")
+                            ParseSettingsId = new Guid("44766c3e-3618-47e4-b1c5-e27f4b079424")
                         },
                         new
                         {
-                            Id = new Guid("08ae81a0-cb14-49c5-b77a-42e1162fb2ab"),
+                            Id = new Guid("d7a0df16-25f2-4d51-ad3e-3d93bd9ef318"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
-                            ParseSettingsId = new Guid("3196c477-1ac2-48d5-807d-b3d0973e8d1d")
+                            ParseSettingsId = new Guid("8334ba09-9b47-4ea4-8d3f-feb02deceb09")
                         },
                         new
                         {
-                            Id = new Guid("22389535-4e80-4b57-b911-3387cf9527cd"),
+                            Id = new Guid("437f092e-352e-4283-a6da-dcae22e0dcbf"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "en-US",
                             ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
-                            ParseSettingsId = new Guid("42afad4c-6ae3-40ea-b5f6-cf16b62e0850")
+                            ParseSettingsId = new Guid("8fbb4720-0c12-4be3-a087-fdfd04595e67")
                         },
                         new
                         {
-                            Id = new Guid("468a5a57-c577-4eee-bc5a-ab7a67071032"),
+                            Id = new Guid("bc3fecbc-854b-4df5-9a0c-e105fc97eea0"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "en-US",
                             ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
-                            ParseSettingsId = new Guid("3d33915f-3ab0-434d-b52f-138593f0d065")
+                            ParseSettingsId = new Guid("d29bb306-e411-466c-8862-3515266e4a4b")
                         },
                         new
                         {
-                            Id = new Guid("c98796a8-726e-411d-bb39-89928d55333f"),
+                            Id = new Guid("879b33a4-59e0-4025-85b1-d939dee96c68"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtTimeZoneInfoId = "Russian Standard Time",
                             ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
-                            ParseSettingsId = new Guid("75076198-ce23-40d8-95a0-23991ed6e3e5")
+                            ParseSettingsId = new Guid("578b96e7-9885-43bc-a757-0aec5cddaf5b")
                         },
                         new
                         {
-                            Id = new Guid("ca566459-b062-457b-8671-ac84f978038c"),
+                            Id = new Guid("3608df25-da4f-4281-96d7-30c3db0a654e"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtTimeZoneInfoId = "Russian Standard Time",
                             ModifiedAtXPath = "//meta[@itemprop='dateModified']/@content",
-                            ParseSettingsId = new Guid("7f032ab4-4968-414a-9e61-02f32b4cd50b")
+                            ParseSettingsId = new Guid("c95b3a67-c65c-435e-b1dc-96aaac8a13d9")
                         },
                         new
                         {
-                            Id = new Guid("3bf6bd76-896c-488d-bdeb-7dfffc88b98f"),
+                            Id = new Guid("a2419c06-784a-4624-ab75-17546afbe5f2"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtXPath = "//meta[@itemprop='dateModified']/@content",
-                            ParseSettingsId = new Guid("b49ca6f0-c0f3-4791-aca2-5648202243d1")
+                            ParseSettingsId = new Guid("fb70f1d7-bdb3-4352-bfde-704e077b7c7c")
                         },
                         new
                         {
-                            Id = new Guid("1ca60f0d-729e-4018-a223-66032a638edc"),
+                            Id = new Guid("9ad251b2-9ac1-44f2-99f9-590b0ce91ee9"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
-                            ParseSettingsId = new Guid("b1a4c064-a6c3-4f13-82b2-2a520a0f2ad9")
+                            ParseSettingsId = new Guid("1fc11022-2d88-42ae-bd6d-032758049af4")
                         },
                         new
                         {
-                            Id = new Guid("00ab0ecc-8e73-49ad-92ca-cfbcab2ed1d3"),
+                            Id = new Guid("91080107-6910-4971-ad22-260c87cd253c"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtTimeZoneInfoId = "Russian Standard Time",
                             ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
-                            ParseSettingsId = new Guid("d2c8667d-3ff9-4d72-80a9-5a4423e4c2bd")
+                            ParseSettingsId = new Guid("5f4d0a7f-fcb4-41ae-987f-2fdf3f456e9d")
                         },
                         new
                         {
-                            Id = new Guid("e4581f29-23c0-420a-8684-49c244cd496b"),
+                            Id = new Guid("8c88dba9-9c0d-4f31-bdf6-89529df4d78c"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtXPath = "//meta[@itemprop='dateModified']/@content",
-                            ParseSettingsId = new Guid("2d66b024-5877-485b-8999-bd58ca67096f")
+                            ParseSettingsId = new Guid("6c0da7df-74ef-4b96-b3cd-1a3817de9170")
                         },
                         new
                         {
-                            Id = new Guid("47966008-c06f-4450-9745-415b555de576"),
+                            Id = new Guid("50d5c4a8-0d8b-4554-a53f-6aa2511d0aed"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtTimeZoneInfoId = "Russian Standard Time",
                             ModifiedAtXPath = "//meta[@property='og:updated_time']/@content",
-                            ParseSettingsId = new Guid("1619f60f-04c0-4ece-83af-eeccd5a78430")
+                            ParseSettingsId = new Guid("e89d9898-a84a-43b2-a909-85ed4753a60a")
                         },
                         new
                         {
-                            Id = new Guid("a955bb87-eb9d-4ab1-ac35-96896f12090f"),
+                            Id = new Guid("4e2ac486-74d8-41fd-acd1-40e123cae87e"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtTimeZoneInfoId = "Russian Standard Time",
                             ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
-                            ParseSettingsId = new Guid("2008019e-0565-498c-aa87-525ccff923c2")
+                            ParseSettingsId = new Guid("880d766c-5672-457f-98ca-60ca11637984")
                         },
                         new
                         {
-                            Id = new Guid("a08b6951-4b09-4142-a6fc-52f930169424"),
+                            Id = new Guid("300a86e9-2c1f-4adf-8648-e24fa7364b53"),
                             IsRequired = false,
                             ModifiedAtCultureInfo = "ru-RU",
                             ModifiedAtTimeZoneInfoId = "Russian Standard Time",
                             ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
-                            ParseSettingsId = new Guid("4dfd8e60-07e6-4c61-9faf-ef3b4d848df5")
+                            ParseSettingsId = new Guid("2dd377de-9eb7-4b27-adf4-398755baaaee")
                         });
                 });
 
@@ -763,153 +763,153 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b9c0d1f2-e9e6-4944-8f2b-de7261abe66c"),
+                            Id = new Guid("ab3d64e9-9341-4d15-8bc8-71f9ed3a37b1"),
                             Format = "yyyyMMddTHHmm",
-                            NewsParseModifiedAtSettingsId = new Guid("6771b8c6-2418-432d-bcc6-1083035eb7c0")
+                            NewsParseModifiedAtSettingsId = new Guid("649f4984-5d0d-4888-acf5-2e74aa1d72b5")
                         },
                         new
                         {
-                            Id = new Guid("8ab0a8f2-22d5-492c-b65b-3f008721a1ae"),
+                            Id = new Guid("f0637436-3514-42dd-adab-b667d02172d1"),
                             Format = "\"обновлено\" d MMMM yyyy, HH:mm",
-                            NewsParseModifiedAtSettingsId = new Guid("b7ab0434-cd8f-43cd-a77e-146f95638775")
+                            NewsParseModifiedAtSettingsId = new Guid("e7dd8c17-706d-4827-a169-315fe30643ef")
                         },
                         new
                         {
-                            Id = new Guid("4cea069b-9d79-4dc7-b779-986b3adb5006"),
+                            Id = new Guid("ce2680d4-310e-4b76-b2aa-fb603381d187"),
                             Format = "\"обновлено\" d MMMM, HH:mm",
-                            NewsParseModifiedAtSettingsId = new Guid("b7ab0434-cd8f-43cd-a77e-146f95638775")
+                            NewsParseModifiedAtSettingsId = new Guid("e7dd8c17-706d-4827-a169-315fe30643ef")
                         },
                         new
                         {
-                            Id = new Guid("3abc328f-8ddc-4732-97b0-6f4a1a39b5eb"),
+                            Id = new Guid("98eb1a04-8222-49cb-96a2-8f8b7f063fd2"),
                             Format = "yyyy-MM-ddTHH:mm:ss",
-                            NewsParseModifiedAtSettingsId = new Guid("175c664b-f971-4fc8-8b47-8fbb14e24771")
+                            NewsParseModifiedAtSettingsId = new Guid("cbaabdd3-8363-4c46-8851-94a093c6bfb8")
                         },
                         new
                         {
-                            Id = new Guid("16e214c6-01aa-400f-b035-4d360a16fdf4"),
+                            Id = new Guid("8ced9ab9-5e14-47a0-b7ad-fc17a15c664d"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParseModifiedAtSettingsId = new Guid("5c6e6321-a8bc-47bf-bdaf-e7306d1b7e0a")
+                            NewsParseModifiedAtSettingsId = new Guid("5e7de5e1-e085-4292-a2b3-1d078946a666")
                         },
                         new
                         {
-                            Id = new Guid("2086138b-fe09-406d-84de-0c4642a8c1d7"),
+                            Id = new Guid("a80ba8c8-12df-454f-bd46-733680fa67a1"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParseModifiedAtSettingsId = new Guid("4ea1a7db-bdb4-4949-a906-1638536a5ebe")
+                            NewsParseModifiedAtSettingsId = new Guid("8d2f3849-9516-4038-ae4a-e943e3c9c646")
                         },
                         new
                         {
-                            Id = new Guid("0c9953ac-ba6a-485a-bf14-515da043de89"),
+                            Id = new Guid("14d7bc19-97b6-4c90-9417-cf14a3a9a5fc"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParseModifiedAtSettingsId = new Guid("29c93386-2dcd-431f-a8c0-aaba98c67aa6")
+                            NewsParseModifiedAtSettingsId = new Guid("e76fa99b-25f9-4ccf-a924-a847ada87fe9")
                         },
                         new
                         {
-                            Id = new Guid("f96d5d63-0c97-42a3-bb4b-f435703c3f2d"),
+                            Id = new Guid("f7051f60-430b-4e18-93d6-44df7fcf99d3"),
                             Format = "yyyy-MM-ddTHH:mmzzz",
-                            NewsParseModifiedAtSettingsId = new Guid("1c96ff0d-45fa-4254-822d-9f127848003a")
+                            NewsParseModifiedAtSettingsId = new Guid("2fb44e75-27f0-410f-b9ef-cc7c80457f08")
                         },
                         new
                         {
-                            Id = new Guid("42c31ac5-1aec-401d-bee4-0d4983cb663e"),
+                            Id = new Guid("202fb8a6-d480-4b87-b533-a2e6f95029ac"),
                             Format = "yyyy-MM-dd HH:mm:ss",
-                            NewsParseModifiedAtSettingsId = new Guid("e7093f76-d7ca-43c6-a4de-2b6f9e1cb8e6")
+                            NewsParseModifiedAtSettingsId = new Guid("98951eef-10b0-44c4-ab26-18eeab0c80d7")
                         },
                         new
                         {
-                            Id = new Guid("75a09ba0-3933-4260-8542-43cd472e73ec"),
+                            Id = new Guid("b7b1da42-eb43-4ea4-8362-6706f3a438ca"),
                             Format = "yyyy-MM-ddTHH:mm:ss",
-                            NewsParseModifiedAtSettingsId = new Guid("a3e0bda5-75b2-43bc-a2cb-ab856acd16a0")
+                            NewsParseModifiedAtSettingsId = new Guid("8d5f5fa4-e890-4770-aa1b-7291ba2d04ca")
                         },
                         new
                         {
-                            Id = new Guid("a5947322-35a8-49d3-83b7-0d558a3df8cf"),
+                            Id = new Guid("4125ab4a-b483-4923-9d47-b99ba6be3327"),
                             Format = "yyyy-MM-ddTHH:mm:ssZ",
-                            NewsParseModifiedAtSettingsId = new Guid("b84c235e-a043-43f3-b0d3-021d80915af6")
+                            NewsParseModifiedAtSettingsId = new Guid("4fc08b5f-3019-4024-acd7-1a73afa4f79a")
                         },
                         new
                         {
-                            Id = new Guid("d4164464-a61a-443f-a9fc-b56eb6dfe845"),
+                            Id = new Guid("1b3e2a90-1062-4c66-a403-d218d3bbd686"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParseModifiedAtSettingsId = new Guid("b2bb22cf-f26a-4791-b5c7-9ba1c8b10de6")
+                            NewsParseModifiedAtSettingsId = new Guid("541f9351-3d63-4a22-9d31-4882b0d88aff")
                         },
                         new
                         {
-                            Id = new Guid("5355e19f-afcb-4beb-870a-5ec542bede7b"),
+                            Id = new Guid("bbf94ebd-dbd9-4f50-a726-13db159106a6"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParseModifiedAtSettingsId = new Guid("51d3b0fc-ddd4-4ef8-9974-fa31685f6c3e")
+                            NewsParseModifiedAtSettingsId = new Guid("28f61e5b-8adf-4dee-8c57-37d55d930d2d")
                         },
                         new
                         {
-                            Id = new Guid("8e86d083-4dae-4f5b-b208-f5367730c730"),
+                            Id = new Guid("ec773ce8-0b1c-4856-8e15-2444f2340d89"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParseModifiedAtSettingsId = new Guid("08ae81a0-cb14-49c5-b77a-42e1162fb2ab")
+                            NewsParseModifiedAtSettingsId = new Guid("d7a0df16-25f2-4d51-ad3e-3d93bd9ef318")
                         },
                         new
                         {
-                            Id = new Guid("5e1d19ee-b379-4123-864c-a80d6e7176ee"),
+                            Id = new Guid("8ee7d0b8-adb5-4eb0-b961-412cc83835e0"),
                             Format = "yyyy-MM-ddTHH:mm:ss.fffZ",
-                            NewsParseModifiedAtSettingsId = new Guid("22389535-4e80-4b57-b911-3387cf9527cd")
+                            NewsParseModifiedAtSettingsId = new Guid("437f092e-352e-4283-a6da-dcae22e0dcbf")
                         },
                         new
                         {
-                            Id = new Guid("d25f54f2-8e05-474c-a1fd-0424d31175bb"),
+                            Id = new Guid("d01b56d8-d8c8-47e0-a353-76e772dfb069"),
                             Format = "yyyy-MM-ddTHH:mm:ss.fffZ",
-                            NewsParseModifiedAtSettingsId = new Guid("468a5a57-c577-4eee-bc5a-ab7a67071032")
+                            NewsParseModifiedAtSettingsId = new Guid("bc3fecbc-854b-4df5-9a0c-e105fc97eea0")
                         },
                         new
                         {
-                            Id = new Guid("40fd6030-dccf-4c1a-b691-c7bb8ca666d5"),
+                            Id = new Guid("32fdd9fd-5569-4d78-be18-94bab537445f"),
                             Format = "yyyy-MM-ddTHH:mm:ss.fff\"Z+0300\"",
-                            NewsParseModifiedAtSettingsId = new Guid("c98796a8-726e-411d-bb39-89928d55333f")
+                            NewsParseModifiedAtSettingsId = new Guid("879b33a4-59e0-4025-85b1-d939dee96c68")
                         },
                         new
                         {
-                            Id = new Guid("605f8325-babc-4dcf-9aac-d9c4a1702f68"),
+                            Id = new Guid("6cc31f0d-7bb6-4a27-adba-5ef7a4955ae5"),
                             Format = "yyyy-MM-dd",
-                            NewsParseModifiedAtSettingsId = new Guid("ca566459-b062-457b-8671-ac84f978038c")
+                            NewsParseModifiedAtSettingsId = new Guid("3608df25-da4f-4281-96d7-30c3db0a654e")
                         },
                         new
                         {
-                            Id = new Guid("128b3167-2d3c-4f98-b7cf-afd89233c5be"),
+                            Id = new Guid("7bbae360-b8d0-4555-9ed2-f69d938e49ce"),
                             Format = "yyyy-MM-ddTHH:mm:ssZ",
-                            NewsParseModifiedAtSettingsId = new Guid("3bf6bd76-896c-488d-bdeb-7dfffc88b98f")
+                            NewsParseModifiedAtSettingsId = new Guid("a2419c06-784a-4624-ab75-17546afbe5f2")
                         },
                         new
                         {
-                            Id = new Guid("63ad15f5-708d-4045-b742-44f0e03f3f8d"),
+                            Id = new Guid("19564256-09d7-4d2b-873a-4377c345a602"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParseModifiedAtSettingsId = new Guid("1ca60f0d-729e-4018-a223-66032a638edc")
+                            NewsParseModifiedAtSettingsId = new Guid("9ad251b2-9ac1-44f2-99f9-590b0ce91ee9")
                         },
                         new
                         {
-                            Id = new Guid("844f2d49-287d-4155-89fe-5d57aa4e8aaf"),
+                            Id = new Guid("02dd3a5a-2d5c-458e-a885-fa5ff5437ca2"),
                             Format = "yyyy-MM-ddTHH:mm:ss\"+0300\"",
-                            NewsParseModifiedAtSettingsId = new Guid("00ab0ecc-8e73-49ad-92ca-cfbcab2ed1d3")
+                            NewsParseModifiedAtSettingsId = new Guid("91080107-6910-4971-ad22-260c87cd253c")
                         },
                         new
                         {
-                            Id = new Guid("c5c65b57-a95d-4a7e-a6ef-d40fe30de456"),
+                            Id = new Guid("8f890cf6-6f0e-43d0-a479-70b4f73bd232"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParseModifiedAtSettingsId = new Guid("e4581f29-23c0-420a-8684-49c244cd496b")
+                            NewsParseModifiedAtSettingsId = new Guid("8c88dba9-9c0d-4f31-bdf6-89529df4d78c")
                         },
                         new
                         {
-                            Id = new Guid("cfb9e03b-a3df-400f-881e-c741a700116a"),
+                            Id = new Guid("90e06fb0-20eb-4038-99c9-b6db4237a60d"),
                             Format = "yyyy-MM-dd HH:mm",
-                            NewsParseModifiedAtSettingsId = new Guid("47966008-c06f-4450-9745-415b555de576")
+                            NewsParseModifiedAtSettingsId = new Guid("50d5c4a8-0d8b-4554-a53f-6aa2511d0aed")
                         },
                         new
                         {
-                            Id = new Guid("67f11a87-dca5-4715-9792-944c0d778d9c"),
+                            Id = new Guid("b5b391f7-7070-4c2c-8084-de7891066c4d"),
                             Format = "yyyy-MM-ddTHH:mm:ss\"+0300\"",
-                            NewsParseModifiedAtSettingsId = new Guid("a955bb87-eb9d-4ab1-ac35-96896f12090f")
+                            NewsParseModifiedAtSettingsId = new Guid("4e2ac486-74d8-41fd-acd1-40e123cae87e")
                         },
                         new
                         {
-                            Id = new Guid("f37d1ba9-558b-4f4a-8fae-16fb66a213a5"),
+                            Id = new Guid("0bd416b4-42c4-4e83-8ee9-04ec643c567b"),
                             Format = "yyyyMMddTHHmm",
-                            NewsParseModifiedAtSettingsId = new Guid("a08b6951-4b09-4142-a6fc-52f930169424")
+                            NewsParseModifiedAtSettingsId = new Guid("300a86e9-2c1f-4adf-8648-e24fa7364b53")
                         });
                 });
 
@@ -996,366 +996,366 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("67e2af1f-ba12-4898-b980-283d75958877"),
+                            Id = new Guid("87668dea-dee1-4741-a206-2a2e70101910"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("6ecfaab6-6a48-4d8e-95a2-87788c567cb3"),
+                            ParseSettingsId = new Guid("c80caa5e-9567-4654-94c6-1f6828fc2d0e"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("3ecdc4f1-b06d-4eb4-977a-dc3db6c876c7"),
+                            Id = new Guid("5b41f328-565f-4f9e-9643-f2c167417ece"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("6318fb5a-64ae-4196-8220-7cc9a5a2efdc"),
+                            ParseSettingsId = new Guid("df6c1dc1-f352-4b80-84a8-54a4fd90246c"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("e8069056-ed17-4d44-a606-56b4eaeed856"),
+                            Id = new Guid("9a789a67-d606-4fa4-8bcc-8ec3bf124874"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("7bed5daf-f215-43a7-b5a5-d7415990edb1"),
+                            ParseSettingsId = new Guid("a2bfe55a-6d48-4d2e-8b27-907233517a3e"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("0af774c4-bce8-45c3-a998-03550f7d8010"),
+                            Id = new Guid("f9f04c3a-e0fd-4fd7-b2c6-47a55b8d8837"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("306cc38e-3f24-4f5e-a4bf-507f46d7c885"),
+                            ParseSettingsId = new Guid("f62b9c01-f69e-4ca1-b306-772184659e30"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("563f8121-d458-491b-b5a4-3c4a5af23e53"),
+                            Id = new Guid("6a058686-67b1-45b0-83ea-bdda30c86b6b"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("ac578b21-3c65-4ec9-b9fb-009aebe5bcc7"),
+                            ParseSettingsId = new Guid("4e81b91f-d336-4b9c-a506-7b92ec6094d3"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("9182b1e0-d2a4-4576-b182-7b5006d5e262"),
+                            Id = new Guid("c7e52afc-68f0-4dbb-ace3-7dbbe359332c"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("156719cd-f144-4bd4-9b16-98ae0b5cc3ab"),
+                            ParseSettingsId = new Guid("0a8ab6d7-8dfd-4e89-b17a-d930991e5c57"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("207fb109-6574-4b6c-a30b-1cfe2d981bba"),
+                            Id = new Guid("1397c889-ca29-4394-b56e-38bcbf669dfa"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("8b6e31eb-20a6-497a-bd8f-6e9f4f93b1de"),
+                            ParseSettingsId = new Guid("276af382-dc02-4eb4-94fe-dcdadb713afe"),
                             UrlXPath = "//meta[@itemprop='url']/@content"
                         },
                         new
                         {
-                            Id = new Guid("93a5f04b-0539-43fe-b642-4e16a5fcc2f0"),
+                            Id = new Guid("574cf67a-d147-4155-97ad-513d7669724a"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("6ce32b95-fa84-41ea-9bea-dbb808394cc1"),
+                            ParseSettingsId = new Guid("c76d5ca3-52df-4f4f-991a-05b65407daf7"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("48ed6679-211c-48f0-90cb-3d4daa8337a5"),
+                            Id = new Guid("1e0a6ec9-e038-4016-be88-49c11b1a1227"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("c5ab1cb6-5085-4fef-9229-9118e5948251"),
+                            ParseSettingsId = new Guid("22036ea4-0190-4ccc-bc0f-5a77c4b78deb"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("91aec896-0501-4007-a9ba-40943fa9dd2f"),
+                            Id = new Guid("ed6331ef-1dd8-4ff6-b7b5-49b360724c77"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("ec76a389-1ee4-41ed-8a9a-2d2491451918"),
+                            ParseSettingsId = new Guid("339b5526-f1f9-4d89-9f07-68611ccb5919"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("9a18eb38-d15f-4f2c-b122-1df7ad05187e"),
+                            Id = new Guid("015b67a7-246b-4eca-a24c-8e0dfad4ad61"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("679f0b16-d471-403d-a539-2095de1336a3"),
+                            ParseSettingsId = new Guid("48a43db8-ac32-409d-b5d9-3cb2aef71912"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("e42d36e7-3b9e-4aab-8381-007bcf09c2e4"),
+                            Id = new Guid("98db473d-8528-42b3-bccf-c4a95591f77f"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("62978095-e4c3-4f20-a5fc-04b2da4fc359"),
+                            ParseSettingsId = new Guid("b0ad231f-52d9-4cdc-ab56-4e1b73411aed"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("2282c0ad-5f44-4cae-9452-8d5036f74a32"),
+                            Id = new Guid("ecbe3a77-2585-49be-949b-dbfd888fa819"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("e4655368-4d2c-4502-958c-a99c0d9d1471"),
+                            ParseSettingsId = new Guid("5ba45cbe-6e75-4175-85dd-1c9eff7d3d3b"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("8e7bb8df-02e7-4f3d-8141-ed604eab24ff"),
+                            Id = new Guid("ece7dc7d-78a0-4329-8410-f63f076ffe9e"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("a1f604b3-5c28-4f24-bcf3-c1bc15bc6cad"),
+                            ParseSettingsId = new Guid("12c214fc-cc69-461c-aa49-9b1feba92c2e"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("b4a541af-b883-4ca6-8cf6-609df0550bc9"),
+                            Id = new Guid("184f5cee-fdbb-4a46-a4fd-7d87d9d7d61a"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("821e1e9a-2d0f-4bff-adb3-7fabe3b4b5ff"),
+                            ParseSettingsId = new Guid("926554c1-213a-4dfd-96ed-c5b0db283ff2"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("1a2373e6-2f8b-400b-a77c-eabe5a572c9a"),
+                            Id = new Guid("fd1a2215-7885-4291-86a2-eb39910f6a74"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("4b6b8db8-7417-4bd5-a58b-f64b64e78bc2"),
+                            ParseSettingsId = new Guid("8686874a-05a4-42ea-80bc-c9ad27c3d8ff"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("c8ba7228-7844-424f-b6e7-791477c247e1"),
+                            Id = new Guid("dbf6d2f4-a7ec-40cf-9006-104c634db36e"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("19127150-51c8-4c1f-bc51-654223610c6e"),
+                            ParseSettingsId = new Guid("3b5c605f-a7a1-4d17-98c9-e49c74d10e9f"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("ea45d26d-d7e2-438a-bc57-7738deeb6e99"),
+                            Id = new Guid("7da61a1c-3ed5-4128-8c88-f55da6b92ff6"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("70d810d5-c12c-4a38-a868-8a06ecf3d658"),
+                            ParseSettingsId = new Guid("755c983a-6e37-411f-a6b5-1ef28fcb2abe"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("94fe632c-34fb-4929-9793-f478ad361a27"),
+                            Id = new Guid("2ae692a6-0d7b-43b4-89bb-dd9fda4c1f5a"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("e08416a9-e75f-4514-bc80-bd081a71f202"),
+                            ParseSettingsId = new Guid("981e6415-1c99-49e7-9faf-55c35eed1c83"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("954eb341-508f-4bb1-ab50-72bdb9285969"),
+                            Id = new Guid("bbb1e31c-b7ec-4107-b3d6-a60b25e56e24"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("a2f84687-7724-4640-be47-79ffb765d81f"),
+                            ParseSettingsId = new Guid("f7fc7d0c-b481-4c99-9e58-a516a14cb4b0"),
                             UrlXPath = "//meta[@name='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("015f024c-78f3-4ea4-9907-60af65745b71"),
+                            Id = new Guid("f8d26a84-f1ce-465d-89e2-649cf25dabdd"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("995d5406-8855-46fb-aa46-59ace5ddcf6e"),
+                            ParseSettingsId = new Guid("f59e0993-0b63-4be7-9f13-49a92f8b8301"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("de471fe4-bc5b-49ff-8e62-1edf9710faa0"),
+                            Id = new Guid("7117185f-363d-4f3d-9a28-ad5819185779"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("c2dd81db-dd40-4716-b221-55a7e0b24190"),
+                            ParseSettingsId = new Guid("ae9c317a-7ef6-41a4-95f1-3ca87eed0277"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("dd7f9969-a3cb-4e0c-9cfe-96b8003eca37"),
+                            Id = new Guid("3261f08f-7e8a-47c7-ae55-5dd50179e85d"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("c7f81de1-20cd-4e2a-b2d4-430a306acf51"),
+                            ParseSettingsId = new Guid("9f42918a-5400-4abe-8c96-efde954ab87e"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("47041b43-87a8-40a5-8afa-e51e23e38a15"),
+                            Id = new Guid("1facbbfe-0ab5-4b6f-bf1e-4a9f2a844f79"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("2107b9c3-4d7d-4944-ac87-c764eb2d8d60"),
+                            ParseSettingsId = new Guid("d28c88f1-9cb9-4a86-a2bf-d5debde5a805"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("f20f6932-5a84-4d1b-aaf6-bca803837142"),
+                            Id = new Guid("68461e2b-868d-48ef-af50-bc97761989ec"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("75b4334a-b28d-408a-a5fe-38f22d6ddc9b"),
+                            ParseSettingsId = new Guid("a0f009fa-c0de-48bf-973a-a0751d04b717"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("96e7a15d-5a1d-452e-b865-38f4aeac4a36"),
+                            Id = new Guid("4e62b153-5f94-4f4d-817c-8bf4656020b9"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("03b00068-703d-4914-8aac-417321efa4a9"),
+                            ParseSettingsId = new Guid("44766c3e-3618-47e4-b1c5-e27f4b079424"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("48fd456f-0733-40fa-abae-11f68de1ca3f"),
+                            Id = new Guid("61537e4b-7f6f-4cce-9979-7125e5ff8b9d"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("3196c477-1ac2-48d5-807d-b3d0973e8d1d"),
+                            ParseSettingsId = new Guid("8334ba09-9b47-4ea4-8d3f-feb02deceb09"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("4fb6fb9f-4f3c-4b8a-99f3-ed06c7ab6c42"),
+                            Id = new Guid("92e669d0-4bee-4a72-ac59-033c030cd4c5"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("f0629df9-ac23-4b35-9009-3eb3df7069c9"),
+                            ParseSettingsId = new Guid("b94ffa83-703d-49d0-982d-ec5c8a5bd084"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("55903753-5bc9-4410-a9ec-6eedacc28672"),
+                            Id = new Guid("e8602522-c430-478e-84f7-12fe68d89898"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("42afad4c-6ae3-40ea-b5f6-cf16b62e0850"),
+                            ParseSettingsId = new Guid("8fbb4720-0c12-4be3-a087-fdfd04595e67"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("b5852ef9-6302-4860-ae40-df7fa82f1707"),
+                            Id = new Guid("ee42e233-b661-460e-9d91-49e0958edc00"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("3d33915f-3ab0-434d-b52f-138593f0d065"),
+                            ParseSettingsId = new Guid("d29bb306-e411-466c-8862-3515266e4a4b"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("93e026bb-127d-4c66-816c-9cd6e98f1b08"),
+                            Id = new Guid("f4d3a141-ee53-49bd-a756-7b46cb14308a"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("75076198-ce23-40d8-95a0-23991ed6e3e5"),
+                            ParseSettingsId = new Guid("578b96e7-9885-43bc-a757-0aec5cddaf5b"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("db9574d8-40bc-4188-bd49-de6a9a835d8b"),
+                            Id = new Guid("54ce6b6d-9918-4af4-acba-f37567a14441"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("55b29016-4fa6-4d26-878a-3a118bb2677d"),
+                            ParseSettingsId = new Guid("d6297613-fd5c-4d45-ba9c-4a8e78b558a3"),
                             UrlXPath = "//meta[@name='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("08722b89-5b1e-484d-969a-0a42baf575c7"),
+                            Id = new Guid("10565775-4f88-4c44-8d18-61be7b5736c9"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("7054689b-8c29-4c3e-b100-777bb5b84ac9"),
+                            ParseSettingsId = new Guid("16e4ff95-a5bf-489a-a59b-dc1b455c8a62"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("fd7938ce-5d9e-4eba-a62f-5451b3ecf064"),
+                            Id = new Guid("924d68a2-c76c-44d7-95af-ff2f021c8a70"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("8e37382a-44cc-44f0-9690-45aa7c60744d"),
+                            ParseSettingsId = new Guid("517c7c39-9682-4e85-962b-ace3a1144ea7"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("00dbbb18-90b9-47cc-98d0-3d9bdb67e452"),
+                            Id = new Guid("3d29d868-47d6-4444-b7a2-4c7b3e11c4e1"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("35c0f63c-2a03-4414-bcfd-b35d3daeab29"),
+                            ParseSettingsId = new Guid("cb551d20-f4cf-47a6-bcba-5428dbb555e1"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("724122b1-aaed-450c-909a-5f4c197847b6"),
+                            Id = new Guid("32a74994-78bf-40a8-b568-777c1d42cf5e"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("7f032ab4-4968-414a-9e61-02f32b4cd50b"),
+                            ParseSettingsId = new Guid("c95b3a67-c65c-435e-b1dc-96aaac8a13d9"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("a82a9b78-9d42-4100-95bb-78a2c8ddae42"),
+                            Id = new Guid("8e344e58-e6e3-4e3e-bd20-fc8ab55ec14b"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("b49ca6f0-c0f3-4791-aca2-5648202243d1"),
+                            ParseSettingsId = new Guid("fb70f1d7-bdb3-4352-bfde-704e077b7c7c"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("936b621c-7c7e-4654-bd6a-f2b4cf7c8db1"),
+                            Id = new Guid("7c6dcbbe-0adb-4eb8-90ab-f01a1467fd83"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("59d85dc4-4116-4785-8dbd-3bb18a472330"),
+                            ParseSettingsId = new Guid("f50e1187-7865-47c5-9364-b981c479421b"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("3ae00f6e-be4e-4c0c-a1b3-dca395789f35"),
+                            Id = new Guid("47b0432f-ede7-4140-9782-e4259165163f"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("b1a4c064-a6c3-4f13-82b2-2a520a0f2ad9"),
+                            ParseSettingsId = new Guid("1fc11022-2d88-42ae-bd6d-032758049af4"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("ab0090d0-03c4-4b7d-b2f8-604c8d9c222a"),
+                            Id = new Guid("bb2a2162-1648-40b6-9570-10a2a99bee7a"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("f73a6421-12af-4481-acef-b880a91d643d"),
+                            ParseSettingsId = new Guid("37ea2837-b550-4a69-a54e-1d17e387ff7c"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("27314dce-d2ef-4b68-b6c6-43a7a3f1ea87"),
+                            Id = new Guid("f9efc713-b8aa-4ec5-84f7-b3dc3130b370"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("d2c8667d-3ff9-4d72-80a9-5a4423e4c2bd"),
+                            ParseSettingsId = new Guid("5f4d0a7f-fcb4-41ae-987f-2fdf3f456e9d"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("a2f7ffa7-f231-4eb2-b09e-5a024bf29ccc"),
+                            Id = new Guid("355ce9ea-d85a-4aac-ac07-94972293bba6"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("2e3f695a-3da6-4548-b327-f8e7ab704eb1"),
+                            ParseSettingsId = new Guid("a2d6e3f4-6fda-46e2-aa85-39eb18c85de9"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("791a6c5a-d40a-4f63-b7dd-383c99f2e684"),
+                            Id = new Guid("2ee32d5e-353a-4677-9606-6ad901d9412a"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("ef2cbff3-870a-45f3-95dd-fe20f7cea27d"),
+                            ParseSettingsId = new Guid("4389214c-a07b-471a-bc95-73b7c495d580"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("81cd74a2-0ef0-4c64-bfd9-47b9f292de2b"),
+                            Id = new Guid("04a059e3-1a63-4d44-a88c-79dd5ba6be2f"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("87c7fe8e-f736-4faa-a29a-1b331445b876"),
+                            ParseSettingsId = new Guid("442fa986-5691-4dc7-aefa-69eea326bf01"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("10253883-29ff-4845-b44f-715d15080703"),
+                            Id = new Guid("ff1f259c-043d-4c98-9aec-d530ab109964"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("2d66b024-5877-485b-8999-bd58ca67096f"),
+                            ParseSettingsId = new Guid("6c0da7df-74ef-4b96-b3cd-1a3817de9170"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("b930b955-49b6-40b8-adf8-d7119177650c"),
+                            Id = new Guid("914ba03c-c58b-4661-9d59-e4e7160d64c7"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("1619f60f-04c0-4ece-83af-eeccd5a78430"),
+                            ParseSettingsId = new Guid("e89d9898-a84a-43b2-a909-85ed4753a60a"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("2542bc3c-721d-43ae-839d-2ee9d67ec09f"),
+                            Id = new Guid("9eed3756-e284-43d4-b820-346bf7ddc259"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("2008019e-0565-498c-aa87-525ccff923c2"),
+                            ParseSettingsId = new Guid("880d766c-5672-457f-98ca-60ca11637984"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("1a839dc6-6328-472d-aa0a-1edcfe670165"),
+                            Id = new Guid("c5c40894-1388-4eaa-9c4a-8b48c036b66f"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("a62509ee-9637-4d1b-8947-c9f712eaddb5"),
+                            ParseSettingsId = new Guid("8ac035cc-a118-4e61-bbf3-db636e336f4f"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("b7d99cb6-82b7-4d83-8cf0-4278521656db"),
+                            Id = new Guid("de018243-027e-4c5c-841c-29b61265d24d"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("83f8b67e-fa3e-4d64-81e0-09a172db2318"),
+                            ParseSettingsId = new Guid("f672a55c-4c9e-4684-8973-16306be0902a"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("c9f208d5-7b3f-41e7-9c9f-a390423851b8"),
+                            Id = new Guid("da5ddb5c-7abe-4c9f-8136-be23914f246f"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("0897a798-2068-4eec-a0c2-8e870f890d1a"),
+                            ParseSettingsId = new Guid("6428b94e-7c36-4f75-b45c-ae076d55dd01"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("bb2ac4ed-ae05-4c43-aaf1-471b6d8fef42"),
+                            Id = new Guid("a88ee27d-fe86-4a91-bba4-6e59dae35aab"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("4dfd8e60-07e6-4c61-9faf-ef3b4d848df5"),
+                            ParseSettingsId = new Guid("2dd377de-9eb7-4b27-adf4-398755baaaee"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         },
                         new
                         {
-                            Id = new Guid("8072cd23-608c-492d-a69d-6fba5e373e5a"),
+                            Id = new Guid("117b76dc-1663-4e13-a349-05b5b37f9e10"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("81713e54-2a73-4102-85ce-9b766f3e13ff"),
+                            ParseSettingsId = new Guid("e01cf720-5a6c-4f99-9acc-b45ff8b0b277"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         });
                 });
@@ -1401,420 +1401,420 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e8fbb165-3c3d-416e-9cf0-85fbe4eba3cb"),
+                            Id = new Guid("4b301397-2495-4508-be2a-ed74adefa156"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("6ecfaab6-6a48-4d8e-95a2-87788c567cb3"),
+                            ParseSettingsId = new Guid("c80caa5e-9567-4654-94c6-1f6828fc2d0e"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//meta[@property='article:published_time']/@content"
                         },
                         new
                         {
-                            Id = new Guid("60d07f93-6eba-4113-9d1d-2231abdf6ada"),
+                            Id = new Guid("276062d0-a0c0-4cbc-a3b6-4006207c6abd"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("6318fb5a-64ae-4196-8220-7cc9a5a2efdc"),
+                            ParseSettingsId = new Guid("df6c1dc1-f352-4b80-84a8-54a4fd90246c"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//meta[@name='mediator_published_time']/@content"
                         },
                         new
                         {
-                            Id = new Guid("c5eb9a5f-7daf-46de-bbf9-58fb7a5b20e3"),
+                            Id = new Guid("5ffebdc3-6c7e-4b31-83df-8a9676f96a3a"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("7bed5daf-f215-43a7-b5a5-d7415990edb1"),
+                            ParseSettingsId = new Guid("a2bfe55a-6d48-4d2e-8b27-907233517a3e"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "UTC",
                             PublishedAtXPath = "//div[contains(@class, 'NewsHeader')]//div[contains(@class, 'PublishedMark')]//span[@ca-ts]/text()"
                         },
                         new
                         {
-                            Id = new Guid("74d134ea-7f8a-43e8-b36f-1a0ac94c9b67"),
+                            Id = new Guid("497e6236-8e37-4e06-b7e4-9547b8a3c9e8"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("306cc38e-3f24-4f5e-a4bf-507f46d7c885"),
+                            ParseSettingsId = new Guid("f62b9c01-f69e-4ca1-b306-772184659e30"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//div[@class='topic-page__header']//a[contains(@class, 'topic-header__time')]/text()"
                         },
                         new
                         {
-                            Id = new Guid("28dadf9f-2b01-4d24-83f7-5950a1a0bbc2"),
+                            Id = new Guid("8592808e-3aea-4519-aca6-6f1ec1fc14c3"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("ac578b21-3c65-4ec9-b9fb-009aebe5bcc7"),
+                            ParseSettingsId = new Guid("4e81b91f-d336-4b9c-a506-7b92ec6094d3"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//meta[@property='article:published_time']/@content"
                         },
                         new
                         {
-                            Id = new Guid("3b0f64b3-2af6-48bd-b659-d95867125380"),
+                            Id = new Guid("edcb9807-e3ff-491c-86b2-7ad038b795a4"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("156719cd-f144-4bd4-9b16-98ae0b5cc3ab"),
+                            ParseSettingsId = new Guid("0a8ab6d7-8dfd-4e89-b17a-d930991e5c57"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//div[@class='article_top']//div[@class='date']//time/text()"
                         },
                         new
                         {
-                            Id = new Guid("d1dc0013-58c6-4802-8f2c-dabbb8e44837"),
+                            Id = new Guid("2fd57d16-6f4d-4323-8eb4-0b3fa541b698"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("8b6e31eb-20a6-497a-bd8f-6e9f4f93b1de"),
+                            ParseSettingsId = new Guid("276af382-dc02-4eb4-94fe-dcdadb713afe"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//div[@class='article__header__info-block']/time[@class='article__header__date']/@datetime"
                         },
                         new
                         {
-                            Id = new Guid("a0ef1a94-8774-450b-95a3-486f313a61e7"),
+                            Id = new Guid("2223cc9e-9ad1-4d22-9b6a-1486d2a8d607"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("6ce32b95-fa84-41ea-9bea-dbb808394cc1"),
+                            ParseSettingsId = new Guid("c76d5ca3-52df-4f4f-991a-05b65407daf7"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//header[@class='news-item__header']//time/@content"
                         },
                         new
                         {
-                            Id = new Guid("3bad97bd-fe72-4ae9-b25b-00c4f9e9e2f2"),
+                            Id = new Guid("94c71826-bf69-4b64-80a4-0e899f370965"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("c5ab1cb6-5085-4fef-9229-9118e5948251"),
+                            ParseSettingsId = new Guid("22036ea4-0190-4ccc-bc0f-5a77c4b78deb"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//meta[@property='article:published_time']/@content"
                         },
                         new
                         {
-                            Id = new Guid("fa772037-e197-45e7-a588-1b6c027a5118"),
+                            Id = new Guid("fa4b7bb2-c760-4e0d-96ac-21dd5154751d"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("ec76a389-1ee4-41ed-8a9a-2d2491451918"),
+                            ParseSettingsId = new Guid("339b5526-f1f9-4d89-9f07-68611ccb5919"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//meta[@property='article:published_time']/@content"
                         },
                         new
                         {
-                            Id = new Guid("6f13ae65-cd7d-479f-bcfa-624c9a313eb2"),
+                            Id = new Guid("d9e70fef-775f-4963-a89b-8fb036b2d4ac"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("679f0b16-d471-403d-a539-2095de1336a3"),
+                            ParseSettingsId = new Guid("48a43db8-ac32-409d-b5d9-3cb2aef71912"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//meta[@property='article:published_time']/@content"
                         },
                         new
                         {
-                            Id = new Guid("a548dfa8-6b03-45fa-8741-0ccbf32e9a29"),
+                            Id = new Guid("80759c35-1193-4967-9838-e12ff789333b"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("62978095-e4c3-4f20-a5fc-04b2da4fc359"),
+                            ParseSettingsId = new Guid("b0ad231f-52d9-4cdc-ab56-4e1b73411aed"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//meta[@property='article:published_time']/@content"
                         },
                         new
                         {
-                            Id = new Guid("00c39d15-2b12-47f0-9238-e503e1411bae"),
+                            Id = new Guid("61bada83-0cac-41e1-8e15-6a0bc2b12493"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("e4655368-4d2c-4502-958c-a99c0d9d1471"),
+                            ParseSettingsId = new Guid("5ba45cbe-6e75-4175-85dd-1c9eff7d3d3b"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//div[@class='b-text__date']/text()"
                         },
                         new
                         {
-                            Id = new Guid("5440552f-31e3-42e8-94ee-08c708bdb8aa"),
+                            Id = new Guid("74107823-c563-47af-a257-a7ed73ba8fa2"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("a1f604b3-5c28-4f24-bcf3-c1bc15bc6cad"),
+                            ParseSettingsId = new Guid("12c214fc-cc69-461c-aa49-9b1feba92c2e"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//p[@class='b-material__date']/text()"
                         },
                         new
                         {
-                            Id = new Guid("76ec6711-ed3f-41b3-a049-982e02e2d13f"),
+                            Id = new Guid("96b0ecd9-8e6b-4159-afff-42b0a320421c"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("821e1e9a-2d0f-4bff-adb3-7fabe3b4b5ff"),
+                            ParseSettingsId = new Guid("926554c1-213a-4dfd-96ed-c5b0db283ff2"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//article/div[@class='header']/span/text()"
                         },
                         new
                         {
-                            Id = new Guid("817731bf-541d-44f4-a0d9-fa0953f53f8d"),
+                            Id = new Guid("797abeaf-0611-4865-99a5-b22685f02696"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("4b6b8db8-7417-4bd5-a58b-f64b64e78bc2"),
+                            ParseSettingsId = new Guid("8686874a-05a4-42ea-80bc-c9ad27c3d8ff"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//article//header//time[@class='article-head__date']/text()"
                         },
                         new
                         {
-                            Id = new Guid("c0fe19d7-097c-44e2-b070-432c237112b4"),
+                            Id = new Guid("e8ec0621-95f8-42c9-8e5c-c535a0f76e51"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("19127150-51c8-4c1f-bc51-654223610c6e"),
+                            ParseSettingsId = new Guid("3b5c605f-a7a1-4d17-98c9-e49c74d10e9f"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//meta[@property='article:published_time']/@content"
                         },
                         new
                         {
-                            Id = new Guid("e5a1cc85-8191-46db-a335-3afe92a8a932"),
+                            Id = new Guid("c70ea2de-6523-457c-a566-b44fb4dfff87"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("70d810d5-c12c-4a38-a868-8a06ecf3d658"),
+                            ParseSettingsId = new Guid("755c983a-6e37-411f-a6b5-1ef28fcb2abe"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//div[contains(@class, 'article-entry')]//div[@class='entry-info']/span[@itemprop='datePublished']/@content"
                         },
                         new
                         {
-                            Id = new Guid("31d25177-f169-4423-8f37-5e67ab392671"),
+                            Id = new Guid("d8558ca5-0081-45d0-8ed3-991a29122ad0"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("e08416a9-e75f-4514-bc80-bd081a71f202"),
+                            ParseSettingsId = new Guid("981e6415-1c99-49e7-9faf-55c35eed1c83"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//div[@class='b-article__top-author']/p[@class='date']/text()"
                         },
                         new
                         {
-                            Id = new Guid("ae2adba6-58bc-40f3-88d2-e19d1037c5f9"),
+                            Id = new Guid("0c3cf546-81b1-4a2b-b0e1-ec5bc049821d"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("a2f84687-7724-4640-be47-79ffb765d81f"),
+                            ParseSettingsId = new Guid("f7fc7d0c-b481-4c99-9e58-a516a14cb4b0"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//div[contains(@class, 'pubdatetime')]//div[contains(@class, 'badge-time')]//text()"
                         },
                         new
                         {
-                            Id = new Guid("d7608fc9-f234-43cb-99eb-0e1af23a4234"),
+                            Id = new Guid("e3a0629b-b49c-488e-af91-e8595118719e"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("995d5406-8855-46fb-aa46-59ace5ddcf6e"),
+                            ParseSettingsId = new Guid("f59e0993-0b63-4be7-9f13-49a92f8b8301"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//meta[@itemprop='dateModified']/@content"
                         },
                         new
                         {
-                            Id = new Guid("c8dedaf7-6f6a-4cc7-960b-7cdefc34b858"),
+                            Id = new Guid("2184b160-4ac8-4e4a-bfa0-e19bbdb87865"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("c2dd81db-dd40-4716-b221-55a7e0b24190"),
+                            ParseSettingsId = new Guid("ae9c317a-7ef6-41a4-95f1-3ca87eed0277"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//meta[@itemprop='datePublished']/@content"
                         },
                         new
                         {
-                            Id = new Guid("a55e0e31-ddc9-4882-836d-180c0dc2300c"),
+                            Id = new Guid("8bc80405-d80d-4aaf-a60e-2fcfc0b371c4"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("c7f81de1-20cd-4e2a-b2d4-430a306acf51"),
+                            ParseSettingsId = new Guid("9f42918a-5400-4abe-8c96-efde954ab87e"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//meta[@property='article:published_time']/@content"
                         },
                         new
                         {
-                            Id = new Guid("410def57-98a1-409e-a907-c708a4ae4b5f"),
+                            Id = new Guid("2bc1a097-491b-464d-a811-c8bdf6e43191"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("2107b9c3-4d7d-4944-ac87-c764eb2d8d60"),
+                            ParseSettingsId = new Guid("d28c88f1-9cb9-4a86-a2bf-d5debde5a805"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//div[@class='publication-info']/time[@itemprop='datePublished']/@datetime"
                         },
                         new
                         {
-                            Id = new Guid("5e1c0c7e-ccb4-40e7-bb34-769b39b280c3"),
+                            Id = new Guid("71b0b369-1301-4638-b6c0-b561dfd9db36"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("75b4334a-b28d-408a-a5fe-38f22d6ddc9b"),
+                            ParseSettingsId = new Guid("a0f009fa-c0de-48bf-973a-a0751d04b717"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//meta[@itemprop='datePublished']/@content"
                         },
                         new
                         {
-                            Id = new Guid("98dea689-f48e-4a92-86dd-aba5bb1d0d8c"),
+                            Id = new Guid("4b39ce1c-17b4-4d1d-b322-9d10562a18df"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("03b00068-703d-4914-8aac-417321efa4a9"),
+                            ParseSettingsId = new Guid("44766c3e-3618-47e4-b1c5-e27f4b079424"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//meta[@itemprop='datePublished']/@content"
                         },
                         new
                         {
-                            Id = new Guid("08956c99-de4f-4063-8b14-ec28d5c05689"),
+                            Id = new Guid("06150fae-9f35-46f6-afb3-5a6666fd34a1"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("3196c477-1ac2-48d5-807d-b3d0973e8d1d"),
+                            ParseSettingsId = new Guid("8334ba09-9b47-4ea4-8d3f-feb02deceb09"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//meta[@property='article:published_time']/@content"
                         },
                         new
                         {
-                            Id = new Guid("c4443a33-8877-4d5a-8b5e-09e849de2d1e"),
+                            Id = new Guid("e647493c-ec7f-42ba-96cb-b80a06379221"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("f0629df9-ac23-4b35-9009-3eb3df7069c9"),
+                            ParseSettingsId = new Guid("b94ffa83-703d-49d0-982d-ec5c8a5bd084"),
                             PublishedAtCultureInfo = "en-US",
                             PublishedAtTimeZoneInfoId = "Central Europe Standard Time",
                             PublishedAtXPath = "//article//div[@class='article-info']/div[@class='date']/text()"
                         },
                         new
                         {
-                            Id = new Guid("60bb0674-b0fd-455a-b768-0467115bc35e"),
+                            Id = new Guid("8a5f72d5-2468-467b-8197-b4c389a8194d"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("42afad4c-6ae3-40ea-b5f6-cf16b62e0850"),
+                            ParseSettingsId = new Guid("8fbb4720-0c12-4be3-a087-fdfd04595e67"),
                             PublishedAtCultureInfo = "en-US",
                             PublishedAtXPath = "//meta[@property='article:published_time']/@content"
                         },
                         new
                         {
-                            Id = new Guid("3b84a86f-f28e-42dc-938d-46c42373c994"),
+                            Id = new Guid("4c634df1-77e6-4931-8e34-58e16e0fc92a"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("3d33915f-3ab0-434d-b52f-138593f0d065"),
+                            ParseSettingsId = new Guid("d29bb306-e411-466c-8862-3515266e4a4b"),
                             PublishedAtCultureInfo = "en-US",
                             PublishedAtXPath = "//meta[@property='article:published_time']/@content"
                         },
                         new
                         {
-                            Id = new Guid("5b044c02-2396-4fb2-a495-7318a166ef3e"),
+                            Id = new Guid("79696516-c4cc-4712-8903-6720126cdbb2"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("75076198-ce23-40d8-95a0-23991ed6e3e5"),
+                            ParseSettingsId = new Guid("578b96e7-9885-43bc-a757-0aec5cddaf5b"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//meta[@property='article:published_time']/@content"
                         },
                         new
                         {
-                            Id = new Guid("f254696e-b48d-4da9-a4dc-196e417b5685"),
+                            Id = new Guid("b999811b-b6bf-4172-aebe-71c694487280"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("7054689b-8c29-4c3e-b100-777bb5b84ac9"),
+                            ParseSettingsId = new Guid("16e4ff95-a5bf-489a-a59b-dc1b455c8a62"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//div[@class='article-details']/span[@class='article-details__time']/time/@datetime"
                         },
                         new
                         {
-                            Id = new Guid("0a907e64-f1e1-49cf-adf4-3f408264ae3b"),
+                            Id = new Guid("b8ee0e55-976d-4ead-b492-190154b494a7"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("8e37382a-44cc-44f0-9690-45aa7c60744d"),
+                            ParseSettingsId = new Guid("517c7c39-9682-4e85-962b-ace3a1144ea7"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//span[@class='date']/time/@datetime"
                         },
                         new
                         {
-                            Id = new Guid("71fb3d00-c4fb-4e5d-a34d-20edd62814e1"),
+                            Id = new Guid("88fdb3c2-4eba-4c3a-ba50-9f99d2f74d6b"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("35c0f63c-2a03-4414-bcfd-b35d3daeab29"),
+                            ParseSettingsId = new Guid("cb551d20-f4cf-47a6-bcba-5428dbb555e1"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//meta[@property='article:published_time']/@content"
                         },
                         new
                         {
-                            Id = new Guid("a9b2e069-d58b-491b-8642-712535f21b0a"),
+                            Id = new Guid("d3b2d9d8-2e17-4431-95de-c10fcbae4e17"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("7f032ab4-4968-414a-9e61-02f32b4cd50b"),
+                            ParseSettingsId = new Guid("c95b3a67-c65c-435e-b1dc-96aaac8a13d9"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//meta[@itemprop='datePublished']/@content"
                         },
                         new
                         {
-                            Id = new Guid("e250f18d-f22b-4953-aa0e-7ceb8bdc78ff"),
+                            Id = new Guid("9be5bd0e-b468-4347-903a-611a489527f8"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("b49ca6f0-c0f3-4791-aca2-5648202243d1"),
+                            ParseSettingsId = new Guid("fb70f1d7-bdb3-4352-bfde-704e077b7c7c"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//meta[@itemprop='datePublished']/@content"
                         },
                         new
                         {
-                            Id = new Guid("fb6ad2c2-0aa5-4f65-b69e-ffdd51d7c7dc"),
+                            Id = new Guid("f45a7692-9384-4a2b-b02a-e5b6e8cfccee"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("b1a4c064-a6c3-4f13-82b2-2a520a0f2ad9"),
+                            ParseSettingsId = new Guid("1fc11022-2d88-42ae-bd6d-032758049af4"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//meta[@property='article:published_time']/@content"
                         },
                         new
                         {
-                            Id = new Guid("6498ff7f-0037-4fa4-9fb2-018440a366ff"),
+                            Id = new Guid("cce741df-430b-45f8-ba73-c4a7fed76fc8"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("f73a6421-12af-4481-acef-b880a91d643d"),
+                            ParseSettingsId = new Guid("37ea2837-b550-4a69-a54e-1d17e387ff7c"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//div[@class='article__content']//time/text()"
                         },
                         new
                         {
-                            Id = new Guid("6fec6144-d68f-47b1-a0f3-b60db425e8a8"),
+                            Id = new Guid("f6ee7ff8-18f3-4a44-8e79-32df466924e9"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("d2c8667d-3ff9-4d72-80a9-5a4423e4c2bd"),
+                            ParseSettingsId = new Guid("5f4d0a7f-fcb4-41ae-987f-2fdf3f456e9d"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//meta[@property='article:published_time']/@content"
                         },
                         new
                         {
-                            Id = new Guid("7a81a582-bda5-4dd3-9808-347d4ac79ebe"),
+                            Id = new Guid("bccd84b7-7110-4db5-a411-0b697fa079ba"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("2e3f695a-3da6-4548-b327-f8e7ab704eb1"),
+                            ParseSettingsId = new Guid("a2d6e3f4-6fda-46e2-aa85-39eb18c85de9"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//section[contains(@class, 'news-content')]/div[@class='content-top']//p[contains(@class, 'content-top__date')]/text()"
                         },
                         new
                         {
-                            Id = new Guid("0f3ba400-1c4c-46be-8192-3d10a780bdd2"),
+                            Id = new Guid("24bb919d-db61-45b5-9bce-e7eadf90ddcd"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("ef2cbff3-870a-45f3-95dd-fe20f7cea27d"),
+                            ParseSettingsId = new Guid("4389214c-a07b-471a-bc95-73b7c495d580"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//meta[@itemprop='datePublished']/@content"
                         },
                         new
                         {
-                            Id = new Guid("036ce8ce-91dc-496c-b246-b5f8fe2ac010"),
+                            Id = new Guid("767ee3cb-1a6f-462d-833d-0b49599e4d49"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("2d66b024-5877-485b-8999-bd58ca67096f"),
+                            ParseSettingsId = new Guid("6c0da7df-74ef-4b96-b3cd-1a3817de9170"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtXPath = "//meta[@itemprop='datePublished']/@content"
                         },
                         new
                         {
-                            Id = new Guid("e7719f59-e259-47d2-9ca1-511c784569d3"),
+                            Id = new Guid("d2a9e838-ea09-4db1-8870-f4730e060655"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("1619f60f-04c0-4ece-83af-eeccd5a78430"),
+                            ParseSettingsId = new Guid("e89d9898-a84a-43b2-a909-85ed4753a60a"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//span[@class='submitted-by']/text()"
                         },
                         new
                         {
-                            Id = new Guid("4b575a7e-893e-42bb-ad20-9e7a85fddd5c"),
+                            Id = new Guid("864d9c45-53ba-466b-a63e-28e2ad3566d3"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("2008019e-0565-498c-aa87-525ccff923c2"),
+                            ParseSettingsId = new Guid("880d766c-5672-457f-98ca-60ca11637984"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//meta[@property='article:published_time']/@content"
                         },
                         new
                         {
-                            Id = new Guid("68653dc5-6b49-48b5-b21f-a8e779f22d07"),
+                            Id = new Guid("d719b356-4bd5-4173-aa76-9dc73f9f11d7"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("a62509ee-9637-4d1b-8947-c9f712eaddb5"),
+                            ParseSettingsId = new Guid("8ac035cc-a118-4e61-bbf3-db636e336f4f"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//div[@id='content']//div[contains(@class, 'topic')]/ul[contains(@class, 'blog_more')]//li[@class='date']/text()"
                         },
                         new
                         {
-                            Id = new Guid("8066ae4e-ec44-46e1-87c5-3eafab8ac9ce"),
+                            Id = new Guid("9da8283e-6771-4f35-a3b3-7e4f31406460"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("83f8b67e-fa3e-4d64-81e0-09a172db2318"),
+                            ParseSettingsId = new Guid("f672a55c-4c9e-4684-8973-16306be0902a"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//span[@id='publication-date']/text()"
                         },
                         new
                         {
-                            Id = new Guid("effa7797-dae3-491c-82f0-709d64d8b3e3"),
+                            Id = new Guid("b321d9ca-3f4c-47fd-a421-eaa7a1e64927"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("0897a798-2068-4eec-a0c2-8e870f890d1a"),
+                            ParseSettingsId = new Guid("6428b94e-7c36-4f75-b45c-ae076d55dd01"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//div[@class='newsDetail-body__item-subHeader']/time/text()"
                         },
                         new
                         {
-                            Id = new Guid("3efdbd25-0857-420a-aae0-7079565da46e"),
+                            Id = new Guid("55ddeb78-a4f8-46e6-aaec-786e540a3e06"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("4dfd8e60-07e6-4c61-9faf-ef3b4d848df5"),
+                            ParseSettingsId = new Guid("2dd377de-9eb7-4b27-adf4-398755baaaee"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "Russian Standard Time",
                             PublishedAtXPath = "//meta[@property='article:published_time']/@content"
                         },
                         new
                         {
-                            Id = new Guid("f196df36-c2a1-4b5b-91c9-b12f34a322d4"),
+                            Id = new Guid("33279872-ff96-4e67-999e-ee6c6e70a257"),
                             IsRequired = true,
-                            ParseSettingsId = new Guid("81713e54-2a73-4102-85ce-9b766f3e13ff"),
+                            ParseSettingsId = new Guid("e01cf720-5a6c-4f99-9acc-b45ff8b0b277"),
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "UTC",
                             PublishedAtXPath = "//div[@class='GeneralMaterial-module-materialHeader']//div[contains(@class, 'MetaItem-module_datetime')]/time/text()"
@@ -1848,339 +1848,339 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("1138ea17-064e-4f2a-bc68-13ef4cb7db0c"),
+                            Id = new Guid("ab60b195-ebcb-44d6-93c3-51cb40be3854"),
                             Format = "yyyyMMddTHHmm",
-                            NewsParsePublishedAtSettingsId = new Guid("e8fbb165-3c3d-416e-9cf0-85fbe4eba3cb")
+                            NewsParsePublishedAtSettingsId = new Guid("4b301397-2495-4508-be2a-ed74adefa156")
                         },
                         new
                         {
-                            Id = new Guid("e4b5447e-883f-4d17-ae15-da9a6fb0b095"),
+                            Id = new Guid("55a3b7d5-50f7-4759-bc37-2579a7245ab2"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParsePublishedAtSettingsId = new Guid("60d07f93-6eba-4113-9d1d-2231abdf6ada")
+                            NewsParsePublishedAtSettingsId = new Guid("276062d0-a0c0-4cbc-a3b6-4006207c6abd")
                         },
                         new
                         {
-                            Id = new Guid("54eb5f88-307f-4ff2-a5c3-d84a5f441549"),
+                            Id = new Guid("f46676be-9258-4993-b417-ac06c2234136"),
                             Format = "d MMMM yyyy, HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("c5eb9a5f-7daf-46de-bbf9-58fb7a5b20e3")
+                            NewsParsePublishedAtSettingsId = new Guid("5ffebdc3-6c7e-4b31-83df-8a9676f96a3a")
                         },
                         new
                         {
-                            Id = new Guid("b426122d-06c0-4bcb-a038-cdbad3ea906f"),
+                            Id = new Guid("9b6fb774-6008-407a-8319-ac358ea37f6d"),
                             Format = "d MMMM yyyy, HH:mm,",
-                            NewsParsePublishedAtSettingsId = new Guid("c5eb9a5f-7daf-46de-bbf9-58fb7a5b20e3")
+                            NewsParsePublishedAtSettingsId = new Guid("5ffebdc3-6c7e-4b31-83df-8a9676f96a3a")
                         },
                         new
                         {
-                            Id = new Guid("dbc7ca9d-0e99-41c8-96c8-fef1b384dece"),
+                            Id = new Guid("c665b6da-ccf9-4762-8f7e-ec9948e15992"),
                             Format = "d MMMM, HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("c5eb9a5f-7daf-46de-bbf9-58fb7a5b20e3")
+                            NewsParsePublishedAtSettingsId = new Guid("5ffebdc3-6c7e-4b31-83df-8a9676f96a3a")
                         },
                         new
                         {
-                            Id = new Guid("b195c715-1bee-4ba9-94b1-183492bf680b"),
+                            Id = new Guid("53634cd6-adb5-4833-b37b-fe296341fd8f"),
                             Format = "d MMMM, HH:mm,",
-                            NewsParsePublishedAtSettingsId = new Guid("c5eb9a5f-7daf-46de-bbf9-58fb7a5b20e3")
+                            NewsParsePublishedAtSettingsId = new Guid("5ffebdc3-6c7e-4b31-83df-8a9676f96a3a")
                         },
                         new
                         {
-                            Id = new Guid("8fe45520-b26a-4f80-8d13-392e00f02d7f"),
+                            Id = new Guid("3c3fcf80-a31a-4426-b0f8-06b2b754b90a"),
                             Format = "HH:mm, d MMMM yyyy",
-                            NewsParsePublishedAtSettingsId = new Guid("74d134ea-7f8a-43e8-b36f-1a0ac94c9b67")
+                            NewsParsePublishedAtSettingsId = new Guid("497e6236-8e37-4e06-b7e4-9547b8a3c9e8")
                         },
                         new
                         {
-                            Id = new Guid("eb05e608-adf6-4eae-9d54-89529895d1cb"),
+                            Id = new Guid("95e1cccb-059f-4c4a-bd37-d3d693f184fb"),
                             Format = "yyyy-MM-ddTHH:mm:ss",
-                            NewsParsePublishedAtSettingsId = new Guid("28dadf9f-2b01-4d24-83f7-5950a1a0bbc2")
+                            NewsParsePublishedAtSettingsId = new Guid("8592808e-3aea-4519-aca6-6f1ec1fc14c3")
                         },
                         new
                         {
-                            Id = new Guid("1f4ac4b0-1baf-4382-b849-d05350bb88b9"),
+                            Id = new Guid("8ab937b0-839f-4333-bc48-6440a1f9dd2a"),
                             Format = "dd.MM.yyyy HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("3b0f64b3-2af6-48bd-b659-d95867125380")
+                            NewsParsePublishedAtSettingsId = new Guid("edcb9807-e3ff-491c-86b2-7ad038b795a4")
                         },
                         new
                         {
-                            Id = new Guid("c083d27a-dd5c-4a51-94f1-d1692f78ce67"),
+                            Id = new Guid("031a5f72-7bb2-44ad-b050-56eae284cea4"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParsePublishedAtSettingsId = new Guid("d1dc0013-58c6-4802-8f2c-dabbb8e44837")
+                            NewsParsePublishedAtSettingsId = new Guid("2fd57d16-6f4d-4323-8eb4-0b3fa541b698")
                         },
                         new
                         {
-                            Id = new Guid("48516c16-9775-49c8-9461-272c51c35863"),
+                            Id = new Guid("e61b8460-9555-415c-aa16-6750259c4168"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParsePublishedAtSettingsId = new Guid("a0ef1a94-8774-450b-95a3-486f313a61e7")
+                            NewsParsePublishedAtSettingsId = new Guid("2223cc9e-9ad1-4d22-9b6a-1486d2a8d607")
                         },
                         new
                         {
-                            Id = new Guid("66262ae4-7578-4f31-983a-c05950c3d865"),
+                            Id = new Guid("c8264c3c-fa9c-45f7-a6b9-1666a96f6ec2"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParsePublishedAtSettingsId = new Guid("3bad97bd-fe72-4ae9-b25b-00c4f9e9e2f2")
+                            NewsParsePublishedAtSettingsId = new Guid("94c71826-bf69-4b64-80a4-0e899f370965")
                         },
                         new
                         {
-                            Id = new Guid("2e4d9f8f-6425-4cd2-bba4-de463177fa03"),
+                            Id = new Guid("cad3fb68-8a6d-4948-a536-410201ed3f13"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParsePublishedAtSettingsId = new Guid("fa772037-e197-45e7-a588-1b6c027a5118")
+                            NewsParsePublishedAtSettingsId = new Guid("fa4b7bb2-c760-4e0d-96ac-21dd5154751d")
                         },
                         new
                         {
-                            Id = new Guid("c102501e-0aee-43d5-b7a7-2b1e159e1a98"),
+                            Id = new Guid("a81a90bc-7b0d-4c09-9fb8-321b1da95951"),
                             Format = "yyyy-MM-ddTHH:mmzzz",
-                            NewsParsePublishedAtSettingsId = new Guid("6f13ae65-cd7d-479f-bcfa-624c9a313eb2")
+                            NewsParsePublishedAtSettingsId = new Guid("d9e70fef-775f-4963-a89b-8fb036b2d4ac")
                         },
                         new
                         {
-                            Id = new Guid("4c42e04b-2fa1-4f63-8b49-61e526db8e5c"),
+                            Id = new Guid("bf13d350-dcfd-4f5b-88c7-aa5421b45777"),
                             Format = "yyyy-MM-dd HH:mm:ss",
-                            NewsParsePublishedAtSettingsId = new Guid("a548dfa8-6b03-45fa-8741-0ccbf32e9a29")
+                            NewsParsePublishedAtSettingsId = new Guid("80759c35-1193-4967-9838-e12ff789333b")
                         },
                         new
                         {
-                            Id = new Guid("7f629464-d786-45cf-9afa-c46bbfbc1235"),
+                            Id = new Guid("d7d7cb93-2557-4a8a-ac04-43e68bebf812"),
                             Format = "d MMMM yyyy HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("00c39d15-2b12-47f0-9238-e503e1411bae")
+                            NewsParsePublishedAtSettingsId = new Guid("61bada83-0cac-41e1-8e15-6a0bc2b12493")
                         },
                         new
                         {
-                            Id = new Guid("c369fe63-512d-4753-bb45-011ddc57c550"),
+                            Id = new Guid("fe67851e-370b-49ce-a123-516c3a168818"),
                             Format = "d MMMM  HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("00c39d15-2b12-47f0-9238-e503e1411bae")
+                            NewsParsePublishedAtSettingsId = new Guid("61bada83-0cac-41e1-8e15-6a0bc2b12493")
                         },
                         new
                         {
-                            Id = new Guid("9df0db48-9846-4288-b7f1-5282d99ee7af"),
+                            Id = new Guid("0e5079d7-85c8-441b-a8fa-cef65f2f735c"),
                             Format = "dd MMMM yyyy, HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("5440552f-31e3-42e8-94ee-08c708bdb8aa")
+                            NewsParsePublishedAtSettingsId = new Guid("74107823-c563-47af-a257-a7ed73ba8fa2")
                         },
                         new
                         {
-                            Id = new Guid("462d0156-ff8e-4185-ba27-86d0186ad825"),
+                            Id = new Guid("e0a49b6d-0238-4dce-b4ae-37afa00e74e9"),
                             Format = "dd MMMM, HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("5440552f-31e3-42e8-94ee-08c708bdb8aa")
+                            NewsParsePublishedAtSettingsId = new Guid("74107823-c563-47af-a257-a7ed73ba8fa2")
                         },
                         new
                         {
-                            Id = new Guid("74528ab2-d627-40b7-a406-ac534dff190e"),
+                            Id = new Guid("50a7b28b-04aa-484c-b016-38b10ad4c83a"),
                             Format = "HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("5440552f-31e3-42e8-94ee-08c708bdb8aa")
+                            NewsParsePublishedAtSettingsId = new Guid("74107823-c563-47af-a257-a7ed73ba8fa2")
                         },
                         new
                         {
-                            Id = new Guid("1da40864-254d-434e-8a63-d2c69354d73f"),
+                            Id = new Guid("2fcf02a3-92a6-4894-b900-7ffe5fb57eea"),
                             Format = "d MMMM yyyy, HH:mm\" •\"",
-                            NewsParsePublishedAtSettingsId = new Guid("76ec6711-ed3f-41b3-a049-982e02e2d13f")
+                            NewsParsePublishedAtSettingsId = new Guid("96b0ecd9-8e6b-4159-afff-42b0a320421c")
                         },
                         new
                         {
-                            Id = new Guid("3a8d1b7c-4b3e-4168-b29d-c8720421f94a"),
+                            Id = new Guid("76b32d11-9070-4f9f-8db4-e12d38e411ce"),
                             Format = "d MMMM yyyy, HH:mm \"МСК\"",
-                            NewsParsePublishedAtSettingsId = new Guid("817731bf-541d-44f4-a0d9-fa0953f53f8d")
+                            NewsParsePublishedAtSettingsId = new Guid("797abeaf-0611-4865-99a5-b22685f02696")
                         },
                         new
                         {
-                            Id = new Guid("c271734d-3b28-4bc7-880d-5c0964af0f56"),
+                            Id = new Guid("ef1c989b-d659-4d5b-ba92-207111ec312e"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParsePublishedAtSettingsId = new Guid("c0fe19d7-097c-44e2-b070-432c237112b4")
+                            NewsParsePublishedAtSettingsId = new Guid("e8ec0621-95f8-42c9-8e5c-c535a0f76e51")
                         },
                         new
                         {
-                            Id = new Guid("6d48ea45-da2a-4446-b762-d9a0c4bc8f4a"),
+                            Id = new Guid("88808d30-e06f-4369-ad9a-4efdfb51bb53"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParsePublishedAtSettingsId = new Guid("e5a1cc85-8191-46db-a335-3afe92a8a932")
+                            NewsParsePublishedAtSettingsId = new Guid("c70ea2de-6523-457c-a566-b44fb4dfff87")
                         },
                         new
                         {
-                            Id = new Guid("b0ad4149-5a16-4eeb-b4f5-c345bd57c2f1"),
+                            Id = new Guid("154a1cb8-9091-48a3-ab13-5d7a2460fc1b"),
                             Format = "d MMMM yyyy \"в\" HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("31d25177-f169-4423-8f37-5e67ab392671")
+                            NewsParsePublishedAtSettingsId = new Guid("d8558ca5-0081-45d0-8ed3-991a29122ad0")
                         },
                         new
                         {
-                            Id = new Guid("a4b75f8b-6689-4401-811e-b57d3be04e1b"),
+                            Id = new Guid("0681cbe5-4985-405a-9f24-a5f2af0927bf"),
                             Format = "yyyy-MM-dd HH:mm:ss",
-                            NewsParsePublishedAtSettingsId = new Guid("ae2adba6-58bc-40f3-88d2-e19d1037c5f9")
+                            NewsParsePublishedAtSettingsId = new Guid("0c3cf546-81b1-4a2b-b0e1-ec5bc049821d")
                         },
                         new
                         {
-                            Id = new Guid("a9a16bdf-bde4-4fb8-9d82-bca5e3fcca50"),
+                            Id = new Guid("1ec73820-714c-4a25-8ec4-366aad67bc80"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParsePublishedAtSettingsId = new Guid("d7608fc9-f234-43cb-99eb-0e1af23a4234")
+                            NewsParsePublishedAtSettingsId = new Guid("e3a0629b-b49c-488e-af91-e8595118719e")
                         },
                         new
                         {
-                            Id = new Guid("ff2e0d8a-8298-4ad8-bded-bd1f4ccab111"),
+                            Id = new Guid("f05c52ee-73c9-4f4c-8df3-aba256964f25"),
                             Format = "yyyy-MM-ddTHH:mm:ss",
-                            NewsParsePublishedAtSettingsId = new Guid("c8dedaf7-6f6a-4cc7-960b-7cdefc34b858")
+                            NewsParsePublishedAtSettingsId = new Guid("2184b160-4ac8-4e4a-bfa0-e19bbdb87865")
                         },
                         new
                         {
-                            Id = new Guid("ce768bc1-c2ef-4a94-b5a8-2a75fa4fee1d"),
+                            Id = new Guid("9b14efb3-b06d-44c3-b89b-58d0c45a181a"),
                             Format = "yyyy-MM-ddTHH:mm:ssZ",
-                            NewsParsePublishedAtSettingsId = new Guid("a55e0e31-ddc9-4882-836d-180c0dc2300c")
+                            NewsParsePublishedAtSettingsId = new Guid("8bc80405-d80d-4aaf-a60e-2fcfc0b371c4")
                         },
                         new
                         {
-                            Id = new Guid("fabf2552-4803-47e4-9eb0-f083fcd2eb6e"),
+                            Id = new Guid("06a8197d-d829-4757-915e-9176c3db2e6d"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParsePublishedAtSettingsId = new Guid("410def57-98a1-409e-a907-c708a4ae4b5f")
+                            NewsParsePublishedAtSettingsId = new Guid("2bc1a097-491b-464d-a811-c8bdf6e43191")
                         },
                         new
                         {
-                            Id = new Guid("02183dc1-b287-47c6-9741-aac4b0ace789"),
+                            Id = new Guid("6959aa58-af3a-4f69-8948-91313a0069f7"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParsePublishedAtSettingsId = new Guid("5e1c0c7e-ccb4-40e7-bb34-769b39b280c3")
+                            NewsParsePublishedAtSettingsId = new Guid("71b0b369-1301-4638-b6c0-b561dfd9db36")
                         },
                         new
                         {
-                            Id = new Guid("a2c2ca8d-52ee-4618-bc8c-5ee39679a53a"),
+                            Id = new Guid("2c343983-df37-42f8-86e0-7c5008bfe8a1"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParsePublishedAtSettingsId = new Guid("98dea689-f48e-4a92-86dd-aba5bb1d0d8c")
+                            NewsParsePublishedAtSettingsId = new Guid("4b39ce1c-17b4-4d1d-b322-9d10562a18df")
                         },
                         new
                         {
-                            Id = new Guid("3199a8ac-f0a3-444f-b6be-3f31bf3511d9"),
+                            Id = new Guid("1fbda07c-9234-4e33-b61a-3aef04f2f924"),
                             Format = "yyyy-MM-ddTHH:mm:ss.fffZ",
-                            NewsParsePublishedAtSettingsId = new Guid("08956c99-de4f-4063-8b14-ec28d5c05689")
+                            NewsParsePublishedAtSettingsId = new Guid("06150fae-9f35-46f6-afb3-5a6666fd34a1")
                         },
                         new
                         {
-                            Id = new Guid("8f5bd338-0745-47ef-9f2e-c1707b0a416c"),
+                            Id = new Guid("21e0c5cc-f7e5-4b3c-82d0-f7bb255e564b"),
                             Format = "d-M-yyyy HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("c4443a33-8877-4d5a-8b5e-09e849de2d1e")
+                            NewsParsePublishedAtSettingsId = new Guid("e647493c-ec7f-42ba-96cb-b80a06379221")
                         },
                         new
                         {
-                            Id = new Guid("6c9db819-7052-4a09-8181-caf48791038e"),
+                            Id = new Guid("b871f454-e5a2-4bef-8c7d-5d43b4b70793"),
                             Format = "yyyy-MM-ddTHH:mm:ss.fffZ",
-                            NewsParsePublishedAtSettingsId = new Guid("60bb0674-b0fd-455a-b768-0467115bc35e")
+                            NewsParsePublishedAtSettingsId = new Guid("8a5f72d5-2468-467b-8197-b4c389a8194d")
                         },
                         new
                         {
-                            Id = new Guid("207a992b-1388-4893-bed4-32a9793eecd6"),
+                            Id = new Guid("b3976e61-8169-447e-80b9-a57bf650a44f"),
                             Format = "yyyy-MM-ddTHH:mm:ss.fffZ",
-                            NewsParsePublishedAtSettingsId = new Guid("3b84a86f-f28e-42dc-938d-46c42373c994")
+                            NewsParsePublishedAtSettingsId = new Guid("4c634df1-77e6-4931-8e34-58e16e0fc92a")
                         },
                         new
                         {
-                            Id = new Guid("78d85e33-861a-452f-a801-53f9ea8bc250"),
+                            Id = new Guid("bcf25db0-c51d-47c8-863f-99b88c5b8d18"),
                             Format = "yyyy-MM-ddTHH:mm:ss.fff\"Z+0300\"",
-                            NewsParsePublishedAtSettingsId = new Guid("5b044c02-2396-4fb2-a495-7318a166ef3e")
+                            NewsParsePublishedAtSettingsId = new Guid("79696516-c4cc-4712-8903-6720126cdbb2")
                         },
                         new
                         {
-                            Id = new Guid("f1bb3786-9964-410a-8e88-31e34c322990"),
+                            Id = new Guid("e47b17e5-2dec-40c2-a4f8-421748e6a1c3"),
                             Format = "d MMMM yyyy",
-                            NewsParsePublishedAtSettingsId = new Guid("f254696e-b48d-4da9-a4dc-196e417b5685")
+                            NewsParsePublishedAtSettingsId = new Guid("b999811b-b6bf-4172-aebe-71c694487280")
                         },
                         new
                         {
-                            Id = new Guid("f87c0ac9-c3a9-4e4c-bc94-663b7fd5867f"),
+                            Id = new Guid("b490670c-4faa-4a62-81db-48187386a739"),
                             Format = "yyyy-MM-dd HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("0a907e64-f1e1-49cf-adf4-3f408264ae3b")
+                            NewsParsePublishedAtSettingsId = new Guid("b8ee0e55-976d-4ead-b492-190154b494a7")
                         },
                         new
                         {
-                            Id = new Guid("d2fe920e-ddb5-45f3-855a-ea357b7899a7"),
+                            Id = new Guid("fc627d9c-4b9b-4413-be4a-c76f48852179"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParsePublishedAtSettingsId = new Guid("71fb3d00-c4fb-4e5d-a34d-20edd62814e1")
+                            NewsParsePublishedAtSettingsId = new Guid("88fdb3c2-4eba-4c3a-ba50-9f99d2f74d6b")
                         },
                         new
                         {
-                            Id = new Guid("23de5f91-86c6-4366-8fec-8306df534aa7"),
+                            Id = new Guid("94ac93d2-bcae-4b5a-8871-cb86d51ad4d0"),
                             Format = "yyyy-MM-dd",
-                            NewsParsePublishedAtSettingsId = new Guid("a9b2e069-d58b-491b-8642-712535f21b0a")
+                            NewsParsePublishedAtSettingsId = new Guid("d3b2d9d8-2e17-4431-95de-c10fcbae4e17")
                         },
                         new
                         {
-                            Id = new Guid("bf4ca838-d9eb-43ab-9d3f-41dee178d6bb"),
+                            Id = new Guid("e6e829a7-aea2-4dde-9cb7-2286c7415e33"),
                             Format = "yyyy-MM-ddTHH:mm:ssZ",
-                            NewsParsePublishedAtSettingsId = new Guid("e250f18d-f22b-4953-aa0e-7ceb8bdc78ff")
+                            NewsParsePublishedAtSettingsId = new Guid("9be5bd0e-b468-4347-903a-611a489527f8")
                         },
                         new
                         {
-                            Id = new Guid("3a08115a-4af3-4412-8f91-d8b4142c1d2c"),
+                            Id = new Guid("d16c573c-5b67-4add-b8de-4c4d2168fcbb"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParsePublishedAtSettingsId = new Guid("fb6ad2c2-0aa5-4f65-b69e-ffdd51d7c7dc")
+                            NewsParsePublishedAtSettingsId = new Guid("f45a7692-9384-4a2b-b02a-e5b6e8cfccee")
                         },
                         new
                         {
-                            Id = new Guid("99818992-3d72-4aec-9101-5bda8e3d52f9"),
+                            Id = new Guid("890bf270-4a88-45c6-8418-63708fbf71cd"),
                             Format = "dd MMMM HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("6498ff7f-0037-4fa4-9fb2-018440a366ff")
+                            NewsParsePublishedAtSettingsId = new Guid("cce741df-430b-45f8-ba73-c4a7fed76fc8")
                         },
                         new
                         {
-                            Id = new Guid("d4744636-053f-4025-b4ff-d4c56838baa0"),
+                            Id = new Guid("c78a3a5f-448e-4d0a-aae8-553929c983cf"),
                             Format = "dd MMMM yyyy HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("6498ff7f-0037-4fa4-9fb2-018440a366ff")
+                            NewsParsePublishedAtSettingsId = new Guid("cce741df-430b-45f8-ba73-c4a7fed76fc8")
                         },
                         new
                         {
-                            Id = new Guid("38e40727-9a73-4742-9bf2-38f3445ce05f"),
+                            Id = new Guid("00bd7cb5-cfb4-4138-a190-9fe1af46b29a"),
                             Format = "yyyy-MM-ddTHH:mm:ss\"+0300\"",
-                            NewsParsePublishedAtSettingsId = new Guid("6fec6144-d68f-47b1-a0f3-b60db425e8a8")
+                            NewsParsePublishedAtSettingsId = new Guid("f6ee7ff8-18f3-4a44-8e79-32df466924e9")
                         },
                         new
                         {
-                            Id = new Guid("e1149412-7012-465c-98ff-e265754156b1"),
+                            Id = new Guid("45394174-80bb-40f9-9c80-79eb885a295e"),
                             Format = "dd.MM.yyyy, HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("7a81a582-bda5-4dd3-9808-347d4ac79ebe")
+                            NewsParsePublishedAtSettingsId = new Guid("bccd84b7-7110-4db5-a411-0b697fa079ba")
                         },
                         new
                         {
-                            Id = new Guid("a67fedc5-39af-4886-b571-6d932bdd498f"),
+                            Id = new Guid("9dc7b874-93cc-40d1-9427-b27da26804c0"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParsePublishedAtSettingsId = new Guid("0f3ba400-1c4c-46be-8192-3d10a780bdd2")
+                            NewsParsePublishedAtSettingsId = new Guid("24bb919d-db61-45b5-9bce-e7eadf90ddcd")
                         },
                         new
                         {
-                            Id = new Guid("52ffb0c6-c37e-4aa7-bcca-08b6564ef66b"),
+                            Id = new Guid("22c1e6e3-616b-402a-9547-3f74827663e8"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
-                            NewsParsePublishedAtSettingsId = new Guid("036ce8ce-91dc-496c-b246-b5f8fe2ac010")
+                            NewsParsePublishedAtSettingsId = new Guid("767ee3cb-1a6f-462d-833d-0b49599e4d49")
                         },
                         new
                         {
-                            Id = new Guid("6b70a4bc-3a9c-4205-80ce-de7ebb394c69"),
+                            Id = new Guid("81ab86f2-76b2-44c2-b460-d88d688d195b"),
                             Format = "dd.MM.yyyy \"-\" HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("e7719f59-e259-47d2-9ca1-511c784569d3")
+                            NewsParsePublishedAtSettingsId = new Guid("d2a9e838-ea09-4db1-8870-f4730e060655")
                         },
                         new
                         {
-                            Id = new Guid("eaee9d8d-9f89-455c-ae9e-8762107fb6d1"),
+                            Id = new Guid("8440f3cd-5938-4348-a8ae-b1f61081c593"),
                             Format = "yyyy-MM-ddTHH:mm:ss\"+0300\"",
-                            NewsParsePublishedAtSettingsId = new Guid("4b575a7e-893e-42bb-ad20-9e7a85fddd5c")
+                            NewsParsePublishedAtSettingsId = new Guid("864d9c45-53ba-466b-a63e-28e2ad3566d3")
                         },
                         new
                         {
-                            Id = new Guid("90a57e45-b29d-4c1a-a764-dea6c1207291"),
+                            Id = new Guid("09debcae-3dc1-4785-9cd5-15d2cc8f356d"),
                             Format = "dd MMMM yyyy, HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("68653dc5-6b49-48b5-b21f-a8e779f22d07")
+                            NewsParsePublishedAtSettingsId = new Guid("d719b356-4bd5-4173-aa76-9dc73f9f11d7")
                         },
                         new
                         {
-                            Id = new Guid("13d69f63-5968-438e-be32-3c33fb0492dd"),
+                            Id = new Guid("cbfb0c45-53e0-42fe-b714-86ca622e9d33"),
                             Format = "dd.MM.yyyy HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("8066ae4e-ec44-46e1-87c5-3eafab8ac9ce")
+                            NewsParsePublishedAtSettingsId = new Guid("9da8283e-6771-4f35-a3b3-7e4f31406460")
                         },
                         new
                         {
-                            Id = new Guid("7c70b09b-dd52-4466-9114-f19982383168"),
+                            Id = new Guid("0b067c7e-47a3-4857-93d3-6693d7e9456f"),
                             Format = "d MMMM yyyy, HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("effa7797-dae3-491c-82f0-709d64d8b3e3")
+                            NewsParsePublishedAtSettingsId = new Guid("b321d9ca-3f4c-47fd-a421-eaa7a1e64927")
                         },
                         new
                         {
-                            Id = new Guid("97bcd548-f295-4eb1-b83c-1b5ac51b6fb4"),
+                            Id = new Guid("e7ac25e3-9306-4c73-8852-5f7741172082"),
                             Format = "yyyyMMddTHHmm",
-                            NewsParsePublishedAtSettingsId = new Guid("3efdbd25-0857-420a-aae0-7079565da46e")
+                            NewsParsePublishedAtSettingsId = new Guid("55ddeb78-a4f8-46e6-aaec-786e540a3e06")
                         },
                         new
                         {
-                            Id = new Guid("077909d6-752a-46b1-a8cb-1efbff64a737"),
+                            Id = new Guid("4b082056-618a-46fa-86cf-90cbac86a787"),
                             Format = "HH:mm, d MMMM yyyy",
-                            NewsParsePublishedAtSettingsId = new Guid("f196df36-c2a1-4b5b-91c9-b12f34a322d4")
+                            NewsParsePublishedAtSettingsId = new Guid("33279872-ff96-4e67-999e-ee6c6e70a257")
                         });
                 });
 
@@ -2222,417 +2222,417 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("6ecfaab6-6a48-4d8e-95a2-87788c567cb3"),
+                            Id = new Guid("c80caa5e-9567-4654-94c6-1f6828fc2d0e"),
                             HtmlDescriptionXPath = "//div[contains(@class, 'article__body')]",
-                            SourceId = new Guid("b818a134-1513-49b2-94f7-5ef59a421268"),
+                            SourceId = new Guid("4ad9c4f7-0538-4a56-8c2e-2f2844513193"),
                             TextDescriptionXPath = "//div[contains(@class, 'article__body')]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("6318fb5a-64ae-4196-8220-7cc9a5a2efdc"),
+                            Id = new Guid("df6c1dc1-f352-4b80-84a8-54a4fd90246c"),
                             HtmlDescriptionXPath = "//div[contains(@class, 'article__text ')]",
-                            SourceId = new Guid("042f72dd-41a6-48a1-a2a9-bdd2d9580792"),
+                            SourceId = new Guid("2684aa2e-d0e2-407a-bce3-8d0aa977adc9"),
                             TextDescriptionXPath = "//div[contains(@class, 'article__text ')]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("7bed5daf-f215-43a7-b5a5-d7415990edb1"),
+                            Id = new Guid("a2bfe55a-6d48-4d2e-8b27-907233517a3e"),
                             HtmlDescriptionXPath = "//article/*",
-                            SourceId = new Guid("53854fd4-4a50-4f1e-a6f9-a56e195295fa"),
+                            SourceId = new Guid("05b68ddd-b4de-424b-8f34-f7f54ec12715"),
                             TextDescriptionXPath = "//article/*//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("306cc38e-3f24-4f5e-a4bf-507f46d7c885"),
+                            Id = new Guid("f62b9c01-f69e-4ca1-b306-772184659e30"),
                             HtmlDescriptionXPath = "//div[@class='topic-body__content']",
-                            SourceId = new Guid("ed83c801-82ea-4a5b-8c52-87fa4aa48db4"),
+                            SourceId = new Guid("77a23870-f64c-4090-9e92-603c7f80ea70"),
                             TextDescriptionXPath = "//div[@class='topic-body__content']//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("ac578b21-3c65-4ec9-b9fb-009aebe5bcc7"),
+                            Id = new Guid("4e81b91f-d336-4b9c-a506-7b92ec6094d3"),
                             HtmlDescriptionXPath = "//div[contains(@class, 'PageContentCommonStyling_text')]/*[not(name() = 'rg-video')]",
-                            SourceId = new Guid("2366e708-2aa5-4041-b2d4-2c9918b83d46"),
+                            SourceId = new Guid("6c459642-9fb6-4028-8e72-4c031dd4937a"),
                             TextDescriptionXPath = "//div[contains(@class, 'PageContentCommonStyling_text')]/*[not(name() = 'rg-video')]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("156719cd-f144-4bd4-9b16-98ae0b5cc3ab"),
+                            Id = new Guid("0a8ab6d7-8dfd-4e89-b17a-d930991e5c57"),
                             HtmlDescriptionXPath = "//div[@class='article_text']",
-                            SourceId = new Guid("d9e1b3b4-7a52-4c41-b4b7-894487d475be"),
+                            SourceId = new Guid("a9b85f74-5508-4269-91b1-9b39ee2d6b27"),
                             TextDescriptionXPath = "//div[@class='article_text']//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("8b6e31eb-20a6-497a-bd8f-6e9f4f93b1de"),
+                            Id = new Guid("276af382-dc02-4eb4-94fe-dcdadb713afe"),
                             HtmlDescriptionXPath = "//div[@class='article__text article__text_free']/*[not(contains(@class, 'article__text__overview')) and not(contains(@class, 'article__main-image'))]",
-                            SourceId = new Guid("0fdcfbe0-b879-4215-afeb-5e1bad2c1ac0"),
+                            SourceId = new Guid("7ee9a821-4a61-4362-808f-dac691997bdf"),
                             TextDescriptionXPath = "//div[@class='article__text article__text_free']/*[not(contains(@class, 'article__text__overview')) and not(contains(@class, 'article__main-image'))]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("6ce32b95-fa84-41ea-9bea-dbb808394cc1"),
+                            Id = new Guid("c76d5ca3-52df-4f4f-991a-05b65407daf7"),
                             HtmlDescriptionXPath = "//div[contains(@class, 'news-item__content')]",
-                            SourceId = new Guid("52af54b4-474a-4887-b59a-2c6a7aace79e"),
+                            SourceId = new Guid("864dbd8e-5fed-462f-9e71-aabc04481ca9"),
                             TextDescriptionXPath = "//div[contains(@class, 'news-item__content')]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("c5ab1cb6-5085-4fef-9229-9118e5948251"),
+                            Id = new Guid("22036ea4-0190-4ccc-bc0f-5a77c4b78deb"),
                             HtmlDescriptionXPath = "//div[@class='article_text_wrapper js-search-mark']/*[not(contains(@class, 'doc__text document_authors'))]",
-                            SourceId = new Guid("8e2a64f9-1f64-48cf-8c9d-fddb55a24134"),
+                            SourceId = new Guid("0c0a1024-262d-4256-9739-b921f8cf6720"),
                             TextDescriptionXPath = "//div[@class='article_text_wrapper js-search-mark']/*[not(contains(@class, 'doc__text document_authors'))]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("ec76a389-1ee4-41ed-8a9a-2d2491451918"),
+                            Id = new Guid("339b5526-f1f9-4d89-9f07-68611ccb5919"),
                             HtmlDescriptionXPath = "//div[@itemprop='articleBody']/*",
-                            SourceId = new Guid("546d30a7-75e7-42da-9fd3-f893f4b7465e"),
+                            SourceId = new Guid("c49b3ba3-3ba6-4ddc-8601-ce3b3d454c9d"),
                             TextDescriptionXPath = "//div[@itemprop='articleBody']//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("679f0b16-d471-403d-a539-2095de1336a3"),
+                            Id = new Guid("48a43db8-ac32-409d-b5d9-3cb2aef71912"),
                             HtmlDescriptionXPath = "//div[@class='article__content']/*[not(contains(@class, 'article__title')) and not(contains(@class, 'article__intro'))]",
-                            SourceId = new Guid("3fd9928c-7368-463a-a73c-a4724a9ce2db"),
+                            SourceId = new Guid("325212dd-78b6-4ce6-9c0c-7823f7c3975c"),
                             TextDescriptionXPath = "//div[@class='article__content']/*[not(contains(@class, 'article__title')) and not(contains(@class, 'article__intro'))]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("62978095-e4c3-4f20-a5fc-04b2da4fc359"),
+                            Id = new Guid("b0ad231f-52d9-4cdc-ab56-4e1b73411aed"),
                             HtmlDescriptionXPath = "//div[@class='js-mediator-article']",
-                            SourceId = new Guid("f2545d86-16b6-42ac-9668-4a78242935ed"),
+                            SourceId = new Guid("3256cb64-703f-4e40-ab98-24fce7336ac2"),
                             TextDescriptionXPath = "//div[@class='js-mediator-article']//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("e4655368-4d2c-4502-958c-a99c0d9d1471"),
+                            Id = new Guid("5ba45cbe-6e75-4175-85dd-1c9eff7d3d3b"),
                             HtmlDescriptionXPath = "//div[@class='b-text__content']/div[contains(@class, 'b-text__block')]",
-                            SourceId = new Guid("a5aa2308-3768-4661-a74a-069d8a54789f"),
+                            SourceId = new Guid("0a591ee7-614c-4491-a7a9-ffe7c3157917"),
                             TextDescriptionXPath = "//div[@class='b-text__content']/div[contains(@class, 'b-text__block')]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("a1f604b3-5c28-4f24-bcf3-c1bc15bc6cad"),
+                            Id = new Guid("12c214fc-cc69-461c-aa49-9b1feba92c2e"),
                             HtmlDescriptionXPath = "//div[@class='b-material-body']/div/*[not(@class='b-material-incut-m-image')]",
-                            SourceId = new Guid("39ba409e-9e89-47e7-82eb-e0e162934cc4"),
+                            SourceId = new Guid("8d4e4158-e198-4418-abc6-c5e1cdf04250"),
                             TextDescriptionXPath = "//div[@class='b-material-body']/div/*[not(@class='b-material-incut-m-image')]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("821e1e9a-2d0f-4bff-adb3-7fabe3b4b5ff"),
+                            Id = new Guid("926554c1-213a-4dfd-96ed-c5b0db283ff2"),
                             HtmlDescriptionXPath = "//article/div[@class='news_text']",
-                            SourceId = new Guid("7e67cde0-5285-4b5a-814f-29f6428191e2"),
+                            SourceId = new Guid("e9d3d4d6-2c5f-4981-8789-d24ee1e561c2"),
                             TextDescriptionXPath = "//article/div[@class='news_text']//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("4b6b8db8-7417-4bd5-a58b-f64b64e78bc2"),
+                            Id = new Guid("8686874a-05a4-42ea-80bc-c9ad27c3d8ff"),
                             HtmlDescriptionXPath = "//article/div[@class='article-content']/*[not(@class)]",
-                            SourceId = new Guid("048880f9-0884-4d79-ac86-e578d5a91a7e"),
+                            SourceId = new Guid("8c5140f7-2c93-456f-a852-16204716e73c"),
                             TextDescriptionXPath = "//article/div[@class='article-content']/*[not(@class)]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("19127150-51c8-4c1f-bc51-654223610c6e"),
+                            Id = new Guid("3b5c605f-a7a1-4d17-98c9-e49c74d10e9f"),
                             HtmlDescriptionXPath = "//div[contains(@class, 'styles_bodyWrapper')]/div[not(@class)]",
-                            SourceId = new Guid("1db41ddd-7656-4a0a-a8aa-d7e5aa730241"),
+                            SourceId = new Guid("f533cbff-5433-48f4-a1a1-34e9c89f0821"),
                             TextDescriptionXPath = "//div[contains(@class, 'styles_bodyWrapper')]/div[not(@class)]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("70d810d5-c12c-4a38-a868-8a06ecf3d658"),
+                            Id = new Guid("755c983a-6e37-411f-a6b5-1ef28fcb2abe"),
                             HtmlDescriptionXPath = "//div[contains(@class, 'article-entry')]//div[@class='js-mediator-article']/*[position()>4]",
-                            SourceId = new Guid("e7d7761b-df6a-45bf-85e4-572bc7985ac0"),
+                            SourceId = new Guid("539df01b-c5f8-4e92-8e6a-a10ece734370"),
                             TextDescriptionXPath = "//div[contains(@class, 'article-entry')]//div[@class='js-mediator-article']/*[position()>4 and not(name()='script')]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("e08416a9-e75f-4514-bc80-bd081a71f202"),
+                            Id = new Guid("981e6415-1c99-49e7-9faf-55c35eed1c83"),
                             HtmlDescriptionXPath = "//div[@itemprop='articleBody']/*[position()>2]",
-                            SourceId = new Guid("c065d23b-fa82-4814-b8f6-63bd0a9a88ad"),
+                            SourceId = new Guid("03c0436b-ebf7-4a97-96b9-54d55c8dd5cd"),
                             TextDescriptionXPath = "//div[@itemprop='articleBody']/*[position()>2]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("a2f84687-7724-4640-be47-79ffb765d81f"),
+                            Id = new Guid("f7fc7d0c-b481-4c99-9e58-a516a14cb4b0"),
                             HtmlDescriptionXPath = "//div[contains(@class, 'container-fluid shifted') and not(p[@class='announce lead']) and not(h1) and not(hr)]",
-                            SourceId = new Guid("0ea676bf-0a7f-48a4-b8d8-fb7986baf747"),
+                            SourceId = new Guid("8c08ff73-c2e3-4c06-bc72-0463c84e31ee"),
                             TextDescriptionXPath = "//div[contains(@class, 'container-fluid shifted') and not(p[@class='announce lead']) and not(h1) and not(hr)]//text()",
                             TitleXPath = "//meta[@name='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("995d5406-8855-46fb-aa46-59ace5ddcf6e"),
+                            Id = new Guid("f59e0993-0b63-4be7-9f13-49a92f8b8301"),
                             HtmlDescriptionXPath = "//div[@itemprop='articleBody']/*",
-                            SourceId = new Guid("6089c6f9-929a-4b1c-9502-2bf34aa7ce88"),
+                            SourceId = new Guid("d561969c-3751-4e81-9837-a5d896707fe4"),
                             TextDescriptionXPath = "//div[@itemprop='articleBody']/*//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("c2dd81db-dd40-4716-b221-55a7e0b24190"),
+                            Id = new Guid("ae9c317a-7ef6-41a4-95f1-3ca87eed0277"),
                             HtmlDescriptionXPath = "//article[@itemprop='articleBody']/*[not(name() = 'h1') and not(name() = 'aside') and not(name() = 'meta') and not(name() = 'link') and not(@itemprop)]",
-                            SourceId = new Guid("49316956-ce63-47a7-905e-49cfba2a1346"),
+                            SourceId = new Guid("02acac9b-f048-4d7d-9505-8d2aa8e6a45e"),
                             TextDescriptionXPath = "//article[@itemprop='articleBody']/*[not(name() = 'h1') and not(name() = 'aside') and not(name() = 'meta') and not(name() = 'link') and not(@itemprop)]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("c7f81de1-20cd-4e2a-b2d4-430a306acf51"),
+                            Id = new Guid("9f42918a-5400-4abe-8c96-efde954ab87e"),
                             HtmlDescriptionXPath = "//div[contains(@class, 'full-article')]/*[not(name()='h1') and not(name()='style') and not(name()='div')]",
-                            SourceId = new Guid("af86051b-7d0d-47fb-a975-c67e1c68660e"),
+                            SourceId = new Guid("1d9ee65e-708d-44ce-a3d5-17cc2c04b91f"),
                             TextDescriptionXPath = "//div[contains(@class, 'full-article')]/*[not(name()='h1') and not(name()='style') and not(name()='div')]//text()",
                             TitleXPath = "//meta[@name='title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("2107b9c3-4d7d-4944-ac87-c764eb2d8d60"),
+                            Id = new Guid("d28c88f1-9cb9-4a86-a2bf-d5debde5a805"),
                             HtmlDescriptionXPath = "//div[@itemprop='articleBody']/*[not(name()='div')]",
-                            SourceId = new Guid("fd2dcf64-58be-46da-bba5-c590750be1d5"),
+                            SourceId = new Guid("8f878cca-8778-487c-8862-bf93b0134f26"),
                             TextDescriptionXPath = "//div[@itemprop='articleBody']/*[not(name()='div')]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("75b4334a-b28d-408a-a5fe-38f22d6ddc9b"),
+                            Id = new Guid("a0f009fa-c0de-48bf-973a-a0751d04b717"),
                             HtmlDescriptionXPath = "//div[@itemprop='articleBody']/*[not(name()='figure' and position()=1)]",
-                            SourceId = new Guid("7fa5327f-cefb-47cb-98e2-bd102dddeb2e"),
+                            SourceId = new Guid("72035a56-7f9e-4e61-94a8-7af99322ebdd"),
                             TextDescriptionXPath = "//div[@itemprop='articleBody']/*[not(name()='figure') and not(lazyhydrate)]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("03b00068-703d-4914-8aac-417321efa4a9"),
+                            Id = new Guid("44766c3e-3618-47e4-b1c5-e27f4b079424"),
                             HtmlDescriptionXPath = "//div[@itemprop='articleBody']/*",
-                            SourceId = new Guid("285000c2-a4d1-4180-9065-6d946a930c95"),
+                            SourceId = new Guid("890c270c-e037-48a7-89b4-5e5bf409c505"),
                             TextDescriptionXPath = "//div[@itemprop='articleBody']/*//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("3196c477-1ac2-48d5-807d-b3d0973e8d1d"),
+                            Id = new Guid("8334ba09-9b47-4ea4-8d3f-feb02deceb09"),
                             HtmlDescriptionXPath = "//div[contains(@class, 'js-mediator-article')]/*[position()>1]",
-                            SourceId = new Guid("38a33c60-f8ce-4c24-bfc7-076ac5db22bc"),
+                            SourceId = new Guid("581c50a3-1b84-445a-ba63-69480f578b46"),
                             TextDescriptionXPath = "//div[contains(@class, 'js-mediator-article')]/*[position()>1]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("f0629df9-ac23-4b35-9009-3eb3df7069c9"),
+                            Id = new Guid("b94ffa83-703d-49d0-982d-ec5c8a5bd084"),
                             HtmlDescriptionXPath = "//article//div[@class='newstext-con']/*[position()>2]",
-                            SourceId = new Guid("099c5dd0-0363-4421-b993-e39e0d2e0552"),
+                            SourceId = new Guid("5bc703c2-1eda-40cc-99fd-a1ee7176033a"),
                             TextDescriptionXPath = "//article//div[@class='newstext-con']/*[position()>2]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("42afad4c-6ae3-40ea-b5f6-cf16b62e0850"),
+                            Id = new Guid("8fbb4720-0c12-4be3-a087-fdfd04595e67"),
                             HtmlDescriptionXPath = "//section[@name='articleBody']/*",
-                            SourceId = new Guid("81ae4b08-dd7f-4859-89bc-6ce82c3c15de"),
+                            SourceId = new Guid("aa190a4a-745e-452c-88ba-2b9155d46c5b"),
                             TextDescriptionXPath = "//section[@name='articleBody']/*//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("3d33915f-3ab0-434d-b52f-138593f0d065"),
+                            Id = new Guid("d29bb306-e411-466c-8862-3515266e4a4b"),
                             HtmlDescriptionXPath = "//div[@itemprop='articleBody']/*",
-                            SourceId = new Guid("e81d4ca1-3bd7-4485-8864-3c861a99f4b4"),
+                            SourceId = new Guid("ec188daf-5a07-485b-a867-9135a382b571"),
                             TextDescriptionXPath = "//div[@itemprop='articleBody']/*//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("75076198-ce23-40d8-95a0-23991ed6e3e5"),
+                            Id = new Guid("578b96e7-9885-43bc-a757-0aec5cddaf5b"),
                             HtmlDescriptionXPath = "//div[@data-gtm-el='content-body']/*[not(name()='div' and @data-wide='true')]",
-                            SourceId = new Guid("ce3fab46-ecd0-4546-a2de-767b84f4dddf"),
+                            SourceId = new Guid("886f22e2-9d3e-4a7c-b2a6-a5a8a01c5165"),
                             TextDescriptionXPath = "//div[@data-gtm-el='content-body']/*[not(name()='div' and @data-wide='true')]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("55b29016-4fa6-4d26-878a-3a118bb2677d"),
+                            Id = new Guid("d6297613-fd5c-4d45-ba9c-4a8e78b558a3"),
                             HtmlDescriptionXPath = "//div[contains(@class, 'styled__StoryBody')]/*[not(name()='p' and contains(@class, 'styled__StoryParagraph') and position()=1) and not(name()='div' and contains(@class, 'styled__StoryImgContainer') and position()=2)]",
-                            SourceId = new Guid("b870468c-f636-48b7-bdd5-66315913a89d"),
+                            SourceId = new Guid("8fb6b7c9-e4c5-4787-909a-91cb468d4f86"),
                             TextDescriptionXPath = "//div[contains(@class, 'styled__StoryBody')]/*[not(name()='p' and contains(@class, 'styled__StoryParagraph') and position()=1) and not(name()='div' and contains(@class, 'styled__StoryImgContainer') and position()=2)]//text()",
                             TitleXPath = "//meta[@name='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("7054689b-8c29-4c3e-b100-777bb5b84ac9"),
+                            Id = new Guid("16e4ff95-a5bf-489a-a59b-dc1b455c8a62"),
                             HtmlDescriptionXPath = "//section[@itemprop='articleBody']/*",
-                            SourceId = new Guid("b7d19db8-88b5-4707-9a32-4a2ba60be6cc"),
+                            SourceId = new Guid("258e3b3c-0a88-4a34-86bf-72eb342f9efd"),
                             TextDescriptionXPath = "//section[@itemprop='articleBody']/*[not(name()='script')]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("8e37382a-44cc-44f0-9690-45aa7c60744d"),
+                            Id = new Guid("517c7c39-9682-4e85-962b-ace3a1144ea7"),
                             HtmlDescriptionXPath = "//div[contains(@class, 'material-content')]/*",
-                            SourceId = new Guid("4a19a958-b4cc-4046-8a1a-b98d6aeefaf2"),
+                            SourceId = new Guid("82ab9f35-4373-4893-a747-6151efe10d2c"),
                             TextDescriptionXPath = "//div[contains(@class, 'material-content')]/p//text()",
                             TitleXPath = "//a[@class='header']/text()"
                         },
                         new
                         {
-                            Id = new Guid("35c0f63c-2a03-4414-bcfd-b35d3daeab29"),
+                            Id = new Guid("cb551d20-f4cf-47a6-bcba-5428dbb555e1"),
                             HtmlDescriptionXPath = "//div[@class='textart']/div[not(@class)]/*",
-                            SourceId = new Guid("31941989-b1f8-4f1c-9ea3-cffecda0259d"),
+                            SourceId = new Guid("195d3d87-f062-4a10-890c-93cc5b4e76db"),
                             TextDescriptionXPath = "//div[@class='textart']/div[not(@class)]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("7f032ab4-4968-414a-9e61-02f32b4cd50b"),
+                            Id = new Guid("c95b3a67-c65c-435e-b1dc-96aaac8a13d9"),
                             HtmlDescriptionXPath = "//div[@class='material-7days__paragraf-content']/*[not(name()='div' and @itemprop='image' and position()=1)]",
-                            SourceId = new Guid("034485d8-4249-44e6-9079-92516cc5370d"),
+                            SourceId = new Guid("25164b7a-b375-4143-b2ed-8437c602fcc4"),
                             TextDescriptionXPath = "//div[@class='material-7days__paragraf-content']//p//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("b49ca6f0-c0f3-4791-aca2-5648202243d1"),
+                            Id = new Guid("fb70f1d7-bdb3-4352-bfde-704e077b7c7c"),
                             HtmlDescriptionXPath = "//section[@itemprop='articleBody']/div[@class='ds-article-content-block-and-creative-container' and position()>1]",
-                            SourceId = new Guid("da896a33-2bb7-4ecd-9c29-12ca213c3f40"),
+                            SourceId = new Guid("5299fde1-d2be-4f3d-8a1f-35605285c000"),
                             TextDescriptionXPath = "//section[@itemprop='articleBody']/div[@class='ds-article-content-block-and-creative-container' and position()>1]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("59d85dc4-4116-4785-8dbd-3bb18a472330"),
+                            Id = new Guid("f50e1187-7865-47c5-9364-b981c479421b"),
                             HtmlDescriptionXPath = "//section[contains(@class, '_page-section')]/div[contains(@class, '_content_')]/*",
-                            SourceId = new Guid("d2432d6c-5d94-44c6-b281-931e19b3270f"),
+                            SourceId = new Guid("93bf84b9-37b2-43bc-bc5d-b69f25936e0c"),
                             TextDescriptionXPath = "//section[contains(@class, '_page-section')]/div[contains(@class, '_content_')]/*[contains(@class, '_text_')]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("b1a4c064-a6c3-4f13-82b2-2a520a0f2ad9"),
+                            Id = new Guid("1fc11022-2d88-42ae-bd6d-032758049af4"),
                             HtmlDescriptionXPath = "//div[@class='widgets__item__text__inside']/*",
-                            SourceId = new Guid("be2aeff9-ee84-4ac7-9a99-a1148b909587"),
+                            SourceId = new Guid("d6db5c5c-0e21-4aab-8f4b-433afafa26d1"),
                             TextDescriptionXPath = "//div[@class='widgets__item__text__inside']//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("f73a6421-12af-4481-acef-b880a91d643d"),
+                            Id = new Guid("37ea2837-b550-4a69-a54e-1d17e387ff7c"),
                             HtmlDescriptionXPath = "//div[@class='only__text']/*",
-                            SourceId = new Guid("fb0892ce-81d8-41ad-a760-c5dfe90f8ca4"),
+                            SourceId = new Guid("2a1be939-2c32-4030-af8f-87ba407a9964"),
                             TextDescriptionXPath = "//div[@class='only__text']/*[not(name()='script')]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("d2c8667d-3ff9-4d72-80a9-5a4423e4c2bd"),
+                            Id = new Guid("5f4d0a7f-fcb4-41ae-987f-2fdf3f456e9d"),
                             HtmlDescriptionXPath = "//div[@id='article_body']/*",
-                            SourceId = new Guid("726c806b-fb35-4509-8c6e-ede61dd4ae99"),
+                            SourceId = new Guid("9ef11fb0-edd8-4a8b-a24b-b7d3adc77918"),
                             TextDescriptionXPath = "//div[@id='article_body']//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("2e3f695a-3da6-4548-b327-f8e7ab704eb1"),
+                            Id = new Guid("a2d6e3f4-6fda-46e2-aa85-39eb18c85de9"),
                             HtmlDescriptionXPath = "//div[@class='news-content__body']//div[contains(@class, 'content-text')]/*",
-                            SourceId = new Guid("037b1c41-ab76-4071-8687-c644997daf13"),
+                            SourceId = new Guid("279a61e4-b214-4c4a-9a58-cf2959fece74"),
                             TextDescriptionXPath = "//div[@class='news-content__body']//div[contains(@class, 'content-text')]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("ef2cbff3-870a-45f3-95dd-fe20f7cea27d"),
+                            Id = new Guid("4389214c-a07b-471a-bc95-73b7c495d580"),
                             HtmlDescriptionXPath = "//section[@itemprop='articleBody']/*",
-                            SourceId = new Guid("7f77ce7b-20ba-43fc-8169-600d89500d6f"),
+                            SourceId = new Guid("1d5eee9e-c4a0-4157-a329-5ba8173ec789"),
                             TextDescriptionXPath = "//section[@itemprop='articleBody']//p//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("87c7fe8e-f736-4faa-a29a-1b331445b876"),
+                            Id = new Guid("442fa986-5691-4dc7-aefa-69eea326bf01"),
                             HtmlDescriptionXPath = "//div[@class='article-text']/*[not(name()='div' and @class='picture-wrapper')]",
-                            SourceId = new Guid("5c7ac952-5266-4783-9131-b218d0fdfca6"),
+                            SourceId = new Guid("0953d5cb-41e3-49ec-9eea-dbbfc1ab67cc"),
                             TextDescriptionXPath = "//div[@class='article-text']/*[not(name()='div' and @class='picture-wrapper')]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("2d66b024-5877-485b-8999-bd58ca67096f"),
+                            Id = new Guid("6c0da7df-74ef-4b96-b3cd-1a3817de9170"),
                             HtmlDescriptionXPath = "//span[@itemprop='articleBody']/*",
-                            SourceId = new Guid("c3e25c8f-ae8b-4fb0-8b7b-b9b46c5c1e9b"),
+                            SourceId = new Guid("0c34dbe7-aadd-4673-9367-6c705a9519b0"),
                             TextDescriptionXPath = "//span[@itemprop='articleBody']//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("1619f60f-04c0-4ece-83af-eeccd5a78430"),
+                            Id = new Guid("e89d9898-a84a-43b2-a909-85ed4753a60a"),
                             HtmlDescriptionXPath = "//div[contains(@class, 'field-type-text-long')]/*",
-                            SourceId = new Guid("630133c1-ab04-489c-8120-22caebafbd82"),
+                            SourceId = new Guid("97cf68d9-65d1-48e8-b333-11cc0a590f1f"),
                             TextDescriptionXPath = "//div[contains(@class, 'field-type-text-long')]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("2008019e-0565-498c-aa87-525ccff923c2"),
+                            Id = new Guid("880d766c-5672-457f-98ca-60ca11637984"),
                             HtmlDescriptionXPath = "//div[@itemprop='articleBody']/*",
-                            SourceId = new Guid("8c66cbb4-e235-4b22-8142-eaa151a7d815"),
+                            SourceId = new Guid("65dd16a0-17a4-4fbb-b2b8-d1dbaf845e97"),
                             TextDescriptionXPath = "//div[@itemprop='articleBody']//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("a62509ee-9637-4d1b-8947-c9f712eaddb5"),
+                            Id = new Guid("8ac035cc-a118-4e61-bbf3-db636e336f4f"),
                             HtmlDescriptionXPath = "//div[@id='content']//div[contains(@class, 'topic')]/div[@class='content']/*",
-                            SourceId = new Guid("7e78e249-9d53-426f-bd04-9e8e869f1fd8"),
+                            SourceId = new Guid("e2292a43-bacb-4797-8f10-7e919caf9c56"),
                             TextDescriptionXPath = "//div[@id='content']//div[contains(@class, 'topic')]/div[@class='content']//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("83f8b67e-fa3e-4d64-81e0-09a172db2318"),
+                            Id = new Guid("f672a55c-4c9e-4684-8973-16306be0902a"),
                             HtmlDescriptionXPath = "//div[contains(@class, 'finfin-local-plugin-publication-item-item-')]/*",
-                            SourceId = new Guid("7d1f9e68-45c2-4616-8767-e79fad6b5d93"),
+                            SourceId = new Guid("cd575801-0d0c-4a70-9d9d-fb91c459d719"),
                             TextDescriptionXPath = "//div[contains(@class, 'finfin-local-plugin-publication-item-item-')]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("0897a798-2068-4eec-a0c2-8e870f890d1a"),
+                            Id = new Guid("6428b94e-7c36-4f75-b45c-ae076d55dd01"),
                             HtmlDescriptionXPath = "//div[@class='newsDetail-content__info']/*[not(name()='h1') and not(name()='h5')]",
-                            SourceId = new Guid("046565c3-3d73-4bc2-b280-5a415385fdab"),
+                            SourceId = new Guid("176e94f0-0804-4650-9bcc-4eb035fb6fa4"),
                             TextDescriptionXPath = "//div[@class='newsDetail-content__info']/*[not(name()='h1') and not(name()='h5')]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("4dfd8e60-07e6-4c61-9faf-ef3b4d848df5"),
+                            Id = new Guid("2dd377de-9eb7-4b27-adf4-398755baaaee"),
                             HtmlDescriptionXPath = "//div[contains(@class, 'article__body')]/*",
-                            SourceId = new Guid("dc835f30-5ead-43e0-b3ed-fdd04e9b80a2"),
+                            SourceId = new Guid("599eae9b-df46-4af2-b1c2-58cbeb39943f"),
                             TextDescriptionXPath = "//div[contains(@class, 'article__body')]//*[not(name()='script')]/text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         },
                         new
                         {
-                            Id = new Guid("81713e54-2a73-4102-85ce-9b766f3e13ff"),
+                            Id = new Guid("e01cf720-5a6c-4f99-9acc-b45ff8b0b277"),
                             HtmlDescriptionXPath = "//div[@class='GeneralMaterial-module-article']/*[position()>1]",
-                            SourceId = new Guid("989343fc-a8f6-4840-8746-6b3f3eb00f5d"),
+                            SourceId = new Guid("9008d75a-ce62-4f8a-99a4-4403ff1fc123"),
                             TextDescriptionXPath = "//div[@class='GeneralMaterial-module-article']/*[position()>1]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
                         });
@@ -2670,366 +2670,366 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("95949f8e-be4b-4d6d-8609-482d4e556b02"),
+                            Id = new Guid("4d9089d4-7f36-4f64-b54f-ed0eabf3fb3a"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("6ecfaab6-6a48-4d8e-95a2-87788c567cb3"),
+                            ParseSettingsId = new Guid("c80caa5e-9567-4654-94c6-1f6828fc2d0e"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("49eca46c-2e1e-4249-a3e3-6199af4f854e"),
+                            Id = new Guid("3fd8d9b0-8cb5-4fa5-8918-be71b248c24b"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("6318fb5a-64ae-4196-8220-7cc9a5a2efdc"),
+                            ParseSettingsId = new Guid("df6c1dc1-f352-4b80-84a8-54a4fd90246c"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("96fdc64e-64e1-406f-818c-4591c094757c"),
+                            Id = new Guid("8437f5e8-e019-47ae-b09e-ea11ae3d6da7"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("7bed5daf-f215-43a7-b5a5-d7415990edb1"),
+                            ParseSettingsId = new Guid("a2bfe55a-6d48-4d2e-8b27-907233517a3e"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("55452096-2f4c-4c90-b743-9fbb3d6defb7"),
+                            Id = new Guid("82048577-ec53-4280-b072-510ad7833fcc"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("306cc38e-3f24-4f5e-a4bf-507f46d7c885"),
+                            ParseSettingsId = new Guid("f62b9c01-f69e-4ca1-b306-772184659e30"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("b7434fc4-f3d4-460d-9236-ad4d5f140207"),
+                            Id = new Guid("dff6b447-a453-46bf-a231-e6c505f6b407"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("ac578b21-3c65-4ec9-b9fb-009aebe5bcc7"),
+                            ParseSettingsId = new Guid("4e81b91f-d336-4b9c-a506-7b92ec6094d3"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("93445ac2-711a-4c14-807f-63935d615bc7"),
+                            Id = new Guid("d14f3e72-4e14-42b4-9b88-5278b9ef317e"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("156719cd-f144-4bd4-9b16-98ae0b5cc3ab"),
+                            ParseSettingsId = new Guid("0a8ab6d7-8dfd-4e89-b17a-d930991e5c57"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("a32ac871-d5db-4013-a92e-5369d311e4aa"),
+                            Id = new Guid("f52db070-8137-4b2f-bd2a-38df1278a8db"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("8b6e31eb-20a6-497a-bd8f-6e9f4f93b1de"),
+                            ParseSettingsId = new Guid("276af382-dc02-4eb4-94fe-dcdadb713afe"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("c1c4a31d-7b09-465a-a630-baae9ef331a0"),
+                            Id = new Guid("14b369fa-8d74-4775-bacd-9b990c515873"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("6ce32b95-fa84-41ea-9bea-dbb808394cc1"),
+                            ParseSettingsId = new Guid("c76d5ca3-52df-4f4f-991a-05b65407daf7"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("5eea6636-bddc-4173-ae16-9bce180e33b6"),
+                            Id = new Guid("67eed7aa-6891-4cd4-9eeb-7ff54a7f2d7c"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("c5ab1cb6-5085-4fef-9229-9118e5948251"),
+                            ParseSettingsId = new Guid("22036ea4-0190-4ccc-bc0f-5a77c4b78deb"),
                             TitleXPath = "//meta[@name='description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("c058fc17-343c-4f45-85e6-3317cf0afb03"),
+                            Id = new Guid("201ef5d1-7c3f-4d59-8b5f-9a3aba134a24"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("ec76a389-1ee4-41ed-8a9a-2d2491451918"),
+                            ParseSettingsId = new Guid("339b5526-f1f9-4d89-9f07-68611ccb5919"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("3205880d-3d18-4996-9641-db7bffe02ad9"),
+                            Id = new Guid("d7e5f6f9-565a-4d52-8fcd-6b714d52072a"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("679f0b16-d471-403d-a539-2095de1336a3"),
+                            ParseSettingsId = new Guid("48a43db8-ac32-409d-b5d9-3cb2aef71912"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("cfebb61b-223b-4ea7-bfa7-40b07a24da63"),
+                            Id = new Guid("a246d951-f984-415a-8fb4-1adf7ce67733"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("62978095-e4c3-4f20-a5fc-04b2da4fc359"),
+                            ParseSettingsId = new Guid("b0ad231f-52d9-4cdc-ab56-4e1b73411aed"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("f21e676d-cf98-48d2-8a39-9329e703aae6"),
+                            Id = new Guid("5a063703-dd93-45a7-a54d-f31216c9c2fd"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("e4655368-4d2c-4502-958c-a99c0d9d1471"),
+                            ParseSettingsId = new Guid("5ba45cbe-6e75-4175-85dd-1c9eff7d3d3b"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("e0d137ab-d579-4968-afa8-09dbe36cf512"),
+                            Id = new Guid("ee68109a-5dc2-4ee0-94c4-d5b2bc988b0d"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("a1f604b3-5c28-4f24-bcf3-c1bc15bc6cad"),
+                            ParseSettingsId = new Guid("12c214fc-cc69-461c-aa49-9b1feba92c2e"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("b802dd62-62dd-4dc3-8653-473ad5fc9750"),
+                            Id = new Guid("d388b93d-1c28-4372-b3e8-0df3f0a6446a"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("821e1e9a-2d0f-4bff-adb3-7fabe3b4b5ff"),
+                            ParseSettingsId = new Guid("926554c1-213a-4dfd-96ed-c5b0db283ff2"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("7c63c91a-bbee-4ae5-9726-76b57b22254a"),
+                            Id = new Guid("dfb7c894-45be-4bb0-8805-fd0c19c4b442"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("4b6b8db8-7417-4bd5-a58b-f64b64e78bc2"),
+                            ParseSettingsId = new Guid("8686874a-05a4-42ea-80bc-c9ad27c3d8ff"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("e4c2dc39-2b89-4aec-8995-c3a4e6cbce8a"),
+                            Id = new Guid("c74b4ff2-8c8c-44c6-93c8-e932abed183c"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("19127150-51c8-4c1f-bc51-654223610c6e"),
+                            ParseSettingsId = new Guid("3b5c605f-a7a1-4d17-98c9-e49c74d10e9f"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("fa81eb1f-4778-4416-900c-12bb89258aba"),
+                            Id = new Guid("4e58f0ef-3050-43f8-8496-ec8005567dcd"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("70d810d5-c12c-4a38-a868-8a06ecf3d658"),
+                            ParseSettingsId = new Guid("755c983a-6e37-411f-a6b5-1ef28fcb2abe"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("46ecbc71-896e-4a28-b4e0-567df6c3b3ad"),
+                            Id = new Guid("ccff1930-20cd-45f6-bfad-36d40df3273b"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("e08416a9-e75f-4514-bc80-bd081a71f202"),
+                            ParseSettingsId = new Guid("981e6415-1c99-49e7-9faf-55c35eed1c83"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("2f6d4f65-b2ae-45d1-93a2-9e96fe4323f7"),
+                            Id = new Guid("4a644874-7e6b-4e0e-8dd6-eca154a4aaa7"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("a2f84687-7724-4640-be47-79ffb765d81f"),
+                            ParseSettingsId = new Guid("f7fc7d0c-b481-4c99-9e58-a516a14cb4b0"),
                             TitleXPath = "//meta[@name='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("29ac3427-7be4-4baf-9370-99403850a3be"),
+                            Id = new Guid("65f3c8c8-66c3-4dfc-8db3-7e50a0a46968"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("995d5406-8855-46fb-aa46-59ace5ddcf6e"),
+                            ParseSettingsId = new Guid("f59e0993-0b63-4be7-9f13-49a92f8b8301"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("426a3712-df28-4d08-bc27-659e9a7a050b"),
+                            Id = new Guid("c538c47b-8e26-4471-a937-10625d5b7ec5"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("c2dd81db-dd40-4716-b221-55a7e0b24190"),
+                            ParseSettingsId = new Guid("ae9c317a-7ef6-41a4-95f1-3ca87eed0277"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("13d0b635-8c96-4827-8f5b-40d7f3dc424f"),
+                            Id = new Guid("82378f03-1397-4656-bc36-d3b7d0ee11e1"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("c7f81de1-20cd-4e2a-b2d4-430a306acf51"),
+                            ParseSettingsId = new Guid("9f42918a-5400-4abe-8c96-efde954ab87e"),
                             TitleXPath = "//meta[@name='description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("e2e3672e-7b15-4a17-b996-543ca5b02e7c"),
+                            Id = new Guid("dfb00a29-254d-4545-a3b2-5b213ee42dd3"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("2107b9c3-4d7d-4944-ac87-c764eb2d8d60"),
+                            ParseSettingsId = new Guid("d28c88f1-9cb9-4a86-a2bf-d5debde5a805"),
                             TitleXPath = "//meta[@itemprop='description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("651303df-ecea-48ab-b5d5-229ddb378a8c"),
+                            Id = new Guid("f7d4a009-ad00-4a5c-a357-314653720ed0"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("75b4334a-b28d-408a-a5fe-38f22d6ddc9b"),
+                            ParseSettingsId = new Guid("a0f009fa-c0de-48bf-973a-a0751d04b717"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("891de55c-b08c-44c3-9453-05e1d84923b9"),
+                            Id = new Guid("1ddb7b84-9be9-4c01-a26b-af681b2f38c8"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("03b00068-703d-4914-8aac-417321efa4a9"),
+                            ParseSettingsId = new Guid("44766c3e-3618-47e4-b1c5-e27f4b079424"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("2761242a-6ccf-4ce3-b204-b0c971174aa5"),
+                            Id = new Guid("4e7ae257-d7f2-4548-b43e-cf07a8696d72"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("3196c477-1ac2-48d5-807d-b3d0973e8d1d"),
+                            ParseSettingsId = new Guid("8334ba09-9b47-4ea4-8d3f-feb02deceb09"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("1471ec3b-20ff-4c9e-be70-07fe8d55e52b"),
+                            Id = new Guid("479700be-a994-46ed-8a0b-24a99fc4b839"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("f0629df9-ac23-4b35-9009-3eb3df7069c9"),
+                            ParseSettingsId = new Guid("b94ffa83-703d-49d0-982d-ec5c8a5bd084"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("fdc669ea-3e8d-49e6-8c24-0b57640e3f4f"),
+                            Id = new Guid("5a3a8d63-82a6-4f67-8650-50052cc15f6a"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("42afad4c-6ae3-40ea-b5f6-cf16b62e0850"),
+                            ParseSettingsId = new Guid("8fbb4720-0c12-4be3-a087-fdfd04595e67"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("51cf7658-6ef4-4bd9-be5e-b63791908f71"),
+                            Id = new Guid("d941b91b-97f8-443f-a5ec-a37d61f10131"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("3d33915f-3ab0-434d-b52f-138593f0d065"),
+                            ParseSettingsId = new Guid("d29bb306-e411-466c-8862-3515266e4a4b"),
                             TitleXPath = "//meta[@name='description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("feb51de4-05b9-4b75-b9cb-151af9bd40a5"),
+                            Id = new Guid("5ef349bb-6b1e-417b-a0d0-8d5aa3aee3be"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("75076198-ce23-40d8-95a0-23991ed6e3e5"),
+                            ParseSettingsId = new Guid("578b96e7-9885-43bc-a757-0aec5cddaf5b"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("12152fe1-0f6d-4777-b65d-72cecbcb39a8"),
+                            Id = new Guid("72caaa96-fb60-4bce-803c-b396c00b5345"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("55b29016-4fa6-4d26-878a-3a118bb2677d"),
+                            ParseSettingsId = new Guid("d6297613-fd5c-4d45-ba9c-4a8e78b558a3"),
                             TitleXPath = "//div[contains(@class, 'styled__StoryBody')]/p[contains(@class, 'styled__StoryParagraph') and position()=1]/text()"
                         },
                         new
                         {
-                            Id = new Guid("1e633402-cfd2-45a5-b75c-1e8b912e385d"),
+                            Id = new Guid("9e11ff25-e82f-4a13-9723-1cdb7b250fa6"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("7054689b-8c29-4c3e-b100-777bb5b84ac9"),
+                            ParseSettingsId = new Guid("16e4ff95-a5bf-489a-a59b-dc1b455c8a62"),
                             TitleXPath = "//meta[@name='description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("d3b49fb1-b5e7-428e-b72a-11b78ca6a1f2"),
+                            Id = new Guid("58dd618a-bf9d-4d8a-a181-0d50a1db165c"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("8e37382a-44cc-44f0-9690-45aa7c60744d"),
+                            ParseSettingsId = new Guid("517c7c39-9682-4e85-962b-ace3a1144ea7"),
                             TitleXPath = "//meta[@name='description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("832a75a5-4f06-4b0d-af02-b40e14754d37"),
+                            Id = new Guid("04e66e3d-2bac-4426-a370-90176a19a125"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("35c0f63c-2a03-4414-bcfd-b35d3daeab29"),
+                            ParseSettingsId = new Guid("cb551d20-f4cf-47a6-bcba-5428dbb555e1"),
                             TitleXPath = "//div[@class='block-page-new']/h2/text()"
                         },
                         new
                         {
-                            Id = new Guid("d77ea88b-69ba-46ad-b71c-9287c635e381"),
+                            Id = new Guid("003e8875-f679-4ca1-a61d-e85ad3af3727"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("7f032ab4-4968-414a-9e61-02f32b4cd50b"),
+                            ParseSettingsId = new Guid("c95b3a67-c65c-435e-b1dc-96aaac8a13d9"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("f9043bd0-9290-49a5-90ca-eb5221907313"),
+                            Id = new Guid("2dd9eeaf-0ef6-464f-9867-e0be0241ce38"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("b49ca6f0-c0f3-4791-aca2-5648202243d1"),
+                            ParseSettingsId = new Guid("fb70f1d7-bdb3-4352-bfde-704e077b7c7c"),
                             TitleXPath = "//p[contains(@itemprop, 'alternativeHeadline')]/text()"
                         },
                         new
                         {
-                            Id = new Guid("ffc6c159-8330-4787-9f42-cf21fe084d61"),
+                            Id = new Guid("ba816153-09ee-48d9-85ce-f026057b7843"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("59d85dc4-4116-4785-8dbd-3bb18a472330"),
+                            ParseSettingsId = new Guid("f50e1187-7865-47c5-9364-b981c479421b"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("161caf36-deae-4eb3-9325-e09dc5b897cb"),
+                            Id = new Guid("bcfc81f7-e2c9-4850-910d-4f69cedec5d6"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("b1a4c064-a6c3-4f13-82b2-2a520a0f2ad9"),
+                            ParseSettingsId = new Guid("1fc11022-2d88-42ae-bd6d-032758049af4"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("7a4c9c14-db17-45c1-b627-a3875e8881ee"),
+                            Id = new Guid("0908f0b6-be46-42bf-a035-4d01ea9e5995"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("f73a6421-12af-4481-acef-b880a91d643d"),
+                            ParseSettingsId = new Guid("37ea2837-b550-4a69-a54e-1d17e387ff7c"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("d2d5c2dd-8545-464a-9eac-d8844ec560c8"),
+                            Id = new Guid("39448ca5-a796-472d-be23-1759bfccd302"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("d2c8667d-3ff9-4d72-80a9-5a4423e4c2bd"),
+                            ParseSettingsId = new Guid("5f4d0a7f-fcb4-41ae-987f-2fdf3f456e9d"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("8255400a-6b69-4ae1-81fe-1ad998887317"),
+                            Id = new Guid("003c8b3c-ea73-4a35-9290-73e8b68f4ade"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("2e3f695a-3da6-4548-b327-f8e7ab704eb1"),
+                            ParseSettingsId = new Guid("a2d6e3f4-6fda-46e2-aa85-39eb18c85de9"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("7e60b993-4bd7-4f21-a7d4-87598603907a"),
+                            Id = new Guid("2bad65ad-2a5a-457a-b89b-108ee6a9df96"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("ef2cbff3-870a-45f3-95dd-fe20f7cea27d"),
+                            ParseSettingsId = new Guid("4389214c-a07b-471a-bc95-73b7c495d580"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("3a971900-efcd-4742-ba32-2db06ce4db21"),
+                            Id = new Guid("73047588-2d16-420b-90b2-f03a3a315c2e"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("87c7fe8e-f736-4faa-a29a-1b331445b876"),
+                            ParseSettingsId = new Guid("442fa986-5691-4dc7-aefa-69eea326bf01"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("d0df6541-ddf2-4939-8099-1e801f9fcba5"),
+                            Id = new Guid("eec9a5e3-be6a-41fc-8bea-0011be5306ff"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("2d66b024-5877-485b-8999-bd58ca67096f"),
+                            ParseSettingsId = new Guid("6c0da7df-74ef-4b96-b3cd-1a3817de9170"),
                             TitleXPath = "//meta[@name='description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("254962cd-84e8-41fd-8351-461d0bad2b0f"),
+                            Id = new Guid("9e7a0df2-69e8-4dc5-98d8-2d6ed928daf9"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("1619f60f-04c0-4ece-83af-eeccd5a78430"),
+                            ParseSettingsId = new Guid("e89d9898-a84a-43b2-a909-85ed4753a60a"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("171b345e-fb25-4551-85fc-e9c732d4845f"),
+                            Id = new Guid("07c255e8-de55-4291-98ba-cd212d9aca26"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("2008019e-0565-498c-aa87-525ccff923c2"),
+                            ParseSettingsId = new Guid("880d766c-5672-457f-98ca-60ca11637984"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("796034f0-634b-489c-be65-dd35412ea407"),
+                            Id = new Guid("0f9ae286-9f32-4d6f-bf9a-a8740efc9148"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("a62509ee-9637-4d1b-8947-c9f712eaddb5"),
+                            ParseSettingsId = new Guid("8ac035cc-a118-4e61-bbf3-db636e336f4f"),
                             TitleXPath = "//meta[@name='DESCRIPTION']/@content"
                         },
                         new
                         {
-                            Id = new Guid("bf73d151-be52-4a0b-8f0f-eab349fbc047"),
+                            Id = new Guid("608a7fe4-108f-47e3-92eb-b1997e728439"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("83f8b67e-fa3e-4d64-81e0-09a172db2318"),
+                            ParseSettingsId = new Guid("f672a55c-4c9e-4684-8973-16306be0902a"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("9e3a0b1f-86f7-4ee7-8466-6bc0f567cf90"),
+                            Id = new Guid("8f462445-7e37-49df-916a-7794920b0908"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("0897a798-2068-4eec-a0c2-8e870f890d1a"),
+                            ParseSettingsId = new Guid("6428b94e-7c36-4f75-b45c-ae076d55dd01"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("3b43fc3e-58a5-451e-a932-7f9d52d4325b"),
+                            Id = new Guid("c797a856-b3b2-47a0-a1ab-568d6eaaa77e"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("4dfd8e60-07e6-4c61-9faf-ef3b4d848df5"),
+                            ParseSettingsId = new Guid("2dd377de-9eb7-4b27-adf4-398755baaaee"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         },
                         new
                         {
-                            Id = new Guid("7b4f498e-4e27-4bdf-9e4e-fecdf7324eba"),
+                            Id = new Guid("86508cce-e8c5-455d-a543-3f70e2cea189"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("81713e54-2a73-4102-85ce-9b766f3e13ff"),
+                            ParseSettingsId = new Guid("e01cf720-5a6c-4f99-9acc-b45ff8b0b277"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         });
                 });
@@ -3066,51 +3066,51 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("dc6b94d1-f888-4863-abfe-b7ce3ac69111"),
+                            Id = new Guid("58e47920-1714-464a-ba75-69cef040880c"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("6ecfaab6-6a48-4d8e-95a2-87788c567cb3"),
+                            ParseSettingsId = new Guid("c80caa5e-9567-4654-94c6-1f6828fc2d0e"),
                             UrlXPath = "//div[@class='article__header']//div[@class='media__video']//video/@src"
                         },
                         new
                         {
-                            Id = new Guid("6a3de5ec-d655-4056-96f0-d97019bcb884"),
+                            Id = new Guid("3ee17a0e-dd0b-4bcd-bf84-a515fc676d1a"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("306cc38e-3f24-4f5e-a4bf-507f46d7c885"),
+                            ParseSettingsId = new Guid("f62b9c01-f69e-4ca1-b306-772184659e30"),
                             UrlXPath = "//div[contains(@class, 'eagleplayer')]//video/@src"
                         },
                         new
                         {
-                            Id = new Guid("bdbc4c23-a75f-427e-95e5-52931bb4302c"),
+                            Id = new Guid("29092055-b688-4fea-919b-896ccd631190"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("ac578b21-3c65-4ec9-b9fb-009aebe5bcc7"),
+                            ParseSettingsId = new Guid("4e81b91f-d336-4b9c-a506-7b92ec6094d3"),
                             UrlXPath = "//div[contains(@class, 'PageContentCommonStyling_text')]/rg-video//video/@src"
                         },
                         new
                         {
-                            Id = new Guid("755a5d19-f3e3-435f-bb7f-002e16dafaf8"),
+                            Id = new Guid("69a251fa-cfd2-431b-833c-de2c2d44aa37"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("679f0b16-d471-403d-a539-2095de1336a3"),
+                            ParseSettingsId = new Guid("48a43db8-ac32-409d-b5d9-3cb2aef71912"),
                             UrlXPath = "//meta[@property='og:video']/@content"
                         },
                         new
                         {
-                            Id = new Guid("215183bd-fd08-49d5-b4f1-05946c719913"),
+                            Id = new Guid("5400cba2-ba39-411f-8ebe-38b872a53244"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("a1f604b3-5c28-4f24-bcf3-c1bc15bc6cad"),
+                            ParseSettingsId = new Guid("12c214fc-cc69-461c-aa49-9b1feba92c2e"),
                             UrlXPath = "//meta[@property='og:video:url']/@content"
                         },
                         new
                         {
-                            Id = new Guid("1faa244b-1935-42f9-a392-304975689d6f"),
+                            Id = new Guid("8434f54f-67a5-40a5-ba1b-b6af2279e2e5"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("f0629df9-ac23-4b35-9009-3eb3df7069c9"),
+                            ParseSettingsId = new Guid("b94ffa83-703d-49d0-982d-ec5c8a5bd084"),
                             UrlXPath = "//article//div[@class='videoWrapper' and @itemprop='video']/iframe[@class='video']/@src"
                         },
                         new
                         {
-                            Id = new Guid("19d8dcd2-06da-48c4-b0b5-75a812485255"),
+                            Id = new Guid("6e44da01-1ff1-496c-9822-d33db0bb2e7a"),
                             IsRequired = false,
-                            ParseSettingsId = new Guid("d2c8667d-3ff9-4d72-80a9-5a4423e4c2bd"),
+                            ParseSettingsId = new Guid("5f4d0a7f-fcb4-41ae-987f-2fdf3f456e9d"),
                             UrlXPath = "//meta[@property='og:video']/@content"
                         });
                 });
@@ -3174,367 +3174,367 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d7ac4228-57ca-4789-8bcb-a501ad49d9b7"),
+                            Id = new Guid("c971c3c8-7069-4317-8cff-2fd4ce42c708"),
                             NewsSiteUrl = "https://ria.ru/",
                             NewsUrlXPath = "//a[contains(@class, 'cell-list__item-link')]/@href",
-                            SourceId = new Guid("b818a134-1513-49b2-94f7-5ef59a421268")
+                            SourceId = new Guid("4ad9c4f7-0538-4a56-8c2e-2f2844513193")
                         },
                         new
                         {
-                            Id = new Guid("fa2798fa-a544-4e6f-bf6b-15d1dc18678d"),
+                            Id = new Guid("29feaabf-7026-4087-84af-636d54e01c87"),
                             NewsSiteUrl = "https://russian.rt.com/",
                             NewsUrlXPath = "//a[contains(@class, 'link') and contains(@href, 'news/')]/@href",
-                            SourceId = new Guid("042f72dd-41a6-48a1-a2a9-bdd2d9580792")
+                            SourceId = new Guid("2684aa2e-d0e2-407a-bce3-8d0aa977adc9")
                         },
                         new
                         {
-                            Id = new Guid("b575dcd9-5398-426e-b78c-97c9452a22c5"),
+                            Id = new Guid("376139cb-9f6f-4059-8708-435320984f0e"),
                             NewsSiteUrl = "https://tass.ru/",
                             NewsUrlXPath = "//a[contains(@class, 'tass_pkg_link-v5WdK') and contains(substring(@href, 2), '/') and not(contains(@href, '/spec/')) and not(contains(@href, 'spec.tass.ru'))]/@href",
-                            SourceId = new Guid("53854fd4-4a50-4f1e-a6f9-a56e195295fa")
+                            SourceId = new Guid("05b68ddd-b4de-424b-8f34-f7f54ec12715")
                         },
                         new
                         {
-                            Id = new Guid("c08a0a10-a3b1-4495-8dff-03132905ab4b"),
+                            Id = new Guid("c87554a5-5f09-4da3-aa18-b4b382dd3368"),
                             NewsSiteUrl = "https://lenta.ru/",
                             NewsUrlXPath = "//a[starts-with(@href, '/news/')]/@href",
-                            SourceId = new Guid("ed83c801-82ea-4a5b-8c52-87fa4aa48db4")
+                            SourceId = new Guid("77a23870-f64c-4090-9e92-603c7f80ea70")
                         },
                         new
                         {
-                            Id = new Guid("e5a3cdf6-d53a-4f9a-b409-a87733c80b7f"),
+                            Id = new Guid("df1a0482-9390-4c6b-acd3-79f0dbc37f06"),
                             NewsSiteUrl = "https://rg.ru/",
                             NewsUrlXPath = "//a[contains(@href, '.html')]/@href",
-                            SourceId = new Guid("2366e708-2aa5-4041-b2d4-2c9918b83d46")
+                            SourceId = new Guid("6c459642-9fb6-4028-8e72-4c031dd4937a")
                         },
                         new
                         {
-                            Id = new Guid("2396edf8-453a-4e57-ac03-74e5b5102076"),
+                            Id = new Guid("a6e7afdd-4c46-4805-b320-2b379a6a7ffe"),
                             NewsSiteUrl = "https://aif.ru/",
                             NewsUrlXPath = "//span[contains(@class, 'item_text__title')]/../@href",
-                            SourceId = new Guid("d9e1b3b4-7a52-4c41-b4b7-894487d475be")
+                            SourceId = new Guid("a9b85f74-5508-4269-91b1-9b39ee2d6b27")
                         },
                         new
                         {
-                            Id = new Guid("1896c15c-e8cf-439a-ba1f-bacce1c09ce6"),
+                            Id = new Guid("2eaa2319-e1ca-4c11-8bab-37df0b62302b"),
                             NewsSiteUrl = "https://www.rbc.ru/",
                             NewsUrlXPath = "//a[contains(@href, 'https://www.rbc.ru/') and contains(@href, '?from=')]/@href",
-                            SourceId = new Guid("0fdcfbe0-b879-4215-afeb-5e1bad2c1ac0")
+                            SourceId = new Guid("7ee9a821-4a61-4362-808f-dac691997bdf")
                         },
                         new
                         {
-                            Id = new Guid("f5075972-6c0e-406b-b6b9-4c206b236821"),
+                            Id = new Guid("36baa463-9cf6-4f1c-8716-02d14e267356"),
                             NewsSiteUrl = "https://www.sports.ru/news/",
                             NewsUrlXPath = "//a[contains(@href, '.html') and not(contains(@href, '.html#comments')) and not (contains(@href, '/blogs/'))]/@href",
-                            SourceId = new Guid("52af54b4-474a-4887-b59a-2c6a7aace79e")
+                            SourceId = new Guid("864dbd8e-5fed-462f-9e71-aabc04481ca9")
                         },
                         new
                         {
-                            Id = new Guid("ef600e55-c7e8-4d20-935a-d85461bdc77a"),
+                            Id = new Guid("8da158fb-9397-432c-89fa-0a81fcfa1e25"),
                             NewsSiteUrl = "https://www.kommersant.ru/",
                             NewsUrlXPath = "//a[contains(@href, '/doc/') and contains(@href, '?from=')]/@href",
-                            SourceId = new Guid("8e2a64f9-1f64-48cf-8c9d-fddb55a24134")
+                            SourceId = new Guid("0c0a1024-262d-4256-9739-b921f8cf6720")
                         },
                         new
                         {
-                            Id = new Guid("f40a3c74-13de-422f-986d-46d5bf358305"),
+                            Id = new Guid("e4da0ae9-1cc2-4355-885b-b8c3876fba3a"),
                             NewsSiteUrl = "https://iz.ru/news/",
                             NewsUrlXPath = "//a[contains(@href, '?main_click')]/@href",
-                            SourceId = new Guid("546d30a7-75e7-42da-9fd3-f893f4b7465e")
+                            SourceId = new Guid("c49b3ba3-3ba6-4ddc-8601-ce3b3d454c9d")
                         },
                         new
                         {
-                            Id = new Guid("10c504e4-80f3-40bd-b187-7eed2c0fdddd"),
+                            Id = new Guid("80f0deb0-1a71-473e-9fe9-f6985319e73d"),
                             NewsSiteUrl = "https://tsargrad.tv/",
                             NewsUrlXPath = "//a[contains(@class, 'news-item__link')]/@href",
-                            SourceId = new Guid("3fd9928c-7368-463a-a73c-a4724a9ce2db")
+                            SourceId = new Guid("325212dd-78b6-4ce6-9c0c-7823f7c3975c")
                         },
                         new
                         {
-                            Id = new Guid("efc221dd-d540-4968-86ff-f7a1eb1af915"),
+                            Id = new Guid("5da26075-4574-4b57-bf5d-4346f8427d43"),
                             NewsSiteUrl = "http://www.belta.by/",
                             NewsUrlXPath = "//a[contains(@href, 'www.belta.by') and contains(@href, '/view/')]/@href",
-                            SourceId = new Guid("f2545d86-16b6-42ac-9668-4a78242935ed")
+                            SourceId = new Guid("3256cb64-703f-4e40-ab98-24fce7336ac2")
                         },
                         new
                         {
-                            Id = new Guid("0e6f8fef-74c9-4a16-a0fa-4086f3ce4bf4"),
+                            Id = new Guid("640708eb-2b66-436d-9422-8e59ae9ea881"),
                             NewsSiteUrl = "https://svpressa.ru/all/news/",
                             NewsUrlXPath = "//a[contains(@href, '/news/') and not(contains(@href, '?')) and not(starts-with(@href, '/all/news/'))]/@href",
-                            SourceId = new Guid("a5aa2308-3768-4661-a74a-069d8a54789f")
+                            SourceId = new Guid("0a591ee7-614c-4491-a7a9-ffe7c3157917")
                         },
                         new
                         {
-                            Id = new Guid("2cc025d5-22d3-4d26-9e6e-5205a51592b0"),
+                            Id = new Guid("df073432-c46c-4cbd-a741-faa5f5eb0d85"),
                             NewsSiteUrl = "https://www.m24.ru/",
                             NewsUrlXPath = "//a[contains(@href, '/news/')]/@href",
-                            SourceId = new Guid("39ba409e-9e89-47e7-82eb-e0e162934cc4")
+                            SourceId = new Guid("8d4e4158-e198-4418-abc6-c5e1cdf04250")
                         },
                         new
                         {
-                            Id = new Guid("3ddae590-b86b-4307-9d10-02538ad40952"),
+                            Id = new Guid("c4b2fb8d-9b0f-432e-a39b-8ad78f27881a"),
                             NewsSiteUrl = "https://vz.ru/",
                             NewsUrlXPath = "//a[contains(@href, '.html') and not(contains(@href, '#comments')) and not(contains(@href, '?')) and not(contains(@href, '/about/'))]/@href",
-                            SourceId = new Guid("7e67cde0-5285-4b5a-814f-29f6428191e2")
+                            SourceId = new Guid("e9d3d4d6-2c5f-4981-8789-d24ee1e561c2")
                         },
                         new
                         {
-                            Id = new Guid("872b8069-24ed-4490-9fd1-dc392e1c2af8"),
+                            Id = new Guid("191de3ae-7e85-4f6b-9584-9333bf06e511"),
                             NewsSiteUrl = "https://www.championat.com/news/1.html?utm_source=button&utm_medium=news",
                             NewsUrlXPath = "//a[contains(@href, 'news-') and contains(@href, '.html') and not(contains(@href, '#comments'))]/@href",
-                            SourceId = new Guid("048880f9-0884-4d79-ac86-e578d5a91a7e")
+                            SourceId = new Guid("8c5140f7-2c93-456f-a852-16204716e73c")
                         },
                         new
                         {
-                            Id = new Guid("77125961-48b8-4046-a062-f3c675bb6175"),
+                            Id = new Guid("db3c651c-099e-479d-9046-c8dc7f613784"),
                             NewsSiteUrl = "https://life.ru/s/novosti",
                             NewsUrlXPath = "//a[contains(@href, '/p/')]/@href",
-                            SourceId = new Guid("1db41ddd-7656-4a0a-a8aa-d7e5aa730241")
+                            SourceId = new Guid("f533cbff-5433-48f4-a1a1-34e9c89f0821")
                         },
                         new
                         {
-                            Id = new Guid("cba15f11-3ea5-4390-909b-972de1342824"),
+                            Id = new Guid("1775c419-cf22-49fa-948f-d54bdfb78d24"),
                             NewsSiteUrl = "https://3dnews.ru/news/",
                             NewsUrlXPath = "//div[@class='news-feed-all']//a[@class='entry-header']/h1/../@href",
-                            SourceId = new Guid("e7d7761b-df6a-45bf-85e4-572bc7985ac0")
+                            SourceId = new Guid("539df01b-c5f8-4e92-8e6a-a10ece734370")
                         },
                         new
                         {
-                            Id = new Guid("253dbc39-7125-4197-8794-26ad558bc749"),
+                            Id = new Guid("fd317222-64b8-4e6c-9a47-5c648cdffcc4"),
                             NewsSiteUrl = "https://www.ixbt.com/news/",
                             NewsUrlXPath = "//a[starts-with(@href, '/news/') and contains(@href, '.html') and not(contains(@href, '#comments'))]/@href",
-                            SourceId = new Guid("c065d23b-fa82-4814-b8f6-63bd0a9a88ad")
+                            SourceId = new Guid("03c0436b-ebf7-4a97-96b9-54d55c8dd5cd")
                         },
                         new
                         {
-                            Id = new Guid("40b266bc-4d1a-4bec-ae59-743dcb61240c"),
+                            Id = new Guid("a647f5ef-1c16-4e14-ae4f-1a9a0339f50b"),
                             NewsSiteUrl = "https://ixbt.games/news/",
                             NewsUrlXPath = "//a[@class='card-link']/@href",
-                            SourceId = new Guid("0ea676bf-0a7f-48a4-b8d8-fb7986baf747")
+                            SourceId = new Guid("8c08ff73-c2e3-4c06-bc72-0463c84e31ee")
                         },
                         new
                         {
-                            Id = new Guid("85007304-d036-4577-a623-1a73d796873b"),
+                            Id = new Guid("dfc290e0-11b6-475c-a551-96bbdf1aa3bc"),
                             NewsSiteUrl = "https://www.gazeta.ru/news/",
                             NewsUrlXPath = "//a[contains(@href, '/news/') and contains(@href, '.shtml') and not(contains(@href, '?'))]/@href",
-                            SourceId = new Guid("6089c6f9-929a-4b1c-9502-2bf34aa7ce88")
+                            SourceId = new Guid("d561969c-3751-4e81-9837-a5d896707fe4")
                         },
                         new
                         {
-                            Id = new Guid("f6e1264d-cec5-4490-8ff8-a8e4e73ee48a"),
+                            Id = new Guid("83a8eb53-f37f-47d0-b822-a66a40ce031a"),
                             NewsSiteUrl = "https://www.interfax.ru/",
                             NewsUrlXPath = "//div[@class='timeline']//a[@tabindex=5]/@href",
-                            SourceId = new Guid("49316956-ce63-47a7-905e-49cfba2a1346")
+                            SourceId = new Guid("02acac9b-f048-4d7d-9505-8d2aa8e6a45e")
                         },
                         new
                         {
-                            Id = new Guid("5ed39f3d-53a3-47c3-b5f1-922d8dc830c8"),
+                            Id = new Guid("7223921e-ecf8-4f56-966b-369da8c8d54e"),
                             NewsSiteUrl = "https://www.pravda.ru/",
                             NewsUrlXPath = "//a[contains(@href, '/news/') and not(@href='https://www.pravda.ru/news/')]/@href",
-                            SourceId = new Guid("af86051b-7d0d-47fb-a975-c67e1c68660e")
+                            SourceId = new Guid("1d9ee65e-708d-44ce-a3d5-17cc2c04b91f")
                         },
                         new
                         {
-                            Id = new Guid("6ee63d38-34ec-49d1-b8f2-e0f5395d23da"),
+                            Id = new Guid("9ca4c33d-8a0c-48f5-b028-b21ca8e26903"),
                             NewsSiteUrl = "https://ura.news/",
                             NewsUrlXPath = "//a[contains(@href, '/news/')]/@href",
-                            SourceId = new Guid("fd2dcf64-58be-46da-bba5-c590750be1d5")
+                            SourceId = new Guid("8f878cca-8778-487c-8862-bf93b0134f26")
                         },
                         new
                         {
-                            Id = new Guid("a971425a-5b9e-414d-8057-2d9a9574e7c1"),
+                            Id = new Guid("bbbdbc51-980f-4418-8a87-f53a30f09b61"),
                             NewsSiteUrl = "https://74.ru/",
                             NewsUrlXPath = "//a[starts-with(@href, '/text/') and not(contains(@href, '?')) and not(contains(@href, 'comments/')) and not(@href='/text/')]/@href",
-                            SourceId = new Guid("7fa5327f-cefb-47cb-98e2-bd102dddeb2e")
+                            SourceId = new Guid("72035a56-7f9e-4e61-94a8-7af99322ebdd")
                         },
                         new
                         {
-                            Id = new Guid("fced900f-6013-460e-8086-103ac0013159"),
+                            Id = new Guid("ae298fdd-6a37-466a-a0e3-092f05300651"),
                             NewsSiteUrl = "https://www.1obl.ru/news/",
                             NewsUrlXPath = "//a[starts-with(@href, '/news/') and not(contains(@href, '?'))]/@href",
-                            SourceId = new Guid("285000c2-a4d1-4180-9065-6d946a930c95")
+                            SourceId = new Guid("890c270c-e037-48a7-89b4-5e5bf409c505")
                         },
                         new
                         {
-                            Id = new Guid("e21528d9-aa5f-4bc0-863e-bafa6392ac9a"),
+                            Id = new Guid("b540ef19-ee0e-4ee9-89b8-473aed71d1c5"),
                             NewsSiteUrl = "https://www.cybersport.ru/",
                             NewsUrlXPath = "//a[contains(@href, '/tags/')]/@href",
-                            SourceId = new Guid("38a33c60-f8ce-4c24-bfc7-076ac5db22bc")
+                            SourceId = new Guid("581c50a3-1b84-445a-ba63-69480f578b46")
                         },
                         new
                         {
-                            Id = new Guid("7b34b09f-c321-45ca-9542-447dccdf3089"),
+                            Id = new Guid("326dcf86-0645-4faf-bc5d-4a4f5ebc9042"),
                             NewsSiteUrl = "https://www.hltv.org/",
                             NewsUrlXPath = "//a[contains(@href, '/news/')]/@href",
-                            SourceId = new Guid("099c5dd0-0363-4421-b993-e39e0d2e0552")
+                            SourceId = new Guid("5bc703c2-1eda-40cc-99fd-a1ee7176033a")
                         },
                         new
                         {
-                            Id = new Guid("30bbbf97-9a1b-42a9-95aa-fe49fb934062"),
+                            Id = new Guid("dbd4ce72-db4f-4775-b589-c05c09f0107e"),
                             NewsSiteUrl = "https://www.nytimes.com/",
                             NewsUrlXPath = "//a[contains(@href, '.html')]/@href",
-                            SourceId = new Guid("81ae4b08-dd7f-4859-89bc-6ce82c3c15de")
+                            SourceId = new Guid("aa190a4a-745e-452c-88ba-2b9155d46c5b")
                         },
                         new
                         {
-                            Id = new Guid("c18cec20-aebf-454d-b2fb-a80d4ef31dd3"),
+                            Id = new Guid("5aec376f-24db-45a3-8dd6-e59f62f61733"),
                             NewsSiteUrl = "https://edition.cnn.com/",
                             NewsUrlXPath = "//a[contains(@href, '.html')]/@href",
-                            SourceId = new Guid("e81d4ca1-3bd7-4485-8864-3c861a99f4b4")
+                            SourceId = new Guid("ec188daf-5a07-485b-a867-9135a382b571")
                         },
                         new
                         {
-                            Id = new Guid("f1240280-45fc-4d44-b1a0-a291ef55ef26"),
+                            Id = new Guid("4a2c7618-37fd-48dd-b8a2-9948a8fe90b3"),
                             NewsSiteUrl = "https://www.kp.ru/",
                             NewsUrlXPath = "//a[contains(@href, '/news/')]/@href",
-                            SourceId = new Guid("ce3fab46-ecd0-4546-a2de-767b84f4dddf")
+                            SourceId = new Guid("886f22e2-9d3e-4a7c-b2a6-a5a8a01c5165")
                         },
                         new
                         {
-                            Id = new Guid("1a4f2253-7af1-4c0a-b5f0-ae0061aed157"),
+                            Id = new Guid("ae551f9e-ffea-4abc-b3a2-81c503898c79"),
                             NewsSiteUrl = "https://www.zr.ru/news/",
                             NewsUrlXPath = "//a[contains(@href, '/news/') and not(starts-with(@href, '/news/')) and not(starts-with(@href, 'https://'))]/@href",
-                            SourceId = new Guid("b870468c-f636-48b7-bdd5-66315913a89d")
+                            SourceId = new Guid("8fb6b7c9-e4c5-4787-909a-91cb468d4f86")
                         },
                         new
                         {
-                            Id = new Guid("702adaa7-c62e-4297-8396-5395e477931a"),
+                            Id = new Guid("d438464d-b7e5-4d0a-b119-5fe8c1277dbe"),
                             NewsSiteUrl = "https://www.avtovzglyad.ru/news/",
                             NewsUrlXPath = "//a[@class='news-card__link']/@href",
-                            SourceId = new Guid("b7d19db8-88b5-4707-9a32-4a2ba60be6cc")
+                            SourceId = new Guid("258e3b3c-0a88-4a34-86bf-72eb342f9efd")
                         },
                         new
                         {
-                            Id = new Guid("339ca50e-c800-4f0e-9b7f-4c50d3dcf1a8"),
+                            Id = new Guid("49aebed4-d5e9-4d75-93f2-5875b77d8b51"),
                             NewsSiteUrl = "https://overclockers.ru/news",
                             NewsUrlXPath = "//div[contains(@class, 'event')]//a[not(contains(@href, '#comments'))]/@href",
-                            SourceId = new Guid("4a19a958-b4cc-4046-8a1a-b98d6aeefaf2")
+                            SourceId = new Guid("82ab9f35-4373-4893-a747-6151efe10d2c")
                         },
                         new
                         {
-                            Id = new Guid("e4deabc0-3aa5-43d2-8a22-2ece13a300c5"),
+                            Id = new Guid("cc405744-054a-4c78-804e-f1cf03a00887"),
                             NewsSiteUrl = "https://www.kinonews.ru/news/",
                             NewsUrlXPath = "//a[contains(@href, '/news_') and not(contains(@href, 'comments')) and not(contains(@href, 'news_p'))]/@href",
-                            SourceId = new Guid("31941989-b1f8-4f1c-9ea3-cffecda0259d")
+                            SourceId = new Guid("195d3d87-f062-4a10-890c-93cc5b4e76db")
                         },
                         new
                         {
-                            Id = new Guid("0c4acc98-b82b-4393-9d60-7af2af3bbc10"),
+                            Id = new Guid("2fda8440-464a-427f-a96d-aeaf83f48755"),
                             NewsSiteUrl = "https://7days.ru/news/",
                             NewsUrlXPath = "//a[contains(@class, '7days__item_href') and starts-with(@href, '/news/')]/@href",
-                            SourceId = new Guid("034485d8-4249-44e6-9079-92516cc5370d")
+                            SourceId = new Guid("25164b7a-b375-4143-b2ed-8437c602fcc4")
                         },
                         new
                         {
-                            Id = new Guid("d88dd0ac-1544-43bc-8881-ba8849da906c"),
+                            Id = new Guid("10e9ca77-02ec-4deb-96b0-c92295c53ffc"),
                             NewsSiteUrl = "https://www.starhit.ru/novosti/",
                             NewsUrlXPath = "//a[@class='announce-inline-tile__label-container']/@href",
-                            SourceId = new Guid("da896a33-2bb7-4ecd-9c29-12ca213c3f40")
+                            SourceId = new Guid("5299fde1-d2be-4f3d-8a1f-35605285c000")
                         },
                         new
                         {
-                            Id = new Guid("a5021b87-1935-4f70-bbcf-4e12f91d3f90"),
+                            Id = new Guid("71c33cc0-0eeb-4ab9-acdf-05d20270c7a1"),
                             NewsSiteUrl = "https://stopgame.ru/news",
                             NewsUrlXPath = "//div[contains(@class, 'list-view')]//div[contains(@class, '_card')]/a/@href",
-                            SourceId = new Guid("d2432d6c-5d94-44c6-b281-931e19b3270f")
+                            SourceId = new Guid("93bf84b9-37b2-43bc-bc5d-b69f25936e0c")
                         },
                         new
                         {
-                            Id = new Guid("22749480-9c11-4386-b169-1ac0f0872590"),
+                            Id = new Guid("89f5d344-c0e5-4edc-bdb8-dd7ca0d80866"),
                             NewsSiteUrl = "https://ren.tv/news/",
                             NewsUrlXPath = "//a[starts-with(@href, '/news/')]/@href",
-                            SourceId = new Guid("be2aeff9-ee84-4ac7-9a99-a1148b909587")
+                            SourceId = new Guid("d6db5c5c-0e21-4aab-8f4b-433afafa26d1")
                         },
                         new
                         {
-                            Id = new Guid("0109f664-72a7-4a0f-a815-04b4403b6212"),
+                            Id = new Guid("46ec2d1e-819b-4c6d-8d78-bfbdd44d37dc"),
                             NewsSiteUrl = "https://www.novorosinform.org/",
                             NewsUrlXPath = "//a[contains(@href, '.html')]/@href",
-                            SourceId = new Guid("fb0892ce-81d8-41ad-a760-c5dfe90f8ca4")
+                            SourceId = new Guid("2a1be939-2c32-4030-af8f-87ba407a9964")
                         },
                         new
                         {
-                            Id = new Guid("a36c7628-8c91-46dd-8a75-1f5402e8039b"),
+                            Id = new Guid("6a74ce54-2478-40e1-85b8-2ae0f07769b6"),
                             NewsSiteUrl = "https://www.5-tv.ru/news/",
                             NewsUrlXPath = "//a[not(@href='https://www.5-tv.ru/news/') and starts-with(@href, 'https://www.5-tv.ru/news/')]/@href",
-                            SourceId = new Guid("726c806b-fb35-4509-8c6e-ede61dd4ae99")
+                            SourceId = new Guid("9ef11fb0-edd8-4a8b-a24b-b7d3adc77918")
                         },
                         new
                         {
-                            Id = new Guid("84c03f80-4333-4a32-bd22-57d3c31b9755"),
+                            Id = new Guid("6df2694c-77b7-45ac-bb96-474a6afad3b8"),
                             NewsSiteUrl = "https://www.ntv.ru/novosti/",
                             NewsUrlXPath = "//a[not(@href='/novosti/') and not(@href='/novosti/authors') and starts-with(@href, '/novosti/')]/@href",
-                            SourceId = new Guid("037b1c41-ab76-4071-8687-c644997daf13")
+                            SourceId = new Guid("279a61e4-b214-4c4a-9a58-cf2959fece74")
                         },
                         new
                         {
-                            Id = new Guid("edb13b07-0290-4345-8277-0740a11f0561"),
+                            Id = new Guid("adc9b75b-aa51-4370-bfd0-984645cbf511"),
                             NewsSiteUrl = "https://www.fontanka.ru/24hours_news.html",
                             NewsUrlXPath = "//section//ul/li[@class='IBae3']//a[@class='IBd3']/@href",
-                            SourceId = new Guid("7f77ce7b-20ba-43fc-8169-600d89500d6f")
+                            SourceId = new Guid("1d5eee9e-c4a0-4157-a329-5ba8173ec789")
                         },
                         new
                         {
-                            Id = new Guid("bfb349b2-dbc3-4cd5-be3e-285d1a6d1d44"),
+                            Id = new Guid("11c26db9-12ab-4434-9549-af4da5b9ecbf"),
                             NewsSiteUrl = "https://regnum.ru/news",
                             NewsUrlXPath = "//a[not(@href='/news/') and starts-with(@href, '/news/')]/@href",
-                            SourceId = new Guid("5c7ac952-5266-4783-9131-b218d0fdfca6")
+                            SourceId = new Guid("0953d5cb-41e3-49ec-9eea-dbbfc1ab67cc")
                         },
                         new
                         {
-                            Id = new Guid("2ceeca42-747e-4b23-929a-1c7c5e3e7003"),
+                            Id = new Guid("f2c1132c-577c-4112-b2b9-06a84ab35419"),
                             NewsSiteUrl = "https://www.womanhit.ru/",
                             NewsUrlXPath = "//a[not(@href='/stars/news/') and starts-with(@href, '/stars/news/')]/@href",
-                            SourceId = new Guid("c3e25c8f-ae8b-4fb0-8b7b-b9b46c5c1e9b")
+                            SourceId = new Guid("0c34dbe7-aadd-4673-9367-6c705a9519b0")
                         },
                         new
                         {
-                            Id = new Guid("a8fc593f-d221-45f7-afaf-24b23f2f1a80"),
+                            Id = new Guid("a4ac87ae-e85c-4489-9d07-7df12cbce151"),
                             NewsSiteUrl = "https://rusvesna.su/news",
                             NewsUrlXPath = "//a[not(@href='/news/') and starts-with(@href, '/news/')]/@href",
-                            SourceId = new Guid("630133c1-ab04-489c-8120-22caebafbd82")
+                            SourceId = new Guid("97cf68d9-65d1-48e8-b333-11cc0a590f1f")
                         },
                         new
                         {
-                            Id = new Guid("9c1ba513-2a00-4b18-83dc-42d5a6b3dffc"),
+                            Id = new Guid("6f6df8c8-a429-449a-a80e-2091a041b7e0"),
                             NewsSiteUrl = "https://travelask.ru/news",
                             NewsUrlXPath = "//a[not(@href='/news/') and starts-with(@href, '/news/')]/@href",
-                            SourceId = new Guid("8c66cbb4-e235-4b22-8142-eaa151a7d815")
+                            SourceId = new Guid("65dd16a0-17a4-4fbb-b2b8-d1dbaf845e97")
                         },
                         new
                         {
-                            Id = new Guid("8530545c-ca94-4d92-a133-6f1049dd69c0"),
+                            Id = new Guid("620c4128-f3a5-4923-ba61-0fc51af28cff"),
                             NewsSiteUrl = "https://smart-lab.ru/news/",
                             NewsUrlXPath = "//a[not(@href='/blog/') and starts-with(@href, '/blog/') and contains(@href, '.php')]/@href",
-                            SourceId = new Guid("7e78e249-9d53-426f-bd04-9e8e869f1fd8")
+                            SourceId = new Guid("e2292a43-bacb-4797-8f10-7e919caf9c56")
                         },
                         new
                         {
-                            Id = new Guid("9bbe6eeb-7a92-49a4-bbaf-f83791380598"),
+                            Id = new Guid("d8ab024e-42d1-4e1e-9084-d142caf10a8d"),
                             NewsSiteUrl = "https://www.finam.ru/",
                             NewsUrlXPath = "//a[starts-with(@href, 'publications/item/') or starts-with(@href, '/publications/item/')]/@href",
-                            SourceId = new Guid("7d1f9e68-45c2-4616-8767-e79fad6b5d93")
+                            SourceId = new Guid("cd575801-0d0c-4a70-9d9d-fb91c459d719")
                         },
                         new
                         {
-                            Id = new Guid("749de020-e002-4c25-96a7-46b58cf0f59e"),
+                            Id = new Guid("f5f6520c-66d2-438d-b8a2-6397522c5cec"),
                             NewsSiteUrl = "https://www.khl.ru/news/",
                             NewsUrlXPath = "//a[starts-with(@href, '/news/') and contains(@href, '.html')]/@href",
-                            SourceId = new Guid("046565c3-3d73-4bc2-b280-5a415385fdab")
+                            SourceId = new Guid("176e94f0-0804-4650-9bcc-4eb035fb6fa4")
                         },
                         new
                         {
-                            Id = new Guid("1b12e6dc-3c13-4ee1-95fd-b5dc456f729a"),
+                            Id = new Guid("c162d88c-4153-4f13-99e9-398388994d50"),
                             NewsSiteUrl = "https://radiosputnik.ru/",
                             NewsUrlXPath = "//a[starts-with(@href, 'https://radiosputnik.ru/') and contains(@href, '.html')]/@href",
-                            SourceId = new Guid("dc835f30-5ead-43e0-b3ed-fdd04e9b80a2")
+                            SourceId = new Guid("599eae9b-df46-4af2-b1c2-58cbeb39943f")
                         },
                         new
                         {
-                            Id = new Guid("8fece6bf-6911-4507-991a-18ddbef3b750"),
+                            Id = new Guid("70568003-2cd3-449b-b156-7fe24a9ab7e4"),
                             NewsSiteUrl = "https://meduza.io/",
                             NewsUrlXPath = "//a[not(@href='/news/') and starts-with(@href, '/news/')]/@href",
-                            SourceId = new Guid("989343fc-a8f6-4840-8746-6b3f3eb00f5d")
+                            SourceId = new Guid("9008d75a-ce62-4f8a-99a4-4403ff1fc123")
                         });
                 });
 
@@ -3576,364 +3576,364 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b818a134-1513-49b2-94f7-5ef59a421268"),
+                            Id = new Guid("4ad9c4f7-0538-4a56-8c2e-2f2844513193"),
                             IsEnabled = true,
                             SiteUrl = "https://ria.ru/",
                             Title = "РИА Новости"
                         },
                         new
                         {
-                            Id = new Guid("042f72dd-41a6-48a1-a2a9-bdd2d9580792"),
+                            Id = new Guid("2684aa2e-d0e2-407a-bce3-8d0aa977adc9"),
                             IsEnabled = true,
                             SiteUrl = "https://russian.rt.com/",
                             Title = "RT на русском"
                         },
                         new
                         {
-                            Id = new Guid("53854fd4-4a50-4f1e-a6f9-a56e195295fa"),
+                            Id = new Guid("05b68ddd-b4de-424b-8f34-f7f54ec12715"),
                             IsEnabled = true,
                             SiteUrl = "https://tass.ru/",
                             Title = "ТАСС"
                         },
                         new
                         {
-                            Id = new Guid("ed83c801-82ea-4a5b-8c52-87fa4aa48db4"),
+                            Id = new Guid("77a23870-f64c-4090-9e92-603c7f80ea70"),
                             IsEnabled = true,
                             SiteUrl = "https://lenta.ru/",
                             Title = "Лента.Ру"
                         },
                         new
                         {
-                            Id = new Guid("2366e708-2aa5-4041-b2d4-2c9918b83d46"),
+                            Id = new Guid("6c459642-9fb6-4028-8e72-4c031dd4937a"),
                             IsEnabled = true,
                             SiteUrl = "https://rg.ru/",
                             Title = "Российская газета"
                         },
                         new
                         {
-                            Id = new Guid("d9e1b3b4-7a52-4c41-b4b7-894487d475be"),
+                            Id = new Guid("a9b85f74-5508-4269-91b1-9b39ee2d6b27"),
                             IsEnabled = true,
                             SiteUrl = "https://aif.ru/",
                             Title = "Аргументы и факты"
                         },
                         new
                         {
-                            Id = new Guid("0fdcfbe0-b879-4215-afeb-5e1bad2c1ac0"),
+                            Id = new Guid("7ee9a821-4a61-4362-808f-dac691997bdf"),
                             IsEnabled = true,
                             SiteUrl = "https://www.rbc.ru/",
                             Title = "РБК"
                         },
                         new
                         {
-                            Id = new Guid("52af54b4-474a-4887-b59a-2c6a7aace79e"),
+                            Id = new Guid("864dbd8e-5fed-462f-9e71-aabc04481ca9"),
                             IsEnabled = true,
                             SiteUrl = "https://www.sports.ru/",
                             Title = "Storts.ru"
                         },
                         new
                         {
-                            Id = new Guid("8e2a64f9-1f64-48cf-8c9d-fddb55a24134"),
+                            Id = new Guid("0c0a1024-262d-4256-9739-b921f8cf6720"),
                             IsEnabled = true,
                             SiteUrl = "https://www.kommersant.ru/",
                             Title = "Коммерсантъ"
                         },
                         new
                         {
-                            Id = new Guid("546d30a7-75e7-42da-9fd3-f893f4b7465e"),
+                            Id = new Guid("c49b3ba3-3ba6-4ddc-8601-ce3b3d454c9d"),
                             IsEnabled = true,
                             SiteUrl = "https://iz.ru/",
                             Title = "Известия"
                         },
                         new
                         {
-                            Id = new Guid("3fd9928c-7368-463a-a73c-a4724a9ce2db"),
+                            Id = new Guid("325212dd-78b6-4ce6-9c0c-7823f7c3975c"),
                             IsEnabled = true,
                             SiteUrl = "https://tsargrad.tv/",
                             Title = "Царьград"
                         },
                         new
                         {
-                            Id = new Guid("f2545d86-16b6-42ac-9668-4a78242935ed"),
+                            Id = new Guid("3256cb64-703f-4e40-ab98-24fce7336ac2"),
                             IsEnabled = true,
                             SiteUrl = "http://www.belta.by/",
                             Title = "БелТА"
                         },
                         new
                         {
-                            Id = new Guid("a5aa2308-3768-4661-a74a-069d8a54789f"),
+                            Id = new Guid("0a591ee7-614c-4491-a7a9-ffe7c3157917"),
                             IsEnabled = true,
                             SiteUrl = "https://svpressa.ru/",
                             Title = "СвободнаяПресса"
                         },
                         new
                         {
-                            Id = new Guid("39ba409e-9e89-47e7-82eb-e0e162934cc4"),
+                            Id = new Guid("8d4e4158-e198-4418-abc6-c5e1cdf04250"),
                             IsEnabled = true,
                             SiteUrl = "https://www.m24.ru/",
                             Title = "Москва 24"
                         },
                         new
                         {
-                            Id = new Guid("7e67cde0-5285-4b5a-814f-29f6428191e2"),
+                            Id = new Guid("e9d3d4d6-2c5f-4981-8789-d24ee1e561c2"),
                             IsEnabled = true,
                             SiteUrl = "https://vz.ru/",
                             Title = "ВЗГЛЯД.РУ"
                         },
                         new
                         {
-                            Id = new Guid("048880f9-0884-4d79-ac86-e578d5a91a7e"),
+                            Id = new Guid("8c5140f7-2c93-456f-a852-16204716e73c"),
                             IsEnabled = true,
                             SiteUrl = "https://www.championat.com/",
                             Title = "Чемпионат.com"
                         },
                         new
                         {
-                            Id = new Guid("1db41ddd-7656-4a0a-a8aa-d7e5aa730241"),
+                            Id = new Guid("f533cbff-5433-48f4-a1a1-34e9c89f0821"),
                             IsEnabled = true,
                             SiteUrl = "https://life.ru/",
                             Title = "Life"
                         },
                         new
                         {
-                            Id = new Guid("e7d7761b-df6a-45bf-85e4-572bc7985ac0"),
+                            Id = new Guid("539df01b-c5f8-4e92-8e6a-a10ece734370"),
                             IsEnabled = true,
                             SiteUrl = "https://3dnews.ru/",
                             Title = "3Dnews.ru"
                         },
                         new
                         {
-                            Id = new Guid("c065d23b-fa82-4814-b8f6-63bd0a9a88ad"),
+                            Id = new Guid("03c0436b-ebf7-4a97-96b9-54d55c8dd5cd"),
                             IsEnabled = true,
                             SiteUrl = "https://www.ixbt.com/",
                             Title = "iXBT.com"
                         },
                         new
                         {
-                            Id = new Guid("0ea676bf-0a7f-48a4-b8d8-fb7986baf747"),
+                            Id = new Guid("8c08ff73-c2e3-4c06-bc72-0463c84e31ee"),
                             IsEnabled = true,
                             SiteUrl = "https://ixbt.games/",
                             Title = "iXBT.games"
                         },
                         new
                         {
-                            Id = new Guid("6089c6f9-929a-4b1c-9502-2bf34aa7ce88"),
+                            Id = new Guid("d561969c-3751-4e81-9837-a5d896707fe4"),
                             IsEnabled = true,
                             SiteUrl = "https://www.gazeta.ru/",
                             Title = "Газета.Ru"
                         },
                         new
                         {
-                            Id = new Guid("49316956-ce63-47a7-905e-49cfba2a1346"),
+                            Id = new Guid("02acac9b-f048-4d7d-9505-8d2aa8e6a45e"),
                             IsEnabled = true,
                             SiteUrl = "https://www.interfax.ru/",
                             Title = "Интерфакс"
                         },
                         new
                         {
-                            Id = new Guid("af86051b-7d0d-47fb-a975-c67e1c68660e"),
+                            Id = new Guid("1d9ee65e-708d-44ce-a3d5-17cc2c04b91f"),
                             IsEnabled = true,
                             SiteUrl = "https://www.pravda.ru/",
                             Title = "Правда.ру"
                         },
                         new
                         {
-                            Id = new Guid("fd2dcf64-58be-46da-bba5-c590750be1d5"),
+                            Id = new Guid("8f878cca-8778-487c-8862-bf93b0134f26"),
                             IsEnabled = true,
                             SiteUrl = "https://ura.news/",
                             Title = "Ura.ru"
                         },
                         new
                         {
-                            Id = new Guid("7fa5327f-cefb-47cb-98e2-bd102dddeb2e"),
+                            Id = new Guid("72035a56-7f9e-4e61-94a8-7af99322ebdd"),
                             IsEnabled = true,
                             SiteUrl = "https://74.ru/",
                             Title = "74.ru"
                         },
                         new
                         {
-                            Id = new Guid("285000c2-a4d1-4180-9065-6d946a930c95"),
+                            Id = new Guid("890c270c-e037-48a7-89b4-5e5bf409c505"),
                             IsEnabled = true,
                             SiteUrl = "https://www.1obl.ru/",
                             Title = "Первый областной"
                         },
                         new
                         {
-                            Id = new Guid("38a33c60-f8ce-4c24-bfc7-076ac5db22bc"),
+                            Id = new Guid("581c50a3-1b84-445a-ba63-69480f578b46"),
                             IsEnabled = true,
                             SiteUrl = "https://www.cybersport.ru/",
                             Title = "Cybersport.ru"
                         },
                         new
                         {
-                            Id = new Guid("099c5dd0-0363-4421-b993-e39e0d2e0552"),
+                            Id = new Guid("5bc703c2-1eda-40cc-99fd-a1ee7176033a"),
                             IsEnabled = true,
                             SiteUrl = "https://www.hltv.org/",
                             Title = "HLTV.org"
                         },
                         new
                         {
-                            Id = new Guid("81ae4b08-dd7f-4859-89bc-6ce82c3c15de"),
+                            Id = new Guid("aa190a4a-745e-452c-88ba-2b9155d46c5b"),
                             IsEnabled = true,
                             SiteUrl = "https://www.nytimes.com/",
                             Title = "The New York Times"
                         },
                         new
                         {
-                            Id = new Guid("e81d4ca1-3bd7-4485-8864-3c861a99f4b4"),
+                            Id = new Guid("ec188daf-5a07-485b-a867-9135a382b571"),
                             IsEnabled = true,
                             SiteUrl = "https://edition.cnn.com/",
                             Title = "CNN"
                         },
                         new
                         {
-                            Id = new Guid("ce3fab46-ecd0-4546-a2de-767b84f4dddf"),
+                            Id = new Guid("886f22e2-9d3e-4a7c-b2a6-a5a8a01c5165"),
                             IsEnabled = true,
                             SiteUrl = "https://www.kp.ru/",
                             Title = "Комсомольская правда"
                         },
                         new
                         {
-                            Id = new Guid("b870468c-f636-48b7-bdd5-66315913a89d"),
+                            Id = new Guid("8fb6b7c9-e4c5-4787-909a-91cb468d4f86"),
                             IsEnabled = true,
                             SiteUrl = "https://www.zr.ru/",
                             Title = "Журнал \"За рулем\""
                         },
                         new
                         {
-                            Id = new Guid("b7d19db8-88b5-4707-9a32-4a2ba60be6cc"),
+                            Id = new Guid("258e3b3c-0a88-4a34-86bf-72eb342f9efd"),
                             IsEnabled = true,
                             SiteUrl = "https://www.avtovzglyad.ru/",
                             Title = "АвтоВзгляд"
                         },
                         new
                         {
-                            Id = new Guid("4a19a958-b4cc-4046-8a1a-b98d6aeefaf2"),
+                            Id = new Guid("82ab9f35-4373-4893-a747-6151efe10d2c"),
                             IsEnabled = true,
                             SiteUrl = "https://overclockers.ru/",
                             Title = "Overclockers"
                         },
                         new
                         {
-                            Id = new Guid("31941989-b1f8-4f1c-9ea3-cffecda0259d"),
+                            Id = new Guid("195d3d87-f062-4a10-890c-93cc5b4e76db"),
                             IsEnabled = true,
                             SiteUrl = "https://www.kinonews.ru/",
                             Title = "KinoNews.ru"
                         },
                         new
                         {
-                            Id = new Guid("034485d8-4249-44e6-9079-92516cc5370d"),
+                            Id = new Guid("25164b7a-b375-4143-b2ed-8437c602fcc4"),
                             IsEnabled = true,
                             SiteUrl = "https://7days.ru/",
                             Title = "7дней.ru"
                         },
                         new
                         {
-                            Id = new Guid("da896a33-2bb7-4ecd-9c29-12ca213c3f40"),
+                            Id = new Guid("5299fde1-d2be-4f3d-8a1f-35605285c000"),
                             IsEnabled = true,
                             SiteUrl = "https://www.starhit.ru/",
                             Title = "Сетевое издание «Онлайн журнал StarHit (СтарХит)"
                         },
                         new
                         {
-                            Id = new Guid("d2432d6c-5d94-44c6-b281-931e19b3270f"),
+                            Id = new Guid("93bf84b9-37b2-43bc-bc5d-b69f25936e0c"),
                             IsEnabled = true,
                             SiteUrl = "https://stopgame.ru/",
                             Title = "StopGame"
                         },
                         new
                         {
-                            Id = new Guid("be2aeff9-ee84-4ac7-9a99-a1148b909587"),
+                            Id = new Guid("d6db5c5c-0e21-4aab-8f4b-433afafa26d1"),
                             IsEnabled = true,
                             SiteUrl = "https://ren.tv/",
                             Title = "РЕН ТВ"
                         },
                         new
                         {
-                            Id = new Guid("fb0892ce-81d8-41ad-a760-c5dfe90f8ca4"),
+                            Id = new Guid("2a1be939-2c32-4030-af8f-87ba407a9964"),
                             IsEnabled = true,
                             SiteUrl = "https://www.novorosinform.org/",
                             Title = "Новороссия"
                         },
                         new
                         {
-                            Id = new Guid("726c806b-fb35-4509-8c6e-ede61dd4ae99"),
+                            Id = new Guid("9ef11fb0-edd8-4a8b-a24b-b7d3adc77918"),
                             IsEnabled = true,
                             SiteUrl = "https://www.5-tv.ru/",
                             Title = "Пятый канал"
                         },
                         new
                         {
-                            Id = new Guid("037b1c41-ab76-4071-8687-c644997daf13"),
+                            Id = new Guid("279a61e4-b214-4c4a-9a58-cf2959fece74"),
                             IsEnabled = true,
                             SiteUrl = "https://www.ntv.ru/",
                             Title = "НТВ"
                         },
                         new
                         {
-                            Id = new Guid("7f77ce7b-20ba-43fc-8169-600d89500d6f"),
+                            Id = new Guid("1d5eee9e-c4a0-4157-a329-5ba8173ec789"),
                             IsEnabled = true,
                             SiteUrl = "https://www.fontanka.ru/",
                             Title = "ФОНТАНКА.ру"
                         },
                         new
                         {
-                            Id = new Guid("5c7ac952-5266-4783-9131-b218d0fdfca6"),
+                            Id = new Guid("0953d5cb-41e3-49ec-9eea-dbbfc1ab67cc"),
                             IsEnabled = true,
                             SiteUrl = "https://regnum.ru/",
                             Title = "ИА REGNUM"
                         },
                         new
                         {
-                            Id = new Guid("c3e25c8f-ae8b-4fb0-8b7b-b9b46c5c1e9b"),
+                            Id = new Guid("0c34dbe7-aadd-4673-9367-6c705a9519b0"),
                             IsEnabled = true,
                             SiteUrl = "https://www.womanhit.ru/",
                             Title = "Женский журнал WomanHit.ru"
                         },
                         new
                         {
-                            Id = new Guid("630133c1-ab04-489c-8120-22caebafbd82"),
+                            Id = new Guid("97cf68d9-65d1-48e8-b333-11cc0a590f1f"),
                             IsEnabled = true,
                             SiteUrl = "https://rusvesna.su/",
                             Title = "Русская весна"
                         },
                         new
                         {
-                            Id = new Guid("8c66cbb4-e235-4b22-8142-eaa151a7d815"),
+                            Id = new Guid("65dd16a0-17a4-4fbb-b2b8-d1dbaf845e97"),
                             IsEnabled = true,
                             SiteUrl = "https://travelask.ru/",
                             Title = "TravelAsk"
                         },
                         new
                         {
-                            Id = new Guid("7e78e249-9d53-426f-bd04-9e8e869f1fd8"),
+                            Id = new Guid("e2292a43-bacb-4797-8f10-7e919caf9c56"),
                             IsEnabled = true,
                             SiteUrl = "https://smart-lab.ru/",
                             Title = "SMART-LAB"
                         },
                         new
                         {
-                            Id = new Guid("7d1f9e68-45c2-4616-8767-e79fad6b5d93"),
+                            Id = new Guid("cd575801-0d0c-4a70-9d9d-fb91c459d719"),
                             IsEnabled = true,
                             SiteUrl = "https://www.finam.ru/",
                             Title = "Финам.Ру"
                         },
                         new
                         {
-                            Id = new Guid("046565c3-3d73-4bc2-b280-5a415385fdab"),
+                            Id = new Guid("176e94f0-0804-4650-9bcc-4eb035fb6fa4"),
                             IsEnabled = true,
                             SiteUrl = "https://www.khl.ru/",
                             Title = "КХЛ"
                         },
                         new
                         {
-                            Id = new Guid("dc835f30-5ead-43e0-b3ed-fdd04e9b80a2"),
+                            Id = new Guid("599eae9b-df46-4af2-b1c2-58cbeb39943f"),
                             IsEnabled = true,
                             SiteUrl = "https://radiosputnik.ru/",
                             Title = "Радио Sputnik"
                         },
                         new
                         {
-                            Id = new Guid("989343fc-a8f6-4840-8746-6b3f3eb00f5d"),
+                            Id = new Guid("9008d75a-ce62-4f8a-99a4-4403ff1fc123"),
                             IsEnabled = true,
                             SiteUrl = "https://meduza.io/",
                             Title = "Meduza"
@@ -3973,367 +3973,367 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("9b37a6e1-5529-4503-8f2d-287791141e48"),
+                            Id = new Guid("b793c42e-add0-4056-8a37-dd822d9c1a19"),
                             Original = "https://cdnn21.img.ria.ru/i/favicons/favicon.svg",
                             Small = "https://cdnn21.img.ria.ru/i/favicons/favicon.ico",
-                            SourceId = new Guid("b818a134-1513-49b2-94f7-5ef59a421268")
+                            SourceId = new Guid("4ad9c4f7-0538-4a56-8c2e-2f2844513193")
                         },
                         new
                         {
-                            Id = new Guid("a5c9b266-8f94-4ebb-9c37-a4c2cbffd199"),
+                            Id = new Guid("e7e0e993-f4fd-47b9-9923-5c8d564fbffa"),
                             Original = "https://russian.rt.com/static/blocks/touch-icon/apple-touch-icon-144x144-precomposed.png",
                             Small = "https://russian.rt.com/favicon.ico",
-                            SourceId = new Guid("042f72dd-41a6-48a1-a2a9-bdd2d9580792")
+                            SourceId = new Guid("2684aa2e-d0e2-407a-bce3-8d0aa977adc9")
                         },
                         new
                         {
-                            Id = new Guid("bced7a57-e784-4f66-b87c-c4820bd7e083"),
+                            Id = new Guid("e23674ac-1cdc-4d10-8172-039cf627435a"),
                             Original = "https://tass.ru/favicon/180.svg",
                             Small = "https://tass.ru/favicon/57.png",
-                            SourceId = new Guid("53854fd4-4a50-4f1e-a6f9-a56e195295fa")
+                            SourceId = new Guid("05b68ddd-b4de-424b-8f34-f7f54ec12715")
                         },
                         new
                         {
-                            Id = new Guid("df8f735f-ff6a-457b-b08f-f63be194bb19"),
+                            Id = new Guid("dff4f6d5-6ab1-4ba6-855a-df4728c68587"),
                             Original = "https://icdn.lenta.ru/images/icons/icon-256x256.png",
                             Small = "https://icdn.lenta.ru/favicon.ico",
-                            SourceId = new Guid("ed83c801-82ea-4a5b-8c52-87fa4aa48db4")
+                            SourceId = new Guid("77a23870-f64c-4090-9e92-603c7f80ea70")
                         },
                         new
                         {
-                            Id = new Guid("437bfc61-b46b-4dfe-9b9d-cccc67cc0208"),
+                            Id = new Guid("a2fc627a-9f68-4751-9580-c8f6a1f59c91"),
                             Original = "https://cdnstatic.rg.ru/images/touch-icon-ipad-retina_512x512.png",
                             Small = "https://rg.ru/favicon.ico",
-                            SourceId = new Guid("2366e708-2aa5-4041-b2d4-2c9918b83d46")
+                            SourceId = new Guid("6c459642-9fb6-4028-8e72-4c031dd4937a")
                         },
                         new
                         {
-                            Id = new Guid("a72779d8-c29a-412f-a030-bcc6f90e49e5"),
+                            Id = new Guid("3713d005-84c9-4a06-9611-609b5bf5957e"),
                             Original = "https://aif.ru/img/icon/apple-touch-icon.png?44f",
                             Small = "https://aif.ru/img/icon/favicon-32x32.png?44f",
-                            SourceId = new Guid("d9e1b3b4-7a52-4c41-b4b7-894487d475be")
+                            SourceId = new Guid("a9b85f74-5508-4269-91b1-9b39ee2d6b27")
                         },
                         new
                         {
-                            Id = new Guid("0dd0ae8f-1d0e-4416-ad4e-f3cb4b7f9bc2"),
+                            Id = new Guid("39935288-f67f-4fb4-a641-01a516810881"),
                             Original = "https://s.rbk.ru/v10_rbcnews_static/common/common-10.10.120/images/android-chrome-512x512.png",
                             Small = "https://s.rbk.ru/v10_rbcnews_static/common/common-10.10.120/images/favicon.png",
-                            SourceId = new Guid("0fdcfbe0-b879-4215-afeb-5e1bad2c1ac0")
+                            SourceId = new Guid("7ee9a821-4a61-4362-808f-dac691997bdf")
                         },
                         new
                         {
-                            Id = new Guid("72fb91d3-9d4a-4cf4-8771-5521961be494"),
+                            Id = new Guid("5ac9f79e-1574-4f5c-9ce1-8b4245fb2b38"),
                             Original = "https://www.sports.ru/apple-touch-icon-1024.png",
                             Small = "https://www.sports.ru/apple-touch-icon-76.png",
-                            SourceId = new Guid("52af54b4-474a-4887-b59a-2c6a7aace79e")
+                            SourceId = new Guid("864dbd8e-5fed-462f-9e71-aabc04481ca9")
                         },
                         new
                         {
-                            Id = new Guid("a2d3a7a5-0efd-4e7b-9448-63729b443246"),
+                            Id = new Guid("4f3db552-b7a4-4ce3-8746-dac9ac682e56"),
                             Original = "https://im.kommersant.ru/ContentFlex/images/favicons2020/apple-touch-icon-180.png",
                             Small = "https://im.kommersant.ru/ContentFlex/images/favicons2020/favicon-32.png",
-                            SourceId = new Guid("8e2a64f9-1f64-48cf-8c9d-fddb55a24134")
+                            SourceId = new Guid("0c0a1024-262d-4256-9739-b921f8cf6720")
                         },
                         new
                         {
-                            Id = new Guid("7bd9f65b-5b4b-4994-95de-eb6ab5f204db"),
+                            Id = new Guid("1e13e02b-4fe1-48dc-bd4f-8094d4c98a55"),
                             Original = "https://cdn.iz.ru/profiles/portal/themes/purple/images/favicons/android-icon-192x192.png",
                             Small = "https://cdn.iz.ru/profiles/portal/themes/purple/images/favicons/favicon-32x32.png",
-                            SourceId = new Guid("546d30a7-75e7-42da-9fd3-f893f4b7465e")
+                            SourceId = new Guid("c49b3ba3-3ba6-4ddc-8601-ce3b3d454c9d")
                         },
                         new
                         {
-                            Id = new Guid("6f05ae10-fdec-4ca6-ad1f-5c73b22adacb"),
+                            Id = new Guid("14ceaf35-6234-4171-ad73-2e00c9c2aa53"),
                             Original = "https://tsargrad.tv/favicons/apple-touch-icon-180x180.png?s2",
                             Small = "https://tsargrad.tv/favicons/favicon-32x32.png?s2",
-                            SourceId = new Guid("3fd9928c-7368-463a-a73c-a4724a9ce2db")
+                            SourceId = new Guid("325212dd-78b6-4ce6-9c0c-7823f7c3975c")
                         },
                         new
                         {
-                            Id = new Guid("f49f1907-a45e-42d4-8d0b-7ca834a7e80c"),
+                            Id = new Guid("8c99a21f-b086-4635-bcc3-22d4c0f74ce6"),
                             Original = "https://www.belta.by/images/storage/banners/000016_a133e848cb2e7b1debb7102d19e4d139_work.svg",
                             Small = "https://www.belta.by/images/storage/banners/000016_a133e848cb2e7b1debb7102d19e4d139_work.svg",
-                            SourceId = new Guid("f2545d86-16b6-42ac-9668-4a78242935ed")
+                            SourceId = new Guid("3256cb64-703f-4e40-ab98-24fce7336ac2")
                         },
                         new
                         {
-                            Id = new Guid("908a3501-9dd1-4e1b-8cf4-7a5b9b2395f9"),
+                            Id = new Guid("3ed0f08e-ec3b-4720-b813-53da7d37e9bf"),
                             Original = "https://svpressa.ru/favicon-96x96.png?v=1471426270000",
                             Small = "https://svpressa.ru/favicon-32x32.png?v=1471426270000",
-                            SourceId = new Guid("a5aa2308-3768-4661-a74a-069d8a54789f")
+                            SourceId = new Guid("0a591ee7-614c-4491-a7a9-ffe7c3157917")
                         },
                         new
                         {
-                            Id = new Guid("6a2997ac-298d-4fee-b245-f7e539d8ae88"),
+                            Id = new Guid("3ecbc73b-abcf-46f1-a7bf-b185c9a02a19"),
                             Original = "https://www.m24.ru/img/fav/apple-touch-icon.png",
                             Small = "https://www.m24.ru/img/fav/favicon-32x32.png",
-                            SourceId = new Guid("39ba409e-9e89-47e7-82eb-e0e162934cc4")
+                            SourceId = new Guid("8d4e4158-e198-4418-abc6-c5e1cdf04250")
                         },
                         new
                         {
-                            Id = new Guid("0bd7712d-3c86-4423-a0b7-133089306a85"),
+                            Id = new Guid("848aeb5f-ceec-4b74-a189-4d77e3b4cd96"),
                             Original = "https://vz.ru/apple-touch-icon.png",
                             Small = "https://vz.ru/static/images/favicon.ico",
-                            SourceId = new Guid("7e67cde0-5285-4b5a-814f-29f6428191e2")
+                            SourceId = new Guid("e9d3d4d6-2c5f-4981-8789-d24ee1e561c2")
                         },
                         new
                         {
-                            Id = new Guid("8851b83a-315c-4ec1-aaa9-862e040940c9"),
+                            Id = new Guid("22d3a806-a978-4329-bf3a-de4fe2c3c174"),
                             Original = "https://st.championat.com/i/favicon/apple-touch-icon.png",
                             Small = "https://st.championat.com/i/favicon/favicon-32x32.png",
-                            SourceId = new Guid("048880f9-0884-4d79-ac86-e578d5a91a7e")
+                            SourceId = new Guid("8c5140f7-2c93-456f-a852-16204716e73c")
                         },
                         new
                         {
-                            Id = new Guid("218c9613-83fb-4337-b0a4-f943dba43e18"),
+                            Id = new Guid("e2b05044-7621-4b7e-a479-f444ebcb1752"),
                             Original = "https://life.ru/appletouch/apple-icon-180%D1%85180.png",
                             Small = "https://life.ru/favicon-32%D1%8532.png",
-                            SourceId = new Guid("1db41ddd-7656-4a0a-a8aa-d7e5aa730241")
+                            SourceId = new Guid("f533cbff-5433-48f4-a1a1-34e9c89f0821")
                         },
                         new
                         {
-                            Id = new Guid("65478535-3e54-44fd-91b0-9b032248f3ed"),
+                            Id = new Guid("fca067d0-22d3-49d6-ad58-b4d1fd746f26"),
                             Original = "https://3dnews.ru/assets/images/3dnews_logo_soc.png",
                             Small = "https://3dnews.ru/assets/3dnews_logo_color.png",
-                            SourceId = new Guid("e7d7761b-df6a-45bf-85e4-572bc7985ac0")
+                            SourceId = new Guid("539df01b-c5f8-4e92-8e6a-a10ece734370")
                         },
                         new
                         {
-                            Id = new Guid("b0c1aba9-a410-48d1-8523-6d5265a25061"),
+                            Id = new Guid("569457c2-d0ca-4451-a54d-ddf193e070db"),
                             Original = "https://www.ixbt.com/favicon.ico",
                             Small = "https://www.ixbt.com/favicon.ico",
-                            SourceId = new Guid("c065d23b-fa82-4814-b8f6-63bd0a9a88ad")
+                            SourceId = new Guid("03c0436b-ebf7-4a97-96b9-54d55c8dd5cd")
                         },
                         new
                         {
-                            Id = new Guid("26de6ad3-8dd7-4bb9-9828-ff2851aedad4"),
+                            Id = new Guid("d1aa34c7-f889-4d8d-99cc-2eca0cd3d747"),
                             Original = "https://ixbt.games/images/favicon/gt/apple-touch-icon.png",
                             Small = "https://ixbt.games/images/favicon/gt/apple-touch-icon.png",
-                            SourceId = new Guid("0ea676bf-0a7f-48a4-b8d8-fb7986baf747")
+                            SourceId = new Guid("8c08ff73-c2e3-4c06-bc72-0463c84e31ee")
                         },
                         new
                         {
-                            Id = new Guid("606cb47d-fca8-44b1-ad38-42659cd17555"),
+                            Id = new Guid("55fb817f-f231-4cfe-bf59-b83fefd5cf2c"),
                             Original = "https://static.gazeta.ru/nm2021/img/icons/favicon.svg",
                             Small = "https://static.gazeta.ru/nm2021/img/icons/favicon.svg",
-                            SourceId = new Guid("6089c6f9-929a-4b1c-9502-2bf34aa7ce88")
+                            SourceId = new Guid("d561969c-3751-4e81-9837-a5d896707fe4")
                         },
                         new
                         {
-                            Id = new Guid("995cde5f-5ea0-468c-9f36-70c1c509e6d4"),
+                            Id = new Guid("e13854f2-09b9-4ff4-96b5-820ddd1ac180"),
                             Original = "https://www.interfax.ru/touch-icon-ipad-retina.png",
                             Small = "https://www.interfax.ru/touch-icon-iphone.png",
-                            SourceId = new Guid("49316956-ce63-47a7-905e-49cfba2a1346")
+                            SourceId = new Guid("02acac9b-f048-4d7d-9505-8d2aa8e6a45e")
                         },
                         new
                         {
-                            Id = new Guid("99c65ba8-57a4-4154-9330-3e3d7ffce695"),
+                            Id = new Guid("23a3f516-271d-4823-8913-f044e9671a9c"),
                             Original = "https://www.pravda.ru/pix/apple-touch-icon.png",
                             Small = "https://www.pravda.ru/favicon.ico",
-                            SourceId = new Guid("af86051b-7d0d-47fb-a975-c67e1c68660e")
+                            SourceId = new Guid("1d9ee65e-708d-44ce-a3d5-17cc2c04b91f")
                         },
                         new
                         {
-                            Id = new Guid("836737ae-346f-4363-9ab7-aa29f934ca1d"),
+                            Id = new Guid("6bbbb550-87b2-42e6-ae76-978a41a693f8"),
                             Original = "https://ura.news/apple-touch-icon.png",
                             Small = "https://s.ura.news/favicon.ico?3",
-                            SourceId = new Guid("fd2dcf64-58be-46da-bba5-c590750be1d5")
+                            SourceId = new Guid("8f878cca-8778-487c-8862-bf93b0134f26")
                         },
                         new
                         {
-                            Id = new Guid("2d4a3077-0e0d-42d9-88a1-cfacc640826c"),
+                            Id = new Guid("45fee38d-2bd6-4a90-b50d-ac586b8d7e37"),
                             Original = "https://static.ngs.ru/jtnews/dist/static/favicons/apple/apple-favicon-74-180.png",
                             Small = "https://static.ngs.ru/jtnews/dist/static/favicons/favicon-rugion-32.ico",
-                            SourceId = new Guid("7fa5327f-cefb-47cb-98e2-bd102dddeb2e")
+                            SourceId = new Guid("72035a56-7f9e-4e61-94a8-7af99322ebdd")
                         },
                         new
                         {
-                            Id = new Guid("e8888eaa-b29c-423d-96be-8bc18ee2c5d1"),
+                            Id = new Guid("fa69546d-6fcc-4ecb-9004-7b468a2f35fc"),
                             Original = "https://www.1obl.ru/apple-touch-icon.png",
                             Small = "https://www.1obl.ru/favicon-32x32.png",
-                            SourceId = new Guid("285000c2-a4d1-4180-9065-6d946a930c95")
+                            SourceId = new Guid("890c270c-e037-48a7-89b4-5e5bf409c505")
                         },
                         new
                         {
-                            Id = new Guid("9bc47d42-43f7-46b2-aabf-95eb25f77b46"),
+                            Id = new Guid("be2ab088-9fc0-465b-ae6f-5a864e777a09"),
                             Original = "https://www.cybersport.ru/favicon-192x192.png",
                             Small = "https://www.cybersport.ru/favicon-32x32.png",
-                            SourceId = new Guid("38a33c60-f8ce-4c24-bfc7-076ac5db22bc")
+                            SourceId = new Guid("581c50a3-1b84-445a-ba63-69480f578b46")
                         },
                         new
                         {
-                            Id = new Guid("a97e72c5-91b0-4d5c-8c50-afc7acba5093"),
+                            Id = new Guid("28a33c2a-7e6d-4d07-ab7c-8bad8eda6bf1"),
                             Original = "https://www.hltv.org/img/static/favicon/apple-touch-icon.png",
                             Small = "https://www.hltv.org/img/static/favicon/favicon-32x32.png",
-                            SourceId = new Guid("099c5dd0-0363-4421-b993-e39e0d2e0552")
+                            SourceId = new Guid("5bc703c2-1eda-40cc-99fd-a1ee7176033a")
                         },
                         new
                         {
-                            Id = new Guid("9c8a2fec-f3a7-4402-a1b6-fd4faba932de"),
+                            Id = new Guid("86b06b1a-8cb6-45e3-90b3-6da1dd44d755"),
                             Original = "https://www.nytimes.com/vi-assets/static-assets/apple-touch-icon-28865b72953380a40aa43318108876cb.png",
                             Small = "https://www.nytimes.com/vi-assets/static-assets/ios-default-homescreen-57x57-dark-b395ebcad5b63aff9285aab58e31035e.png",
-                            SourceId = new Guid("81ae4b08-dd7f-4859-89bc-6ce82c3c15de")
+                            SourceId = new Guid("aa190a4a-745e-452c-88ba-2b9155d46c5b")
                         },
                         new
                         {
-                            Id = new Guid("21362224-ecd8-42f0-bb04-6c2805b859fc"),
+                            Id = new Guid("3073fd72-7d89-4d71-9271-d7b945d6d630"),
                             Original = "https://edition.cnn.com/media/sites/cnn/apple-touch-icon.png",
                             Small = "https://edition.cnn.com/media/sites/cnn/favicon.ico",
-                            SourceId = new Guid("e81d4ca1-3bd7-4485-8864-3c861a99f4b4")
+                            SourceId = new Guid("ec188daf-5a07-485b-a867-9135a382b571")
                         },
                         new
                         {
-                            Id = new Guid("f3fc5a26-d9bb-49f8-97f9-069290b027da"),
+                            Id = new Guid("ef3c379e-714a-431f-843d-bc28630c7537"),
                             Original = "https://s01.stc.yc.kpcdn.net/s0/2.1.321/adaptive/favicon-128.png",
                             Small = "https://s01.stc.yc.kpcdn.net/s0/2.1.321/adaptive/favicon-32.png",
-                            SourceId = new Guid("ce3fab46-ecd0-4546-a2de-767b84f4dddf")
+                            SourceId = new Guid("886f22e2-9d3e-4a7c-b2a6-a5a8a01c5165")
                         },
                         new
                         {
-                            Id = new Guid("f3c01ad8-de0f-4624-bd7f-aef59f596741"),
+                            Id = new Guid("7f9d4632-dec4-4ded-8e92-86930bce32a1"),
                             Original = "https://www.zr.ru/favicons/safari-pinned-tab.svg",
                             Small = "https://www.zr.ru/favicons/favicon.ico",
-                            SourceId = new Guid("b870468c-f636-48b7-bdd5-66315913a89d")
+                            SourceId = new Guid("8fb6b7c9-e4c5-4787-909a-91cb468d4f86")
                         },
                         new
                         {
-                            Id = new Guid("22a47b6e-2a8b-45c8-9d90-4b2d298d2070"),
+                            Id = new Guid("a5c9b0ab-aea6-4da8-9ead-ab279d787b7a"),
                             Original = "https://www.avtovzglyad.ru/static/images/favicon/safari-pinned-tab.svg",
                             Small = "https://www.avtovzglyad.ru/static/images/favicon/favicon-32x32.png",
-                            SourceId = new Guid("b7d19db8-88b5-4707-9a32-4a2ba60be6cc")
+                            SourceId = new Guid("258e3b3c-0a88-4a34-86bf-72eb342f9efd")
                         },
                         new
                         {
-                            Id = new Guid("67e28d08-1303-4b37-a0b8-d6652258df39"),
+                            Id = new Guid("317663f0-7c0b-4a17-b4d5-f9b216fe0ede"),
                             Original = "https://overclockers.ru/assets/apple-touch-icon-120x120.png",
                             Small = "https://overclockers.ru/assets/apple-touch-icon.png",
-                            SourceId = new Guid("4a19a958-b4cc-4046-8a1a-b98d6aeefaf2")
+                            SourceId = new Guid("82ab9f35-4373-4893-a747-6151efe10d2c")
                         },
                         new
                         {
-                            Id = new Guid("36d8a7e5-426b-49b0-a0be-65d4cc0c34e9"),
+                            Id = new Guid("2e752080-9a59-4f72-a37f-8b0ed31055aa"),
                             Original = "https://www.kinonews.ru/favicon.ico",
                             Small = "https://www.kinonews.ru/favicon.ico",
-                            SourceId = new Guid("31941989-b1f8-4f1c-9ea3-cffecda0259d")
+                            SourceId = new Guid("195d3d87-f062-4a10-890c-93cc5b4e76db")
                         },
                         new
                         {
-                            Id = new Guid("a8e8bd31-c6ea-4919-b470-b7558787e9f3"),
+                            Id = new Guid("e462f3e4-e7c1-48ce-b699-8bde725c0ab2"),
                             Original = "https://7days.ru/android-icon-192x192.png",
                             Small = "https://7days.ru/favicon-32x32.png",
-                            SourceId = new Guid("034485d8-4249-44e6-9079-92516cc5370d")
+                            SourceId = new Guid("25164b7a-b375-4143-b2ed-8437c602fcc4")
                         },
                         new
                         {
-                            Id = new Guid("dd9edc0b-79df-4a04-ba0f-e009089a1556"),
+                            Id = new Guid("125c6947-0fcd-481c-8d9f-34c81bf08df9"),
                             Original = "https://cdn.hsmedia.ru/public/favicon/starhit/apple-touch-icon.png",
                             Small = "https://cdn.hsmedia.ru/public/favicon/starhit/favicon.png",
-                            SourceId = new Guid("da896a33-2bb7-4ecd-9c29-12ca213c3f40")
+                            SourceId = new Guid("5299fde1-d2be-4f3d-8a1f-35605285c000")
                         },
                         new
                         {
-                            Id = new Guid("f1fbd012-5917-47c7-8c4f-62626fcc5d7c"),
+                            Id = new Guid("14a5646d-daed-4f7f-aa8d-af472346df13"),
                             Original = "https://stopgame.ru/favicon_512.png",
                             Small = "https://stopgame.ru/favicon.ico",
-                            SourceId = new Guid("d2432d6c-5d94-44c6-b281-931e19b3270f")
+                            SourceId = new Guid("93bf84b9-37b2-43bc-bc5d-b69f25936e0c")
                         },
                         new
                         {
-                            Id = new Guid("fa78567c-0fcb-446a-b45b-1a857d2fca91"),
+                            Id = new Guid("f023c3df-d9d9-4e14-8d3b-fb4d26a95713"),
                             Original = "https://ren.tv/apple-touch-icon.png",
                             Small = "https://ren.tv/favicon-32x32.png",
-                            SourceId = new Guid("be2aeff9-ee84-4ac7-9a99-a1148b909587")
+                            SourceId = new Guid("d6db5c5c-0e21-4aab-8f4b-433afafa26d1")
                         },
                         new
                         {
-                            Id = new Guid("77e5e329-dd01-4cd8-bc91-b12ddeebce26"),
+                            Id = new Guid("62a9eb4e-862d-4f42-9dbf-683501dddcf1"),
                             Original = "https://www.novorosinform.org/favicon.ico?v3",
                             Small = "https://www.novorosinform.org/favicon.ico?v3",
-                            SourceId = new Guid("fb0892ce-81d8-41ad-a760-c5dfe90f8ca4")
+                            SourceId = new Guid("2a1be939-2c32-4030-af8f-87ba407a9964")
                         },
                         new
                         {
-                            Id = new Guid("a415bcbc-6eda-4fe7-95f2-ad058bc569b2"),
+                            Id = new Guid("d4a631fe-3ce4-4aa8-b2e6-e6d1039cfcef"),
                             Original = "https://img5tv.cdnvideo.ru/shared/img/favicon_24.png",
                             Small = "https://img5tv.cdnvideo.ru/shared/img/favicon_24.png",
-                            SourceId = new Guid("726c806b-fb35-4509-8c6e-ede61dd4ae99")
+                            SourceId = new Guid("9ef11fb0-edd8-4a8b-a24b-b7d3adc77918")
                         },
                         new
                         {
-                            Id = new Guid("d784e7fb-ba2f-4b16-b385-313d80af58e3"),
+                            Id = new Guid("3bba7623-6471-4241-9af5-e1924375ac7b"),
                             Original = "https://cdn-static.ntv.ru/images/favicons/android-chrome-192x192.png",
                             Small = "https://cdn-static.ntv.ru/images/favicons/favicon-32x32.png",
-                            SourceId = new Guid("037b1c41-ab76-4071-8687-c644997daf13")
+                            SourceId = new Guid("279a61e4-b214-4c4a-9a58-cf2959fece74")
                         },
                         new
                         {
-                            Id = new Guid("f4a53ef2-3dec-4d01-b332-c6af7547dbdb"),
+                            Id = new Guid("7eb8347a-feb9-4e11-9196-e23c7b12cc33"),
                             Original = "https://www.fontanka.ru/static/assets/favicons/apple/apple-favicon-180.png",
                             Small = "https://www.fontanka.ru/static/assets/favicons/apple/apple-favicon-76-precomposed.png",
-                            SourceId = new Guid("7f77ce7b-20ba-43fc-8169-600d89500d6f")
+                            SourceId = new Guid("1d5eee9e-c4a0-4157-a329-5ba8173ec789")
                         },
                         new
                         {
-                            Id = new Guid("7830220f-bde9-4444-9f89-92f1d5be4ba3"),
+                            Id = new Guid("a6987146-1946-4129-836e-6bc7c30f1e17"),
                             Original = "https://regnum.ru/favicons/apple-touch-icon.png?v=202305",
                             Small = "https://regnum.ru/favicons/favicon-32x32.png?v=202305",
-                            SourceId = new Guid("5c7ac952-5266-4783-9131-b218d0fdfca6")
+                            SourceId = new Guid("0953d5cb-41e3-49ec-9eea-dbbfc1ab67cc")
                         },
                         new
                         {
-                            Id = new Guid("6beb8e94-6eb4-4ffd-82c2-0263402d9960"),
+                            Id = new Guid("a1fc72ed-5bb4-49d1-8562-6b859f8cc063"),
                             Original = "https://www.womanhit.ru/static/front/img/favicon.ico?v=2",
                             Small = "https://www.womanhit.ru/static/front/img/favicon.ico?v=2",
-                            SourceId = new Guid("c3e25c8f-ae8b-4fb0-8b7b-b9b46c5c1e9b")
+                            SourceId = new Guid("0c34dbe7-aadd-4673-9367-6c705a9519b0")
                         },
                         new
                         {
-                            Id = new Guid("c23fc737-6161-4dad-a4ac-200e51d1879f"),
+                            Id = new Guid("371abc69-86f8-4380-b0fb-691663c16ff1"),
                             Original = "https://rusvesna.su/favicon.ico",
                             Small = "https://rusvesna.su/favicon.ico",
-                            SourceId = new Guid("630133c1-ab04-489c-8120-22caebafbd82")
+                            SourceId = new Guid("97cf68d9-65d1-48e8-b333-11cc0a590f1f")
                         },
                         new
                         {
-                            Id = new Guid("b96a92b3-0b70-4602-a853-18f589c59576"),
+                            Id = new Guid("893fc5eb-a0bc-48e5-9cd8-1b0448d937a5"),
                             Original = "https://s9.travelask.ru/favicons/apple-touch-icon-180x180.png",
                             Small = "https://s9.travelask.ru/favicons/favicon-32x32.png",
-                            SourceId = new Guid("8c66cbb4-e235-4b22-8142-eaa151a7d815")
+                            SourceId = new Guid("65dd16a0-17a4-4fbb-b2b8-d1dbaf845e97")
                         },
                         new
                         {
-                            Id = new Guid("88f9cf38-d525-44f0-a3e6-33019ad49dea"),
+                            Id = new Guid("6b2696b6-e68b-4791-b45b-b8773c5bf250"),
                             Original = "https://smart-lab.ru/templates/skin/smart-lab-x3/images/favicon.ico",
                             Small = "https://smart-lab.ru/templates/skin/smart-lab-x3/images/favicon.ico",
-                            SourceId = new Guid("7e78e249-9d53-426f-bd04-9e8e869f1fd8")
+                            SourceId = new Guid("e2292a43-bacb-4797-8f10-7e919caf9c56")
                         },
                         new
                         {
-                            Id = new Guid("cab50a98-084f-4e6d-958e-b0c47642378e"),
+                            Id = new Guid("8c516a4c-5125-46a7-96c1-304bd89c34f8"),
                             Original = "https://www.finam.ru/favicon-144x144.png",
                             Small = "https://www.finam.ru/favicon.png",
-                            SourceId = new Guid("7d1f9e68-45c2-4616-8767-e79fad6b5d93")
+                            SourceId = new Guid("cd575801-0d0c-4a70-9d9d-fb91c459d719")
                         },
                         new
                         {
-                            Id = new Guid("317028d4-e0a8-4bcf-99bb-ed23c92f34a4"),
+                            Id = new Guid("ab40ad3e-3cb4-42be-8829-313406fa0ac9"),
                             Original = "https://www.khl.ru/img/icons/152x152.png",
                             Small = "https://www.khl.ru/img/icons/32x32.png",
-                            SourceId = new Guid("046565c3-3d73-4bc2-b280-5a415385fdab")
+                            SourceId = new Guid("176e94f0-0804-4650-9bcc-4eb035fb6fa4")
                         },
                         new
                         {
-                            Id = new Guid("2a7630d3-275c-4dd0-bae8-16080dc835c1"),
+                            Id = new Guid("e59043e4-0cf8-49cd-8387-2db5f9db7160"),
                             Original = "https://cdnn21.img.ria.ru/i/favicons/radiosputnik/apple-touch-icon.png",
                             Small = "https://cdnn21.img.ria.ru/i/favicons/radiosputnik/favicon.ico",
-                            SourceId = new Guid("dc835f30-5ead-43e0-b3ed-fdd04e9b80a2")
+                            SourceId = new Guid("599eae9b-df46-4af2-b1c2-58cbeb39943f")
                         },
                         new
                         {
-                            Id = new Guid("2d68ca98-f195-4ccb-896e-fe37ad0ce82b"),
+                            Id = new Guid("0a574e2c-a69e-4cdc-853c-363604de2bc5"),
                             Original = "https://meduza.io/apple-touch-icon-180.png",
                             Small = "https://meduza.io/favicon-32x32.png",
-                            SourceId = new Guid("989343fc-a8f6-4840-8746-6b3f3eb00f5d")
+                            SourceId = new Guid("9008d75a-ce62-4f8a-99a4-4403ff1fc123")
                         });
                 });
 
@@ -4416,6 +4416,41 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                         .HasDatabaseName("ix_news_videos_news_id");
 
                     b.ToTable("news_videos", (string)null);
+                });
+
+            modelBuilder.Entity("NewsAggregator.News.Entities.NewsView", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<string>("IpAddress")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("ip_address");
+
+                    b.Property<Guid>("NewsId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("news_id");
+
+                    b.Property<DateTime>("ViewedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("viewed_at");
+
+                    b.HasKey("Id")
+                        .HasName("pk_news_views");
+
+                    b.HasIndex("IpAddress")
+                        .HasDatabaseName("ix_news_views_ip_address");
+
+                    b.HasIndex("NewsId")
+                        .HasDatabaseName("ix_news_views_news_id");
+
+                    b.HasIndex("ViewedAt")
+                        .HasDatabaseName("ix_news_views_viewed_at");
+
+                    b.ToTable("news_views", (string)null);
                 });
 
             modelBuilder.Entity("NewsAggregator.News.Entities.News", b =>
@@ -4634,6 +4669,18 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                     b.Navigation("News");
                 });
 
+            modelBuilder.Entity("NewsAggregator.News.Entities.NewsView", b =>
+                {
+                    b.HasOne("NewsAggregator.News.Entities.News", "News")
+                        .WithMany("Views")
+                        .HasForeignKey("NewsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_news_views_news_news_id");
+
+                    b.Navigation("News");
+                });
+
             modelBuilder.Entity("NewsAggregator.News.Entities.News", b =>
                 {
                     b.Navigation("HtmlDescription");
@@ -4645,6 +4692,8 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                     b.Navigation("TextDescription");
 
                     b.Navigation("Video");
+
+                    b.Navigation("Views");
                 });
 
             modelBuilder.Entity("NewsAggregator.News.Entities.NewsEditor", b =>

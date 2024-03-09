@@ -53,6 +53,8 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
 
         public DbSet<NewsVideo> NewsVideos { get; set; }
 
+        public DbSet<NewsView> NewsViews { get; set; }
+
         public NewsDbContext(DbContextOptions options) : base(options)
         {
 
@@ -116,6 +118,11 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
                 .HasOne(news => news.TextDescription)
                     .WithOne(description => description.News)
                         .HasForeignKey<NewsTextDescription>(description => description.NewsId);
+
+            modelBuilder.Entity<Entities.News>()
+                .HasMany(news => news.Views)
+                    .WithOne(view => view.News)
+                        .HasForeignKey(view => view.NewsId);
 
             modelBuilder.Entity<NewsEditor>()
                 .HasIndex(editor => editor.Name);
@@ -205,6 +212,12 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
                 .HasMany(source => source.Editors)
                     .WithOne(editor => editor.Source)
                         .HasForeignKey(editor => editor.SourceId);
+
+            modelBuilder.Entity<NewsView>()
+                .HasIndex(view => view.IpAddress);
+
+            modelBuilder.Entity<NewsView>()
+                .HasIndex(view => view.ViewedAt);
         }
     }
 }

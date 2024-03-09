@@ -4,6 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using NewsAggregator.Infrastructure.Extensions;
 using NewsAggregator.News.ConfigurationOptions;
 using NewsAggregator.News.Extensions;
+using NewsAggregator.News.Messages;
+using RabbitMQ.Client;
 using System.Text.Json.Serialization;
 
 namespace NewsAggregator.News
@@ -29,6 +31,22 @@ namespace NewsAggregator.News
                         options.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 
                         return options;
+                    });
+
+                    configurator.Send<NewsViewed>(messageSendConfigurator =>
+                    {
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.viewed");
+                    });
+
+                    configurator.Message<NewsViewed>(messageConfigurator =>
+                    {
+                        messageConfigurator.SetEntityName("news.events");
+                    });
+
+                    configurator.Publish<NewsViewed>(messagePublishConfigurator =>
+                    {
+                        messagePublishConfigurator.Durable = true;
+                        messagePublishConfigurator.ExchangeType = ExchangeType.Direct;
                     });
                 });
             });

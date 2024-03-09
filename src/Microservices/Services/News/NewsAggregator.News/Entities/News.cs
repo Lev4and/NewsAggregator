@@ -30,5 +30,7 @@ namespace NewsAggregator.News.Entities
         public virtual NewsHtmlDescription? HtmlDescription { get; set; }
 
         public virtual NewsTextDescription? TextDescription { get; set; }
+
+        public virtual IReadOnlyCollection<NewsView> Views { get; set; }
     }
 }

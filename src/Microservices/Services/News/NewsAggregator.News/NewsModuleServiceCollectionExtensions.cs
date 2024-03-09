@@ -29,6 +29,7 @@ namespace NewsAggregator.News
                 busConfigurator.AddConsumer<SendAddedNewsNotificationConsumer>();
                 busConfigurator.AddConsumer<PrepareAddedNewsToIndexingConsumer>();
                 busConfigurator.AddConsumer<IndexAddedNewsConsumer>();
+                busConfigurator.AddConsumer<RegisterNewsViewConsumer>();
 
                 busConfigurator.UsingRabbitMq((context, configurator) =>
                 {
@@ -260,6 +261,25 @@ namespace NewsAggregator.News
                         });
 
                         endpointConfigurator.Consumer<IndexAddedNewsConsumer>(context);
+                    });
+
+                    configurator.Message<NewsViewed>(messageConfigurator =>
+                    {
+                        messageConfigurator.SetEntityName("news.events");
+                    });
+
+                    configurator.ReceiveEndpoint("register-news-view", endpointConfigurator =>
+                    {
+                        endpointConfigurator.Durable = true;
+                        endpointConfigurator.ConfigureConsumeTopology = false;
+
+                        endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
+                        {
+                            exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
+                            exchangeBindingConfigurator.RoutingKey = "news.viewed";
+                        });
+
+                        endpointConfigurator.Consumer<RegisterNewsViewConsumer>(context);
                     });
                 });
             });

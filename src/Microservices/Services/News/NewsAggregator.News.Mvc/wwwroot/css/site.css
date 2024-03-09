@@ -2,11 +2,29 @@
 
 .blog-header-logo {
   font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
-  font-size: 2.25rem;
+  font-size: 1.05rem;
 }
 
 .blog-header-logo:hover {
   text-decoration: none;
+}
+
+@media (min-width: 576px) {
+    .blog-header-logo {
+        font-size: 1.35rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .blog-header-logo {
+        font-size: 1.85rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .blog-header-logo {
+        font-size: 2.25rem;
+    }
 }
 
 h1, h2, h3, h4, h5, h6 {

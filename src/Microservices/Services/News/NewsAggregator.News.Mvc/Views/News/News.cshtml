@@ -7,9 +7,11 @@
 {
     <meta itemprop="item" content="@Model.Url">
     <meta itemprop="name" content="@Model.Title">
+    <meta property="og:title" content="@Model.Title">
     @if (Model.SubTitle is not null)
     {
         <meta itemprop="description" content="@Model.SubTitle.Title">
+        <meta property="og:description" content="@Model.SubTitle.Title">
         <meta itemprop="alternativeHeadline" content="@Model.SubTitle.Title">
     }
     <meta itemprop="dateCreated" content="@Model.AddedAt.ToString("yyyy-MM-ddTHH:mm:sszzz")">
@@ -28,26 +30,28 @@
     @if (Model.Picture is not null)
     {
         <meta itemprop="image" content="@Model.Picture.Url">
+        <meta property="og:image" content="@Model.Picture.Url">
     }
     @if (Model.Video is not null)
     {
         <meta itemprop="video" content="@Model.Video.Url">
+        <meta property="og:video" content="@Model.Video.Url">
     }
-    <meta itemprop="article:id" content="@Model.Id">
-    <meta itemprop="article:originalUrl" content="@Model.Url">
-    <meta itemprop="article:title" content="@Model.Title">
+    <meta property="article:id" content="@Model.Id">
+    <meta property="article:original_url" content="@Model.Url">
+    <meta property="article:title" content="@Model.Title">
     @if (Model.SubTitle is not null)
     {
-        <meta itemprop="article:alternativeHeadline" content="@Model.SubTitle.Title">
+        <meta property="article:alternativeHeadline" content="@Model.SubTitle.Title">
     }
-    <meta itemprop="article:dateCreated" content="@Model.AddedAt.ToString("yyyy-MM-ddTHH:mm:sszzz")">
+    <meta property="article:created_time" content="@Model.AddedAt.ToString("yyyy-MM-ddTHH:mm:sszzz")">
     @if (Model.PublishedAt is not null)
     {
-        <meta itemprop="article:datePublished" content="@Model.PublishedAt?.ToString("yyyy-MM-ddTHH:mm:sszzz")">
+        <meta property="article:published_time" content="@Model.PublishedAt?.ToString("yyyy-MM-ddTHH:mm:sszzz")">
     }
     @if (Model.ModifiedAt is not null)
     {
-        <meta itemprop="article:dateModified" content="@Model.ModifiedAt?.ToString("yyyy-MM-ddTHH:mm:sszzz")">
+        <meta property="article:modified_time" content="@Model.ModifiedAt?.ToString("yyyy-MM-ddTHH:mm:sszzz")">
     }
     @if (Model.Editor is not null)
     {
@@ -130,9 +134,9 @@
                         </a>
                     </span>
                 }
-
+                <vc:count-news-view news-id="@Model.Id" /> 
                 <span itemprop="original">
-                    Original: <a class="text-decoration-none" href="@Model.Url" target="_blank">@Model.Url</a>
+                    Original: <a class="text-decoration-none text-wrap" href="@Model.Url" target="_blank">@Model.Url</a>
                 </span>
             </p>
             @if (Model.SubTitle is not null)

@@ -1,8 +1,11 @@
 ﻿using FluentValidation;
 using MediatR;
 using NewsAggregator.Domain.Infrastructure.Caching;
+using NewsAggregator.Domain.Infrastructure.MessageBrokers;
 using NewsAggregator.News.Caching;
+using NewsAggregator.News.Entities;
 using NewsAggregator.News.Exceptions;
+using NewsAggregator.News.Messages;
 using NewsAggregator.News.Repositories;
 using NewsAggregator.News.Specifications;
 
@@ -46,6 +49,21 @@ namespace NewsAggregator.News.UseCases.Queries
                                 cancellationToken) ?? throw new NewsNotFoundException(request.Id);
                     },
                     cancellationToken);
+            }
+        }
+
+        internal class NewsViewedNotificationHandler : INotificationHandler<NewsViewed> 
+        {
+            private readonly IMessageBus _messageBus;
+
+            public NewsViewedNotificationHandler(IMessageBus messageBus)
+            {
+                _messageBus = messageBus;
+            }
+
+            public async Task Handle(NewsViewed notification, CancellationToken cancellationToken)
+            {
+                await _messageBus.SendAsync(notification, cancellationToken);
             }
         }
     }

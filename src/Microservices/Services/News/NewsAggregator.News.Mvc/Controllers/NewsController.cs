@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using NewsAggregator.News.DTOs;
+using NewsAggregator.News.Messages;
 using NewsAggregator.News.UseCases.Queries;
 using System.ComponentModel.DataAnnotations;
 
@@ -30,6 +31,9 @@ namespace NewsAggregator.News.Mvc.Controllers
             CancellationToken cancellationToken = default)
         {
             var news = await _mediator.Send(new GetNewsByIdQuery(id), cancellationToken);
+
+            await _mediator.Publish(new NewsViewed(id, HttpContext.Connection.RemoteIpAddress?.ToString() 
+                ?? string.Empty));
 
             return View("News", news);
         }
