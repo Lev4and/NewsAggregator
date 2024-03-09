@@ -22,7 +22,11 @@
                         </a>
                         @if (news.PublishedAt is not null)
                         {
-                            <small class="text-body-secondary">@news.GetFormattedPublishedAt()</small>
+                            <small class="text-body-secondary">
+                                <time datetime="@news.PublishedAt?.ToString("dd-MM-yyyyTHH:mm:sszzz")" format="MMM. DD, YYYY, h:mm A Z">
+                                    @news.GetFormattedPublishedAt()
+                                </time>
+                            </small>
                         }
                     </div>
                 </div>

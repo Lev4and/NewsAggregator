@@ -26,7 +26,9 @@
             @if (Model.PublishedAt is not null)
             {
                 <div class="mb-1 text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@Model.GetFormattedPublishedAt()">
-                    @Model.GetFormattedPublishedAt()
+                    <time datetime="@Model.PublishedAt?.ToString("dd-MM-yyyyTHH:mm:sszzz")" format="MMM. DD, YYYY, h:mm A Z">
+                        @Model.GetFormattedPublishedAt()
+                    </time>
                 </div>
             }
             @if (Model.SubTitle is not null)

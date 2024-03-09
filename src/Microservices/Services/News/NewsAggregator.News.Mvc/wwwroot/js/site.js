@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async function (e) {
 
     if (hotlineHeaderLocalTimeElement) {
         setInterval(() => {
-            hotlineHeaderLocalTimeElement.innerHTML = new Date().toLocaleString('en-US');
+            hotlineHeaderLocalTimeElement.innerHTML = moment().format('MMM. DD, YYYY, h:mm:ss A Z');
         }, 250);
 
         const connection = new signalR.HubConnectionBuilder()
@@ -66,6 +66,18 @@ document.addEventListener('DOMContentLoaded', async function (e) {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', async function (e) {
+    const timeElements = document.querySelectorAll('time[datetime][format]');
+
+    if (timeElements) {
+        timeElements.forEach(function (timeElement) {
+            const dateTime = timeElement.getAttribute('datetime');
+            const dateTimeFormat = timeElement.getAttribute('format');
+            timeElement.innerHTML = ` ${moment(dateTime, 'DD-MM-YYYYTHH:mm:ssZ').local().format(dateTimeFormat)} `;
+        });
+    }
+})
 
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));

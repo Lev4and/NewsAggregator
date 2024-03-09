@@ -99,7 +99,7 @@
                     <span itemprop="datePublished">
                         Date of publication:
                         <a class="text-decoration-none" asp-route="NewsList" asp-route-startPublishedAt="@Model.PublishedAt?.Date.ToString("yyyy-MM-ddTHH:mm:ss")" asp-route-endPublishedAt="@Model.PublishedAt?.AddDays(1).Date.ToString("yyyy-MM-ddTHH:mm:ss")">
-                            <time datetime="@Model.PublishedAt?.ToString("dd-MM-yyyyTHH:mm:sszzz")">
+                            <time datetime="@Model.PublishedAt?.ToString("dd-MM-yyyyTHH:mm:sszzz")" format="MMM. DD, YYYY, h:mm A Z">
                                 @Model.GetFormattedPublishedAt()
                             </time>
                         </a>
@@ -109,7 +109,7 @@
                 {
                     <span itemprop="dateModified">
                         Date of modified:
-                        <time datetime="@Model.ModifiedAt?.ToString("dd-MM-yyyyTHH:mm:sszzz")">
+                        <time datetime="@Model.ModifiedAt?.ToString("dd-MM-yyyyTHH:mm:sszzz")" format="MMM. DD, YYYY, h:mm A Z">
                             @Model.GetFormattedModifiedAt()
                         </time>
                     </span>
@@ -154,14 +154,6 @@
             {
                 <div itemprop="articleBody">
                     @Html.Raw(Model.HtmlDescription.Description)
-                </div>
-            }
-            @if (Model.TextDescription is not null)
-            {
-                <h1 class="display-5 link-body-emphasis mb-1">Text description</h1>
-                <hr />
-                <div>
-                    @Html.Raw(Model.TextDescription.Description)
                 </div>
             }
         </article>
