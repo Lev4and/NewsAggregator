@@ -19,9 +19,7 @@
         "pgadmin": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "redis": "StartWithoutDebugging",
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging"
+        "redis": "StartWithoutDebugging"
       }
     },
     "Full production": {
@@ -43,9 +41,7 @@
         "pgadmin": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "redis": "StartWithoutDebugging",
-        "elasticsearch": "DoNotStart",
-        "kibana": "DoNotStart"
+        "redis": "StartWithoutDebugging"
       }
     },
     "Only News API": {
@@ -67,9 +63,7 @@
         "pgadmin": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "redis": "StartWithoutDebugging",
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "DoNotStart"
+        "redis": "StartWithoutDebugging"
       }
     },
     "Only News MVC": {
@@ -91,9 +85,7 @@
         "pgadmin": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "redis": "StartWithoutDebugging",
-        "elasticsearch": "DoNotStart",
-        "kibana": "DoNotStart"
+        "redis": "StartWithoutDebugging"
       }
     },
     "Only News parser": {
@@ -115,9 +107,7 @@
         "pgadmin": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "redis": "StartWithoutDebugging",
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging"
+        "redis": "StartWithoutDebugging"
       }
     },
     "Only News searcher": {
@@ -139,9 +129,7 @@
         "pgadmin": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "redis": "StartWithoutDebugging",
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging"
+        "redis": "StartWithoutDebugging"
       }
     },
     "Only Notification API": {
@@ -163,9 +151,7 @@
         "pgadmin": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
-        "redis": "StartWithoutDebugging",
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging"
+        "redis": "StartWithoutDebugging"
       }
     }
   }

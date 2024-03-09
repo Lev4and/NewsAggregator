@@ -95,23 +95,23 @@ services:
       - 6379:6379
       - 8001:8001
   
-  elasticsearch:
-    ports:
-      - 9200:9200
-    volumes:
-      - ./docker-data/elasticsearch:/usr/share/elasticsearch/data
-    environment:
-      - discovery.type=single-node
-      - xpack.security.enabled=false
-      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+  # elasticsearch:
+  #   ports:
+  #     - 9200:9200
+  #   volumes:
+  #     - ./docker-data/elasticsearch:/usr/share/elasticsearch/data
+  #   environment:
+  #     - discovery.type=single-node
+  #     - xpack.security.enabled=false
+  #     - ES_JAVA_OPTS=-Xms512m -Xmx512m
 
-  kibana:
-    ports:
-      - 5601:5601
-    environment:
-      - ELASTICSEARCH_URL=http://elasticsearch:9200
-    volumes:
-      - ./docker-data/kibana:/usr/share/kibana/data
+  # kibana:
+  #   ports:
+  #     - 5601:5601
+  #   environment:
+  #     - ELASTICSEARCH_URL=http://elasticsearch:9200
+  #   volumes:
+  #     - ./docker-data/kibana:/usr/share/kibana/data
   
   # chrome:
   #   environment:

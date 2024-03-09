@@ -32,7 +32,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         }
 
         [Theory]
-        [InlineData("https://www.novorosinform.org/predchuvstvie-novoj-vojny-russkij-general-dopustil-vozmozhnost-polnomasshtabnogo-konflikta-v-evrope-125428.html")]
+        [InlineData("https://meduza.io/news/2024/03/08/latviya-yuzhnaya-koreya-shvetsiya-kanada-germaniya-i-chehiya-prisoedinilis-k-preduprezhdeniyu-ssha-ob-ugroze-teraktov-v-rf-v-blizhayshie-48-chasov")]
         public async Task ParseAsync_SpecificNewsUrl_ReturnNotNullResult(string newsUrl)
         {
             var newsSource = _sources[new Uri(newsUrl)];
