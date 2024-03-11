@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async function (e) {
 
     if (hotlineHeaderLocalTimeElement) {
         setInterval(() => {
-            hotlineHeaderLocalTimeElement.innerHTML = moment().format('MMM. DD, YYYY, h:mm:ss A Z');
+            hotlineHeaderLocalTimeElement.innerHTML = moment().format('h:mm:ss A');
         }, 250);
 
         const connection = new signalR.HubConnectionBuilder()

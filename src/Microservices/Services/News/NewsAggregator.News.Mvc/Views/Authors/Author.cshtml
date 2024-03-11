@@ -40,4 +40,12 @@
             </div>
         </form>
     </div>
+    <div class="col-12">
+        <vc:news-section-by-editor id="@Model.Id" />
+
+        @if (Model.Source is not null)
+        {
+            <vc:news-section-by-source id="@Model.Source.Id" />
+        }
+    </div>
 </div>

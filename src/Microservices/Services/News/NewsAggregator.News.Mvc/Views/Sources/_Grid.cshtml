@@ -1,0 +1,10 @@
+﻿@model IReadOnlyCollection<NewsSource>
+
+<div class="news-sources-container mb-3">
+    <div class="news-sources-container__grid row g-3">
+        @foreach (var newsSource in Model)
+        {
+            <partial name="_GridItem" model="@newsSource" />
+        }
+    </div>
+</div>

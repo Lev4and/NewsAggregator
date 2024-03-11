@@ -1,0 +1,21 @@
+﻿@model NewsSectionByTagDto
+
+<div class="mb-3">
+    <h1>@Model.Tag.Name</h1>
+    <hr />
+    <div class="news-section-by-tag row mb-3 g-3">
+        @foreach (var news in Model.News)
+        {
+            <div class="news-section-by-tag__item col-12 col-xl-6">
+                <partial name="_NewsItemExtendedCard" model="@news" />
+            </div>
+        }
+    </div>
+    <div class="d-grid">
+        <button class="w-100 btn btn-primary btn-lg">
+            <a class="text-decoration-none text-reset" asp-route="NewsList" asp-route-newsTagsIds="@Model.Tag.Id">
+                More news
+            </a>
+        </button>
+    </div>
+</div>

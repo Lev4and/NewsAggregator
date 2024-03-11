@@ -1,0 +1,24 @@
+﻿@model NewsEditor
+
+<div class="authors-grid-container__grid__item col-12 col-md-6 col-lg-4">
+    <div class="card overflow-hidden">
+        <div class="card-body">
+            <div class="row justify-content-around h-100">
+                @if (Model.Source is not null)
+                {
+                    <div class="authors-grid-container__grid__item__news-source col-12">
+                        <img class="authors-grid-container__grid__item__news-source__logo" src="@Model.Source.Logo?.Small" />
+                        <a class="authors-grid-container__grid__item__news-source__title text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@Model.Source.Title" asp-route="Source" asp-route-id="@Model.Source.Id">
+                            @Model.Source.Title
+                        </a>
+                    </div>
+                }
+                <div class="col-12 align-self-center">
+                    <a class="authors-grid-container__grid__item__name text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@Model.Name" asp-route="Author" asp-route-id="@Model.Id">
+                        @Model.Name
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

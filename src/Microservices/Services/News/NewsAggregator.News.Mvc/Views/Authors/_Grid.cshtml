@@ -1,0 +1,10 @@
+﻿@model IReadOnlyCollection<NewsEditor>
+
+<div class="authors-grid-container mb-3">
+    <div class="authors-grid-container__grid row text-center g-3">
+        @foreach (var editor in Model)
+        {
+            <partial name="_GridItem" model="@editor" />
+        }
+    </div>
+</div>

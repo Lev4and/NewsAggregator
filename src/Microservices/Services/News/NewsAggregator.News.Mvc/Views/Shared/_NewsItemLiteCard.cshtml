@@ -1,0 +1,24 @@
+﻿@model News
+
+<div class="news-item-lite-card">
+    <div class="card overflow-hidden">
+        <div class="card-body">
+            <div class="row justify-content-around h-100">
+                @if (Model.Editor?.Source is not null)
+                {
+                    <div class="news-item-lite-card__news-source col-12 align-self-center">
+                        <img class="news-item-lite-card__news-source__logo" src="@Model.Editor.Source.Logo?.Small" />
+                        <a class="news-item-lite-card__news-source__title text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@Model.Editor.Source.Title" asp-route="Source" asp-route-id="@Model.Editor.Source.Id">
+                            @Model.Editor.Source.Title
+                        </a>
+                    </div>
+                }
+                <div class="col-12 align-self-center">
+                    <a class="news-item-lite-card__title text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@Model.Title" asp-route="News" asp-route-id="@Model.Id">
+                        @Model.Title
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

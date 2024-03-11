@@ -167,4 +167,23 @@
             <vc:recent-news-side-bar count="100" />
         </div>
     </div>
+    <div class="col-12">
+        @if (Model.Editor is not null)
+        {
+            <vc:news-section-by-editor id="@Model.Editor.Id" />
+
+            @if (Model.Editor.Source is not null)
+            {
+                <vc:news-section-by-source id="@Model.Editor.Source.Id" />
+
+                @if (Model.Editor.Source.Tags is not null)
+                {
+                    @foreach (var tag in Model.Editor.Source.Tags)
+                    {
+                        <vc:news-section-by-tag-id id="@tag.TagId" />
+                    }
+                }
+            }
+        }
+    </div>
 </div>

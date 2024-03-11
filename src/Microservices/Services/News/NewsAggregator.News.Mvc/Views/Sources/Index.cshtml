@@ -15,6 +15,16 @@
             -webkit-box-orient: vertical;
         }
 
+        .news-source-table {
+            width: max-content;
+        }
+
+        .news-source-table .news-source-table__row__logo {
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+        }
+
         .news-sources-container .news-sources-container__grid__item img {
             object-fit: cover;
         }
@@ -38,7 +48,9 @@
         <hr class="d-xl-none" />
     </div>
     <div class="col-xl-8">
-        <partial name="_List" model="@Model" />
+        <h1 class="news-sources-header" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@($"Show {Model.Result.GetFormattedShowedItems()} from {Model.Result.GetFormattedTotalItems()} news sources")">Show @Model.Result.GetFormattedShowedItems() from @Model.Result.GetFormattedTotalItems() news sources</h1>
+        <hr />
+        <partial name="_Table" model="@Model.Result.Items" />
         <partial name="_Pagination" model="@Model.Result.ToPaginationModel("newsSourceListForm")" />
     </div>
 </div>

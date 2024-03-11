@@ -1,0 +1,21 @@
+﻿@model IReadOnlyCollection<News>
+
+<div class="mb-3">
+    <h1>Recent news</h1>
+    <hr />
+    <div class="recent-news-section row mb-3 g-3">
+        @foreach (var news in Model)
+        {
+            <div class="recent-news-section__item col-12 col-xl-6">
+                <partial name="_NewsItemExtendedCard" model="@news" />
+            </div>
+        }
+    </div>
+    <div class="d-grid">
+        <button class="w-100 btn btn-primary btn-lg">
+            <a class="text-decoration-none text-reset" asp-route="NewsList">
+                More news
+            </a>
+        </button>
+    </div>
+</div>

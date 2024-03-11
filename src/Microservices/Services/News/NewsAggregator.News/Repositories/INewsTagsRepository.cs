@@ -8,5 +8,7 @@ namespace NewsAggregator.News.Repositories
         Task<IReadOnlyCollection<NewsTag>> FindNewsTagsAsync(CancellationToken cancellationToken = default);
 
         Task<NewsTag?> FindNewsTagByIdAsync(Guid id, CancellationToken cancellationToken = default);
+
+        Task<NewsTag?> FindNewsTagByNameAsync(string name, CancellationToken cancellationToken = default);
     }
 }

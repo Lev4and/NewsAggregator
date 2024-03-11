@@ -1,6 +1,6 @@
 ﻿@model NewsSource
 
-<div class="col-12 col-md-6 col-lg-4 news-sources-container__grid__item">
+<div class="news-sources-container__grid__item col-12 col-md-6 col-lg-4">
     <a class="card shadow-sm" asp-route="Source" asp-route-id="@Model.Id">
         @if (Model.Logo is not null)
         {

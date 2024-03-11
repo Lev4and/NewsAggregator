@@ -5,27 +5,8 @@
 <div class="recent-news-grid row mb-3 text-center g-3">
     @foreach (var news in Model)
     {
-        <div class="recent-news-grid__item col-12 col-md-6 col-lg-4">
-            <div class="card overflow-hidden">
-                <div class="card-body">
-                    <div class="row justify-content-around h-100">
-                        @if (news.Editor?.Source is not null)
-                        {
-                            <div class="recent-news-grid__item__news-source col-12 align-self-center">
-                                <img class="recent-news-grid__item__news-source__logo" src="@news.Editor.Source.Logo?.Small" />
-                                <a class="recent-news-grid__item__news-source__title text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@news.Editor.Source.Title" asp-route="Source" asp-route-id="@news.Editor.Source.Id">
-                                    @news.Editor.Source.Title
-                                </a>
-                            </div>
-                        }
-                        <div class="col-12 align-self-center">
-                            <a class="recent-news-grid__item__title text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@news.Title" asp-route="News" asp-route-id="@news.Id">
-                                @news.Title
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="recent-news-grid__item col-12 col-md-6 col-lg-4 col-xl-3">
+            <partial name="_NewsItemLiteCard" model="@news" />
         </div>
     }
 </div>

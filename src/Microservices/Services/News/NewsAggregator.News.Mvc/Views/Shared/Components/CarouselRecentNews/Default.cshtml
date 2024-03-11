@@ -1,6 +1,6 @@
 ﻿@model IReadOnlyCollection<News>
 
-<div id="carouselRecentNews" class="carousel slide mb-6" data-bs-ride="carousel">
+<div id="carouselRecentNews" class="carousel slide mb-3 d-none d-md-block" data-bs-ride="carousel">
     <div class="carousel-indicators">
         @for (var i = 0; i < Model.Count; i++)
         {

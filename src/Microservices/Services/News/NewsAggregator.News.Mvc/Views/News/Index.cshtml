@@ -14,53 +14,6 @@
             line-clamp: 1;
             -webkit-box-orient: vertical;
         }
-
-        .news-list-container__grid__item__picture {
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .news-list-container__grid__item .news-list-container__grid__item__title {
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            text-overflow: ellipsis;
-            line-clamp: 2;
-            text-decoration: none;
-            -webkit-box-orient: vertical;
-        }
-
-        .news-list-container__grid__item .news-list-container__grid__item__sub-title {
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            text-overflow: ellipsis;
-            line-clamp: 3;
-            -webkit-box-orient: vertical;
-        }
-
-        .news-list-container__grid__item .news-list-container__grid__item__news-source {
-            gap: 5px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
-
-            .news-list-container__grid__item .news-list-container__grid__item__news-source .news-list-container__grid__item__news-source__title {
-                overflow: hidden;
-                display: -webkit-box;
-                -webkit-line-clamp: 1;
-                text-overflow: ellipsis;
-                line-clamp: 1;
-                -webkit-box-orient: vertical;
-            }
-
-            .news-list-container__grid__item .news-list-container__grid__item__news-source .news-list-container__grid__item__news-source__logo {
-                width: 16px;
-                height: 16px;
-                object-fit: cover;
-            }
     </style>
 }
 
@@ -73,6 +26,8 @@
         <hr class="d-xl-none" />
     </div>
     <div class="col-xl-8">
+        <h1 class="news-list-header" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@($"Show {Model.Result.GetFormattedShowedItems()} from {Model.Result.GetFormattedTotalItems()} news")">Show @Model.Result.GetFormattedShowedItems() from @Model.Result.GetFormattedTotalItems() news</h1>
+        <hr />
         <partial name="_List" model="@Model" />
         <partial name="_Pagination" model="@Model.Result.ToPaginationModel("newsListForm")" />
     </div>

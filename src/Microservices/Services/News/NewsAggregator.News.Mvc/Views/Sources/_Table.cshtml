@@ -1,0 +1,89 @@
+﻿@model IReadOnlyCollection<NewsSource>
+
+<div class="table-responsive mb-3">
+    <table class="news-source-table table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">
+
+                </th>
+                <th scope="col">
+                    Title
+                </th>
+                <th scope="col">
+                    Site URL
+                </th>
+                <th scope="col">
+                    Is system
+                </th>
+                <th scope="col">
+                    Is enabled
+                </th>
+                <th scope="col">
+                    Supported parse sub title
+                </th>
+                <th scope="col">
+                    Supported parse editor
+                </th>
+                <th scope="col">
+                    Supported parse published at
+                </th>
+                <th scope="col">
+                    Supported parse modified at
+                </th>
+                <th scope="col">
+                    Supported parse picture
+                </th>
+                <th scope="col">
+                    Supported parse video
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var source in Model)
+            {
+                <tr class="news-source-table__row">
+                    <td>
+                        <a class="text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@source.Title" asp-route="Source" asp-route-id="@source.Id">
+                            <img class="news-source-table__row__logo" src="@source.Logo?.Small" />
+                        </a>
+                    </td>
+                    <td>
+                        <a class="news-source-table__row__title text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@source.Title" asp-route="Source" asp-route-id="@source.Id">
+                            @source.Title
+                        </a>
+                    </td>
+                    <td>
+                        <a class="text-decoration-none" href="@source.SiteUrl">
+                            Official site
+                        </a>
+                    </td>
+                    <td>
+                        @source.IsSystem
+                    </td>
+                    <td>
+                        @source.IsEnabled
+                    </td>
+                    <td>
+                        @(source.ParseSettings?.ParseSubTitleSettings is not null)
+                    </td>
+                    <td>
+                        @(source.ParseSettings?.ParseEditorSettings is not null)
+                    </td>
+                    <td>
+                        @(source.ParseSettings?.ParsePublishedAtSettings is not null)
+                    </td>
+                    <td>
+                        @(source.ParseSettings?.ParseModifiedAtSettings is not null)
+                    </td>
+                    <td>
+                        @(source.ParseSettings?.ParsePictureSettings is not null)
+                    </td>
+                    <td>
+                        @(source.ParseSettings?.ParseVideoSettings is not null)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

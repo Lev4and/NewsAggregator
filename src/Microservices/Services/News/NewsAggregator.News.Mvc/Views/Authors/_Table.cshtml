@@ -1,0 +1,41 @@
+﻿@model IReadOnlyCollection<NewsEditor>
+
+<div class="table-responsive mb-3">
+    <table class="authors-table table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">
+                
+                </th>
+                <th scope="col">
+                    Name
+                </th>
+                <th scope="col">
+                    News source
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var editor in Model)
+            {
+                <tr class="authors-table__row">
+                    <td>
+                        <a class="text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@editor.Source.Title" asp-route="Source" asp-route-id="@editor.Source.Id">
+                            <img class="authors-table__row__news-source-logo" src="@editor.Source.Logo?.Small" />
+                        </a>
+                    </td>
+                    <td>
+                        <a class="authors-table__row__name text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@editor.Name" asp-route="Author" asp-route-id="@editor.Id">
+                            @editor.Name
+                        </a>
+                    </td>
+                    <td>
+                        <a class="authors-table__row__news-source-title text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@editor.Source.Title" asp-route="Source" asp-route-id="@editor.Source.Id">
+                            @editor.Source.Title
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
