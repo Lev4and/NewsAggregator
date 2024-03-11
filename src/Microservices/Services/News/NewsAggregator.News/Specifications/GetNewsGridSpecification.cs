@@ -14,6 +14,7 @@ namespace NewsAggregator.News.Specifications
             AddInclude(news => news.Editor);
             AddInclude(news => news.Editor.Source);
             AddInclude(news => news.Editor.Source.Logo);
+            AddInclude(news => news.Editor.Source.Tags);
             AddInclude(news => news.SubTitle);
             AddInclude(news => news.Picture);
             AddInclude(news => news.Video);
@@ -73,6 +74,12 @@ namespace NewsAggregator.News.Specifications
                     TimeZoneInfo.Utc);
 
                 ApplyFilter(news => news.PublishedAt <= endPublishedAt);
+            }
+
+            if (filters.NewsTagsIds is not null && filters.NewsTagsIds?.Length > 0)
+            {
+                ApplyFilter(news => filters.NewsTagsIds.Any(tagId => 
+                    news.Editor.Source.Tags.Any(tag => tag.TagId == tagId)));
             }
 
             if (filters.NewsEditorsIds is not null && filters.NewsEditorsIds?.Length > 0)

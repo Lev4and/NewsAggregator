@@ -32,13 +32,15 @@ namespace NewsAggregator.News.UseCases.Queries
         internal class Handler : IRequestHandler<GetNewsListQuery, GetNewsListDto> 
         {
             private readonly INewsRepository _newsRepository;
+            private readonly INewsTagsRepository _newsTagsRepository;
             private readonly INewsEditorRepository _newsEditorRepository;
             private readonly INewsSourceRepository _newsSourceRepository;
 
-            public Handler(INewsRepository newsRepository, INewsEditorRepository newsEditorRepository, 
-                INewsSourceRepository newsSourceRepository)
+            public Handler(INewsRepository newsRepository, INewsTagsRepository newsTagsRepository, 
+                INewsEditorRepository newsEditorRepository, INewsSourceRepository newsSourceRepository)
             {
                 _newsRepository = newsRepository;
+                _newsTagsRepository = newsTagsRepository;
                 _newsEditorRepository = newsEditorRepository;
                 _newsSourceRepository = newsSourceRepository;
             }
@@ -56,11 +58,12 @@ namespace NewsAggregator.News.UseCases.Queries
                         var newsCount = await _newsRepository.CountAsync(specification, cancellationToken);
                         var newsList = await _newsRepository.FindAsync(specification, cancellationToken);
 
+                        var newsTags = await _newsTagsRepository.FindNewsTagsAsync(cancellationToken);
                         var newsEditors = await _newsEditorRepository.FindNewsEditorsAsync(cancellationToken);
                         var newsSources = await _newsSourceRepository.FindNewsSourcesAsync(cancellationToken);
 
                         var getNewsListDto = new GetNewsListDto(request.Filters, new PagedResultModel<Entities.News>(newsList, 
-                            request.Filters.Page, request.Filters.PageSize, newsCount), newsEditors, newsSources);
+                            request.Filters.Page, request.Filters.PageSize, newsCount), newsTags, newsEditors, newsSources);
 
                         transaction.Complete();
 
@@ -70,7 +73,7 @@ namespace NewsAggregator.News.UseCases.Queries
                     {
                         return new GetNewsListDto(new GetNewsListFilters(),
                             new PagedResultModel<Entities.News>(new List<Entities.News>(), 1, 1, 0), 
-                                new List<NewsEditor>(), new List<NewsSource>());
+                                new List<NewsTag>(), new List<NewsEditor>(), new List<NewsSource>());
                     }
                 }
             }

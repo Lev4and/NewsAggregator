@@ -13,6 +13,8 @@ namespace NewsAggregator.News.DTOs
 
         public IReadOnlyCollection<long> PageSizes { get; } = new List<long>() { 10, 25, 50, 75, 100 };
 
+        public IReadOnlyCollection<NewsTag> NewsTags { get; }
+
         public IReadOnlyCollection<NewsEditor> NewsEditors { get; }
 
         public IReadOnlyCollection<NewsSource> NewsSources { get; }
@@ -32,10 +34,12 @@ namespace NewsAggregator.News.DTOs
             };
 
         public GetNewsListDto(GetNewsListFilters filters, PagedResultModel<Entities.News> result,
-            IReadOnlyCollection<NewsEditor> newsEditors, IReadOnlyCollection<NewsSource> newsSources)
+            IReadOnlyCollection<NewsTag> newsTags, IReadOnlyCollection<NewsEditor> newsEditors, 
+            IReadOnlyCollection<NewsSource> newsSources)
         {
             Filters = filters;
             Result = result;
+            NewsTags = newsTags;
             NewsEditors = newsEditors;
             NewsSources = newsSources;
         }
@@ -64,6 +68,8 @@ namespace NewsAggregator.News.DTOs
         public DateTime? StartPublishedAt { get; set; } = null;
 
         public DateTime? EndPublishedAt { get; set; } = null;
+
+        public Guid[]? NewsTagsIds { get; set; } = null;
 
         public Guid[]? NewsEditorsIds { get; set; } = null;
 

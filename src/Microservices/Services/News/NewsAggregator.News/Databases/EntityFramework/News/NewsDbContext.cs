@@ -47,7 +47,11 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
 
         public DbSet<NewsSourceLogo> NewsSourceLogos { get; set; }
 
+        public DbSet<NewsSourceTag> NewsSourceTags { get; set; }
+
         public DbSet<NewsSubTitle> NewsSubTitles { get; set; }
+
+        public DbSet<NewsTag> NewsTags { get; set; }
 
         public DbSet<NewsTextDescription> NewsTextDescriptions { get; set; }
 
@@ -74,7 +78,7 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.AddNewsSources();
+            modelBuilder.AddDefaultData();
 
             modelBuilder.Entity<Entities.News>()
                 .HasIndex(news => news.Url);
@@ -191,6 +195,9 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
                 .HasIndex(source => source.SiteUrl);
 
             modelBuilder.Entity<NewsSource>()
+                .HasIndex(source => source.IsSystem);
+
+            modelBuilder.Entity<NewsSource>()
                 .HasIndex(source => source.IsEnabled);
 
             modelBuilder.Entity<NewsSource>()
@@ -212,6 +219,19 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
                 .HasMany(source => source.Editors)
                     .WithOne(editor => editor.Source)
                         .HasForeignKey(editor => editor.SourceId);
+
+            modelBuilder.Entity<NewsSource>()
+                .HasMany(source => source.Tags)
+                    .WithOne(tag => tag.Source)
+                        .HasForeignKey(tag => tag.SourceId);
+
+            modelBuilder.Entity<NewsTag>()
+                .HasMany(tag => tag.Sources)
+                    .WithOne(source => source.Tag)
+                        .HasForeignKey(source => source.TagId);
+
+            modelBuilder.Entity<NewsTag>()
+                .HasIndex(tag => tag.Name);
 
             modelBuilder.Entity<NewsView>()
                 .HasIndex(view => view.IpAddress);

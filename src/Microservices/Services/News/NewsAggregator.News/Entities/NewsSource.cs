@@ -9,6 +9,8 @@ namespace NewsAggregator.News.Entities
 
         public string SiteUrl { get; set; }
 
+        public bool IsSystem { get;set; }
+
         public bool IsEnabled { get; set; }
 
         public virtual NewsSourceLogo? Logo { get; set; }
@@ -18,5 +20,7 @@ namespace NewsAggregator.News.Entities
         public virtual NewsSearchSettings? SearchSettings { get; set; }
 
         public virtual IReadOnlyCollection<NewsEditor>? Editors { get; set; }
+
+        public virtual IReadOnlyCollection<NewsSourceTag>? Tags { get; set; }
     }
 }

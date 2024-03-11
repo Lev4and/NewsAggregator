@@ -32,10 +32,12 @@ namespace NewsAggregator.News.UseCases.Queries
         internal class Handler : IRequestHandler<GetNewsSourceListQuery, GetNewsSourceListDto>
         {
             private readonly INewsSourceRepository _newsSourceRepository;
+            private readonly INewsTagsRepository _newsTagsRepository;
 
-            public Handler(INewsSourceRepository newsSourceRepository)
+            public Handler(INewsSourceRepository newsSourceRepository, INewsTagsRepository newsTagsRepository)
             {
                 _newsSourceRepository = newsSourceRepository;
+                _newsTagsRepository = newsTagsRepository;
             }
 
             public async Task<GetNewsSourceListDto> Handle(GetNewsSourceListQuery request, 
@@ -52,9 +54,11 @@ namespace NewsAggregator.News.UseCases.Queries
                         var newsSourceCount = await _newsSourceRepository.CountAsync(specification, cancellationToken);
                         var newsSourceList = await _newsSourceRepository.FindAsync(specification, cancellationToken);
 
+                        var newsTags = await _newsTagsRepository.FindNewsTagsAsync(cancellationToken);
+
                         var getNewsSourceListDto = new GetNewsSourceListDto(request.Filters, 
                             new PagedResultModel<NewsSource>(newsSourceList, request.Filters.Page, request.Filters.PageSize, 
-                                newsSourceCount));
+                                newsSourceCount), newsTags);
 
                         transaction.Complete();
 
@@ -63,7 +67,8 @@ namespace NewsAggregator.News.UseCases.Queries
                     catch (Exception ex)
                     {
                         return new GetNewsSourceListDto(new GetNewsSourceListFilters(),
-                            new PagedResultModel<NewsSource>(new List<NewsSource>(), 1, 1, 0));
+                            new PagedResultModel<NewsSource>(new List<NewsSource>(), 1, 1, 0),
+                                new List<NewsTag>());
                     }
                 }
             }

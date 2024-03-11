@@ -13,6 +13,7 @@ namespace NewsAggregator.News.Specifications
         {
             AddInclude(editor => editor.Source);
             AddInclude(editor => editor.Source.Logo);
+            AddInclude(editor => editor.Source.Tags);
 
             if (!string.IsNullOrEmpty(filters.SearchString))
             {

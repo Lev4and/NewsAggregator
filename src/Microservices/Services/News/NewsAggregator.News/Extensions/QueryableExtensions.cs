@@ -7,8 +7,9 @@ namespace NewsAggregator.News.Extensions
     {
         public static IQueryable<NewsSource> IncludeAll(this IQueryable<NewsSource> newsSources)
         {
-            return newsSources.Include(source => source.Logo)
-                .Include(source => source.SearchSettings)
+            return newsSources
+                .Include(source => source.Logo)
+                .Include(source => source.Tags)
                 .Include(source => source.ParseSettings)
                 .Include(source => source.ParseSettings.ParseSubTitleSettings)
                 .Include(source => source.ParseSettings.ParsePublishedAtSettings)
@@ -17,7 +18,8 @@ namespace NewsAggregator.News.Extensions
                 .Include(source => source.ParseSettings.ParseModifiedAtSettings.Formats)
                 .Include(source => source.ParseSettings.ParseEditorSettings)
                 .Include(source => source.ParseSettings.ParsePictureSettings)
-                .Include(source => source.ParseSettings.ParseVideoSettings);
+                .Include(source => source.ParseSettings.ParseVideoSettings)
+                .Include(source => source.SearchSettings);
         }
     }
 }

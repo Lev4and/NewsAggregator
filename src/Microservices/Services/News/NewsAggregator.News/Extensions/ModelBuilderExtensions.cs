@@ -1,39 +1,59 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NewsAggregator.News.Entities;
 using NewsAggregator.News.NewsSources;
+using NewsAggregator.News.NewsTags;
 
 namespace NewsAggregator.News.Extensions
 {
     public static class ModelBuilderExtensions
     {
-        public static ModelBuilder AddNewsSources(this ModelBuilder modelBuilder)
+        public static ModelBuilder AddDefaultData(this ModelBuilder modelBuilder)
         {
+            var newsTags = new Tags();
+
+            foreach (var newsTag in newsTags)
+            {
+                modelBuilder.AddNewsTag(newsTag);
+            }
+
             var newsSources = new Sources();
 
             foreach (var newsSource in newsSources)
             {
-                modelBuilder.AddNewsSource(newsSource);
+                modelBuilder.AddNewsSource(newsSource, newsTags);
             }
 
             return modelBuilder;
         }
-        
-        private static ModelBuilder AddNewsSource(this ModelBuilder modelBuilder, NewsSource newsSource)
-        {
-            newsSource.Id = Guid.NewGuid();
 
+        private static ModelBuilder AddNewsTag(this ModelBuilder modelBuilder, NewsTag newsTag)
+        {
+            modelBuilder.Entity<NewsTag>().HasData(
+                new NewsTag
+                {
+                    Id = newsTag.Id,
+                    Name = newsTag.Name
+                });
+
+            return modelBuilder;
+        }
+
+
+        private static ModelBuilder AddNewsSource(this ModelBuilder modelBuilder, 
+            NewsSource newsSource, Tags tags)
+        {
             modelBuilder.Entity<NewsSource>().HasData(
                 new NewsSource
                 {
                     Id = newsSource.Id,
                     Title = newsSource.Title,
                     SiteUrl = newsSource.SiteUrl,
+                    IsSystem = newsSource.IsSystem,
                     IsEnabled = newsSource.IsEnabled
                 });
 
             if (!string.IsNullOrEmpty(newsSource.Logo?.Original))
             {
-                newsSource.Logo.Id = Guid.NewGuid();
                 newsSource.Logo.SourceId = newsSource.Id;
 
                 modelBuilder.Entity<NewsSourceLogo>().HasData(new NewsSourceLogo
@@ -45,9 +65,27 @@ namespace NewsAggregator.News.Extensions
                 });
             }
 
+            if (newsSource.Tags is not null)
+            {
+                foreach (var newsSourceTag in newsSource.Tags) 
+                {
+                    if (newsSourceTag.Tag is not null)
+                    {
+                        newsSourceTag.SourceId = newsSource.Id;
+
+                        modelBuilder.Entity<NewsSourceTag>().HasData(
+                            new NewsSourceTag
+                            {
+                                Id = newsSourceTag.Id,
+                                SourceId = newsSourceTag.SourceId,
+                                TagId = tags[newsSourceTag.Tag.Name].Id
+                            });
+                    }
+                }
+            }
+
             if (newsSource.ParseSettings is not null)
             {
-                newsSource.ParseSettings.Id = Guid.NewGuid();
                 newsSource.ParseSettings.SourceId = newsSource.Id;
 
                 modelBuilder.Entity<NewsParseSettings>().HasData(
@@ -62,7 +100,6 @@ namespace NewsAggregator.News.Extensions
 
                 if (!string.IsNullOrEmpty(newsSource.ParseSettings.ParseSubTitleSettings?.TitleXPath))
                 {
-                    newsSource.ParseSettings.ParseSubTitleSettings.Id = Guid.NewGuid();
                     newsSource.ParseSettings.ParseSubTitleSettings.ParseSettingsId = newsSource.ParseSettings.Id;
 
                     modelBuilder.Entity<NewsParseSubTitleSettings>().HasData(
@@ -77,7 +114,6 @@ namespace NewsAggregator.News.Extensions
 
                 if (!string.IsNullOrEmpty(newsSource.ParseSettings.ParsePictureSettings?.UrlXPath))
                 {
-                    newsSource.ParseSettings.ParsePictureSettings.Id = Guid.NewGuid();
                     newsSource.ParseSettings.ParsePictureSettings.ParseSettingsId = newsSource.ParseSettings.Id;
 
                     modelBuilder.Entity<NewsParsePictureSettings>().HasData(
@@ -92,7 +128,6 @@ namespace NewsAggregator.News.Extensions
 
                 if (!string.IsNullOrEmpty(newsSource.ParseSettings.ParseVideoSettings?.UrlXPath))
                 {
-                    newsSource.ParseSettings.ParseVideoSettings.Id = Guid.NewGuid();
                     newsSource.ParseSettings.ParseVideoSettings.ParseSettingsId = newsSource.ParseSettings.Id;
 
                     modelBuilder.Entity<NewsParseVideoSettings>().HasData(
@@ -107,7 +142,6 @@ namespace NewsAggregator.News.Extensions
 
                 if (!string.IsNullOrEmpty(newsSource.ParseSettings.ParseEditorSettings?.NameXPath))
                 {
-                    newsSource.ParseSettings.ParseEditorSettings.Id = Guid.NewGuid();
                     newsSource.ParseSettings.ParseEditorSettings.ParseSettingsId = newsSource.ParseSettings.Id;
 
                     modelBuilder.Entity<NewsParseEditorSettings>().HasData(
@@ -123,7 +157,6 @@ namespace NewsAggregator.News.Extensions
                 if (!string.IsNullOrEmpty(newsSource.ParseSettings.ParsePublishedAtSettings?.PublishedAtXPath) &&
                     !string.IsNullOrEmpty(newsSource.ParseSettings.ParsePublishedAtSettings?.PublishedAtCultureInfo))
                 {
-                    newsSource.ParseSettings.ParsePublishedAtSettings.Id = Guid.NewGuid();
                     newsSource.ParseSettings.ParsePublishedAtSettings.ParseSettingsId = newsSource.ParseSettings.Id;
 
                     modelBuilder.Entity<NewsParsePublishedAtSettings>().HasData(
@@ -141,7 +174,6 @@ namespace NewsAggregator.News.Extensions
                     {
                         foreach (var format in newsSource.ParseSettings.ParsePublishedAtSettings.Formats)
                         {
-                            format.Id = Guid.NewGuid();
                             format.NewsParsePublishedAtSettingsId = newsSource.ParseSettings.ParsePublishedAtSettings.Id;
 
                             modelBuilder.Entity<NewsParsePublishedAtSettingsFormat>().HasData(
@@ -158,7 +190,6 @@ namespace NewsAggregator.News.Extensions
                 if (!string.IsNullOrEmpty(newsSource.ParseSettings.ParseModifiedAtSettings?.ModifiedAtXPath) &&
                     !string.IsNullOrEmpty(newsSource.ParseSettings.ParseModifiedAtSettings?.ModifiedAtCultureInfo))
                 {
-                    newsSource.ParseSettings.ParseModifiedAtSettings.Id = Guid.NewGuid();
                     newsSource.ParseSettings.ParseModifiedAtSettings.ParseSettingsId = newsSource.ParseSettings.Id;
 
                     modelBuilder.Entity<NewsParseModifiedAtSettings>().HasData(
@@ -176,7 +207,6 @@ namespace NewsAggregator.News.Extensions
                     {
                         foreach (var format in newsSource.ParseSettings.ParseModifiedAtSettings.Formats)
                         {
-                            format.Id = Guid.NewGuid();
                             format.NewsParseModifiedAtSettingsId = newsSource.ParseSettings.ParseModifiedAtSettings.Id;
 
                             modelBuilder.Entity<NewsParseModifiedAtSettingsFormat>().HasData(
@@ -193,7 +223,6 @@ namespace NewsAggregator.News.Extensions
 
             if (newsSource.SearchSettings is not null)
             {
-                newsSource.SearchSettings.Id = Guid.NewGuid();
                 newsSource.SearchSettings.SourceId = newsSource.Id;
 
                 modelBuilder.Entity<NewsSearchSettings>().HasData(

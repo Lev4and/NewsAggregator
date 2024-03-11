@@ -18,6 +18,26 @@
             <input id="searchStringTextInput" class="form-control" type="text" placeholder="" name="searchString" value="@Model.Filters.SearchString">
         </div>
         <div class="col-12">
+            <label for="newsTagsSelect" class="form-label">News tags</label>
+            <select id="newsTagsSelect" class="form-select multiple" multiple name="newsTagsIds" size="5">
+                @foreach (var newsTag in Model.NewsTags)
+                {
+                    @if (Model.Filters.NewsTagsIds?.Contains(newsTag.Id) ?? false)
+                    {
+                        <option value="@newsTag.Id" selected>
+                            @newsTag.Name
+                        </option>
+                    }
+                    else
+                    {
+                        <option value="@newsTag.Id">
+                            @newsTag.Name
+                        </option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="col-12">
             <label for="newsEditorsSelect" class="form-label">News editors</label>
             <select id="newsEditorsSelect" class="form-select multiple" multiple name="newsEditorsIds" size="5">
                 @foreach (var newsEditor in Model.NewsEditors)

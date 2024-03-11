@@ -279,7 +279,10 @@ namespace NewsAggregator.News
                             exchangeBindingConfigurator.RoutingKey = "news.viewed";
                         });
 
-                        endpointConfigurator.Consumer<RegisterNewsViewConsumer>(context);
+                        endpointConfigurator.Consumer<RegisterNewsViewConsumer>(context, configurator =>
+                        {
+                            configurator.UseConcurrencyLimit(1);
+                        });
                     });
                 });
             });
