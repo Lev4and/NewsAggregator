@@ -21,7 +21,7 @@ namespace NewsAggregator.News.Mvc.Controllers
         public async Task<IActionResult> Index([FromQuery] GetNewsListFilters filters, 
             CancellationToken cancellationToken = default)
         {
-            var dto = await _mediator.Send(new GetNewsListQuery(filters), cancellationToken);
+            var dto = await _mediator.Send(new GetNewsListDtoQuery(filters), cancellationToken);
 
             return View(dto);
         }

@@ -22,15 +22,14 @@ namespace NewsAggregator.News.Mvc.Components
             var newsListFilters = new GetNewsListFilters()
             {
                 NewsTagsIds = [ newsTag.Id ],
-                HasPublishedAt = null,
                 PageSize = 10
             };
 
-            var news = await _mediator.Send(new GetNewsListQuery(newsListFilters), cancellationToken);
+            var newsList = await _mediator.Send(new GetNewsListQuery(newsListFilters), cancellationToken);
 
             var result = new NewsSectionByTagDto
             {
-                News = news.Result.Items,
+                News = newsList,
                 Tag = newsTag
             };
 

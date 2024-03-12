@@ -22,9 +22,9 @@ namespace NewsAggregator.News.Mvc.Components
                 PageSize = 10
             };
 
-            var news = await _mediator.Send(new GetNewsListQuery(newsListFilters), cancellationToken);
+            var newsList = await _mediator.Send(new GetNewsListQuery(newsListFilters), cancellationToken);
 
-            return View(news.Result.Items);
+            return View(newsList);
         }
     }
 }

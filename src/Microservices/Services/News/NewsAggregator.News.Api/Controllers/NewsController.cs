@@ -27,7 +27,7 @@ namespace NewsAggregator.News.Api.Controllers
         public async Task<IActionResult> GetNewsListByFiltersAsync([FromQuery] GetNewsListFilters filters,
             CancellationToken cancellationToken = default)
         {
-            return Ok(await _mediator.Send(new GetNewsListQuery(filters), cancellationToken));
+            return Ok(await _mediator.Send(new GetNewsListDtoQuery(filters), cancellationToken));
         }
 
         [HttpGet]
