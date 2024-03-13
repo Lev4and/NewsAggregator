@@ -3795,28 +3795,7 @@ namespace NewsAggregator.News.NewsSources
                         Id = Guid.Parse("6f3531a6-db42-459a-ab24-08493edc3ac0"),
                         UrlXPath = "//meta[@property='og:image']/@content",
                         IsRequired = false
-                    },
-                    ParsePublishedAtSettings = new NewsParsePublishedAtSettings
-                    {
-                        Id = Guid.Parse("bc3f2794-f10e-4745-ba8e-286b6aa58707"),
-                        PublishedAtXPath = "//div[@class='article__content']//time/text()",
-                        PublishedAtCultureInfo = "ru-RU",
-                        PublishedAtTimeZoneInfoId = "Russian Standard Time",
-                        IsRequired = true,
-                        Formats = new List<NewsParsePublishedAtSettingsFormat>
-                        {
-                            new NewsParsePublishedAtSettingsFormat
-                            {
-                                Id = Guid.Parse("f9ff1b0c-54ca-43d5-8781-01783db54288"),
-                                Format = "dd MMMM HH:mm"
-                            },
-                            new NewsParsePublishedAtSettingsFormat
-                            {
-                                Id = Guid.Parse("81fdba6b-e423-47c5-b9bf-cd08dc7fce42"),
-                                Format = "dd MMMM yyyy HH:mm"
-                            }
-                        }
-                    },
+                    }
                 },
                 SearchSettings = new NewsSearchSettings
                 {

@@ -1098,7 +1098,6 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                     { new Guid("b208c066-da95-4c32-baec-ff448a07f62d"), true, new Guid("60a60886-4da0-4c2c-8635-a8ec57827667"), "ru-RU", null, "//meta[@itemprop='dateModified']/@content" },
                     { new Guid("b2514b4f-e07a-44e1-977b-9013bd07ea0c"), true, new Guid("a39fd0cf-d695-451a-8ec5-b662eddf4e9e"), "ru-RU", "Russian Standard Time", "//div[@class='topic-page__header']//a[contains(@class, 'topic-header__time')]/text()" },
                     { new Guid("b5afbf6f-9a28-4814-8ec0-80b43048c284"), true, new Guid("9d11efde-ae9c-42a7-ac57-649bf5891e8a"), "ru-RU", "Russian Standard Time", "//meta[@property='article:published_time']/@content" },
-                    { new Guid("bc3f2794-f10e-4745-ba8e-286b6aa58707"), true, new Guid("611bd50e-69f5-4598-8ad6-8b19771f1044"), "ru-RU", "Russian Standard Time", "//div[@class='article__content']//time/text()" },
                     { new Guid("c00312de-2ba3-4047-b80c-e5624577ad29"), true, new Guid("921d7c0a-c084-4188-b243-d08580f65142"), "ru-RU", null, "//meta[@itemprop='datePublished']/@content" },
                     { new Guid("c6115996-838b-4309-813e-d520085af7df"), true, new Guid("e3fcdd00-2152-4d84-8f8c-bf70e4996990"), "ru-RU", "Russian Standard Time", "//div[@class='article-details']/span[@class='article-details__time']/time/@datetime" },
                     { new Guid("cbe14234-0158-487c-b0c0-2117107b9a34"), true, new Guid("fa16a108-45c2-42e4-8323-b1f3ea3cdf46"), "ru-RU", "Russian Standard Time", "//section[contains(@class, 'news-content')]/div[@class='content-top']//p[contains(@class, 'content-top__date')]/text()" },
@@ -1257,7 +1256,6 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                     { new Guid("7a4a173c-cad8-4a09-adef-caecda7f5283"), "yyyy-MM-ddTHH:mm:sszzz", new Guid("6f87ed33-a16c-465a-8784-33c69ef9bb0c") },
                     { new Guid("7b5a7ff9-dc44-4399-8049-30505337726e"), "HH:mm", new Guid("4a6be1f2-8429-4185-a9c6-03aeda076dcd") },
                     { new Guid("7ff54b73-3ea0-49c6-9702-ad9fe746e1c9"), "yyyy-MM-ddTHH:mm:sszzz", new Guid("f4df8c3f-efa8-4fa5-bb34-91942ecec22a") },
-                    { new Guid("81fdba6b-e423-47c5-b9bf-cd08dc7fce42"), "dd MMMM yyyy HH:mm", new Guid("bc3f2794-f10e-4745-ba8e-286b6aa58707") },
                     { new Guid("8e6578d8-62d7-4761-a9a2-60e8cfd4da58"), "d MMMM yyyy, HH:mm\" •\"", new Guid("f02b9ed4-7b5b-4572-bf74-604513ced86b") },
                     { new Guid("94e51912-995a-4976-a4a0-4cc03ffe4e82"), "yyyy-MM-ddTHH:mm:ssZ", new Guid("a2c411a5-4b6a-4ed8-b383-b1a4f05b4605") },
                     { new Guid("95c6753e-1df4-4708-9b80-6976c6b91292"), "yyyy-MM-ddTHH:mm:ssZ", new Guid("e6bd53e0-c868-451c-87a5-e048343b2759") },
@@ -1281,7 +1279,6 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                     { new Guid("d7afea6f-76d6-4684-86ce-f4d232f21786"), "d MMMM  HH:mm", new Guid("89fc1310-fff8-4cdc-aff5-c4285f9ab73c") },
                     { new Guid("da39c45c-178d-4b8c-8944-9d77de2690d0"), "d MMMM yyyy, HH:mm", new Guid("076e2817-f0e0-4f4a-ae55-08210a7e1a7d") },
                     { new Guid("e0b7abad-a103-4050-92c5-36017a518376"), "yyyy-MM-ddTHH:mm:ss.fffZ", new Guid("ccc2a5c5-02fd-4a8d-ace5-7f41742f442b") },
-                    { new Guid("f9ff1b0c-54ca-43d5-8781-01783db54288"), "dd MMMM HH:mm", new Guid("bc3f2794-f10e-4745-ba8e-286b6aa58707") },
                     { new Guid("fb9e24ab-9e5b-4641-ac8b-df59d34811d1"), "yyyy-MM-ddTHH:mm:ss.fffZ", new Guid("1fe09b4f-73bd-4979-8206-439489299a64") },
                     { new Guid("fdae85e3-de1e-4d29-a496-fa6ffedc616a"), "yyyyMMddTHHmm", new Guid("b5afbf6f-9a28-4814-8ec0-80b43048c284") }
                 });

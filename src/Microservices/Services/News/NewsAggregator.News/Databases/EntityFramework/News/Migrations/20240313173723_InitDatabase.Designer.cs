@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
 {
     [DbContext(typeof(NewsDbContext))]
-    [Migration("20240311090213_InitDatabase")]
+    [Migration("20240313173723_InitDatabase")]
     partial class InitDatabase
     {
         /// <inheritdoc />
@@ -1718,15 +1718,6 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                         },
                         new
                         {
-                            Id = new Guid("bc3f2794-f10e-4745-ba8e-286b6aa58707"),
-                            IsRequired = true,
-                            ParseSettingsId = new Guid("611bd50e-69f5-4598-8ad6-8b19771f1044"),
-                            PublishedAtCultureInfo = "ru-RU",
-                            PublishedAtTimeZoneInfoId = "Russian Standard Time",
-                            PublishedAtXPath = "//div[@class='article__content']//time/text()"
-                        },
-                        new
-                        {
                             Id = new Guid("f3f8cc16-9599-42fa-acea-c66be06e0d13"),
                             IsRequired = true,
                             ParseSettingsId = new Guid("5726d5dd-18ac-4c5c-a5d1-f775f1dd0b20"),
@@ -2106,18 +2097,6 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                             Id = new Guid("6b286540-6b0b-42b6-a696-aed7dd5844c8"),
                             Format = "yyyy-MM-ddTHH:mm:sszzz",
                             NewsParsePublishedAtSettingsId = new Guid("0cea5575-ec4f-4b14-a0cc-49185e1d1768")
-                        },
-                        new
-                        {
-                            Id = new Guid("f9ff1b0c-54ca-43d5-8781-01783db54288"),
-                            Format = "dd MMMM HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("bc3f2794-f10e-4745-ba8e-286b6aa58707")
-                        },
-                        new
-                        {
-                            Id = new Guid("81fdba6b-e423-47c5-b9bf-cd08dc7fce42"),
-                            Format = "dd MMMM yyyy HH:mm",
-                            NewsParsePublishedAtSettingsId = new Guid("bc3f2794-f10e-4745-ba8e-286b6aa58707")
                         },
                         new
                         {

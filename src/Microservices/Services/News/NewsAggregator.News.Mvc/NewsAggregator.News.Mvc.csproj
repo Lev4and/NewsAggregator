@@ -11,6 +11,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\search-news-modal.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\search-news-modal.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\search-news-modal.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
 	<PackageReference Include="Serilog" Version="3.1.1" />
 	<PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />

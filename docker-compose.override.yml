@@ -5,10 +5,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=5000
-      - ASPNETCORE_HTTPS_PORTS=5001
+      # - ASPNETCORE_HTTPS_PORTS=5001
     ports:
       - "5000:5000"
-      - "5001:5001"
+      # - "5001:5001"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
@@ -17,10 +17,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=5100
-      - ASPNETCORE_HTTPS_PORTS=5101
+      # - ASPNETCORE_HTTPS_PORTS=5101
     ports:
       - "5100:5100"
-      - "5101:5101"
+      # - "5101:5101"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
@@ -29,10 +29,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=5200
-      - ASPNETCORE_HTTPS_PORTS=5201
+      # - ASPNETCORE_HTTPS_PORTS=5201
     ports:
       - "5200:5200"
-      - "5201:5201"
+      # - "5201:5201"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
@@ -53,10 +53,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=5300
-      - ASPNETCORE_HTTPS_PORTS=5301
+      # - ASPNETCORE_HTTPS_PORTS=5301
     ports:
       - "5300"
-      - "5301"
+      # - "5301"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
