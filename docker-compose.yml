@@ -15,6 +15,7 @@ services:
       - newsaggregator-gateways-api-proxy
       - newsaggregator-news-api-proxy
       - newsaggregator-notification-api-proxy
+      - nginx-proxy
 
   newsaggregator.news.api:
     image: ${DOCKER_REGISTRY-}newsaggregatornewsapi
@@ -24,7 +25,7 @@ services:
       - postgres
       - redis 
       - rabbitmq
-      - elasticsearch
+      # - elasticsearch
       - newsaggregator.news.api.seq
     build:
       context: .
@@ -36,6 +37,7 @@ services:
       - redis-proxy
       - rabbitmq-proxy
       - elasticsearch-proxy
+      - nginx-proxy
 
 
   newsaggregator.news.mvc:
@@ -45,7 +47,7 @@ services:
       # - selenium.hub
       - postgres
       - redis
-      - elasticsearch
+      # - elasticsearch
       - newsaggregator.news.mvc.seq
     build:
       context: .
@@ -57,6 +59,7 @@ services:
       - redis-proxy
       - rabbitmq-proxy
       - elasticsearch-proxy 
+      - nginx-proxy
 
 
   newsaggregator.news.parser:
@@ -108,13 +111,14 @@ services:
     networks:
       - newsaggregator-notification-api-proxy
       - rabbitmq-proxy
+      - nginx-proxy
   
   postgres:
     image: postgres:latest
     container_name: postgres
     restart: always
     networks:
-     - postgres-proxy
+      - postgres-proxy
 
   pgadmin:
     image: dpage/pgadmin4:latest
@@ -122,6 +126,8 @@ services:
     depends_on:
       - postgres
     restart: always
+    networks:
+      - nginx-proxy
   
   rabbitmq:
     image: rabbitmq:3.10.7-management
@@ -130,6 +136,7 @@ services:
     restart: always
     networks:
       - rabbitmq-proxy
+      - nginx-proxy
 
   redis:
     image: redis/redis-stack:latest
@@ -137,22 +144,25 @@ services:
     restart: always
     networks:
       - redis-proxy
+      - nginx-proxy
   
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.1
-    container_name: elasticsearch
-    networks:
-      - elasticsearch-proxy
+  # elasticsearch:
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:8.12.1
+  #   container_name: elasticsearch
+  #   networks:
+  #     - elasticsearch-proxy
+  #     - nginx-proxy
 
-  kibana:
-    image: docker.elastic.co/kibana/kibana:8.12.1
-    container_name: kibana
-    links:
-      - elasticsearch
-    depends_on:
-      - elasticsearch
-    networks:
-      - elasticsearch-proxy 
+  # kibana:
+  #   image: docker.elastic.co/kibana/kibana:8.12.1
+  #   container_name: kibana
+  #   links:
+  #     - elasticsearch
+  #   depends_on:
+  #     - elasticsearch
+  #   networks:
+  #     - elasticsearch-proxy
+  #     - nginx-proxy
 
   # logstash:
   #   image: docker.elastic.co/logstash/logstash:8.12.1
@@ -163,6 +173,7 @@ services:
   #     - elasticsearch
   #   networks:
   #     - elasticsearch-proxy
+  #     - nginx-proxy
   
   # chrome:
   #   image: selenium/node-chrome:dev
@@ -172,48 +183,93 @@ services:
   #     - selenium.hub
   #   networks:
   #     - selenium-hub-proxy
+  #     - nginx-proxy
 
   # selenium.hub:
   #   image: selenium/hub:latest
   #   container_name: selenium-hub
   #   networks:
   #     - selenium-hub-proxy
+  #     - nginx-proxy
 
   newsaggregator.gateways.api.seq:
     image: datalust/seq:latest
     container_name: newsaggregator-gateways-api-seq
     networks:
       - newsaggregator-gateways-api-proxy
+      - nginx-proxy
   
   newsaggregator.news.api.seq:
     image: datalust/seq:latest
     container_name: newsaggregator-news-api-seq
     networks:
       - newsaggregator-news-api-proxy
+      - nginx-proxy
   
   newsaggregator.news.mvc.seq:
     image: datalust/seq:latest
     container_name: newsaggregator-news-mvc-seq
     networks:
       - newsaggregator-news-mvc-proxy
+      - nginx-proxy
   
   newsaggregator.news.parser.seq:
     image: datalust/seq:latest
     container_name: newsaggregator-news-parser-seq
     networks:
       - newsaggregator-news-parser-proxy
+      - nginx-proxy
   
   newsaggregator.news.searcher.seq:
     image: datalust/seq:latest
     container_name: newsaggregator-news-searcher-seq
     networks:
       - newsaggregator-news-searcher-proxy
+      - nginx-proxy
  
   newsaggregator.notification.api.seq:
     image: datalust/seq:latest
     container_name: newsaggregator-notification-api-seq
     networks:
       - newsaggregator-notification-api-proxy
+      - nginx-proxy
+
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    restart: always
+    networks:
+      - nginx-proxy
+
+  node.exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    restart: unless-stopped
+    networks:
+      - node-exporter-proxy
+      - nginx-proxy
+  
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    networks:
+      - prometheus-proxy
+      - nginx-proxy
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    networks:
+      - node-exporter-proxy
+      - prometheus-proxy
+      - nginx-proxy
+
+  nginx:
+    image: nginx:mainline
+    container_name: nginx
+    networks:
+      - nginx-proxy
 
 networks:
   newsaggregator-gateways-api-proxy:
@@ -237,6 +293,12 @@ networks:
   rabbitmq-proxy:
     driver: bridge
   elasticsearch-proxy:
+    driver: bridge
+  node-exporter-proxy:
+    driver: bridge
+  prometheus-proxy:
+    driver: bridge
+  nginx-proxy:
     driver: bridge
 
 

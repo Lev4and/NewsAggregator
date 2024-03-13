@@ -89,7 +89,8 @@ namespace NewsAggregator.News.Extensions
             var settings = new ElasticsearchClientSettings(new Uri(connectionString))
                 .DefaultMappingFor<Entities.News>(selector => selector
                     .IndexName("news")
-                        .IdProperty(property => property.Id));
+                        .IdProperty(property => property.Id))
+                .EnableDebugMode();
 
             return services.AddElasticsearch(settings);
         }

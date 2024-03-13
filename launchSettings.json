@@ -20,8 +20,11 @@
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
         "redis": "StartWithoutDebugging",
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging"
+        "nginx": "StartWithoutDebugging",
+        "grafana": "StartWithoutDebugging",
+        "node.exporter": "StartWithoutDebugging",
+        "portainer": "StartWithoutDebugging",
+        "prometheus": "StartWithoutDebugging"
       }
     },
     "Full production": {
@@ -44,8 +47,11 @@
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
         "redis": "StartWithoutDebugging",
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging"
+        "nginx": "StartWithoutDebugging",
+        "grafana": "StartWithoutDebugging",
+        "node.exporter": "StartWithoutDebugging",
+        "portainer": "StartWithoutDebugging",
+        "prometheus": "StartWithoutDebugging"
       }
     },
     "Only News API": {
@@ -68,8 +74,11 @@
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
         "redis": "StartWithoutDebugging",
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging"
+        "nginx": "StartWithoutDebugging",
+        "grafana": "StartWithoutDebugging",
+        "node.exporter": "StartWithoutDebugging",
+        "portainer": "StartWithoutDebugging",
+        "prometheus": "StartWithoutDebugging"
       }
     },
     "Only News MVC": {
@@ -92,8 +101,11 @@
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
         "redis": "StartWithoutDebugging",
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging"
+        "nginx": "StartWithoutDebugging",
+        "grafana": "StartWithoutDebugging",
+        "node.exporter": "StartWithoutDebugging",
+        "portainer": "StartWithoutDebugging",
+        "prometheus": "StartWithoutDebugging"
       }
     },
     "Only News parser": {
@@ -116,8 +128,11 @@
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
         "redis": "StartWithoutDebugging",
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging"
+        "nginx": "StartWithoutDebugging",
+        "grafana": "StartWithoutDebugging",
+        "node.exporter": "StartWithoutDebugging",
+        "portainer": "StartWithoutDebugging",
+        "prometheus": "StartWithoutDebugging"
       }
     },
     "Only News searcher": {
@@ -140,8 +155,11 @@
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
         "redis": "StartWithoutDebugging",
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging"
+        "nginx": "StartWithoutDebugging",
+        "grafana": "StartWithoutDebugging",
+        "node.exporter": "StartWithoutDebugging",
+        "portainer": "StartWithoutDebugging",
+        "prometheus": "StartWithoutDebugging"
       }
     },
     "Only Notification API": {
@@ -164,8 +182,38 @@
         "postgres": "StartWithoutDebugging",
         "rabbitmq": "StartWithoutDebugging",
         "redis": "StartWithoutDebugging",
-        "elasticsearch": "StartWithoutDebugging",
-        "kibana": "StartWithoutDebugging"
+        "nginx": "StartWithoutDebugging",
+        "grafana": "StartWithoutDebugging",
+        "node.exporter": "StartWithoutDebugging",
+        "portainer": "StartWithoutDebugging",
+        "prometheus": "StartWithoutDebugging"
+      }
+    },
+    "Elasticsearch": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "nginx": "StartWithoutDebugging",
+        "grafana": "StartWithoutDebugging",
+        "newsaggregator.gateways.api": "DoNotStart",
+        "newsaggregator.gateways.api.seq": "DoNotStart",
+        "newsaggregator.news.api": "DoNotStart",
+        "newsaggregator.news.api.seq": "DoNotStart",
+        "newsaggregator.news.mvc": "DoNotStart",
+        "newsaggregator.news.mvc.seq": "DoNotStart",
+        "newsaggregator.news.parser": "DoNotStart",
+        "newsaggregator.news.parser.seq": "DoNotStart",
+        "newsaggregator.news.searcher": "DoNotStart",
+        "newsaggregator.news.searcher.seq": "DoNotStart",
+        "newsaggregator.notification.api": "DoNotStart",
+        "newsaggregator.notification.api.seq": "DoNotStart",
+        "pgadmin": "DoNotStart",
+        "postgres": "DoNotStart",
+        "rabbitmq": "DoNotStart",
+        "redis": "DoNotStart",
+        "node.exporter": "StartWithoutDebugging",
+        "portainer": "StartWithoutDebugging",
+        "prometheus": "StartWithoutDebugging"
       }
     }
   }
