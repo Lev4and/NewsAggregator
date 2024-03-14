@@ -14,8 +14,7 @@ namespace NewsAggregator.Infrastructure.Web.Http.Builders
 
         public HttpClientHandlerBuilder UseSslProtocols()
         {
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.SystemDefault | SecurityProtocolType.Tls |
-                SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             return this;
         }
