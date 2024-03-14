@@ -10,6 +10,7 @@ using NewsAggregator.News.Extensions;
 using NewsAggregator.News.MessageConsumers;
 using NewsAggregator.News.Messages;
 using NewsAggregator.News.Repositories;
+using OpenQA.Selenium.Chrome;
 using RabbitMQ.Client;
 using System.Text.Json.Serialization;
 
