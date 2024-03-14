@@ -42,9 +42,13 @@ namespace NewsAggregator.Infrastructure.Web.Http.Builders
             return this;
         }
 
-        public HttpClientHandlerBuilder UseProxy(IWebProxy? proxy)
+        public HttpClientHandlerBuilder UseProxy()
         {
-            _httpClientHandler.UseProxy = true;
+            var proxy = WebRequest.GetSystemWebProxy();
+
+            proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
+
+            _httpClientHandler.UseDefaultCredentials = true;
             _httpClientHandler.Proxy = proxy;
 
             return this;

@@ -24,7 +24,7 @@ namespace NewsAggregator.News.Web.Http
                 "YaBrowser/23.11.0.0 Safari/537.36" }
         };
 
-        public NewsHttpClient() : base(new WebProxy("85.26.146.169", 80) { BypassProxyOnLocal = false })
+        public NewsHttpClient() : base()
         {
             UseHeaders(_headers);
 

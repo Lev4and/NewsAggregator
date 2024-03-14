@@ -10,20 +10,15 @@ namespace NewsAggregator.Infrastructure.Web.Http
         protected virtual IRequestHandler RequestHandler => new RequestHandler();
 
         public BaseHttpClient() : base(new HttpClientHandlerBuilder().WithAllowAutoRedirect()
-            .WithAutomaticDecompression().UseCertificateCustomValidation().UseSslProtocols().Build())
+            .WithAutomaticDecompression().UseCertificateCustomValidation().UseSslProtocols()
+                .UseProxy().Build())
         {
             
         }
 
-        public BaseHttpClient(IWebProxy? proxy) : base(new HttpClientHandlerBuilder().WithAllowAutoRedirect()
-            .WithAutomaticDecompression().UseCertificateCustomValidation().UseSslProtocols()
-            .UseProxy(proxy).Build())
-        {
-
-        }
-
         public BaseHttpClient(string uri) : base(new HttpClientHandlerBuilder().WithAllowAutoRedirect()
-            .WithAutomaticDecompression().UseCertificateCustomValidation().UseSslProtocols().Build())
+            .WithAutomaticDecompression().UseCertificateCustomValidation().UseSslProtocols()
+                .UseProxy().Build())
         {
             if (string.IsNullOrEmpty(uri)) throw new ArgumentNullException(nameof(uri));
 
@@ -31,7 +26,8 @@ namespace NewsAggregator.Infrastructure.Web.Http
         }
 
         public BaseHttpClient(Uri uri) : base(new HttpClientHandlerBuilder().WithAllowAutoRedirect()
-            .WithAutomaticDecompression().UseCertificateCustomValidation().UseSslProtocols().Build())
+            .WithAutomaticDecompression().UseCertificateCustomValidation().UseSslProtocols()
+                .UseProxy().Build())
         {
             BaseAddress = uri;
         }
