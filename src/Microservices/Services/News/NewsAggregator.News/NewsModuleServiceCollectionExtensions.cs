@@ -308,7 +308,9 @@ namespace NewsAggregator.News
 
             services.AddCqrs();
 
-            services.AddHttpClientNewsProviders();
+            services.AddSeleniumNewsProviders(new Uri(settings.WebScraping.Selenium.ConnectionString),
+                new ChromeOptions());
+
             services.AddNewsAngleSharpParsers();
 
             return services;

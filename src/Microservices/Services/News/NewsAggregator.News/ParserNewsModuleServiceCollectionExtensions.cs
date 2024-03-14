@@ -10,6 +10,7 @@ using NewsAggregator.News.MessageConsumers;
 using NewsAggregator.News.Messages;
 using NewsAggregator.News.Pipelines;
 using NewsAggregator.News.UseCases.Commands;
+using OpenQA.Selenium.Chrome;
 using RabbitMQ.Client;
 using System.Text.Json.Serialization;
 
@@ -56,7 +57,10 @@ namespace NewsAggregator.News
                             exchangeBindingConfigurator.RoutingKey = "news.registered";
                         });
 
-                        endpointConfigurator.Consumer<ParseNewsConsumer>(context);
+                        endpointConfigurator.Consumer<ParseNewsConsumer>(context, configurator =>
+                        {
+                            configurator.UseConcurrencyLimit(1);
+                        });
                     });
 
                     configurator.Send<ParsedNews>(messageSendConfigurator =>
@@ -129,7 +133,9 @@ namespace NewsAggregator.News
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipeline<,>));
 
-            services.AddHttpClientNewsProviders();
+            services.AddSeleniumNewsProviders(new Uri(settings.WebScraping.Selenium.ConnectionString),
+                new ChromeOptions());
+
             services.AddNewsAngleSharpParsers();
 
             return services;

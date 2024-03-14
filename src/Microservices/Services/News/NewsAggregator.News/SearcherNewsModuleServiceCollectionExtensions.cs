@@ -12,6 +12,7 @@ using NewsAggregator.News.Messages;
 using NewsAggregator.News.Pipelines;
 using NewsAggregator.News.UseCases.Commands;
 using NewsAggregator.News.UseCases.Queries;
+using OpenQA.Selenium.Chrome;
 using RabbitMQ.Client;
 using System.Reflection;
 using System.Text.Json.Serialization;
@@ -78,7 +79,9 @@ namespace NewsAggregator.News
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipeline<,>));
 
-            services.AddHttpClientNewsProviders();
+            services.AddSeleniumNewsProviders(new Uri(settings.WebScraping.Selenium.ConnectionString),
+                new ChromeOptions());
+
             services.AddNewsAngleSharpParsers();
 
             services.AddHostedService<SearchingNewsWorker>();
