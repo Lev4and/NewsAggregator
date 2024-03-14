@@ -1,4 +1,5 @@
 ﻿using NewsAggregator.Infrastructure.Web.Http;
+using System.Net;
 using System.Text;
 
 namespace NewsAggregator.News.Web.Http
@@ -23,7 +24,7 @@ namespace NewsAggregator.News.Web.Http
                 "YaBrowser/23.11.0.0 Safari/537.36" }
         };
 
-        public NewsHttpClient() : base()
+        public NewsHttpClient() : base(new WebProxy("85.26.146.169", 80) { BypassProxyOnLocal = false })
         {
             UseHeaders(_headers);
 

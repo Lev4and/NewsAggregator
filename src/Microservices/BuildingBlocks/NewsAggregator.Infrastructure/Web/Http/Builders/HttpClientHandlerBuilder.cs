@@ -10,9 +10,6 @@ namespace NewsAggregator.Infrastructure.Web.Http.Builders
         public HttpClientHandlerBuilder()
         {
             _httpClientHandler = new HttpClientHandler();
-
-            _httpClientHandler.UseProxy = true;
-            _httpClientHandler.UseDefaultCredentials = true;
         }
 
         public HttpClientHandlerBuilder UseSslProtocols()
@@ -41,6 +38,14 @@ namespace NewsAggregator.Infrastructure.Web.Http.Builders
         {
             _httpClientHandler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate |
                 DecompressionMethods.Brotli;
+
+            return this;
+        }
+
+        public HttpClientHandlerBuilder UseProxy(IWebProxy? proxy)
+        {
+            _httpClientHandler.UseProxy = true;
+            _httpClientHandler.Proxy = proxy;
 
             return this;
         }

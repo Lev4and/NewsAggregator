@@ -1,6 +1,7 @@
 ﻿using NewsAggregator.Infrastructure.Web.Http.Builders;
 using NewsAggregator.Infrastructure.Web.Http.Extensions;
 using NewsAggregator.Infrastructure.Web.Http.RequestHandlers;
+using System.Net;
 
 namespace NewsAggregator.Infrastructure.Web.Http
 {
@@ -10,6 +11,13 @@ namespace NewsAggregator.Infrastructure.Web.Http
 
         public BaseHttpClient() : base(new HttpClientHandlerBuilder().WithAllowAutoRedirect()
             .WithAutomaticDecompression().UseCertificateCustomValidation().UseSslProtocols().Build())
+        {
+            
+        }
+
+        public BaseHttpClient(IWebProxy? proxy) : base(new HttpClientHandlerBuilder().WithAllowAutoRedirect()
+            .WithAutomaticDecompression().UseCertificateCustomValidation().UseSslProtocols()
+            .UseProxy(proxy).Build())
         {
 
         }
