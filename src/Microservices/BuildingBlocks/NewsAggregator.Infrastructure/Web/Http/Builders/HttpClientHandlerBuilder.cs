@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using StackExchange.Redis;
+using System.Net;
 
 namespace NewsAggregator.Infrastructure.Web.Http.Builders
 {
@@ -9,6 +10,20 @@ namespace NewsAggregator.Infrastructure.Web.Http.Builders
         public HttpClientHandlerBuilder()
         {
             _httpClientHandler = new HttpClientHandler();
+        }
+
+        public HttpClientHandlerBuilder UseProxy()
+        {
+            var proxyConfig = new WebProxy
+            {
+                Address = new Uri("85.116.120.106:3629"),
+                BypassProxyOnLocal = false,
+                UseDefaultCredentials = true,
+            };
+
+            _httpClientHandler.Proxy = proxyConfig;
+
+            return this;
         }
 
         public HttpClientHandlerBuilder UseSslProtocols()
