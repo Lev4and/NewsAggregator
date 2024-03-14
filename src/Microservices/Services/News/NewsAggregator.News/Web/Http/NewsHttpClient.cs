@@ -33,7 +33,7 @@ namespace NewsAggregator.News.Web.Http
 
         public async Task<string> GetHtmlAsync(string requestUri, CancellationToken cancellationToken = default)
         {
-            var response = await GetAsync(requestUri.Replace("https://", "http://"), cancellationToken);
+            var response = await GetAsync(requestUri, cancellationToken);
 
             return await response.Content.ReadAsStringAsync(cancellationToken);
         }
