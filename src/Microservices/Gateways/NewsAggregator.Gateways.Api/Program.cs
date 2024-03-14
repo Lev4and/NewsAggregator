@@ -54,7 +54,7 @@ app.UseSwaggerUI(options =>
 
     foreach (var description in descriptions)
     {
-        var url = $"/api/swagger/{description.GroupName}/swagger.json";
+        var url = $"/api/gateways/swagger/{description.GroupName}/swagger.json";
         var name = description.GroupName.ToUpperInvariant();
 
         options.SwaggerEndpoint(url, name);
