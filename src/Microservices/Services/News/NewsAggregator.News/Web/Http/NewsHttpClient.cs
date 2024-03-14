@@ -27,7 +27,7 @@ namespace NewsAggregator.News.Web.Http
         {
             UseHeaders(_headers);
 
-            Timeout = new TimeSpan(0, 0, 5);
+            Timeout = new TimeSpan(0, 0, 30);
         }
 
         public async Task<string> GetHtmlAsync(string requestUri, CancellationToken cancellationToken = default)
