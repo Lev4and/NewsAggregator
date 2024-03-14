@@ -21,7 +21,7 @@ services:
     image: ${DOCKER_REGISTRY-}newsaggregatornewsapi
     container_name: newsaggregator-news-api
     depends_on:
-      - selenium.hub
+      # - selenium.hub
       - postgres
       - redis 
       - rabbitmq
@@ -44,7 +44,7 @@ services:
     image: ${DOCKER_REGISTRY-}newsaggregatornewsmvc
     container_name: newsaggregator-news-mvc
     depends_on:
-      - selenium.hub
+      # - selenium.hub
       - postgres
       - redis
       # - elasticsearch
@@ -67,7 +67,7 @@ services:
     container_name: newsaggregator-news-parser
     depends_on:
       - newsaggregator.news.api
-      - selenium.hub
+      # - selenium.hub
       - redis
       - rabbitmq
       - newsaggregator.news.parser.seq
@@ -86,7 +86,7 @@ services:
     container_name: newsaggregator-news-searcher
     depends_on:
       - newsaggregator.news.api
-      - selenium.hub
+      # - selenium.hub
       - redis
       - rabbitmq
       - newsaggregator.news.searcher.seq
@@ -175,22 +175,22 @@ services:
   #     - elasticsearch-proxy
   #     - nginx-proxy
   
-  chrome:
-    image: selenium/node-chrome:dev
-    container_name: chrome
-    shm_size: 2gb
-    depends_on:
-      - selenium.hub
-    networks:
-      - selenium-hub-proxy
-      - nginx-proxy
+  # chrome:
+  #   image: selenium/node-chrome:dev
+  #   container_name: chrome
+  #   shm_size: 2gb
+  #   depends_on:
+  #     - selenium.hub
+  #   networks:
+  #     - selenium-hub-proxy
+  #     - nginx-proxy
 
-  selenium.hub:
-    image: selenium/hub:latest
-    container_name: selenium-hub
-    networks:
-      - selenium-hub-proxy
-      - nginx-proxy
+  # selenium.hub:
+  #   image: selenium/hub:latest
+  #   container_name: selenium-hub
+  #   networks:
+  #     - selenium-hub-proxy
+  #     - nginx-proxy
 
   newsaggregator.gateways.api.seq:
     image: datalust/seq:latest
@@ -283,7 +283,7 @@ services:
         - pgadmin
         - rabbitmq 
         - redis
-        - selenium.hub
+        # - selenium.hub
         - portainer
         - grafana
     networks:

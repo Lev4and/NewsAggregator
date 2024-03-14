@@ -133,9 +133,7 @@ namespace NewsAggregator.News
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipeline<,>));
 
-            services.AddSeleniumNewsProviders(new Uri(settings.WebScraping.Selenium.ConnectionString),
-                new ChromeOptions());
-
+            services.AddHttpClientNewsProviders();
             services.AddNewsAngleSharpParsers();
 
             return services;
