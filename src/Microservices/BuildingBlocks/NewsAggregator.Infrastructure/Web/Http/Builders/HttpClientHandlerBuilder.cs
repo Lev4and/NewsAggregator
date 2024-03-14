@@ -14,7 +14,9 @@ namespace NewsAggregator.Infrastructure.Web.Http.Builders
 
         public HttpClientHandlerBuilder UseSslProtocols()
         {
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.SystemDefault | SecurityProtocolType.Tls
+                | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13
+                | SecurityProtocolType.Ssl3;
 
             return this;
         }
@@ -37,18 +39,6 @@ namespace NewsAggregator.Infrastructure.Web.Http.Builders
         {
             _httpClientHandler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate |
                 DecompressionMethods.Brotli;
-
-            return this;
-        }
-
-        public HttpClientHandlerBuilder UseProxy()
-        {
-            var proxy = WebRequest.GetSystemWebProxy();
-
-            proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
-
-            _httpClientHandler.UseDefaultCredentials = true;
-            _httpClientHandler.Proxy = proxy;
 
             return this;
         }

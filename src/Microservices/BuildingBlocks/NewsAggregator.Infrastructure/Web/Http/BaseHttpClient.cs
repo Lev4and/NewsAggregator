@@ -10,15 +10,13 @@ namespace NewsAggregator.Infrastructure.Web.Http
         protected virtual IRequestHandler RequestHandler => new RequestHandler();
 
         public BaseHttpClient() : base(new HttpClientHandlerBuilder().WithAllowAutoRedirect()
-            .WithAutomaticDecompression().UseCertificateCustomValidation().UseSslProtocols()
-                .UseProxy().Build())
+            .WithAutomaticDecompression().UseCertificateCustomValidation().UseSslProtocols().Build())
         {
             
         }
 
         public BaseHttpClient(string uri) : base(new HttpClientHandlerBuilder().WithAllowAutoRedirect()
-            .WithAutomaticDecompression().UseCertificateCustomValidation().UseSslProtocols()
-                .UseProxy().Build())
+            .WithAutomaticDecompression().UseCertificateCustomValidation().UseSslProtocols().Build())
         {
             if (string.IsNullOrEmpty(uri)) throw new ArgumentNullException(nameof(uri));
 
@@ -26,8 +24,7 @@ namespace NewsAggregator.Infrastructure.Web.Http
         }
 
         public BaseHttpClient(Uri uri) : base(new HttpClientHandlerBuilder().WithAllowAutoRedirect()
-            .WithAutomaticDecompression().UseCertificateCustomValidation().UseSslProtocols()
-                .UseProxy().Build())
+            .WithAutomaticDecompression().UseCertificateCustomValidation().UseSslProtocols().Build())
         {
             BaseAddress = uri;
         }
