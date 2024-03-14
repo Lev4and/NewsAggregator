@@ -10,12 +10,6 @@ namespace NewsAggregator.Infrastructure.Web.Http.Builders
         public HttpClientHandlerBuilder()
         {
             _httpClientHandler = new HttpClientHandler();
-
-            _httpClientHandler.UseProxy = true;
-            _httpClientHandler.Proxy = new WebProxy("72.10.160.90", 1053)
-            {
-                BypassProxyOnLocal = true
-            };
         }
 
         public HttpClientHandlerBuilder UseSslProtocols()
