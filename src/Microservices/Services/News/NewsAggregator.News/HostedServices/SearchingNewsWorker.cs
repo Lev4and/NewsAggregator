@@ -10,10 +10,12 @@ namespace NewsAggregator.News.HostedServices
     public class SearchingNewsWorker : BackgroundService
     {
         private readonly IServiceScopeFactory _scopeFactory;
+        private readonly ILogger<SearchingNewsWorker> _logger;
 
-        public SearchingNewsWorker(IServiceScopeFactory scopeFactory)
+        public SearchingNewsWorker(IServiceScopeFactory scopeFactory, ILogger<SearchingNewsWorker> logger)
         {
             _scopeFactory = scopeFactory;
+            _logger = logger;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -34,8 +36,11 @@ namespace NewsAggregator.News.HostedServices
 
                             await mediator.Publish(new FoundNewsList(newsUrls), stoppingToken);
                         }
-                        catch
+                        catch (Exception ex)
                         {
+                            _logger.LogError(ex, "The searching news list from {0} source failed with an error {1}",
+                                newsSource.SiteUrl, ex.Message);
+
                             continue;
                         }
                     }

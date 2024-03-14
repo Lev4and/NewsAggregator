@@ -215,6 +215,33 @@
         "portainer": "StartWithoutDebugging",
         "prometheus": "StartWithoutDebugging"
       }
+    },
+    "pgAdmin": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "grafana": "DoNotStart",
+        "newsaggregator.gateways.api": "DoNotStart",
+        "newsaggregator.gateways.api.seq": "DoNotStart",
+        "newsaggregator.news.api": "DoNotStart",
+        "newsaggregator.news.api.seq": "DoNotStart",
+        "newsaggregator.news.mvc": "DoNotStart",
+        "newsaggregator.news.mvc.seq": "DoNotStart",
+        "newsaggregator.news.parser": "DoNotStart",
+        "newsaggregator.news.parser.seq": "DoNotStart",
+        "newsaggregator.news.searcher": "DoNotStart",
+        "newsaggregator.news.searcher.seq": "DoNotStart",
+        "newsaggregator.notification.api": "DoNotStart",
+        "newsaggregator.notification.api.seq": "DoNotStart",
+        "nginx": "DoNotStart",
+        "node.exporter": "DoNotStart",
+        "pgadmin": "StartWithoutDebugging",
+        "portainer": "DoNotStart",
+        "postgres": "DoNotStart",
+        "prometheus": "DoNotStart",
+        "rabbitmq": "DoNotStart",
+        "redis": "DoNotStart"
+      }
     }
   }
 }

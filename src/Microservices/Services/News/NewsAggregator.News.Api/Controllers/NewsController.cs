@@ -31,15 +31,6 @@ namespace NewsAggregator.News.Api.Controllers
         }
 
         [HttpGet]
-        [Route("search")]
-        [ProducesResponseType(typeof(ApiResponse<PagedResultModel<Entities.News>>), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> SearchNewsByFiltersAsync([FromQuery] GetNewsListFilters filters,
-            CancellationToken cancellationToken = default)
-        {
-            return Ok(await _mediator.Send(new SearchNewsByFiltersQuery(filters), cancellationToken));
-        }
-
-        [HttpGet]
         [Route("{id:guid:required}")]
         [ProducesResponseType(typeof(ApiResponse<Entities.News>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetNewsByIdAsync([Required][FromRoute(Name = "id")] Guid id,

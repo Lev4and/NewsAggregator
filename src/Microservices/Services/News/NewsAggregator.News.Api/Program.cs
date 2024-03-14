@@ -1,4 +1,5 @@
 using Asp.Versioning;
+using Microsoft.OpenApi.Models;
 using NewsAggregator.Infrastructure.Web.Middlewares;
 using NewsAggregator.News;
 using NewsAggregator.News.Api.OpenApi;
@@ -18,12 +19,29 @@ builder.Configuration.Bind(appSettings);
 
 builder.Services.AddNewsModule(appSettings);
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder => builder.WithOrigins("http://localhost", "http://news-lev4and.ru")
+        .AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+});
+
 builder.Services.AddControllers().AddJsonOptions(options => 
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddServer(new OpenApiServer()
+    {
+        Url = "http://localhost/"
+    });
+
+    options.AddServer(new OpenApiServer()
+    {
+        Url = "http://news-lev4and.ru/"
+    });
+});
 builder.Services.AddSwaggerGenNewtonsoftSupport();
 
 builder.Services.AddApiVersioning(options =>
@@ -52,7 +70,7 @@ app.UseSwaggerUI(options =>
 
     foreach (var description in descriptions)
     {
-        var url = $"/swagger/{description.GroupName}/swagger.json";
+        var url = $"/api/news/swagger/{description.GroupName}/swagger.json";
         var name = description.GroupName.ToUpperInvariant();
 
         options.SwaggerEndpoint(url, name);
@@ -60,6 +78,8 @@ app.UseSwaggerUI(options =>
 });
 
 app.UseSerilogRequestLogging();
+
+app.UseCors();
 
 app.UseRouting();
 app.UseAuthorization();
