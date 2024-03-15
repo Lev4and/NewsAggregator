@@ -29,15 +29,6 @@ namespace NewsAggregator.Infrastructure.Web.Http.Builders
             return this;
         }
 
-        public HttpClientHandlerBuilder UseCertificate(byte[] data)
-        {
-            _httpClientHandler.SslProtocols = SslProtocols.Tls12;
-            _httpClientHandler.ClientCertificateOptions = ClientCertificateOption.Manual;
-            _httpClientHandler.ClientCertificates.Add(new X509Certificate2(data));
-
-            return this;
-        }
-
         public HttpClientHandlerBuilder WithAllowAutoRedirect()
         {
             _httpClientHandler.AllowAutoRedirect = true;

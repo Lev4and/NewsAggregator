@@ -24,7 +24,7 @@ namespace NewsAggregator.News.Web.Http
                 "YaBrowser/23.11.0.0 Safari/537.36" }
         };
 
-        public NewsHttpClient() : base(Resources.cert)
+        public NewsHttpClient() : base()
         {
             UseHeaders(_headers);
 

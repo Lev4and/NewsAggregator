@@ -9,9 +9,8 @@ namespace NewsAggregator.Infrastructure.Web.Http
     {
         protected virtual IRequestHandler RequestHandler => new RequestHandler();
 
-        public BaseHttpClient(byte[] certificateData) : base(new HttpClientHandlerBuilder().WithAllowAutoRedirect()
-            .WithAutomaticDecompression().UseCertificateCustomValidation().UseCertificate(certificateData)
-            .UseSslProtocols().Build())
+        public BaseHttpClient() : base(new HttpClientHandlerBuilder().WithAllowAutoRedirect()
+            .WithAutomaticDecompression().UseCertificateCustomValidation().UseSslProtocols().Build())
         {
             
         }
