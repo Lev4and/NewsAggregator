@@ -57,10 +57,7 @@ namespace NewsAggregator.News
                             exchangeBindingConfigurator.RoutingKey = "news.registered";
                         });
 
-                        endpointConfigurator.Consumer<ParseNewsConsumer>(context, configurator =>
-                        {
-                            configurator.UseConcurrencyLimit(1);
-                        });
+                        endpointConfigurator.Consumer<ParseNewsConsumer>(context);
                     });
 
                     configurator.Send<ParsedNews>(messageSendConfigurator =>

@@ -1,5 +1,6 @@
 ﻿using StackExchange.Redis;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
 
 namespace NewsAggregator.Infrastructure.Web.Http.Builders
 {
@@ -23,6 +24,14 @@ namespace NewsAggregator.Infrastructure.Web.Http.Builders
         public HttpClientHandlerBuilder UseCertificateCustomValidation()
         {
             _httpClientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
+
+            return this;
+        }
+
+        public HttpClientHandlerBuilder UseCertificate(byte[] data)
+        {
+            _httpClientHandler.ClientCertificateOptions = ClientCertificateOption.Manual;
+            _httpClientHandler.ClientCertificates.Add(new X509Certificate2(data));
 
             return this;
         }
