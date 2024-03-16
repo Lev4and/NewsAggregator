@@ -8,6 +8,9 @@ jobs:
   newsaggregator-gateways-api-build:
     name: newsaggregator-gateways-api image build, pull and push
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     env:
       PROJECT_SRC_DIR: src/Microservices/Gateways/NewsAggregator.Gateways.Api
       DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-gateways-api:dev
@@ -27,6 +30,9 @@ jobs:
   newsaggregator-news-api-build:
     name: newsaggregator-news-api image build, pull and push
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     env:
       PROJECT_SRC_DIR: src/Microservices/Services/News/NewsAggregator.News.Api
       DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-news-api:dev
@@ -46,6 +52,9 @@ jobs:
   newsaggregator-news-mvc-build:
     name: newsaggregator-news-mvc image build, pull and push
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     env:
       PROJECT_SRC_DIR: src/Microservices/Services/News/NewsAggregator.News.Mvc
       DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-news-mvc:dev
@@ -65,6 +74,9 @@ jobs:
   newsaggregator-news-parser-build:
     name: newsaggregator-news-parser image build, pull and push
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     env:
       PROJECT_SRC_DIR: src/Microservices/Services/News/NewsAggregator.News.Parser
       DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-news-parser:dev
@@ -84,6 +96,9 @@ jobs:
   newsaggregator-news-searcher-build:
     name: newsaggregator-news-searcher image build, pull and push
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     env:
       PROJECT_SRC_DIR: src/Microservices/Services/News/NewsAggregator.News.Searcher
       DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-news-searcher:dev
@@ -103,6 +118,9 @@ jobs:
   newsaggregator-notification-api-build:
     name: newsaggregator-notification-api image build, pull and push
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     env:
       PROJECT_SRC_DIR: src/Microservices/Services/Notification/NewsAggregator.Notification.Api
       DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-notification-api:dev
