@@ -2,15 +2,12 @@ version: '3.4'
 
 services:
   newsaggregator.gateways.api:
-    image: ${DOCKER_REGISTRY-}newsaggregatorgatewaysapi
+    image: ghcr.io/lev4and/newsaggregator/newsaggregator-gateways-api:dev
     container_name: newsaggregator-gateways-api
     depends_on:
         - newsaggregator.news.api
         - newsaggregator.notification.api
         - newsaggregator.gateways.api.seq
-    build:
-      context: .
-      dockerfile: src/Microservices/Gateways/NewsAggregator.Gateways.Api/Dockerfile
     networks:
       - newsaggregator-gateways-api-proxy
       - newsaggregator-news-api-proxy
@@ -18,7 +15,7 @@ services:
       - nginx-proxy
 
   newsaggregator.news.api:
-    image: ${DOCKER_REGISTRY-}newsaggregatornewsapi
+    image: ghcr.io/lev4and/newsaggregator/newsaggregator-news-api:dev
     container_name: newsaggregator-news-api
     depends_on:
       - selenium.hub
@@ -27,9 +24,6 @@ services:
       - rabbitmq
       - elasticsearch
       - newsaggregator.news.api.seq
-    build:
-      context: .
-      dockerfile: src/Microservices/Services/News/NewsAggregator.News.Api/Dockerfile
     networks:
       - newsaggregator-news-api-proxy
       - selenium-hub-proxy
@@ -41,7 +35,7 @@ services:
 
 
   newsaggregator.news.mvc:
-    image: ${DOCKER_REGISTRY-}newsaggregatornewsmvc
+    image: ghcr.io/lev4and/newsaggregator/newsaggregator-news-mvc:dev
     container_name: newsaggregator-news-mvc
     depends_on:
       - selenium.hub
@@ -49,9 +43,6 @@ services:
       - redis
       - elasticsearch
       - newsaggregator.news.mvc.seq
-    build:
-      context: .
-      dockerfile: src/Microservices/Services/News/NewsAggregator.News.Mvc/Dockerfile
     networks:
       - newsaggregator-news-mvc-proxy
       - selenium-hub-proxy
@@ -63,7 +54,7 @@ services:
 
 
   newsaggregator.news.parser:
-    image: ${DOCKER_REGISTRY-}newsaggregatornewsparser
+    image: ghcr.io/lev4and/newsaggregator/newsaggregator-news-parser:dev
     container_name: newsaggregator-news-parser
     depends_on:
       - newsaggregator.news.api
@@ -71,9 +62,6 @@ services:
       - redis
       - rabbitmq
       - newsaggregator.news.parser.seq
-    build:
-      context: .
-      dockerfile: src/Microservices/Services/News/NewsAggregator.News.Parser/Dockerfile
     networks:
       - newsaggregator-news-parser-proxy
       - selenium-hub-proxy
@@ -82,7 +70,7 @@ services:
 
 
   newsaggregator.news.searcher:
-    image: ${DOCKER_REGISTRY-}newsaggregatornewssearcher
+    image: ghcr.io/lev4and/newsaggregator/newsaggregator-news-searcher:dev
     container_name: newsaggregator-news-searcher
     depends_on:
       - newsaggregator.news.api
@@ -90,9 +78,6 @@ services:
       - redis
       - rabbitmq
       - newsaggregator.news.searcher.seq
-    build:
-      context: .
-      dockerfile: src/Microservices/Services/News/NewsAggregator.News.Searcher/Dockerfile
     networks:
       - newsaggregator-news-searcher-proxy
       - selenium-hub-proxy
@@ -100,14 +85,11 @@ services:
       - rabbitmq-proxy
 
   newsaggregator.notification.api:
-    image: ${DOCKER_REGISTRY-}newsaggregatornotificationapi
+    image: ghcr.io/lev4and/newsaggregator/newsaggregator-notification-api:dev
     container_name: newsaggregator-notification-api
     depends_on:
       - rabbitmq
       - newsaggregator.notification.api.seq
-    build:
-      context: .
-      dockerfile: src/Microservices/Services/Notification/NewsAggregator.Notification.Api/Dockerfile
     networks:
       - newsaggregator-notification-api-proxy
       - rabbitmq-proxy

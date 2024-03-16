@@ -1,0 +1,213 @@
+version: '3.4'
+
+services:
+  newsaggregator.gateways.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=5000
+      # - ASPNETCORE_HTTPS_PORTS=5001
+    ports:
+      - "5000:5000"
+      # - "5001:5001"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  newsaggregator.news.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=5100
+      # - ASPNETCORE_HTTPS_PORTS=5101
+    ports:
+      - "5100:5100"
+      # - "5101:5101"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  newsaggregator.news.mvc:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=5200
+      # - ASPNETCORE_HTTPS_PORTS=5201
+    ports:
+      - "5200:5200"
+      # - "5201:5201"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  newsaggregator.news.parser:
+    environment:
+      - DOTNET_ENVIRONMENT=Development
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+
+  newsaggregator.news.searcher:
+    environment:
+      - DOTNET_ENVIRONMENT=Development
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+  
+  newsaggregator.notification.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=5300
+      # - ASPNETCORE_HTTPS_PORTS=5301
+    ports:
+      - "5300"
+      # - "5301"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+  
+  postgres:
+    environment:
+      POSTGRES_PASSWORD: sa
+    volumes:
+      - ./docker-data/postgres:/var/lib/postgresql/data
+      - ./docker-data/postgres-scripts:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432
+
+  pgadmin:
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@lev4and.ru
+      PGADMIN_DEFAULT_PASSWORD: sa
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - 5050:80
+    volumes:
+      - ./docker-data/pgadmin:/var/lib/pgadmin
+  
+  rabbitmq:
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    volumes:
+      - ./docker-data/rabbitmq:/var/lib/rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+  redis:
+    ports:
+      - 6379:6379
+      - 8001:8001
+  
+  elasticsearch:
+    ports:
+      - 9200:9200
+    volumes:
+      - ./docker-data/elasticsearch:/usr/share/elasticsearch/data
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+
+  kibana:
+    ports:
+      - 5601:5601
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    volumes:
+      - ./docker-data/kibana:/usr/share/kibana/data
+  
+  chrome:
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=8
+
+  selenium.hub:
+    ports:
+      - 4442:4442
+      - 4443:4443
+      - 4444:4444
+
+  newsaggregator.gateways.api.seq:
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5341:5341
+      - 8081:80
+  
+  newsaggregator.news.api.seq:
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5342:5341
+      - 8082:80
+  
+  newsaggregator.news.mvc.seq:
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5343:5341
+      - 8083:80
+  
+  newsaggregator.news.parser.seq:
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5344:5341
+      - 8084:80
+  
+  newsaggregator.news.searcher.seq:
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5345:5341
+      - 8085:80
+  
+  newsaggregator.notification.api.seq:
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5346:5341
+      - 8086:80
+
+  portainer:
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./docker-data/portainer_data:/data
+    ports:
+      - "9000:9000"
+
+  node.exporter:
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    ports:
+      - "9100:9100"
+
+  prometheus:
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  grafana:
+    volumes:
+      - ./docker-data/grafana_data:/var/lib/grafana
+      - ./docker-data/grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SERVER_ROOT_URL=http://localhost/grafana/
+      - GF_USERS_ALLOW_SIGN_UP=false
+    ports:
+      - "3456:3000"
+  
+  nginx:
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"

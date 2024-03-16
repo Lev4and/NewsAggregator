@@ -6,14 +6,14 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
-WORKDIR /src
-COPY ["src/Microservices/Services/News/NewsAggregator.News.Searcher/NewsAggregator.News.Searcher.csproj", "src/Microservices/Services/News/NewsAggregator.News.Searcher/"]
-COPY ["src/Microservices/Services/News/NewsAggregator.News/NewsAggregator.News.csproj", "src/Microservices/Services/News/NewsAggregator.News/"]
-COPY ["src/Microservices/BuildingBlocks/NewsAggregator.Infrastructure/NewsAggregator.Infrastructure.csproj", "src/Microservices/BuildingBlocks/NewsAggregator.Infrastructure/"]
-COPY ["src/Microservices/BuildingBlocks/NewsAggregator.Domain/NewsAggregator.Domain.csproj", "src/Microservices/BuildingBlocks/NewsAggregator.Domain/"]
+WORKDIR /src/Microservices
+COPY ["./Services/News/NewsAggregator.News.Searcher/*.csproj", "src/Microservices/Services/News/NewsAggregator.News.Searcher/"]
+COPY ["./Services/News/NewsAggregator.News/*.csproj", "src/Microservices/Services/News/NewsAggregator.News/"]
+COPY ["./BuildingBlocks/NewsAggregator.Infrastructure/*.csproj", "src/Microservices/BuildingBlocks/NewsAggregator.Infrastructure/"]
+COPY ["./BuildingBlocks/NewsAggregator.Domain/*.csproj", "src/Microservices/BuildingBlocks/NewsAggregator.Domain/"]
 RUN dotnet restore "./src/Microservices/Services/News/NewsAggregator.News.Searcher/./NewsAggregator.News.Searcher.csproj"
 COPY . .
-WORKDIR "/src/src/Microservices/Services/News/NewsAggregator.News.Searcher"
+WORKDIR "/Services/News/NewsAggregator.News.Searcher"
 RUN dotnet build "./NewsAggregator.News.Searcher.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
