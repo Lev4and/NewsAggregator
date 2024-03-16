@@ -13,7 +13,7 @@ namespace NewsAggregator.Infrastructure.Web.Http.Builders
         {
             _httpClientHandler = new HttpClientHandler();
 
-            _httpClientHandler.ClientCertificates.Add(new X509Certificate(Resources.DotNetDevCert));
+            _httpClientHandler.ClientCertificates.Add(new X509Certificate2(Resources.DotNetDevCert));
         }
 
         public HttpClientHandlerBuilder UseSslProtocols()
