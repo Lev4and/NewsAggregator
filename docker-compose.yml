@@ -272,6 +272,7 @@ services:
         - pgadmin
         - rabbitmq 
         - redis
+        - kibana
         - selenium.hub
         - portainer
         - grafana
