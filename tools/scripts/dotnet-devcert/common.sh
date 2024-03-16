@@ -59,7 +59,7 @@ subjectAltName          = @alt_names
 
 [x509_ext]
 basicConstraints        = critical, CA:true
-keyUsage                = critical, keyCertSign, cRLSign, digitalSignature,keyEncipherment
+keyUsage                = critical, keyCertSign, digitalSignature, keyEncipherment
 extendedKeyUsage        = critical, serverAuth
 subjectAltName          = critical, @alt_names
 1.3.6.1.4.1.311.84.1.1  = ASN1:UTF8String:ASP.NET Core HTTPS development certificate # Needed to get it imported by dotnet dev-certs
