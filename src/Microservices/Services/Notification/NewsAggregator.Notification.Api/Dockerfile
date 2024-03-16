@@ -8,14 +8,14 @@ EXPOSE 8081
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
-WORKDIR /src/Microservices
-COPY ["./Services/Notification/NewsAggregator.Notification.Api/*.csproj", "src/Microservices/Services/Notification/NewsAggregator.Notification.Api/"]
-COPY ["./Services/Notification/NewsAggregator.Notification/*.csproj", "src/Microservices/Services/Notification/NewsAggregator.Notification/"]
-COPY ["./BuildingBlocks/NewsAggregator.Infrastructure/*.csproj", "src/Microservices/BuildingBlocks/NewsAggregator.Infrastructure/"]
-COPY ["./BuildingBlocks/NewsAggregator.Domain/*.csproj", "src/Microservices/BuildingBlocks/NewsAggregator.Domain/"]
+WORKDIR /src
+COPY ["src/Microservices/Services/Notification/NewsAggregator.Notification.Api/NewsAggregator.Notification.Api.csproj", "src/Microservices/Services/Notification/NewsAggregator.Notification.Api/"]
+COPY ["src/Microservices/Services/Notification/NewsAggregator.Notification/NewsAggregator.Notification.csproj", "src/Microservices/Services/Notification/NewsAggregator.Notification/"]
+COPY ["src/Microservices/BuildingBlocks/NewsAggregator.Infrastructure/NewsAggregator.Infrastructure.csproj", "src/Microservices/BuildingBlocks/NewsAggregator.Infrastructure/"]
+COPY ["src/Microservices/BuildingBlocks/NewsAggregator.Domain/NewsAggregator.Domain.csproj", "src/Microservices/BuildingBlocks/NewsAggregator.Domain/"]
 RUN dotnet restore "./src/Microservices/Services/Notification/NewsAggregator.Notification.Api/NewsAggregator.Notification.Api.csproj"
 COPY . .
-WORKDIR "/Services/Notification/NewsAggregator.Notification.Api"
+WORKDIR "/src/src/Microservices/Services/Notification/NewsAggregator.Notification.Api"
 RUN dotnet build "./NewsAggregator.Notification.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish

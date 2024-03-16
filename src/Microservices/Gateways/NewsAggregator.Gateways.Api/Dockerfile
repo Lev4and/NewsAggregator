@@ -8,11 +8,11 @@ EXPOSE 8081
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
-WORKDIR /src/Microservices
-COPY ["./Gateways/NewsAggregator.Gateways.Api/*.csproj", "./Gateways/NewsAggregator.Gateways.Api/"]
-RUN dotnet restore "./Gateways/NewsAggregator.Gateways.Api/./NewsAggregator.Gateways.Api.csproj"
+WORKDIR /src
+COPY ["src/Microservices/Gateways/NewsAggregator.Gateways.Api/NewsAggregator.Gateways.Api.csproj", "src/Microservices/Gateways/NewsAggregator.Gateways.Api/"]
+RUN dotnet restore "./src/Microservices/Gateways/NewsAggregator.Gateways.Api/./NewsAggregator.Gateways.Api.csproj"
 COPY . .
-WORKDIR "/Gateways/NewsAggregator.Gateways.Api"
+WORKDIR "/src/src/Microservices/Gateways/NewsAggregator.Gateways.Api"
 RUN dotnet build "./NewsAggregator.Gateways.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish

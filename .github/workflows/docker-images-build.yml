@@ -19,7 +19,7 @@ jobs:
         run: docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and pull docker image
-        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE $PROJECT_SRC_DIR
+        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE .
 
       - name: Push docker image
         run: docker push $DOCKER_IMAGE
@@ -38,7 +38,7 @@ jobs:
         run: docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and pull docker image
-        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE $PROJECT_SRC_DIR
+        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE .
 
       - name: Push docker image
         run: docker push $DOCKER_IMAGE
@@ -57,7 +57,7 @@ jobs:
         run: docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and pull docker image
-        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE $PROJECT_SRC_DIR
+        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE .
 
       - name: Push docker image
         run: docker push $DOCKER_IMAGE
@@ -76,7 +76,7 @@ jobs:
         run: docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and pull docker image
-        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE $PROJECT_SRC_DIR
+        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE .
 
       - name: Push docker image
         run: docker push $DOCKER_IMAGE
@@ -95,7 +95,7 @@ jobs:
         run: docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and pull docker image
-        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE $PROJECT_SRC_DIR
+        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE .
 
       - name: Push docker image
         run: docker push $DOCKER_IMAGE
@@ -114,47 +114,7 @@ jobs:
         run: docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and pull docker image
-        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE $PROJECT_SRC_DIR
+        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE .
 
       - name: Push docker image
         run: docker push $DOCKER_IMAGE
-
-  newsaggregator-elasticsearch-build:
-    name: newsaggregator-elasticsearch image build, pull and push
-    runs-on: ubuntu-latest
-    env:
-      PROJECT_SRC_DIR: tools/elasticsearch
-      DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-elasticsearch:dev
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Login to docker.pkg.github.com
-        run: docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and pull docker image
-        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE $PROJECT_SRC_DIR
-
-      - name: Push docker image
-        run: docker push $DOCKER_IMAGE
-  
-  newsaggregator-kibana-build:
-    name: newsaggregator-kibana image build, pull and push
-    runs-on: ubuntu-latest
-    env:
-      PROJECT_SRC_DIR: tools/kibana
-      DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-kibana:dev
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Login to docker.pkg.github.com
-        run: docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and pull docker image
-        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE $PROJECT_SRC_DIR
-
-      - name: Push docker image
-        run: docker push $DOCKER_IMAGE
-  
-  
