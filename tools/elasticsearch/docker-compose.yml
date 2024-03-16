@@ -6,23 +6,9 @@ services:
     container_name: elasticsearch
     ports:
       - 9200:9200
+    volumes:
+      - ./docker-data/elasticsearch:/usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node
-
-  kibana:
-    image: docker.elastic.co/kibana/kibana:7.6.2
-    container_name: kibana
-    ports:
-      - 5601:5601
-    environment:
-      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-    depends_on:
-      - elasticsearch
-
-  logstash:
-    image: docker.elastic.co/logstash/logstash:7.6.2
-    container_name: logstash
-    links:
-      - elasticsearch
-    depends_on:
-      - elasticsearch
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
