@@ -1,8 +1,9 @@
-name: Docker Images Build
+name: Docker Release Images Build
 
 on:
   push:
-    branches: [ master ]
+    tags:
+      - 'v*' 
 
 jobs:
   newsaggregator-gateways-api-build:
@@ -13,7 +14,7 @@ jobs:
       packages: write
     env:
       PROJECT_SRC_DIR: src/Microservices/Gateways/NewsAggregator.Gateways.Api
-      DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-gateways-api:dev
+      DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-gateways-api
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -22,10 +23,10 @@ jobs:
         run: docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and pull docker image
-        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE .
+        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE:${{ github.ref }} .
 
       - name: Push docker image
-        run: docker push $DOCKER_IMAGE
+        run: docker push $DOCKER_IMAGE:${{ github.ref }}
   
   newsaggregator-news-api-build:
     name: newsaggregator-news-api image build, pull and push
@@ -35,7 +36,7 @@ jobs:
       packages: write
     env:
       PROJECT_SRC_DIR: src/Microservices/Services/News/NewsAggregator.News.Api
-      DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-news-api:dev
+      DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-news-api
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -44,10 +45,10 @@ jobs:
         run: docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and pull docker image
-        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE .
+        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE:${{ github.ref }} .
 
       - name: Push docker image
-        run: docker push $DOCKER_IMAGE
+        run: docker push $DOCKER_IMAGE:${{ github.ref }}
   
   newsaggregator-news-mvc-build:
     name: newsaggregator-news-mvc image build, pull and push
@@ -57,7 +58,7 @@ jobs:
       packages: write
     env:
       PROJECT_SRC_DIR: src/Microservices/Services/News/NewsAggregator.News.Mvc
-      DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-news-mvc:dev
+      DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-news-mvc
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -66,10 +67,10 @@ jobs:
         run: docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and pull docker image
-        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE .
+        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE:${{ github.ref }} .
 
       - name: Push docker image
-        run: docker push $DOCKER_IMAGE
+        run: docker push $DOCKER_IMAGE:${{ github.ref }}
   
   newsaggregator-news-parser-build:
     name: newsaggregator-news-parser image build, pull and push
@@ -79,7 +80,7 @@ jobs:
       packages: write
     env:
       PROJECT_SRC_DIR: src/Microservices/Services/News/NewsAggregator.News.Parser
-      DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-news-parser:dev
+      DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-news-parser
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -88,10 +89,10 @@ jobs:
         run: docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and pull docker image
-        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE .
+        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE:${{ github.ref }} .
 
       - name: Push docker image
-        run: docker push $DOCKER_IMAGE
+        run: docker push $DOCKER_IMAGE:${{ github.ref }}
   
   newsaggregator-news-searcher-build:
     name: newsaggregator-news-searcher image build, pull and push
@@ -101,7 +102,7 @@ jobs:
       packages: write
     env:
       PROJECT_SRC_DIR: src/Microservices/Services/News/NewsAggregator.News.Searcher
-      DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-news-searcher:dev
+      DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-news-searcher
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -110,10 +111,10 @@ jobs:
         run: docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and pull docker image
-        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE .
+        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE:${{ github.ref }} .
 
       - name: Push docker image
-        run: docker push $DOCKER_IMAGE
+        run: docker push $DOCKER_IMAGE:${{ github.ref }}
   
   newsaggregator-notification-api-build:
     name: newsaggregator-notification-api image build, pull and push
@@ -123,7 +124,7 @@ jobs:
       packages: write
     env:
       PROJECT_SRC_DIR: src/Microservices/Services/Notification/NewsAggregator.Notification.Api
-      DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-notification-api:dev
+      DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/newsaggregator-notification-api
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -132,51 +133,7 @@ jobs:
         run: docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and pull docker image
-        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE .
+        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE:${{ github.ref }} .
 
       - name: Push docker image
-        run: docker push $DOCKER_IMAGE
-  
-  elasticsearch-build:
-    name: elasticsearch image build, pull and push
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    env:
-      PROJECT_SRC_DIR: tools/elasticsearch
-      DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/elasticsearch:dev
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Login to docker.pkg.github.com
-        run: docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and pull docker image
-        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE .
-
-      - name: Push docker image
-        run: docker push $DOCKER_IMAGE
-
-  kibana-build:
-    name: elasticsearch image build, pull and push
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    env:
-      PROJECT_SRC_DIR: tools/kibana
-      DOCKER_IMAGE: docker.pkg.github.com/lev4and/newsaggregator/kibana:dev
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Login to docker.pkg.github.com
-        run: docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and pull docker image
-        run: docker build -f $PROJECT_SRC_DIR/Dockerfile --pull -t $DOCKER_IMAGE .
-
-      - name: Push docker image
-        run: docker push $DOCKER_IMAGE
+        run: docker push $DOCKER_IMAGE:${{ github.ref }}

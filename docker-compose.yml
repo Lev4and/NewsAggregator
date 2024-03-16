@@ -25,7 +25,7 @@ services:
       - postgres
       - redis 
       - rabbitmq
-      # - elasticsearch
+      - elasticsearch
       - newsaggregator.news.api.seq
     build:
       context: .
@@ -47,7 +47,7 @@ services:
       - selenium.hub
       - postgres
       - redis
-      # - elasticsearch
+      - elasticsearch
       - newsaggregator.news.mvc.seq
     build:
       context: .
@@ -146,23 +146,23 @@ services:
       - redis-proxy
       - nginx-proxy
   
-  # elasticsearch:
-  #   image: docker.elastic.co/elasticsearch/elasticsearch:8.12.1
-  #   container_name: elasticsearch
-  #   networks:
-  #     - elasticsearch-proxy
-  #     - nginx-proxy
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.1
+    container_name: elasticsearch
+    networks:
+      - elasticsearch-proxy
+      - nginx-proxy
 
-  # kibana:
-  #   image: docker.elastic.co/kibana/kibana:8.12.1
-  #   container_name: kibana
-  #   links:
-  #     - elasticsearch
-  #   depends_on:
-  #     - elasticsearch
-  #   networks:
-  #     - elasticsearch-proxy
-  #     - nginx-proxy
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.12.1
+    container_name: kibana
+    links:
+      - elasticsearch
+    depends_on:
+      - elasticsearch
+    networks:
+      - elasticsearch-proxy
+      - nginx-proxy
   
   chrome:
     image: selenium/node-chrome:dev
