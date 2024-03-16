@@ -22,5 +22,10 @@ namespace NewsAggregator.News.Entities
         public virtual IReadOnlyCollection<NewsEditor>? Editors { get; set; }
 
         public virtual IReadOnlyCollection<NewsSourceTag>? Tags { get; set; }
+
+        public override string ToString()
+        {
+            return Title;
+        }
     }
 }

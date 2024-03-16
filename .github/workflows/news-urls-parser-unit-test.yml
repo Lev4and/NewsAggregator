@@ -27,4 +27,4 @@ jobs:
         run: dotnet build $ProjectName --no-restore
 
       - name: Test
-        run: dotnet test $ProjectName --no-build -l "console;verbosity=normal" --filter "ParseAsync_EachNewsSource_ReturnNotEmptyResult"
+        run: dotnet test $ProjectName --no-build -l "console;verbosity=normal" --filter "FullyQualifiedName=NewsAggregator.News.Tests.Services.Parsers.NewsUrlsParserTests.ParseAsync_EachNewsSource_ReturnNotEmptyResult"
