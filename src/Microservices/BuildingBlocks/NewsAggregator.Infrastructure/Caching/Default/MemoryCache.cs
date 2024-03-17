@@ -43,6 +43,10 @@ namespace NewsAggregator.Infrastructure.Caching.Default
                     {
                         ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                     }),
+                new DistributedCacheEntryOptions
+                {
+                    AbsoluteExpirationRelativeToNow = new TimeSpan(365, 0, 0, 0)
+                },
                 cancellationToken);
         }
 

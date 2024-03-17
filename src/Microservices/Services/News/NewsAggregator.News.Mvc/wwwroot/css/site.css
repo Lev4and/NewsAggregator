@@ -257,6 +257,7 @@ nav[aria-label="Page navigation"] a[class="page-link"] {
         text-overflow: ellipsis;
         line-clamp: 2;
         -webkit-box-orient: vertical;
+        color: var(--bs-body-color);
     }
 
     #carouselRecentNews.carousel .carousel-caption .carousel-caption__sub-title {
@@ -266,10 +267,11 @@ nav[aria-label="Page navigation"] a[class="page-link"] {
         text-overflow: ellipsis;
         line-clamp: 1;
         -webkit-box-orient: vertical;
+        color: var(--bs-body-color);
     }
 
     #carouselRecentNews.carousel .carousel-caption .carousel-caption__news-source .carousel-caption__news-source__title {
-        color: var(--bs-heading-color);
+        color: var(--bs-body-color);
         text-decoration: none;
     }
 

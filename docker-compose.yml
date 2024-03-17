@@ -21,11 +21,11 @@ services:
     image: ${DOCKER_REGISTRY-}newsaggregatornewsapi
     container_name: newsaggregator-news-api
     depends_on:
-      - selenium.hub
+      # - selenium.hub
       - postgres
       - redis 
       - rabbitmq
-      - elasticsearch
+      # - elasticsearch
       - newsaggregator.news.api.seq
     build:
       context: .
@@ -44,10 +44,10 @@ services:
     image: ${DOCKER_REGISTRY-}newsaggregatornewsmvc
     container_name: newsaggregator-news-mvc
     depends_on:
-      - selenium.hub
+      # - selenium.hub
       - postgres
       - redis
-      - elasticsearch
+      # - elasticsearch
       - newsaggregator.news.mvc.seq
     build:
       context: .
@@ -67,7 +67,7 @@ services:
     container_name: newsaggregator-news-parser
     depends_on:
       - newsaggregator.news.api
-      - selenium.hub
+      # - selenium.hub
       - redis
       - rabbitmq
       - newsaggregator.news.parser.seq
@@ -86,7 +86,7 @@ services:
     container_name: newsaggregator-news-searcher
     depends_on:
       - newsaggregator.news.api
-      - selenium.hub
+      # - selenium.hub
       - redis
       - rabbitmq
       - newsaggregator.news.searcher.seq
@@ -146,40 +146,40 @@ services:
       - redis-proxy
       - nginx-proxy
   
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.1
-    container_name: elasticsearch
-    networks:
-      - elasticsearch-proxy
-      - nginx-proxy
+  # elasticsearch:
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:8.12.1
+  #   container_name: elasticsearch
+  #   networks:
+  #     - elasticsearch-proxy
+  #     - nginx-proxy
 
-  kibana:
-    image: docker.elastic.co/kibana/kibana:8.12.1
-    container_name: kibana
-    links:
-      - elasticsearch
-    depends_on:
-      - elasticsearch
-    networks:
-      - elasticsearch-proxy
-      - nginx-proxy
+  # kibana:
+  #   image: docker.elastic.co/kibana/kibana:8.12.1
+  #   container_name: kibana
+  #   links:
+  #     - elasticsearch
+  #   depends_on:
+  #     - elasticsearch
+  #   networks:
+  #     - elasticsearch-proxy
+  #     - nginx-proxy
   
-  chrome:
-    image: selenium/node-chrome:dev
-    container_name: chrome
-    shm_size: 2gb
-    depends_on:
-      - selenium.hub
-    networks:
-      - selenium-hub-proxy
-      - nginx-proxy
+  # chrome:
+  #   image: selenium/node-chrome:dev
+  #   container_name: chrome
+  #   shm_size: 2gb
+  #   depends_on:
+  #     - selenium.hub
+  #   networks:
+  #     - selenium-hub-proxy
+  #     - nginx-proxy
 
-  selenium.hub:
-    image: selenium/hub:latest
-    container_name: selenium-hub
-    networks:
-      - selenium-hub-proxy
-      - nginx-proxy
+  # selenium.hub:
+  #   image: selenium/hub:latest
+  #   container_name: selenium-hub
+  #   networks:
+  #     - selenium-hub-proxy
+  #     - nginx-proxy
 
   newsaggregator.gateways.api.seq:
     image: datalust/seq:latest
@@ -272,8 +272,8 @@ services:
         - pgadmin
         - rabbitmq 
         - redis
-        - kibana
-        - selenium.hub
+        # - kibana
+        # - selenium.hub
         - portainer
         - grafana
     networks:
