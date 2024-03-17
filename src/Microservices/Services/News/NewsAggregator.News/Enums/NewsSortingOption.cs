@@ -22,8 +22,8 @@ namespace NewsAggregator.News.Enums
         public NewsSortingOptions()
         {
             Add(NewsSortingOption.Default, new (SortingMode.Ascending, news => news.Id));
-            Add(NewsSortingOption.ByOld, new(SortingMode.Ascending, news => news.PublishedAt));
-            Add(NewsSortingOption.ByRecently, new(SortingMode.Descending, news => news.PublishedAt));
+            Add(NewsSortingOption.ByOld, new(SortingMode.Ascending, news => news.PublishedAt ?? DateTime.UtcNow));
+            Add(NewsSortingOption.ByRecently, new(SortingMode.Descending, news => news.PublishedAt ?? DateTime.UnixEpoch));
             Add(NewsSortingOption.ByAscendingTitle, new(SortingMode.Ascending, news => news.Title));
             Add(NewsSortingOption.ByDescendingTitle, new(SortingMode.Descending, news => news.Title));
             Add(NewsSortingOption.ByAscendingNewsEditorName, new(SortingMode.Ascending, news => news.Editor.Name));

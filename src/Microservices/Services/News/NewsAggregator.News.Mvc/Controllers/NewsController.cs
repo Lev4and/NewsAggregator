@@ -11,12 +11,10 @@ namespace NewsAggregator.News.Mvc.Controllers
     public class NewsController : Controller
     {
         private readonly IMediator _mediator;
-        private readonly ILogger<NewsController> _logger;
 
-        public NewsController(IMediator mediator, ILogger<NewsController> logger)
+        public NewsController(IMediator mediator)
         {
             _mediator = mediator;
-            _logger = logger;
         }
 
         [HttpGet("", Name = "NewsList")]
@@ -33,12 +31,6 @@ namespace NewsAggregator.News.Mvc.Controllers
             CancellationToken cancellationToken = default)
         {
             var news = await _mediator.Send(new GetNewsByIdQuery(id), cancellationToken);
-
-            _logger.LogInformation("Connection LocalIpAddress: {0}", 
-                HttpContext.Connection.LocalIpAddress);
-
-            _logger.LogInformation("Connection RemoteIpAddress: {0}", 
-                HttpContext.Connection.RemoteIpAddress);
 
             await _mediator.Publish(new NewsViewed(id, HttpContext.Connection.RemoteIpAddress?.ToString() 
                 ?? string.Empty));

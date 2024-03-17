@@ -22,6 +22,7 @@ namespace NewsAggregator.News.Mvc.Components
             var newsListFilters = new GetNewsListFilters()
             {
                 NewsSourcesIds = [newsSource.Id],
+                HasPublishedAt = null,
                 PageSize = 10
             };
 
