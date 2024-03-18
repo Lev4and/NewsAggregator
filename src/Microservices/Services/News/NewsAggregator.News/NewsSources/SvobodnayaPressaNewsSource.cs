@@ -1,4 +1,6 @@
-﻿using NewsAggregator.News.Entities;
+﻿using NewsAggregator.News.Constants;
+using NewsAggregator.News.Entities;
+using NewsAggregator.News.NewsTags;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -22,26 +24,17 @@ namespace NewsAggregator.News.NewsSources
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("95d32d18-c7c5-4749-8166-7d83d9ad9bf6"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussianNewsTag
-                    }
+                    Tag = new RussianNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("a02eecd4-f17b-42eb-beea-331873191aa9"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussiaNewsTag
-                    }
+                    Tag = new RussiaNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("151e6d99-9d03-4acb-8058-0f49bbb4a589"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.PoliticsNewsTag
-                    }
+                    Tag = new PoliticsNewsTag()
                 },
             };
             ParseSettings = new NewsParseSettings
@@ -72,8 +65,8 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("89fc1310-fff8-4cdc-aff5-c4285f9ab73c"),
                     PublishedAtXPath = "//div[@class='b-text__date']/text()",
-                    PublishedAtCultureInfo = "ru-RU",
-                    PublishedAtTimeZoneInfoId = "Russian Standard Time",
+                    PublishedAtCultureInfo = CultureInfoConstants.RussianRussiaCultureInfoName,
+                    PublishedAtTimeZoneInfoId = TimeZoneConstants.RussianStandardTimeTimeZoneId,
                     IsRequired = true,
                     Formats = new List<NewsParsePublishedAtSettingsFormat>
                     {

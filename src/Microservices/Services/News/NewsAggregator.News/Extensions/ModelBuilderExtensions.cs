@@ -20,7 +20,7 @@ namespace NewsAggregator.News.Extensions
 
             foreach (var newsSource in newsSources)
             {
-                modelBuilder.AddNewsSource(newsSource, newsTags);
+                modelBuilder.AddNewsSource(newsSource);
             }
 
             return modelBuilder;
@@ -38,9 +38,8 @@ namespace NewsAggregator.News.Extensions
             return modelBuilder;
         }
 
-
         private static ModelBuilder AddNewsSource(this ModelBuilder modelBuilder, 
-            NewsSource newsSource, Tags tags)
+            NewsSource newsSource)
         {
             modelBuilder.Entity<NewsSource>().HasData(
                 new NewsSource
@@ -78,7 +77,7 @@ namespace NewsAggregator.News.Extensions
                             {
                                 Id = newsSourceTag.Id,
                                 SourceId = newsSourceTag.SourceId,
-                                TagId = tags[newsSourceTag.Tag.Name].Id
+                                TagId = newsSourceTag.Tag.Id
                             });
                     }
                 }

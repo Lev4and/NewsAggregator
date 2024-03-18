@@ -1,4 +1,6 @@
-﻿using NewsAggregator.News.Entities;
+﻿using NewsAggregator.News.Constants;
+using NewsAggregator.News.Entities;
+using NewsAggregator.News.NewsTags;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -22,26 +24,17 @@ namespace NewsAggregator.News.NewsSources
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("b681073b-3a8a-469e-8d03-db44364f0557"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussianNewsTag
-                    }
+                    Tag = new RussianNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("eeb9e776-c05e-499f-ad3d-49dd23a8f1e1"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussiaNewsTag
-                    }
+                    Tag = new RussiaNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("2765ef2f-338c-4f92-a1d2-4ed1dc54ed83"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.PoliticsNewsTag
-                    }
+                    Tag = new PoliticsNewsTag()
                 }
             };
             ParseSettings = new NewsParseSettings
@@ -72,8 +65,8 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("5e7874b1-13e9-4cf5-a96a-6612fe3661cf"),
                     PublishedAtXPath = "//div[@class='GeneralMaterial-module-materialHeader']//div[contains(@class, 'MetaItem-module_datetime')]/time/text()",
-                    PublishedAtCultureInfo = "ru-RU",
-                    PublishedAtTimeZoneInfoId = "UTC",
+                    PublishedAtCultureInfo = CultureInfoConstants.RussianRussiaCultureInfoName,
+                    PublishedAtTimeZoneInfoId = TimeZoneConstants.CoordinatedUniversalTimeTimeZoneId,
                     IsRequired = true,
                     Formats = new List<NewsParsePublishedAtSettingsFormat>
                     {

@@ -1,4 +1,6 @@
-﻿using NewsAggregator.News.Entities;
+﻿using NewsAggregator.News.Constants;
+using NewsAggregator.News.Entities;
+using NewsAggregator.News.NewsTags;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -22,26 +24,17 @@ namespace NewsAggregator.News.NewsSources
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("9bed47b1-ba64-453a-91df-0c08b9ab61c1"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussianNewsTag
-                    }
+                    Tag = new RussianNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("393c3856-dbc5-4620-9a35-635894691dfc"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.BelarusNewsTag
-                    }
+                    Tag = new BelarusNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("2565182d-475e-4217-8b8d-b2ba9dbeb092"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.PoliticsNewsTag
-                    }
+                    Tag = new PoliticsNewsTag()
                 },
             };
             ParseSettings = new NewsParseSettings
@@ -66,8 +59,8 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("20903a2a-fdf2-4909-8478-bbfd57c492be"),
                     PublishedAtXPath = "//meta[@property='article:published_time']/@content",
-                    PublishedAtCultureInfo = "ru-RU",
-                    PublishedAtTimeZoneInfoId = "Russian Standard Time",
+                    PublishedAtCultureInfo = CultureInfoConstants.RussianRussiaCultureInfoName,
+                    PublishedAtTimeZoneInfoId = TimeZoneConstants.RussianStandardTimeTimeZoneId,
                     IsRequired = true,
                     Formats = new List<NewsParsePublishedAtSettingsFormat>
                     {
@@ -82,8 +75,8 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("62afc18d-a34f-4989-8c4c-2a5d7deabf6b"),
                     ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
-                    ModifiedAtCultureInfo = "ru-RU",
-                    ModifiedAtTimeZoneInfoId = "Russian Standard Time",
+                    ModifiedAtCultureInfo = CultureInfoConstants.RussianRussiaCultureInfoName,
+                    ModifiedAtTimeZoneInfoId = TimeZoneConstants.RussianStandardTimeTimeZoneId,
                     IsRequired = false,
                     Formats = new List<NewsParseModifiedAtSettingsFormat>
                     {

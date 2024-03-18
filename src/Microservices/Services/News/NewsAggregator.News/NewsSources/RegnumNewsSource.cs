@@ -1,4 +1,5 @@
 ﻿using NewsAggregator.News.Entities;
+using NewsAggregator.News.NewsTags;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -22,26 +23,17 @@ namespace NewsAggregator.News.NewsSources
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("53a0fa14-82ed-49a0-9f6c-0ad21e2c8ff8"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussianNewsTag
-                    }
+                    Tag = new RussianNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("2134a235-9b9d-4010-b627-2de04e044a0f"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussiaNewsTag
-                    }
+                    Tag = new RussiaNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("70b71eaf-20ce-489e-bf24-77201fb2a506"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.PoliticsNewsTag
-                    }
+                    Tag = new PoliticsNewsTag()
                 }
             };
             ParseSettings = new NewsParseSettings

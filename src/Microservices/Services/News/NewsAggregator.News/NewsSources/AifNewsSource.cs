@@ -1,4 +1,6 @@
-﻿using NewsAggregator.News.Entities;
+﻿using NewsAggregator.News.Constants;
+using NewsAggregator.News.Entities;
+using NewsAggregator.News.NewsTags;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -22,26 +24,17 @@ namespace NewsAggregator.News.NewsSources
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("7c4772ef-afbb-4264-92b5-77389e8c0990"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussianNewsTag
-                    }
+                    Tag = new RussianNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("d194cd94-eb02-471e-900c-2f298405b7c5"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussiaNewsTag
-                    }
+                    Tag = new RussiaNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("3241b406-31e8-41a2-b9cd-efc585789d48"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.PoliticsNewsTag
-                    }
+                    Tag = new PoliticsNewsTag()
                 },
             };
             ParseSettings = new NewsParseSettings
@@ -72,8 +65,8 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("21890de7-31ad-4c9e-a749-05f565d45905"),
                     PublishedAtXPath = "//div[@class='article_top']//div[@class='date']//time/text()",
-                    PublishedAtCultureInfo = "ru-RU",
-                    PublishedAtTimeZoneInfoId = "Russian Standard Time",
+                    PublishedAtCultureInfo = CultureInfoConstants.RussianRussiaCultureInfoName,
+                    PublishedAtTimeZoneInfoId = TimeZoneConstants.RussianStandardTimeTimeZoneId,
                     IsRequired = true,
                     Formats = new List<NewsParsePublishedAtSettingsFormat>
                     {

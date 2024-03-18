@@ -1,4 +1,5 @@
 ﻿using NewsAggregator.News.Entities;
+using NewsAggregator.News.NewsTags;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -22,18 +23,12 @@ namespace NewsAggregator.News.NewsSources
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("39b9de90-e868-41c1-8390-632d344850d7"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussianNewsTag
-                    }
+                    Tag = new RussianNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("853e103e-0105-46c0-869b-3b7c3ed19a46"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.VideoGamesNewsTag
-                    }
+                    Tag = new VideoGamesNewsTag()
                 }
             };
             ParseSettings = new NewsParseSettings

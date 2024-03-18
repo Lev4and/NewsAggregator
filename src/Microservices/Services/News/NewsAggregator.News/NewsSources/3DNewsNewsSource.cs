@@ -1,4 +1,6 @@
-﻿using NewsAggregator.News.Entities;
+﻿using NewsAggregator.News.Constants;
+using NewsAggregator.News.Entities;
+using NewsAggregator.News.NewsTags;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -22,34 +24,22 @@ namespace NewsAggregator.News.NewsSources
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("d6846cf7-bca1-48d3-b78d-188d94e2f80a"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussianNewsTag
-                    }
+                    Tag = new RussianNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("b6d1bfd8-38e9-4365-936d-ed3c6c09b357"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.InformationTechnologiesNewsTag
-                    }
+                    Tag = new InformationTechnologiesNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("c8f40af2-f3b9-40de-ab83-dd5e74962bfb"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.TechnologiesNewsTag
-                    }
+                    Tag = new TechnologiesNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("4762d902-fdfe-413d-9c8d-76e619e81c7d"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.ComputerHardwareNewsTag
-                    }
+                    Tag = new ComputerHardwareNewsTag()
                 },
             };
             ParseSettings = new NewsParseSettings
@@ -80,7 +70,7 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("82ed5673-25e2-497f-aaea-3dd42ecd4f85"),
                     PublishedAtXPath = "//div[contains(@class, 'article-entry')]//div[@class='entry-info']/span[@itemprop='datePublished']/@content",
-                    PublishedAtCultureInfo = "ru-RU",
+                    PublishedAtCultureInfo = CultureInfoConstants.RussianRussiaCultureInfoName,
                     IsRequired = true,
                     Formats = new List<NewsParsePublishedAtSettingsFormat>
                     {

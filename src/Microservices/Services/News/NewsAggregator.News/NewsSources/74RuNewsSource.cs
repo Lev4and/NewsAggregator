@@ -1,4 +1,6 @@
-﻿using NewsAggregator.News.Entities;
+﻿using NewsAggregator.News.Constants;
+using NewsAggregator.News.Entities;
+using NewsAggregator.News.NewsTags;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -22,26 +24,17 @@ namespace NewsAggregator.News.NewsSources
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("9d6cd55b-f966-4e6a-973d-d548d7183da2"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussianNewsTag
-                    }
+                    Tag = new RussianNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("32ea560c-f4ef-4bb9-844c-72206f5f0e5f"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussiaNewsTag
-                    }
+                    Tag = new RussiaNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("cbc029ee-c8f0-493a-b9e7-837420e76734"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.ChelyabinskNewsTag
-                    }
+                    Tag = new ChelyabinskNewsTag()
                 },
             };
             ParseSettings = new NewsParseSettings
@@ -72,7 +65,7 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("79e88ebb-d542-4d19-a212-6c21f2688c77"),
                     PublishedAtXPath = "//meta[@itemprop='datePublished']/@content",
-                    PublishedAtCultureInfo = "ru-RU",
+                    PublishedAtCultureInfo = CultureInfoConstants.RussianRussiaCultureInfoName,
                     IsRequired = true,
                     Formats = new List<NewsParsePublishedAtSettingsFormat>
                     {
@@ -87,7 +80,7 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("0a1fc27b-5f76-4a98-acd2-c3f98852d1c0"),
                     ModifiedAtXPath = "//meta[@itemprop='dateModified']/@content",
-                    ModifiedAtCultureInfo = "ru-RU",
+                    ModifiedAtCultureInfo = CultureInfoConstants.RussianRussiaCultureInfoName,
                     IsRequired = false,
                     Formats = new List<NewsParseModifiedAtSettingsFormat>
                     {

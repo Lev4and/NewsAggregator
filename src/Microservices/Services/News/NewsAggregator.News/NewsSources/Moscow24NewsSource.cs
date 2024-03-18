@@ -1,4 +1,6 @@
-﻿using NewsAggregator.News.Entities;
+﻿using NewsAggregator.News.Constants;
+using NewsAggregator.News.Entities;
+using NewsAggregator.News.NewsTags;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -22,26 +24,17 @@ namespace NewsAggregator.News.NewsSources
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("06b2c915-82cf-4115-a537-cbc91d80783a"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussianNewsTag
-                    }
+                    Tag = new RussianNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("e3566a06-d006-4937-9bb5-90eade9d2bac"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussiaNewsTag
-                    }
+                    Tag = new RussiaNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("8949a721-7dfc-428c-a03d-6721e5b35879"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.MoscowNewsTag
-                    }
+                    Tag = new MoscowNewsTag()
                 },
             };
             ParseSettings = new NewsParseSettings
@@ -72,8 +65,8 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("4a6be1f2-8429-4185-a9c6-03aeda076dcd"),
                     PublishedAtXPath = "//p[@class='b-material__date']/text()",
-                    PublishedAtCultureInfo = "ru-RU",
-                    PublishedAtTimeZoneInfoId = "Russian Standard Time",
+                    PublishedAtCultureInfo = CultureInfoConstants.RussianRussiaCultureInfoName,
+                    PublishedAtTimeZoneInfoId = TimeZoneConstants.RussianStandardTimeTimeZoneId,
                     IsRequired = true,
                     Formats = new List<NewsParsePublishedAtSettingsFormat>
                     {

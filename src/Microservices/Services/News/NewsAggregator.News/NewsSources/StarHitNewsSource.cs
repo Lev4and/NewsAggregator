@@ -1,4 +1,6 @@
-﻿using NewsAggregator.News.Entities;
+﻿using NewsAggregator.News.Constants;
+using NewsAggregator.News.Entities;
+using NewsAggregator.News.NewsTags;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -22,18 +24,12 @@ namespace NewsAggregator.News.NewsSources
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("4ee63615-d18c-4f48-8b9a-8aff52d12006"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussianNewsTag
-                    }
+                    Tag = new RussianNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("50d237f6-59fa-44bc-96f4-344bab93f074"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.ShowBusinessNewsTag
-                    }
+                    Tag = new ShowBusinessNewsTag()
                 }
             };
             ParseSettings = new NewsParseSettings
@@ -64,7 +60,7 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("e6bd53e0-c868-451c-87a5-e048343b2759"),
                     PublishedAtXPath = "//meta[@itemprop='datePublished']/@content",
-                    PublishedAtCultureInfo = "ru-RU",
+                    PublishedAtCultureInfo = CultureInfoConstants.RussianRussiaCultureInfoName,
                     IsRequired = true,
                     Formats = new List<NewsParsePublishedAtSettingsFormat>
                     {
@@ -79,7 +75,7 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("348a6cf9-f469-4f19-a12c-bdc3f525947c"),
                     ModifiedAtXPath = "//meta[@itemprop='dateModified']/@content",
-                    ModifiedAtCultureInfo = "ru-RU",
+                    ModifiedAtCultureInfo = CultureInfoConstants.RussianRussiaCultureInfoName,
                     IsRequired = false,
                     Formats = new List<NewsParseModifiedAtSettingsFormat>
                     {

@@ -1,4 +1,6 @@
-﻿using NewsAggregator.News.Entities;
+﻿using NewsAggregator.News.Constants;
+using NewsAggregator.News.Entities;
+using NewsAggregator.News.NewsTags;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -22,34 +24,22 @@ namespace NewsAggregator.News.NewsSources
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("508b2fd4-609d-4ce2-925a-a18c7b9889db"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.EnglishNewsTag
-                    }
+                    Tag = new EnglishNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("1bc5683b-b0fa-4a72-b9d8-bfc9c45360c6"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.CounterStrikeNewsTag
-                    }
+                    Tag = new CounterStrikeNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("6ce3a3ff-775d-4606-a3eb-462daa663500"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.CybersportNewsTag
-                    }
+                    Tag = new CybersportNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("d6550af5-7e26-49cc-b9bb-65ddfe9ccd67"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.SportNewsTag
-                    }
+                    Tag = new SportNewsTag()
                 },
             };
             ParseSettings = new NewsParseSettings
@@ -86,8 +76,8 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("5c23cab5-7864-429b-9080-ba88f81c6751"),
                     PublishedAtXPath = "//article//div[@class='article-info']/div[@class='date']/text()",
-                    PublishedAtCultureInfo = "en-US",
-                    PublishedAtTimeZoneInfoId = "Central Europe Standard Time",
+                    PublishedAtCultureInfo = CultureInfoConstants.EnglishUsaCultureInfoName,
+                    PublishedAtTimeZoneInfoId = TimeZoneConstants.CentralEuropeStandardTimeTimeZoneId,
                     IsRequired = true,
                     Formats = new List<NewsParsePublishedAtSettingsFormat>
                     {

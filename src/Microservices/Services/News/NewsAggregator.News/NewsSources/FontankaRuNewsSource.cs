@@ -1,4 +1,6 @@
-﻿using NewsAggregator.News.Entities;
+﻿using NewsAggregator.News.Constants;
+using NewsAggregator.News.Entities;
+using NewsAggregator.News.NewsTags;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -22,26 +24,17 @@ namespace NewsAggregator.News.NewsSources
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("22aacfa5-7c90-4d6f-9b04-79805d6d01e3"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussianNewsTag
-                    }
+                    Tag = new RussianNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("4b63e46c-1f07-4dc7-8c63-2a8eab4fb054"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussiaNewsTag
-                    }
+                    Tag = new RussiaNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("674e3fd9-f4a8-4b81-9f11-4de28cc824dd"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.SaintPetersburgNewsTag
-                    }
+                    Tag = new SaintPetersburgNewsTag()
                 }
             };
             ParseSettings = new NewsParseSettings
@@ -72,7 +65,7 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("fdad3f1e-646d-4fe0-b46f-cf5a2d320981"),
                     PublishedAtXPath = "//meta[@itemprop='datePublished']/@content",
-                    PublishedAtCultureInfo = "ru-RU",
+                    PublishedAtCultureInfo = CultureInfoConstants.RussianRussiaCultureInfoName,
                     IsRequired = true,
                     Formats = new List<NewsParsePublishedAtSettingsFormat>
                     {

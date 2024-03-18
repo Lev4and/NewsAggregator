@@ -456,6 +456,13 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                             IsRequired = false,
                             NameXPath = "//div[@class='GeneralMaterial-module-materialHeader']//div[contains(@class, 'MetaItem-module_hasSource') and not(time)]/text()",
                             ParseSettingsId = new Guid("6a7db6d7-c4ec-471c-93e2-9f7b9dd9180c")
+                        },
+                        new
+                        {
+                            Id = new Guid("10957082-a831-4ffb-86e1-379efef08111"),
+                            IsRequired = false,
+                            NameXPath = "//header//div[contains(@class, 'bottom-header')]//div[contains(@class, 'author-list')]//a[contains(@class, 'headshot__link') and @data-vars-subunit-name='author']/@data-vars-item-name",
+                            ParseSettingsId = new Guid("32b2600c-03b7-4d2d-ace8-77b11e1a5041")
                         });
                 });
 
@@ -733,6 +740,14 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                             ModifiedAtTimeZoneInfoId = "Russian Standard Time",
                             ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
                             ParseSettingsId = new Guid("dd419d1c-db40-4fd4-8f12-34206242d7cc")
+                        },
+                        new
+                        {
+                            Id = new Guid("50257fdd-fcc6-4a8e-822c-4834d0f1d762"),
+                            IsRequired = false,
+                            ModifiedAtCultureInfo = "en-US",
+                            ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
+                            ParseSettingsId = new Guid("32b2600c-03b7-4d2d-ace8-77b11e1a5041")
                         });
                 });
 
@@ -910,6 +925,12 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                             Id = new Guid("405dd507-6429-4fd3-a76f-7c211adbb18e"),
                             Format = "yyyyMMddTHHmm",
                             NewsParseModifiedAtSettingsId = new Guid("458c1359-0212-451f-9c05-a6d043114989")
+                        },
+                        new
+                        {
+                            Id = new Guid("db537dea-c0ab-426c-a394-10231d9c8a29"),
+                            Format = "yyyy-MM-ddTHH:mm:ssZ",
+                            NewsParseModifiedAtSettingsId = new Guid("50257fdd-fcc6-4a8e-822c-4834d0f1d762")
                         });
                 });
 
@@ -1356,6 +1377,13 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                             Id = new Guid("d8dc9296-e936-406b-aad9-916f05f1b3fe"),
                             IsRequired = false,
                             ParseSettingsId = new Guid("6a7db6d7-c4ec-471c-93e2-9f7b9dd9180c"),
+                            UrlXPath = "//meta[@property='og:image']/@content"
+                        },
+                        new
+                        {
+                            Id = new Guid("8c523334-f94b-4c87-ae3d-a6d749bc29b9"),
+                            IsRequired = false,
+                            ParseSettingsId = new Guid("32b2600c-03b7-4d2d-ace8-77b11e1a5041"),
                             UrlXPath = "//meta[@property='og:image']/@content"
                         });
                 });
@@ -1809,6 +1837,14 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                             PublishedAtCultureInfo = "ru-RU",
                             PublishedAtTimeZoneInfoId = "UTC",
                             PublishedAtXPath = "//div[@class='GeneralMaterial-module-materialHeader']//div[contains(@class, 'MetaItem-module_datetime')]/time/text()"
+                        },
+                        new
+                        {
+                            Id = new Guid("74a87f1a-0325-4690-8c87-8ba4d24e078b"),
+                            IsRequired = true,
+                            ParseSettingsId = new Guid("32b2600c-03b7-4d2d-ace8-77b11e1a5041"),
+                            PublishedAtCultureInfo = "en-US",
+                            PublishedAtXPath = "//meta[@property='article:published_time']/@content"
                         });
                 });
 
@@ -2160,6 +2196,12 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                             Id = new Guid("a9340a6d-ec66-49fc-8150-3a6a698e999e"),
                             Format = "HH:mm, d MMMM yyyy",
                             NewsParsePublishedAtSettingsId = new Guid("5e7874b1-13e9-4cf5-a96a-6612fe3661cf")
+                        },
+                        new
+                        {
+                            Id = new Guid("a77f62ce-bb2c-41a7-8a35-f0aa8147e4de"),
+                            Format = "yyyy-MM-ddTHH:mm:ssZ",
+                            NewsParsePublishedAtSettingsId = new Guid("74a87f1a-0325-4690-8c87-8ba4d24e078b")
                         });
                 });
 
@@ -2614,6 +2656,14 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                             SourceId = new Guid("3a346f18-1781-408b-bc8d-2f8e4cbc64ea"),
                             TextDescriptionXPath = "//div[@class='GeneralMaterial-module-article']/*[position()>1]//text()",
                             TitleXPath = "//meta[@property='og:title']/@content"
+                        },
+                        new
+                        {
+                            Id = new Guid("32b2600c-03b7-4d2d-ace8-77b11e1a5041"),
+                            HtmlDescriptionXPath = "//section[contains(@class, 'entry__content-list js-entry-content')]/*[not(contains(@class, 'cli-embed--header-media')) and not(contains(@class, 'cli-support-huffpost'))]",
+                            SourceId = new Guid("1f913a9a-4e5a-4925-89c1-51e985f63e9d"),
+                            TextDescriptionXPath = "//section[contains(@class, 'entry__content-list js-entry-content')]/*[not(contains(@class, 'cli-embed--header-media')) and not(contains(@class, 'cli-support-huffpost'))]/p//text()",
+                            TitleXPath = "//meta[@property='og:title']/@content"
                         });
                 });
 
@@ -3009,6 +3059,13 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                             Id = new Guid("4ff736eb-a44a-4880-aa4f-f70988527bfe"),
                             IsRequired = false,
                             ParseSettingsId = new Guid("6a7db6d7-c4ec-471c-93e2-9f7b9dd9180c"),
+                            TitleXPath = "//meta[@property='og:description']/@content"
+                        },
+                        new
+                        {
+                            Id = new Guid("82bb1ac2-5fbb-4240-bca2-5417604ec562"),
+                            IsRequired = false,
+                            ParseSettingsId = new Guid("32b2600c-03b7-4d2d-ace8-77b11e1a5041"),
                             TitleXPath = "//meta[@property='og:description']/@content"
                         });
                 });
@@ -3514,6 +3571,13 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                             NewsSiteUrl = "https://meduza.io/",
                             NewsUrlXPath = "//a[not(@href='/news/') and starts-with(@href, '/news/')]/@href",
                             SourceId = new Guid("3a346f18-1781-408b-bc8d-2f8e4cbc64ea")
+                        },
+                        new
+                        {
+                            Id = new Guid("d54003f4-dab6-4218-a59d-7374ded91cce"),
+                            NewsSiteUrl = "https://www.huffpost.com/",
+                            NewsUrlXPath = "//a[contains(@href, '/entry/')]/@href",
+                            SourceId = new Guid("1f913a9a-4e5a-4925-89c1-51e985f63e9d")
                         });
                 });
 
@@ -3622,7 +3686,7 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                             IsEnabled = true,
                             IsSystem = true,
                             SiteUrl = "https://www.sports.ru/",
-                            Title = "Storts.ru"
+                            Title = "Sports.ru"
                         },
                         new
                         {
@@ -3975,6 +4039,14 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                             IsSystem = true,
                             SiteUrl = "https://meduza.io/",
                             Title = "Meduza"
+                        },
+                        new
+                        {
+                            Id = new Guid("1f913a9a-4e5a-4925-89c1-51e985f63e9d"),
+                            IsEnabled = true,
+                            IsSystem = true,
+                            SiteUrl = "https://www.huffpost.com/",
+                            Title = "HuffPost"
                         });
                 });
 
@@ -4372,6 +4444,13 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                             Original = "https://meduza.io/apple-touch-icon-180.png",
                             Small = "https://meduza.io/favicon-32x32.png",
                             SourceId = new Guid("3a346f18-1781-408b-bc8d-2f8e4cbc64ea")
+                        },
+                        new
+                        {
+                            Id = new Guid("aaf79c06-980f-4d3c-9d89-0281ccfecc70"),
+                            Original = "https://www.huffpost.com/favicon.ico",
+                            Small = "https://www.huffpost.com/favicon.ico",
+                            SourceId = new Guid("1f913a9a-4e5a-4925-89c1-51e985f63e9d")
                         });
                 });
 
@@ -5354,6 +5433,24 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                         {
                             Id = new Guid("2765ef2f-338c-4f92-a1d2-4ed1dc54ed83"),
                             SourceId = new Guid("3a346f18-1781-408b-bc8d-2f8e4cbc64ea"),
+                            TagId = new Guid("302d7e19-c80f-4e1a-8877-3e9b17f9baeb")
+                        },
+                        new
+                        {
+                            Id = new Guid("35a38041-59d7-4924-ad4a-92ac14988e54"),
+                            SourceId = new Guid("1f913a9a-4e5a-4925-89c1-51e985f63e9d"),
+                            TagId = new Guid("8e8ec992-5b4b-43d9-b290-73fbfcd8a32e")
+                        },
+                        new
+                        {
+                            Id = new Guid("9f4fd158-51d1-4aa9-ad41-0d59d26ac38f"),
+                            SourceId = new Guid("1f913a9a-4e5a-4925-89c1-51e985f63e9d"),
+                            TagId = new Guid("f06891c5-6324-4bab-b836-a78a4d2c603d")
+                        },
+                        new
+                        {
+                            Id = new Guid("371d2b27-1b5f-4f87-bb12-3e3b11651b44"),
+                            SourceId = new Guid("1f913a9a-4e5a-4925-89c1-51e985f63e9d"),
                             TagId = new Guid("302d7e19-c80f-4e1a-8877-3e9b17f9baeb")
                         });
                 });

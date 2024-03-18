@@ -1,4 +1,6 @@
-﻿using NewsAggregator.News.Entities;
+﻿using NewsAggregator.News.Constants;
+using NewsAggregator.News.Entities;
+using NewsAggregator.News.NewsTags;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -22,18 +24,12 @@ namespace NewsAggregator.News.NewsSources
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("7afa8562-f5b4-4cdf-92c0-af0594d4be4d"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussianNewsTag
-                    }
+                    Tag = new RussianNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("ce7a5f4b-071f-4c3e-af81-758a1b918c39"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.VideoGamesNewsTag
-                    }
+                    Tag = new VideoGamesNewsTag()
                 }
             };
             ParseSettings = new NewsParseSettings
@@ -64,8 +60,8 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("2622b86a-c47b-4143-a11e-f2aad18faa8e"),
                     PublishedAtXPath = "//div[contains(@class, 'pubdatetime')]//div[contains(@class, 'badge-time')]//text()",
-                    PublishedAtCultureInfo = "ru-RU",
-                    PublishedAtTimeZoneInfoId = "Russian Standard Time",
+                    PublishedAtCultureInfo = CultureInfoConstants.RussianRussiaCultureInfoName,
+                    PublishedAtTimeZoneInfoId = TimeZoneConstants.RussianStandardTimeTimeZoneId,
                     IsRequired = false,
                     Formats = new List<NewsParsePublishedAtSettingsFormat>
                     {

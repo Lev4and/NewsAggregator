@@ -1,4 +1,6 @@
-﻿using NewsAggregator.News.Entities;
+﻿using NewsAggregator.News.Constants;
+using NewsAggregator.News.Entities;
+using NewsAggregator.News.NewsTags;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -22,26 +24,17 @@ namespace NewsAggregator.News.NewsSources
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("35a38041-59d7-4924-ad4a-92ac14988e54"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.EnglishNewsTag
-                    }
+                    Tag = new EnglishNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("9f4fd158-51d1-4aa9-ad41-0d59d26ac38f"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.UsaNewsTag
-                    }
+                    Tag = new UsaNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("371d2b27-1b5f-4f87-bb12-3e3b11651b44"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.PoliticsNewsTag
-                    }
+                    Tag = new PoliticsNewsTag()
                 }
             };
             ParseSettings = new NewsParseSettings
@@ -72,7 +65,7 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("74a87f1a-0325-4690-8c87-8ba4d24e078b"),
                     PublishedAtXPath = "//meta[@property='article:published_time']/@content",
-                    PublishedAtCultureInfo = "en-US",
+                    PublishedAtCultureInfo = CultureInfoConstants.EnglishUsaCultureInfoName,
                     IsRequired = true,
                     Formats = new List<NewsParsePublishedAtSettingsFormat>
                     {
@@ -87,7 +80,7 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("50257fdd-fcc6-4a8e-822c-4834d0f1d762"),
                     ModifiedAtXPath = "//meta[@property='article:modified_time']/@content",
-                    ModifiedAtCultureInfo = "en-US",
+                    ModifiedAtCultureInfo = CultureInfoConstants.EnglishUsaCultureInfoName,
                     IsRequired = false,
                     Formats = new List<NewsParseModifiedAtSettingsFormat>
                     {

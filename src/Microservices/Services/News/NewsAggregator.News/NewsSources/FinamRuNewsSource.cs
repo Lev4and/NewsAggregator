@@ -1,4 +1,6 @@
-﻿using NewsAggregator.News.Entities;
+﻿using NewsAggregator.News.Constants;
+using NewsAggregator.News.Entities;
+using NewsAggregator.News.NewsTags;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -22,34 +24,22 @@ namespace NewsAggregator.News.NewsSources
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("9d0a0cea-e52f-4418-8652-3a152788a1ff"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussianNewsTag
-                    }
+                    Tag = new RussianNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("a0d39b98-3a62-4153-9a5f-b678bd754ff0"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussiaNewsTag
-                    }
+                    Tag = new RussiaNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("53d62165-056b-4061-9415-696925c16912"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.EconomyNewsTag
-                    }
+                    Tag = new EconomyNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("4ef14b7a-d41d-4eab-b58d-db7ce19bcdbb"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.FinanceNewsTag
-                    }
+                    Tag = new FinanceNewsTag()
                 }
             };
             ParseSettings = new NewsParseSettings
@@ -80,8 +70,8 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("80bc5b20-336c-4ac1-9ee0-e231d0ef74c7"),
                     PublishedAtXPath = "//span[@id='publication-date']/text()",
-                    PublishedAtCultureInfo = "ru-RU",
-                    PublishedAtTimeZoneInfoId = "Russian Standard Time",
+                    PublishedAtCultureInfo = CultureInfoConstants.RussianRussiaCultureInfoName,
+                    PublishedAtTimeZoneInfoId = TimeZoneConstants.RussianStandardTimeTimeZoneId,
                     IsRequired = true,
                     Formats = new List<NewsParsePublishedAtSettingsFormat>
                     {

@@ -1,4 +1,6 @@
-﻿using NewsAggregator.News.Entities;
+﻿using NewsAggregator.News.Constants;
+using NewsAggregator.News.Entities;
+using NewsAggregator.News.NewsTags;
 
 namespace NewsAggregator.News.NewsSources
 {
@@ -22,18 +24,12 @@ namespace NewsAggregator.News.NewsSources
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("e71cb8fe-52b0-4e6e-b344-0e5631996192"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.RussianNewsTag
-                    }
+                    Tag = new RussianNewsTag()
                 },
                 new NewsSourceTag
                 {
                     Id = Guid.Parse("f0c920e4-64c9-4b1f-b3ce-780a1d0c34b3"),
-                    Tag = new NewsTag
-                    {
-                        Name = NewsTags.Tags.WomanNewsTag
-                    }
+                    Tag = new WomanNewsTag()
                 }
             };
             ParseSettings = new NewsParseSettings
@@ -64,7 +60,7 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("f4df8c3f-efa8-4fa5-bb34-91942ecec22a"),
                     PublishedAtXPath = "//meta[@itemprop='datePublished']/@content",
-                    PublishedAtCultureInfo = "ru-RU",
+                    PublishedAtCultureInfo = CultureInfoConstants.RussianRussiaCultureInfoName,
                     IsRequired = true,
                     Formats = new List<NewsParsePublishedAtSettingsFormat>
                     {
@@ -79,7 +75,7 @@ namespace NewsAggregator.News.NewsSources
                 {
                     Id = Guid.Parse("75386858-8fad-48aa-bea8-d5aec36c1f8f"),
                     ModifiedAtXPath = "//meta[@itemprop='dateModified']/@content",
-                    ModifiedAtCultureInfo = "ru-RU",
+                    ModifiedAtCultureInfo = CultureInfoConstants.RussianRussiaCultureInfoName,
                     IsRequired = false,
                     Formats = new List<NewsParseModifiedAtSettingsFormat>
                     {
