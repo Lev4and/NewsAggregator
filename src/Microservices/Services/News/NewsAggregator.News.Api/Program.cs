@@ -57,6 +57,8 @@ builder.Services.AddApiVersioning(options =>
 
 builder.Services.ConfigureOptions<ConfigureSwaggerGenOptions>();
 
+builder.Services.AddHttpContextAccessor();
+
 var app = builder.Build();
 
 app.MigrateNewsDb();

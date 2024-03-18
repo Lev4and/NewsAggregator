@@ -45,6 +45,8 @@ builder.Services.ConfigureOptions<ConfigureSwaggerGenOptions>();
 builder.Services.AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 
+builder.Services.AddHttpContextAccessor();
+
 var app = builder.Build();
 
 app.UseSwagger();
