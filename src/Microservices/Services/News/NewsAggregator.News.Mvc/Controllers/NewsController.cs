@@ -32,8 +32,10 @@ namespace NewsAggregator.News.Mvc.Controllers
         {
             var news = await _mediator.Send(new GetNewsByIdQuery(id), cancellationToken);
 
-            await _mediator.Publish(new NewsViewed(id, HttpContext.Connection.RemoteIpAddress?.ToString() 
-                ?? string.Empty));
+            await _mediator.Publish(new NewsViewed(id, 
+                HttpContext.Request.Headers.FirstOrDefault(header => header.Key == "X-Real-IP").Value.FirstOrDefault() 
+                    ?? HttpContext.Connection.RemoteIpAddress?.ToString() 
+                        ?? string.Empty));
 
             return View("News", news);
         }

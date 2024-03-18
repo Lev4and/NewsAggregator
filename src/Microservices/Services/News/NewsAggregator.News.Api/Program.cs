@@ -1,4 +1,5 @@
 using Asp.Versioning;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.OpenApi.Models;
 using NewsAggregator.Infrastructure.Web.Middlewares;
 using NewsAggregator.News;
@@ -59,6 +60,12 @@ builder.Services.ConfigureOptions<ConfigureSwaggerGenOptions>();
 
 builder.Services.AddHttpContextAccessor();
 
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor
+        | ForwardedHeaders.XForwardedProto;
+});
+
 var app = builder.Build();
 
 app.MigrateNewsDb();
@@ -80,6 +87,8 @@ app.UseSwaggerUI(options =>
 });
 
 app.UseSerilogRequestLogging();
+
+app.UseForwardedHeaders();
 
 app.UseCors();
 

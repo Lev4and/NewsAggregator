@@ -1,4 +1,5 @@
 using Asp.Versioning;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.OpenApi.Models;
 using NewsAggregator.Gateways.Api.OpenApi;
 using Serilog;
@@ -47,6 +48,12 @@ builder.Services.AddReverseProxy()
 
 builder.Services.AddHttpContextAccessor();
 
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor
+        | ForwardedHeaders.XForwardedProto;
+});
+
 var app = builder.Build();
 
 app.UseSwagger();
@@ -64,6 +71,8 @@ app.UseSwaggerUI(options =>
 });
 
 app.UseSerilogRequestLogging();
+
+app.UseForwardedHeaders();
 
 app.UseCors();
 

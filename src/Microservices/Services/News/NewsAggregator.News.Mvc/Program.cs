@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.HttpOverrides;
 using NewsAggregator.News;
 using NewsAggregator.News.ConfigurationOptions;
 using Serilog;
@@ -17,6 +18,12 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddHttpContextAccessor();
 
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor 
+        | ForwardedHeaders.XForwardedProto;
+});
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -28,6 +35,8 @@ if (!app.Environment.IsDevelopment())
 app.UseSerilogRequestLogging();
 
 app.UseStaticFiles();
+
+app.UseForwardedHeaders();
 
 app.UseRouting();
 
