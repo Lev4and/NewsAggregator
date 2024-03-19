@@ -45,6 +45,7 @@ namespace NewsAggregator.Infrastructure.Caching.Default
                     }),
                 new DistributedCacheEntryOptions
                 {
+                    SlidingExpiration = new TimeSpan(365, 0, 0, 0),
                     AbsoluteExpirationRelativeToNow = new TimeSpan(365, 0, 0, 0)
                 },
                 cancellationToken);

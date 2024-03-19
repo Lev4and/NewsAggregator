@@ -35,7 +35,7 @@
         "newsaggregator.gateways.api.seq": "StartWithoutDebugging",
         "newsaggregator.news.api": "StartWithoutDebugging",
         "newsaggregator.news.api.seq": "StartWithoutDebugging",
-        "newsaggregator.news.mvc": "StartDebugging",
+        "newsaggregator.news.mvc": "StartWithoutDebugging",
         "newsaggregator.news.mvc.seq": "StartWithoutDebugging",
         "newsaggregator.news.parser": "StartWithoutDebugging",
         "newsaggregator.news.parser.seq": "StartWithoutDebugging",

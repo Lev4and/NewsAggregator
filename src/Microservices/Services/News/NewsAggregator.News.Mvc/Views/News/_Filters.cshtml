@@ -4,6 +4,13 @@
 <hr />
 <form id="newsListForm" class="needs-validation" novalidate="" method="get" asp-route="NewsList">
     <input type="hidden" name="page" value="@Model.Filters.Page" />
+    @if (Model.Filters.NewsEditorsIds is not null)
+    {
+        @foreach (var newsEditorId in Model.Filters.NewsEditorsIds)
+        {
+            <input type="hidden" name="newsEditorsIds" value="@newsEditorId" />
+        }
+    }
     <div class="row g-3">
         <div class="col-sm-6">
             <label for="startPublishedAtDatetimeLocal" class="form-label">Start of publish time</label>
@@ -32,26 +39,6 @@
                     {
                         <option value="@newsTag.Id">
                             @newsTag.Name
-                        </option>
-                    }
-                }
-            </select>
-        </div>
-        <div class="col-12">
-            <label for="newsEditorsSelect" class="form-label">News editors</label>
-            <select id="newsEditorsSelect" class="form-select multiple" multiple name="newsEditorsIds" size="5">
-                @foreach (var newsEditor in Model.NewsEditors)
-                {
-                    @if (Model.Filters.NewsEditorsIds?.Contains(newsEditor.Id) ?? false)
-                    {
-                        <option value="@newsEditor.Id" selected>
-                            @newsEditor.Name (@newsEditor.Source?.Title)
-                        </option>
-                    }
-                    else
-                    {
-                        <option value="@newsEditor.Id">
-                            @newsEditor.Name (@newsEditor.Source?.Title)
                         </option>
                     }
                 }

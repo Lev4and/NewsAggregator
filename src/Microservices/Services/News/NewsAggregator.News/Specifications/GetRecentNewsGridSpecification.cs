@@ -13,8 +13,6 @@ namespace NewsAggregator.News.Specifications
             AddInclude(news => news.SubTitle);
             AddInclude(news => news.Picture);
 
-            ApplyFilter(news => news.PublishedAt != null);
-
             if (options.PictureRequired)
             {
                 ApplyFilter(news => news.Picture != null);
@@ -25,7 +23,9 @@ namespace NewsAggregator.News.Specifications
                 ApplyFilter(news => news.SubTitle != null);
             }
 
-            ApplyOrderByDescending(news => news.PublishedAt);
+            ApplyFilter(news => news.PublishedAt != null ? news.PublishedAt <= DateTime.UtcNow : true);
+
+            ApplyOrderByDescending(news => news.PublishedAt ?? DateTime.UnixEpoch);
 
             ApplyPaging(0, options.Take);
         }

@@ -66,7 +66,8 @@ namespace NewsAggregator.News.Specifications
                 var startPublishedAt = TimeZoneInfo.ConvertTime(filters.StartPublishedAt.Value, TimeZoneInfo.Utc,
                     TimeZoneInfo.Utc);
 
-                ApplyFilter(news => news.PublishedAt >= startPublishedAt);
+                ApplyFilter(news => news.PublishedAt >= startPublishedAt &&
+                    news.PublishedAt <= DateTime.UtcNow);
             }
             else if (filters.EndPublishedAt is not null)
             {
@@ -74,6 +75,10 @@ namespace NewsAggregator.News.Specifications
                     TimeZoneInfo.Utc);
 
                 ApplyFilter(news => news.PublishedAt <= endPublishedAt);
+            }
+            else
+            {
+                ApplyFilter(news => news.PublishedAt != null ? news.PublishedAt <= DateTime.UtcNow : true);
             }
 
             if (filters.NewsTagsIds is not null && filters.NewsTagsIds?.Length > 0)

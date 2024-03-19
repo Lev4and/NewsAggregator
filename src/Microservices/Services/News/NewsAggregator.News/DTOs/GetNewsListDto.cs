@@ -15,8 +15,6 @@ namespace NewsAggregator.News.DTOs
 
         public IReadOnlyCollection<NewsTag> NewsTags { get; }
 
-        public IReadOnlyCollection<NewsEditor> NewsEditors { get; }
-
         public IReadOnlyCollection<NewsSource> NewsSources { get; }
 
         public IReadOnlyDictionary<NewsSortingOption, string> SortingOptions = 
@@ -34,20 +32,18 @@ namespace NewsAggregator.News.DTOs
             };
 
         public GetNewsListDto(GetNewsListFilters filters, PagedResultModel<Entities.News> result,
-            IReadOnlyCollection<NewsTag> newsTags, IReadOnlyCollection<NewsEditor> newsEditors, 
-            IReadOnlyCollection<NewsSource> newsSources)
+            IReadOnlyCollection<NewsTag> newsTags, IReadOnlyCollection<NewsSource> newsSources)
         {
             Filters = filters;
             Result = result;
             NewsTags = newsTags;
-            NewsEditors = newsEditors;
             NewsSources = newsSources;
         }
     }
 
     public class GetNewsListFilters
     {
-        public bool? HasPublishedAt { get; set; } = true;
+        public bool? HasPublishedAt { get; set; } = null;
 
         public bool? HasModifiedAt { get; set; } = null;
 
@@ -59,7 +55,7 @@ namespace NewsAggregator.News.DTOs
 
         public long Page { get; set; } = 1;
 
-        public long PageSize { get; set; } = 100;
+        public long PageSize { get; set; } = 25;
 
         public string SearchString { get; set; } = string.Empty;
 

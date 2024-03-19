@@ -59,11 +59,10 @@ namespace NewsAggregator.News.UseCases.Queries
                         var newsList = await _newsRepository.FindAsync(specification, cancellationToken);
 
                         var newsTags = await _newsTagsRepository.FindNewsTagsAsync(cancellationToken);
-                        var newsEditors = await _newsEditorRepository.FindNewsEditorsAsync(cancellationToken);
                         var newsSources = await _newsSourceRepository.FindNewsSourcesAsync(cancellationToken);
 
                         var getNewsListDto = new GetNewsListDto(request.Filters, new PagedResultModel<Entities.News>(newsList, 
-                            request.Filters.Page, request.Filters.PageSize, newsCount), newsTags, newsEditors, newsSources);
+                            request.Filters.Page, request.Filters.PageSize, newsCount), newsTags, newsSources);
 
                         transaction.Complete();
 
@@ -73,7 +72,7 @@ namespace NewsAggregator.News.UseCases.Queries
                     {
                         return new GetNewsListDto(new GetNewsListFilters(),
                             new PagedResultModel<Entities.News>(new List<Entities.News>(), 1, 1, 0), 
-                                new List<NewsTag>(), new List<NewsEditor>(), new List<NewsSource>());
+                                new List<NewsTag>(), new List<NewsSource>());
                     }
                 }
             }
