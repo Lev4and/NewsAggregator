@@ -124,6 +124,10 @@ namespace NewsAggregator.News.NewsSources
             Add(new MeduzaNewsSource());
 
             Add(new HuffPostNewsSource());
+
+            Add(new FoxNewsNewsSource());
+
+            Add(new PoliticoNewsSource());
         }
     }
 }

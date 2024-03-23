@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NewsAggregator.News.Databases.EntityFramework.News;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
 {
     [DbContext(typeof(NewsDbContext))]
-    partial class NewsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240323044647_AddedNewNewsSources")]
+    partial class AddedNewNewsSources
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

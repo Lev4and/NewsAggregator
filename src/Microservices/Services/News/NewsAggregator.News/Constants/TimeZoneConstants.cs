@@ -5,5 +5,6 @@
         public const string CoordinatedUniversalTimeTimeZoneId = "UTC";
         public const string RussianStandardTimeTimeZoneId = "Russian Standard Time";
         public const string CentralEuropeStandardTimeTimeZoneId = "Central Europe Standard Time";
+        public const string EasternStandardTimeTimeZoneId = "Eastern Standard Time";
     }
 }

@@ -32,7 +32,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         }
 
         [Theory]
-        [InlineData("https://www.huffpost.com/entry/kamala-harris-2024-naacp-image-awards_n_65f63e45e4b08b384f1b746e")]
+        [InlineData("https://www.foxnews.com/sports/south-korean-actress-jeon-jong-seo-appears-steal-hearts-dodgers-players-game")]
         public async Task ParseAsync_SpecificNewsUrl_ReturnNotNullResult(string newsUrl)
         {
             var newsSource = _sources[new Uri(newsUrl)];
