@@ -3,14 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NewsAggregator.Infrastructure.Extensions;
-using NewsAggregator.News.Caching;
 using NewsAggregator.News.ConfigurationOptions;
 using NewsAggregator.News.Databases.EntityFramework.News;
 using NewsAggregator.News.Extensions;
 using NewsAggregator.News.MessageConsumers;
 using NewsAggregator.News.Messages;
-using NewsAggregator.News.Repositories;
-using OpenQA.Selenium.Chrome;
 using RabbitMQ.Client;
 using System.Text.Json.Serialization;
 
@@ -31,6 +28,7 @@ namespace NewsAggregator.News
                 busConfigurator.AddConsumer<PrepareAddedNewsToIndexingConsumer>();
                 busConfigurator.AddConsumer<IndexAddedNewsConsumer>();
                 busConfigurator.AddConsumer<RegisterNewsViewConsumer>();
+                busConfigurator.AddConsumer<RefreshNewsSourcesMemoryCacheConsumer>();
 
                 busConfigurator.UsingRabbitMq((context, configurator) =>
                 {
@@ -288,6 +286,28 @@ namespace NewsAggregator.News
                             configurator.UseConcurrencyLimit(1);
                         });
                     });
+
+                    configurator.Message<NewsSourceListNotFound>(messageConfigurator =>
+                    {
+                        messageConfigurator.SetEntityName("news.events");
+                    });
+
+                    configurator.ReceiveEndpoint("refresh-news-sources-memory-cache", endpointConfigurator =>
+                    {
+                        endpointConfigurator.Durable = true;
+                        endpointConfigurator.ConfigureConsumeTopology = false;
+
+                        endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
+                        {
+                            exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
+                            exchangeBindingConfigurator.RoutingKey = "news_source_list.not_found";
+                        });
+
+                        endpointConfigurator.Consumer<RefreshNewsSourcesMemoryCacheConsumer>(context, configurator =>
+                        {
+                            configurator.UseConcurrencyLimit(1);
+                        });
+                    });
                 });
             });
 
@@ -320,42 +340,6 @@ namespace NewsAggregator.News
             using (var serviceScope = host.Services.GetService<IServiceScopeFactory>()?.CreateScope())
             {
                 serviceScope?.ServiceProvider.GetRequiredService<NewsDbContext>().Database.Migrate();
-            }
-        }
-
-        public static async Task RefreshNewsSourceMemoryCacheAsync(this IHost host)
-        {
-            using (var serviceScope = host.Services.GetService<IServiceScopeFactory>()?.CreateScope())
-            {
-                var memoryCache = serviceScope?.ServiceProvider.GetRequiredService<INewsSourceMemoryCache>();
-                var newsSourceRepository = serviceScope?.ServiceProvider.GetRequiredService<INewsSourceRepository>();
-
-                if (memoryCache is not null && newsSourceRepository is not null)
-                {
-                    var newsSources = await newsSourceRepository.FindAvailableNewsSourcesExtendedAsync();
-
-                    await memoryCache.RemoveAvailableNewsSourcesAsync();
-
-                    foreach (var newsSource in newsSources)
-                    {
-                        await memoryCache.RemoveNewsSourceByIdAsync(newsSource.Id);
-
-                        await memoryCache.RemoveNewsSourceByDomainAsync(new Uri(newsSource.SiteUrl).GetDomain());
-
-                        await memoryCache.RemoveNewsSourceBySiteUrlAsync(newsSource.SiteUrl);
-
-                        await memoryCache.GetNewsSourceByIdAsync(newsSource.Id,
-                            () => Task.FromResult(newsSource));
-
-                        await memoryCache.GetNewsSourceByDomainAsync(new Uri(newsSource.SiteUrl).GetDomain(),
-                            () => Task.FromResult(newsSource));
-
-                        await memoryCache.GetNewsSourceBySiteUrlAsync(newsSource.SiteUrl,
-                            () => Task.FromResult(newsSource));
-                    }
-
-                    await memoryCache.GetAvailableNewsSourcesAsync(() => Task.FromResult(newsSources));
-                }
             }
         }
     }

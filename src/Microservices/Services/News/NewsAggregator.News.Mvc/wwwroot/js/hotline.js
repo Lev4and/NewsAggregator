@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async function (e) {
 
             hotlineContainer.insertAdjacentHTML('afterbegin', `
                 <div class="hotline-container__item">
-                    <div class="hotline-container__item__added-time">
+                    <div class="hotline-container__item__added-time d-none d-md-block">
                         <strong data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="${new Date(message.addedAt).toUTCString()}">${new Date(message.addedAt).toLocaleTimeString('en-US')}</strong>
                     </div>
                     <div class="hotline-container__item__content">

@@ -44,6 +44,13 @@ namespace NewsAggregator.News.HostedServices
                             continue;
                         }
                     }
+
+                    if (newsSources.Count == 0)
+                    {
+                        await mediator.Publish(new NewsSourceListNotFound(), stoppingToken);
+
+                        await Task.Delay(60 * 1000);
+                    }
                 }
             }
         }

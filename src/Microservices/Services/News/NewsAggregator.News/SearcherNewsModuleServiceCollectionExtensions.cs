@@ -57,6 +57,22 @@ namespace NewsAggregator.News
                         messagePublishConfigurator.Durable = true;
                         messagePublishConfigurator.ExchangeType = ExchangeType.Direct;
                     });
+
+                    configurator.Send<NewsSourceListNotFound>(messageSendConfigurator =>
+                    {
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news_source_list.not_found");
+                    });
+
+                    configurator.Message<NewsSourceListNotFound>(messageConfigurator =>
+                    {
+                        messageConfigurator.SetEntityName("news.events");
+                    });
+
+                    configurator.Publish<NewsSourceListNotFound>(messagePublishConfigurator =>
+                    {
+                        messagePublishConfigurator.Durable = true;
+                        messagePublishConfigurator.ExchangeType = ExchangeType.Direct;
+                    });
                 });
             });
 
@@ -75,6 +91,9 @@ namespace NewsAggregator.News
 
             services.AddScoped<INotificationHandler<FoundNewsList>, 
                 SearchNewsByNewsSourceCommand.FoundNewsListNotificationHandler>();
+
+            services.AddScoped<INotificationHandler<NewsSourceListNotFound>,
+                GetAvailableNewsSourcesQuery.NewsSourceListNotFoundNotificationHandler>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipeline<,>));
