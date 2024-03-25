@@ -1,0 +1,68 @@
+name: Docker Dev Images Deploy
+
+on:
+  workflow_run:
+    workflows: [Docker Dev Images Build]
+    types: [completed]
+
+jobs:
+  newsaggregator-gateways-api-deploy:
+    name: newsaggregator-gateways-api deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy docker image
+        uses: satak/webrequest-action@master
+        with:
+          url: http://news-lev4and.ru:9000/api/webhooks/a2036898-cce4-4763-8a92-067199d30372
+          method: POST
+  
+  newsaggregator-news-api-deploy:
+    name: newsaggregator-news-api deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy docker image
+        uses: satak/webrequest-action@master
+        with:
+          url: http://news-lev4and.ru:9000/api/webhooks/6b19621b-2dcb-40af-814b-2330af396da0
+          method: POST
+  
+  newsaggregator-news-mvc-deploy:
+    name: newsaggregator-news-mvc deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy docker image
+        uses: satak/webrequest-action@master
+        with:
+          url: http://news-lev4and.ru:9000/api/webhooks/e52f9483-0903-4f22-844c-32f6cc2ec222
+          method: POST
+  
+  newsaggregator-news-parser-deploy:
+    name: newsaggregator-news-parser deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy docker image
+        uses: satak/webrequest-action@master
+        with:
+          url: http://news-lev4and.ru:9000/api/webhooks/1b4d269b-6c62-4ea7-8026-a1e62f13561c
+          method: POST
+  
+  newsaggregator-news-searcher-deploy:
+    name: newsaggregator-news-searcher deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy docker image
+        uses: satak/webrequest-action@master
+        with:
+          url: http://news-lev4and.ru:9000/api/webhooks/a856563d-cc5a-4520-98e7-6d445fe72b49
+          method: POST
+  
+  newsaggregator-notification-api-deploy:
+    name: newsaggregator-notification-api deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy docker image
+        uses: satak/webrequest-action@master
+        with:
+          url: http://news-lev4and.ru:9000/api/webhooks/8d3eaf2c-c5bf-4c62-88a2-3ab852f63b02
+          method: POST
+      
