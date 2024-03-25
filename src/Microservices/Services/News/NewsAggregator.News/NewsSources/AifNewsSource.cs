@@ -64,7 +64,7 @@ namespace NewsAggregator.News.NewsSources
                 ParsePublishedAtSettings = new NewsParsePublishedAtSettings
                 {
                     Id = Guid.Parse("21890de7-31ad-4c9e-a749-05f565d45905"),
-                    PublishedAtXPath = "//div[@class='article_top']//div[@class='date']//time/text()",
+                    PublishedAtXPath = "//meta[@name='article:published_time']/@content",
                     PublishedAtCultureInfo = CultureInfoConstants.RussianRussiaCultureInfoName,
                     PublishedAtTimeZoneInfoId = TimeZoneConstants.RussianStandardTimeTimeZoneId,
                     IsRequired = true,
@@ -73,10 +73,26 @@ namespace NewsAggregator.News.NewsSources
                         new NewsParsePublishedAtSettingsFormat
                         {
                             Id = Guid.Parse("098793a2-d99d-494b-afba-e727e26214b7"),
-                            Format = "dd.MM.yyyy HH:mm"
+                            Format = "yyyy-MM-ddTHH:mm:ss\"+0300\""
                         }
                     }
-                }
+                },
+                ParseModifiedAtSettings = new NewsParseModifiedAtSettings
+                {
+                    Id = Guid.Parse("46cff913-17ee-438f-8f82-778002dbdcac"),
+                    ModifiedAtXPath = "//meta[@name='article:modified_time']/@content",
+                    ModifiedAtCultureInfo = CultureInfoConstants.RussianRussiaCultureInfoName,
+                    ModifiedAtTimeZoneInfoId = TimeZoneConstants.RussianStandardTimeTimeZoneId,
+                    IsRequired = false,
+                    Formats = new List<NewsParseModifiedAtSettingsFormat>
+                    {
+                        new NewsParseModifiedAtSettingsFormat
+                        {
+                            Id = Guid.Parse("a6d9eabc-e130-4d14-9cdf-1d0374e5fc6e"),
+                            Format = "yyyy-MM-ddTHH:mm:ss\"+0300\""
+                        }
+                    }
+                },
             };
             SearchSettings = new NewsSearchSettings
             {

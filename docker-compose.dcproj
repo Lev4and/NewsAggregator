@@ -7,7 +7,7 @@
     <ProjectGuid>615d7726-0f7c-439c-9300-6c369c4a0683</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>newsaggregator.gateways.api</DockerServiceName>
+    <DockerServiceName>newsaggregator-gateways-api</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

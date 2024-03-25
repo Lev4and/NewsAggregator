@@ -31,13 +31,17 @@ namespace NewsAggregator.News.Services.Parsers
 
             foreach (var item in htmlDocumentNavigator.Select(options.NewsUrlXPath))
             {
-                var newsUrl = item.ToString() ?? "";
+                var newsUrl = item.ToString()?.Split('?').First() ?? "";
 
-                newsUrl = newsUrl.Split('?').First();
+                if (newsUrl.StartsWith("/") && !newsUrl.StartsWith("//"))
+                {
+                    newsUrl = $"{newsSiteUri.GetSiteUrl()}{newsUrl.Substring(1)}";
+                }
 
-                newsUrl = !newsUrl.Contains(newsSiteUri.Host.Replace("www.", ""))
-                    ? $"{newsSiteUri.GetSiteUrl()}{newsUrl.Substring(1)}"
-                    : newsUrl;
+                if (newsUrl.StartsWith("//"))
+                {
+                    newsUrl = $"{newsSiteUri.Scheme}:{newsUrl}";
+                }
 
                 result.Add(newsUrl);
             }

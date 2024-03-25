@@ -32,7 +32,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         }
 
         [Theory]
-        [InlineData("https://www.foxnews.com/sports/south-korean-actress-jeon-jong-seo-appears-steal-hearts-dodgers-players-game")]
+        [InlineData("https://aif.ru/natsionalniye_proekti_rossii/culture/koncert-s-dostavkoy-na-dom-avtokluby-otkryli-sezon-gastroley")]
         public async Task ParseAsync_SpecificNewsUrl_ReturnNotNullResult(string newsUrl)
         {
             var newsSource = _sources[new Uri(newsUrl)];

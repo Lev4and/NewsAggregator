@@ -80,7 +80,7 @@ namespace NewsAggregator.News.NewsSources
             SearchSettings = new NewsSearchSettings
             {
                 Id = Guid.Parse("92324d14-49b0-409a-96e1-6a37a8691c6e"),
-                NewsUrlXPath = "//section//ul/li[@class='IBae3']//a[@class='IBd3']/@href",
+                NewsUrlXPath = "//section//ul/li//div[@class]/div[not(@class)]/a[starts-with(@href, '/') and not(contains(@href, 'all.comments.html')) and not(contains(@href, '?'))]/@href",
                 NewsSiteUrl = "https://www.fontanka.ru/24hours_news.html"
             };
         }

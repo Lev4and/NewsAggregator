@@ -1,0 +1,1 @@
+docker stack deploy -c docker-compose-production.yml -c docker-compose-production.override.yml newsaggregator --prune --with-registry-auth

@@ -6,4 +6,5 @@ sudo apt update
 apt-cache policy docker-ce
 sudo apt install docker-ce -y
 sudo apt install docker-compose
+docker swarm init
 sudo systemctl status docker

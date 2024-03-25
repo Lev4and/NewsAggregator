@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-  newsaggregator.gateways.api:
+  newsaggregator-gateways-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=5000
@@ -13,7 +13,7 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
 
-  newsaggregator.news.api:
+  newsaggregator-news-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=5100
@@ -37,19 +37,19 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
 
-  newsaggregator.news.parser:
+  newsaggregator-news-parser:
     environment:
       - DOTNET_ENVIRONMENT=Development
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
 
-  newsaggregator.news.searcher:
+  newsaggregator-news-searcher:
     environment:
       - DOTNET_ENVIRONMENT=Development
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
   
-  newsaggregator.notification.api:
+  newsaggregator-notification-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=5300
@@ -120,48 +120,48 @@ services:
   #     - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
   #     - SE_NODE_MAX_SESSIONS=8
 
-  # selenium.hub:
+  # selenium-hub:
   #   ports:
   #     - 4442:4442
   #     - 4443:4443
   #     - 4444:4444
 
-  newsaggregator.gateways.api.seq:
+  newsaggregator-gateways-api-seq:
     environment:
       - ACCEPT_EULA=Y
     ports:
       - 5341:5341
       - 8081:80
   
-  newsaggregator.news.api.seq:
+  newsaggregator-news-api-seq:
     environment:
       - ACCEPT_EULA=Y
     ports:
       - 5342:5341
       - 8082:80
   
-  newsaggregator.news.mvc.seq:
+  newsaggregator-news-mvc-seq:
     environment:
       - ACCEPT_EULA=Y
     ports:
       - 5343:5341
       - 8083:80
   
-  newsaggregator.news.parser.seq:
+  newsaggregator-news-parser-seq:
     environment:
       - ACCEPT_EULA=Y
     ports:
       - 5344:5341
       - 8084:80
   
-  newsaggregator.news.searcher.seq:
+  newsaggregator-news-searcher-seq:
     environment:
       - ACCEPT_EULA=Y
     ports:
       - 5345:5341
       - 8085:80
   
-  newsaggregator.notification.api.seq:
+  newsaggregator-notification-api-seq:
     environment:
       - ACCEPT_EULA=Y
     ports:
@@ -175,7 +175,7 @@ services:
     ports:
       - "9000:9000"
 
-  node.exporter:
+  node-exporter:
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro

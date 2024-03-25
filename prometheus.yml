@@ -7,6 +7,6 @@ scrape_configs:
     static_configs:
     - targets: ["prometheus:9090"]
 
-  - job_name: "node.exporter"
+  - job_name: "node-exporter"
     static_configs:
-    - targets: ["node.exporter:9100"]
+    - targets: ["node-exporter:9100"]

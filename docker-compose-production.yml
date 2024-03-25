@@ -1,29 +1,29 @@
 version: '3.4'
 
 services:
-  newsaggregator.gateways.api:
+  newsaggregator-gateways-api:
     image: ghcr.io/lev4and/newsaggregator/newsaggregator-gateways-api:dev
     container_name: newsaggregator-gateways-api
     depends_on:
-        - newsaggregator.news.api
-        - newsaggregator.notification.api
-        - newsaggregator.gateways.api.seq
+        - newsaggregator-news-api
+        - newsaggregator-notification-api
+        - newsaggregator-gateways-api-seq
     networks:
       - newsaggregator-gateways-api-proxy
       - newsaggregator-news-api-proxy
       - newsaggregator-notification-api-proxy
       - nginx-proxy
 
-  newsaggregator.news.api:
+  newsaggregator-news-api:
     image: ghcr.io/lev4and/newsaggregator/newsaggregator-news-api:dev
     container_name: newsaggregator-news-api
     depends_on:
-      - selenium.hub
+      # - selenium-hub
       - postgres
       - redis 
       - rabbitmq
-      - elasticsearch
-      - newsaggregator.news.api.seq
+      # - elasticsearch
+      - newsaggregator-news-api-seq
     networks:
       - newsaggregator-news-api-proxy
       - selenium-hub-proxy
@@ -34,15 +34,15 @@ services:
       - nginx-proxy
 
 
-  newsaggregator.news.mvc:
+  newsaggregator-news-mvc:
     image: ghcr.io/lev4and/newsaggregator/newsaggregator-news-mvc:dev
     container_name: newsaggregator-news-mvc
     depends_on:
-      - selenium.hub
+      # - selenium-hub
       - postgres
       - redis
-      - elasticsearch
-      - newsaggregator.news.mvc.seq
+      # - elasticsearch
+      - newsaggregator-news-mvc-seq
     networks:
       - newsaggregator-news-mvc-proxy
       - selenium-hub-proxy
@@ -53,15 +53,15 @@ services:
       - nginx-proxy
 
 
-  newsaggregator.news.parser:
+  newsaggregator-news-parser:
     image: ghcr.io/lev4and/newsaggregator/newsaggregator-news-parser:dev
     container_name: newsaggregator-news-parser
     depends_on:
-      - newsaggregator.news.api
-      - selenium.hub
+      - newsaggregator-news-api
+      # - selenium-hub
       - redis
       - rabbitmq
-      - newsaggregator.news.parser.seq
+      - newsaggregator-news-parser-seq
     networks:
       - newsaggregator-news-parser-proxy
       - selenium-hub-proxy
@@ -69,27 +69,27 @@ services:
       - rabbitmq-proxy
 
 
-  newsaggregator.news.searcher:
+  newsaggregator-news-searcher:
     image: ghcr.io/lev4and/newsaggregator/newsaggregator-news-searcher:dev
     container_name: newsaggregator-news-searcher
     depends_on:
-      - newsaggregator.news.api
-      - selenium.hub
+      - newsaggregator-news-api
+      # - selenium-hub
       - redis
       - rabbitmq
-      - newsaggregator.news.searcher.seq
+      - newsaggregator-news-searcher-seq
     networks:
       - newsaggregator-news-searcher-proxy
       - selenium-hub-proxy
       - redis-proxy
       - rabbitmq-proxy
 
-  newsaggregator.notification.api:
+  newsaggregator-notification-api:
     image: ghcr.io/lev4and/newsaggregator/newsaggregator-notification-api:dev
     container_name: newsaggregator-notification-api
     depends_on:
       - rabbitmq
-      - newsaggregator.notification.api.seq
+      - newsaggregator-notification-api-seq
     networks:
       - newsaggregator-notification-api-proxy
       - rabbitmq-proxy
@@ -128,77 +128,77 @@ services:
       - redis-proxy
       - nginx-proxy
   
-  elasticsearch:
-    image: ghcr.io/lev4and/newsaggregator/elasticsearch:dev
-    container_name: elasticsearch
-    networks:
-      - elasticsearch-proxy
-      - nginx-proxy
+  # elasticsearch:
+  #   image: ghcr.io/lev4and/newsaggregator/elasticsearch:dev
+  #   container_name: elasticsearch
+  #   networks:
+  #     - elasticsearch-proxy
+  #     - nginx-proxy
 
-  kibana:
-    image: ghcr.io/lev4and/newsaggregator/kibana:dev
-    container_name: kibana
-    links:
-      - elasticsearch
-    depends_on:
-      - elasticsearch
-    networks:
-      - elasticsearch-proxy
-      - nginx-proxy
+  # kibana:
+  #   image: ghcr.io/lev4and/newsaggregator/kibana:dev
+  #   container_name: kibana
+  #   links:
+  #     - elasticsearch
+  #   depends_on:
+  #     - elasticsearch
+  #   networks:
+  #     - elasticsearch-proxy
+  #     - nginx-proxy
   
-  chrome:
-    image: selenium/node-chrome:dev
-    container_name: chrome
-    shm_size: 2gb
-    depends_on:
-      - selenium.hub
-    networks:
-      - selenium-hub-proxy
-      - nginx-proxy
+  # chrome:
+  #   image: selenium/node-chrome:dev
+  #   container_name: chrome
+  #   shm_size: 2gb
+  #   depends_on:
+  #     - selenium-hub
+  #   networks:
+  #     - selenium-hub-proxy
+  #     - nginx-proxy
 
-  selenium.hub:
-    image: selenium/hub:latest
-    container_name: selenium-hub
-    networks:
-      - selenium-hub-proxy
-      - nginx-proxy
+  # selenium-hub:
+  #   image: selenium/hub:latest
+  #   container_name: selenium-hub
+  #   networks:
+  #     - selenium-hub-proxy
+  #     - nginx-proxy
 
-  newsaggregator.gateways.api.seq:
+  newsaggregator-gateways-api-seq:
     image: datalust/seq:latest
     container_name: newsaggregator-gateways-api-seq
     networks:
       - newsaggregator-gateways-api-proxy
       - nginx-proxy
   
-  newsaggregator.news.api.seq:
+  newsaggregator-news-api-seq:
     image: datalust/seq:latest
     container_name: newsaggregator-news-api-seq
     networks:
       - newsaggregator-news-api-proxy
       - nginx-proxy
   
-  newsaggregator.news.mvc.seq:
+  newsaggregator-news-mvc-seq:
     image: datalust/seq:latest
     container_name: newsaggregator-news-mvc-seq
     networks:
       - newsaggregator-news-mvc-proxy
       - nginx-proxy
   
-  newsaggregator.news.parser.seq:
+  newsaggregator-news-parser-seq:
     image: datalust/seq:latest
     container_name: newsaggregator-news-parser-seq
     networks:
       - newsaggregator-news-parser-proxy
       - nginx-proxy
   
-  newsaggregator.news.searcher.seq:
+  newsaggregator-news-searcher-seq:
     image: datalust/seq:latest
     container_name: newsaggregator-news-searcher-seq
     networks:
       - newsaggregator-news-searcher-proxy
       - nginx-proxy
  
-  newsaggregator.notification.api.seq:
+  newsaggregator-notification-api-seq:
     image: datalust/seq:latest
     container_name: newsaggregator-notification-api-seq
     networks:
@@ -212,7 +212,7 @@ services:
     networks:
       - nginx-proxy
 
-  node.exporter:
+  node-exporter:
     image: prom/node-exporter:latest
     container_name: node-exporter
     restart: unless-stopped
@@ -240,53 +240,47 @@ services:
     image: nginx:mainline
     container_name: nginx
     depends_on:
-        - newsaggregator.gateways.api
-        - newsaggregator.gateways.api.seq
-        - newsaggregator.news.api
-        - newsaggregator.news.api.seq
+        - newsaggregator-gateways-api
+        - newsaggregator-gateways-api-seq
+        - newsaggregator-news-api
+        - newsaggregator-news-api-seq
         - newsaggregator.news.mvc
-        - newsaggregator.news.parser
-        - newsaggregator.news.parser.seq
-        - newsaggregator.news.searcher
-        - newsaggregator.news.searcher.seq
-        - newsaggregator.notification.api
-        - newsaggregator.notification.api.seq
-        - pgadmin
-        - rabbitmq 
-        - redis
-        - kibana
-        - selenium.hub
-        - portainer
+        - newsaggregator-news-parser
+        - newsaggregator-news-parser-seq
+        - newsaggregator-news-searcher
+        - newsaggregator-news-searcher-seq
+        - newsaggregator-notification-api
+        - newsaggregator-notification-api-seq
         - grafana
     networks:
       - nginx-proxy
 
 networks:
   newsaggregator-gateways-api-proxy:
-    driver: bridge
+    driver: overlay
   newsaggregator-news-api-proxy:
-    driver: bridge
+    driver: overlay
   newsaggregator-news-mvc-proxy:
-    driver: bridge
+    driver: overlay
   newsaggregator-news-parser-proxy:
-    driver: bridge
+    driver: overlay
   newsaggregator-news-searcher-proxy:
-    driver: bridge
+    driver: overlay
   newsaggregator-notification-api-proxy:
-    driver: bridge
+    driver: overlay
   selenium-hub-proxy:
-    driver: bridge 
+    driver: overlay 
   postgres-proxy:
-    driver: bridge
+    driver: overlay
   redis-proxy:
-    driver: bridge
+    driver: overlay
   rabbitmq-proxy:
-    driver: bridge
+    driver: overlay
   elasticsearch-proxy:
-    driver: bridge
+    driver: overlay
   node-exporter-proxy:
-    driver: bridge
+    driver: overlay
   prometheus-proxy:
-    driver: bridge
+    driver: overlay
   nginx-proxy:
-    driver: bridge
+    driver: overlay

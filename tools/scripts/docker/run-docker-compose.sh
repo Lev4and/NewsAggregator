@@ -1,0 +1,1 @@
+docker-compose -f docker-compose-production.yml -f docker-compose-production.override.yml up -d --build

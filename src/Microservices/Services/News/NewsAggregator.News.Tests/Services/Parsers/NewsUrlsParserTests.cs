@@ -27,7 +27,7 @@ namespace NewsAggregator.News.Tests.Services.Parsers
         [Fact]
         public async Task ParseAsync_SpecificNewsSource_ReturnNotEmptyResult()
         {
-            var newsSource = new Sources()[new Uri("https://www.kinonews.ru/")];
+            var newsSource = new Sources()[new Uri("https://www.fontanka.ru/")];
             var newsUrls = await ParseNewsUrlsAsync(newsSource);
 
             _output.WriteLine("\nReport:\n");
@@ -45,7 +45,12 @@ namespace NewsAggregator.News.Tests.Services.Parsers
 
             _output.WriteLine("\nReport:\n");
 
-            _output.WriteLine("Found {0} news items from \"{1}\" news source", newsUrls.Count, newsSource.Title);
+            _output.WriteLine("Found {0} news items from \"{1}\" news source\n", newsUrls.Count, newsSource.Title);
+
+            foreach (var newsUrl in newsUrls)
+            {
+                _output.WriteLine("{0}", newsUrl);
+            }
 
             Assert.NotEmpty(newsUrls);
         }
