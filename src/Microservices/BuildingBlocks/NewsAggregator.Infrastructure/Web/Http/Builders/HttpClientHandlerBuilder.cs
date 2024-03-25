@@ -1,7 +1,4 @@
-﻿using StackExchange.Redis;
-using System.Net;
-using System.Security.Authentication;
-using System.Security.Cryptography.X509Certificates;
+﻿using System.Net;
 
 namespace NewsAggregator.Infrastructure.Web.Http.Builders
 {
@@ -12,9 +9,6 @@ namespace NewsAggregator.Infrastructure.Web.Http.Builders
         public HttpClientHandlerBuilder()
         {
             _httpClientHandler = new HttpClientHandler();
-            _httpClientHandler.SslProtocols = SslProtocols.Tls12;
-            _httpClientHandler.ClientCertificateOptions = ClientCertificateOption.Manual;
-            _httpClientHandler.ClientCertificates.Add(new X509Certificate2(Resources.DotNetDevCert));
         }
 
         public HttpClientHandlerBuilder UseSslProtocols()
