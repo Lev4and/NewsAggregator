@@ -5,7 +5,6 @@ using NewsAggregator.Infrastructure.Extensions;
 using NewsAggregator.News.ConfigurationOptions;
 using NewsAggregator.News.Extensions;
 using NewsAggregator.News.Messages;
-using OpenQA.Selenium.Chrome;
 using RabbitMQ.Client;
 using System.Text.Json.Serialization;
 
@@ -45,6 +44,22 @@ namespace NewsAggregator.News
                     });
 
                     configurator.Publish<NewsViewed>(messagePublishConfigurator =>
+                    {
+                        messagePublishConfigurator.Durable = true;
+                        messagePublishConfigurator.ExchangeType = ExchangeType.Direct;
+                    });
+
+                    configurator.Send<NewsSiteVisited>(messageSendConfigurator =>
+                    {
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news_site.visited");
+                    });
+
+                    configurator.Message<NewsSiteVisited>(messageConfigurator =>
+                    {
+                        messageConfigurator.SetEntityName("news.events");
+                    });
+
+                    configurator.Publish<NewsSiteVisited>(messagePublishConfigurator =>
                     {
                         messagePublishConfigurator.Durable = true;
                         messagePublishConfigurator.ExchangeType = ExchangeType.Direct;

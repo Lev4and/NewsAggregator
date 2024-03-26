@@ -40,7 +40,7 @@ services:
       - nginx-proxy
 
 
-  newsaggregator.news.mvc:
+  newsaggregator-news-mvc:
     image: ${DOCKER_REGISTRY-}newsaggregatornewsmvc
     container_name: newsaggregator-news-mvc
     depends_on:
@@ -262,7 +262,7 @@ services:
         - newsaggregator-gateways-api-seq
         - newsaggregator-news-api
         - newsaggregator-news-api-seq
-        - newsaggregator.news.mvc
+        - newsaggregator-news-mvc
         - newsaggregator-news-parser
         - newsaggregator-news-parser-seq
         - newsaggregator-news-searcher

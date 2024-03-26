@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using NewsAggregator.News;
 using NewsAggregator.News.ConfigurationOptions;
+using NewsAggregator.News.Web.Middlewares;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -41,6 +42,8 @@ app.UseForwardedHeaders();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseMiddleware<RegisterNewsSiteVisitMiddleware>();
 
 app.MapControllerRoute(
     name: "default",

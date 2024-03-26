@@ -29,6 +29,7 @@ namespace NewsAggregator.News
                 busConfigurator.AddConsumer<IndexAddedNewsConsumer>();
                 busConfigurator.AddConsumer<RegisterNewsViewConsumer>();
                 busConfigurator.AddConsumer<RefreshNewsSourcesMemoryCacheConsumer>();
+                busConfigurator.AddConsumer<RegisterNewsSiteVisitConsumer>();
 
                 busConfigurator.UsingRabbitMq((context, configurator) =>
                 {
@@ -307,6 +308,25 @@ namespace NewsAggregator.News
                         {
                             configurator.UseConcurrencyLimit(1);
                         });
+                    });
+
+                    configurator.Message<NewsSiteVisited>(messageConfigurator =>
+                    {
+                        messageConfigurator.SetEntityName("news.events");
+                    });
+
+                    configurator.ReceiveEndpoint("register-news-site-visit", endpointConfigurator =>
+                    {
+                        endpointConfigurator.Durable = true;
+                        endpointConfigurator.ConfigureConsumeTopology = false;
+
+                        endpointConfigurator.Bind("news.events", exchangeBindingConfigurator =>
+                        {
+                            exchangeBindingConfigurator.ExchangeType = ExchangeType.Direct;
+                            exchangeBindingConfigurator.RoutingKey = "news_site.visited";
+                        });
+
+                        endpointConfigurator.Consumer<RegisterNewsSiteVisitConsumer>(context);
                     });
                 });
             });

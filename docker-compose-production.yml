@@ -244,7 +244,7 @@ services:
         - newsaggregator-gateways-api-seq
         - newsaggregator-news-api
         - newsaggregator-news-api-seq
-        - newsaggregator.news.mvc
+        - newsaggregator-news-mvc
         - newsaggregator-news-parser
         - newsaggregator-news-parser-seq
         - newsaggregator-news-searcher

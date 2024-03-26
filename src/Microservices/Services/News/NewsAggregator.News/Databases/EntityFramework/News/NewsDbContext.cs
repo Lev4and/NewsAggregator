@@ -43,6 +43,8 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
 
         public DbSet<NewsSearchSettings> NewsSearchSettings { get; set; }
 
+        public DbSet<NewsSiteVisit> NewsSiteVisits { get; set; }
+
         public DbSet<NewsSource> NewsSources { get; set; }
 
         public DbSet<NewsSourceLogo> NewsSourceLogos { get; set; }
@@ -187,6 +189,12 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
                 .HasOne(settings => settings.ParseModifiedAtSettings)
                     .WithOne(modifiedAtSettings => modifiedAtSettings.ParseSettings)
                         .HasForeignKey<NewsParseModifiedAtSettings>(modifiedAtSettings => modifiedAtSettings.ParseSettingsId);
+
+            modelBuilder.Entity<NewsSiteVisit>()
+                .HasIndex(visit => visit.IpAddress);
+
+            modelBuilder.Entity<NewsSiteVisit>()
+                .HasIndex(visit => visit.VisitedAt);
 
             modelBuilder.Entity<NewsSource>()
                 .HasIndex(source => source.Title);
