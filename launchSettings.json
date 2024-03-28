@@ -225,7 +225,7 @@
         "newsaggregator-gateways-api-seq": "DoNotStart",
         "newsaggregator-news-api": "DoNotStart",
         "newsaggregator-news-api-seq": "DoNotStart",
-        "newsaggregator-news-mvc": "StartDebugging",
+        "newsaggregator-news-mvc": "DoNotStart",
         "newsaggregator-news-mvc-seq": "DoNotStart",
         "newsaggregator-news-parser": "DoNotStart",
         "newsaggregator-news-parser-seq": "DoNotStart",
@@ -237,7 +237,7 @@
         "node-exporter": "DoNotStart",
         "pgadmin": "StartWithoutDebugging",
         "portainer": "DoNotStart",
-        "postgres": "DoNotStart",
+        "postgres": "StartWithoutDebugging",
         "prometheus": "DoNotStart",
         "rabbitmq": "DoNotStart",
         "redis": "DoNotStart"

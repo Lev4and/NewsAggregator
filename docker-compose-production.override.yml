@@ -210,4 +210,11 @@ services:
     volumes:
       - ./nginx.production.conf:/etc/nginx/nginx.conf
     ports:
-      - "80:80"
+      - mode: host
+        protocol: tcp
+        published: 80
+        target: 80
+      - mode: host
+        protocol: tcp
+        published: 443
+        target: 81
