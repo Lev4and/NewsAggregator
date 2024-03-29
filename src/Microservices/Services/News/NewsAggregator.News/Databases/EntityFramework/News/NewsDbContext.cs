@@ -41,6 +41,8 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
 
         public DbSet<NewsPicture> NewsPictures { get; set; }
 
+        public DbSet<NewsReaction> NewsReactions { get; set; }
+
         public DbSet<NewsSearchSettings> NewsSearchSettings { get; set; }
 
         public DbSet<NewsSiteVisit> NewsSiteVisits { get; set; }
@@ -60,6 +62,10 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
         public DbSet<NewsVideo> NewsVideos { get; set; }
 
         public DbSet<NewsView> NewsViews { get; set; }
+
+        public DbSet<Reaction> Reactions { get; set; }
+
+        public DbSet<ReactionIcon> ReactionIcons { get; set; }
 
         public NewsDbContext(DbContextOptions options) : base(options)
         {
@@ -130,6 +136,11 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
                     .WithOne(view => view.News)
                         .HasForeignKey(view => view.NewsId);
 
+            modelBuilder.Entity<Entities.News>()
+                .HasMany(news => news.Reactions)
+                    .WithOne(reaction => reaction.News)
+                        .HasForeignKey(reaction => reaction.NewsId);
+
             modelBuilder.Entity<NewsEditor>()
                 .HasIndex(editor => editor.Name);
 
@@ -190,6 +201,12 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
                     .WithOne(modifiedAtSettings => modifiedAtSettings.ParseSettings)
                         .HasForeignKey<NewsParseModifiedAtSettings>(modifiedAtSettings => modifiedAtSettings.ParseSettingsId);
 
+            modelBuilder.Entity<NewsReaction>()
+                .HasIndex(reaction => reaction.IpAddress);
+
+            modelBuilder.Entity<NewsReaction>()
+                .HasIndex(reaction => reaction.ReactedAt);
+
             modelBuilder.Entity<NewsSiteVisit>()
                 .HasIndex(visit => visit.IpAddress);
 
@@ -246,6 +263,19 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
 
             modelBuilder.Entity<NewsView>()
                 .HasIndex(view => view.ViewedAt);
+
+            modelBuilder.Entity<Reaction>()
+                .HasOne(reaction => reaction.Icon)
+                    .WithOne(icon => icon.Reaction)
+                        .HasForeignKey<ReactionIcon>(icon => icon.ReactionId);
+
+            modelBuilder.Entity<Reaction>()
+                .HasMany(reaction => reaction.News)
+                    .WithOne(news => news.Reaction)
+                        .HasForeignKey(news => news.ReactionId);
+
+            modelBuilder.Entity<Reaction>()
+                .HasIndex(view => view.Title);
         }
     }
 }

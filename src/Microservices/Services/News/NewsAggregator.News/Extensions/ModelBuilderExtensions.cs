@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NewsAggregator.News.Entities;
+using NewsAggregator.News.NewsReactions;
 using NewsAggregator.News.NewsSources;
 using NewsAggregator.News.NewsTags;
 
@@ -14,6 +15,13 @@ namespace NewsAggregator.News.Extensions
             foreach (var newsTag in newsTags)
             {
                 modelBuilder.AddNewsTag(newsTag);
+            }
+
+            var reactions = new Reactions();
+
+            foreach (var reaction in reactions)
+            {
+                modelBuilder.AddReaction(reaction);
             }
 
             var newsSources = new Sources();
@@ -34,6 +42,29 @@ namespace NewsAggregator.News.Extensions
                     Id = newsTag.Id,
                     Name = newsTag.Name
                 });
+
+            return modelBuilder;
+        }
+
+        private static ModelBuilder AddReaction(this ModelBuilder modelBuilder, Reaction reaction)
+        {
+            modelBuilder.Entity<Reaction>().HasData(
+                new Reaction
+                {
+                    Id = reaction.Id,
+                    Title = reaction.Title
+                });
+
+            if (reaction.Icon is not null)
+            {
+                modelBuilder.Entity<ReactionIcon>().HasData(
+                    new ReactionIcon
+                    {
+                        Id = reaction.Icon.Id,
+                        ReactionId = reaction.Id,
+                        IconClass = reaction.Icon.IconClass
+                    });
+            }
 
             return modelBuilder;
         }

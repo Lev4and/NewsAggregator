@@ -3,7 +3,7 @@ using NewsAggregator.News.Entities;
 
 namespace NewsAggregator.News.Repositories
 {
-    public interface INewsTagsRepository : IRepository<NewsTag>
+    public interface INewsTagRepository : IRepository<NewsTag>
     {
         Task<IReadOnlyCollection<NewsTag>> FindNewsTagsAsync(CancellationToken cancellationToken = default);
 

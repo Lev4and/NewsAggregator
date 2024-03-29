@@ -4,9 +4,9 @@ using NewsAggregator.News.Repositories;
 
 namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
 {
-    public class NewsTagsRepository : NewsDbRepository<NewsTag>, INewsTagsRepository
+    public class NewsTagRepository : NewsDbRepository<NewsTag>, INewsTagRepository
     {
-        public NewsTagsRepository(NewsDbContext dbContext) : base(dbContext)
+        public NewsTagRepository(NewsDbContext dbContext) : base(dbContext)
         {
 
         }

@@ -32,12 +32,12 @@ namespace NewsAggregator.News.UseCases.Queries
         internal class Handler : IRequestHandler<GetNewsSourceListQuery, GetNewsSourceListDto>
         {
             private readonly INewsSourceRepository _newsSourceRepository;
-            private readonly INewsTagsRepository _newsTagsRepository;
+            private readonly INewsTagRepository _newsTagRepository;
 
-            public Handler(INewsSourceRepository newsSourceRepository, INewsTagsRepository newsTagsRepository)
+            public Handler(INewsSourceRepository newsSourceRepository, INewsTagRepository newsTagsRepository)
             {
                 _newsSourceRepository = newsSourceRepository;
-                _newsTagsRepository = newsTagsRepository;
+                _newsTagRepository = newsTagsRepository;
             }
 
             public async Task<GetNewsSourceListDto> Handle(GetNewsSourceListQuery request, 
@@ -54,7 +54,7 @@ namespace NewsAggregator.News.UseCases.Queries
                         var newsSourceCount = await _newsSourceRepository.CountAsync(specification, cancellationToken);
                         var newsSourceList = await _newsSourceRepository.FindAsync(specification, cancellationToken);
 
-                        var newsTags = await _newsTagsRepository.FindNewsTagsAsync(cancellationToken);
+                        var newsTags = await _newsTagRepository.FindNewsTagsAsync(cancellationToken);
 
                         var getNewsSourceListDto = new GetNewsSourceListDto(request.Filters, 
                             new PagedResultModel<NewsSource>(newsSourceList, request.Filters.Page, request.Filters.PageSize, 

@@ -25,9 +25,9 @@ namespace NewsAggregator.News.UseCases.Queries
 
         internal class Handler : IRequestHandler<GetNewsTagByNameQuery, NewsTag>
         {
-            private readonly INewsTagsRepository _repository;
+            private readonly INewsTagRepository _repository;
 
-            public Handler(INewsTagsRepository repository)
+            public Handler(INewsTagRepository repository)
             {
                 _repository = repository;
             }
