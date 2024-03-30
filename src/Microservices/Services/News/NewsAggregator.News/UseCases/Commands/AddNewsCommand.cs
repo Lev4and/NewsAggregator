@@ -1,5 +1,4 @@
-﻿using Amazon.Runtime.Internal.Util;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using NewsAggregator.Domain.Infrastructure.Databases;
@@ -11,8 +10,6 @@ using NewsAggregator.News.Exceptions;
 using NewsAggregator.News.Extensions;
 using NewsAggregator.News.Messages;
 using NewsAggregator.News.Repositories;
-using System.Runtime.CompilerServices;
-using System.Transactions;
 
 namespace NewsAggregator.News.UseCases.Commands
 {
@@ -53,9 +50,7 @@ namespace NewsAggregator.News.UseCases.Commands
 
             public async Task<bool> Handle(AddNewsCommand request, CancellationToken cancellationToken)
             {
-                using (var transaction = new TransactionScope(TransactionScopeOption.Required,
-                    new TransactionOptions() { IsolationLevel = IsolationLevel.RepeatableRead },
-                        TransactionScopeAsyncFlowOption.Enabled))
+                using (var transaction = await _unitOfWork.BeginTransactionAsync(cancellationToken))
                 {
                     try
                     {
@@ -145,13 +140,15 @@ namespace NewsAggregator.News.UseCases.Commands
 
                         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-                        transaction.Complete();
+                        await transaction.CommitAsync();
 
                         return true;
                     }
                     catch (Exception ex)
                     {
                         _logger.LogError("The add news {0} failed with an error {1}", request.News.Url, ex.Message);
+
+                        await transaction.RollbackAsync();
 
                         return false;
                     }

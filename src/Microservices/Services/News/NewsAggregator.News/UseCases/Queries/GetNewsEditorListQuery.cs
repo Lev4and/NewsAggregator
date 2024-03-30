@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 using NewsAggregator.Domain.Entities;
+using NewsAggregator.Domain.Infrastructure.Databases;
 using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Entities;
 using NewsAggregator.News.Repositories;
@@ -31,20 +32,21 @@ namespace NewsAggregator.News.UseCases.Queries
 
         internal class Handler : IRequestHandler<GetNewsEditorListQuery, GetNewsEditorListDto>
         {
+            private readonly IUnitOfWork _unitOfWork;
             private readonly INewsEditorRepository _newsEditorRepository;
             private readonly INewsSourceRepository _newsSourceRepository;
 
-            public Handler(INewsEditorRepository newsEditorRepository, INewsSourceRepository newsSourceRepository)
+            public Handler(IUnitOfWork unitOfWork, INewsEditorRepository newsEditorRepository, 
+                INewsSourceRepository newsSourceRepository)
             {
+                _unitOfWork = unitOfWork;
                 _newsEditorRepository = newsEditorRepository;
                 _newsSourceRepository = newsSourceRepository;
             }
 
             public async Task<GetNewsEditorListDto> Handle(GetNewsEditorListQuery request, CancellationToken cancellationToken)
             {
-                using (var transaction = new TransactionScope(TransactionScopeOption.Required,
-                    new TransactionOptions() { IsolationLevel = IsolationLevel.RepeatableRead },
-                        TransactionScopeAsyncFlowOption.Enabled))
+                using (var transaction = await _unitOfWork.BeginTransactionAsync(cancellationToken))
                 {
                     try
                     {
@@ -59,12 +61,14 @@ namespace NewsAggregator.News.UseCases.Queries
                             new PagedResultModel<NewsEditor>(newsEditorList, request.Filters.Page, 
                                 request.Filters.PageSize, newsEditorCount), newsSources);
 
-                        transaction.Complete();
+                        await transaction.CommitAsync();
 
                         return getNewsEditorListDto;
                     }
                     catch (Exception ex) 
                     {
+                        await transaction.RollbackAsync();
+
                         return new GetNewsEditorListDto(new GetNewsEditorListFilters(),
                             new PagedResultModel<NewsEditor>(new List<NewsEditor>(), 1, 0, 0), new List<NewsSource>());
                     }

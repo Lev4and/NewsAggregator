@@ -1,4 +1,5 @@
 ﻿using NewsAggregator.Domain.Entities;
+using NewsAggregator.Domain.Infrastructure.Databases;
 using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Repositories;
 using NewsAggregator.News.Searchers;
@@ -9,19 +10,19 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Searchers
 {
     public class NewsSearcher : NewsDbEntityFrameworkSearcher<Entities.News>, INewsSearcher
     {
+        private readonly IUnitOfWork _unitOfWork;
         private readonly INewsRepository _repository;
 
-        public NewsSearcher(NewsDbContext dbContext, INewsRepository repository) : base(dbContext)
+        public NewsSearcher(NewsDbContext dbContext, IUnitOfWork unitOfWork, INewsRepository repository) : base(dbContext)
         {
+            _unitOfWork = unitOfWork;
             _repository = repository;
         }
 
         public async Task<PagedResultModel<Entities.News>> SearchByFiltersAsync(GetNewsListFilters filters, 
             CancellationToken cancellationToken = default)
         {
-            using (var transaction = new TransactionScope(TransactionScopeOption.Required,
-                    new TransactionOptions() { IsolationLevel = IsolationLevel.RepeatableRead },
-                        TransactionScopeAsyncFlowOption.Enabled))
+            using (var transaction = await _unitOfWork.BeginTransactionAsync(cancellationToken))
             {
                 try
                 {
@@ -33,12 +34,14 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Searchers
                     var result = new PagedResultModel<Entities.News>(list, filters.Page, 
                         filters.PageSize, count);
 
-                    transaction.Complete();
+                    await transaction.CommitAsync();
 
                     return result;
                 }
                 catch
                 {
+                    await transaction.RollbackAsync();
+
                     return new PagedResultModel<Entities.News>(new List<Entities.News>(), 1, 
                         1, 0);
                 }

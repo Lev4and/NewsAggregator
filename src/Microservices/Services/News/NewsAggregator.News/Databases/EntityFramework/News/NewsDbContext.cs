@@ -79,7 +79,7 @@ namespace NewsAggregator.News.Databases.EntityFramework.News
 
         public Task<IDatabaseTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
         {
-            return Task.FromResult<IDatabaseTransaction>(new EntityFrameworkDatabaseTransaction(this));
+            return Task.FromResult<IDatabaseTransaction>(new EntityFrameworkRepeatableReadDatabaseTransaction());
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

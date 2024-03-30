@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 using NewsAggregator.Domain.Entities;
+using NewsAggregator.Domain.Infrastructure.Databases;
 using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Entities;
 using NewsAggregator.News.Repositories;
@@ -31,11 +32,14 @@ namespace NewsAggregator.News.UseCases.Queries
 
         internal class Handler : IRequestHandler<GetNewsSourceListQuery, GetNewsSourceListDto>
         {
+            private readonly IUnitOfWork _unitOfWork;
             private readonly INewsSourceRepository _newsSourceRepository;
             private readonly INewsTagRepository _newsTagRepository;
 
-            public Handler(INewsSourceRepository newsSourceRepository, INewsTagRepository newsTagsRepository)
+            public Handler(IUnitOfWork unitOfWork, INewsSourceRepository newsSourceRepository, 
+                INewsTagRepository newsTagsRepository)
             {
+                _unitOfWork = unitOfWork;
                 _newsSourceRepository = newsSourceRepository;
                 _newsTagRepository = newsTagsRepository;
             }
@@ -43,9 +47,7 @@ namespace NewsAggregator.News.UseCases.Queries
             public async Task<GetNewsSourceListDto> Handle(GetNewsSourceListQuery request, 
                 CancellationToken cancellationToken)
             {
-                using (var transaction = new TransactionScope(TransactionScopeOption.Required,
-                    new TransactionOptions() { IsolationLevel = IsolationLevel.RepeatableRead },
-                        TransactionScopeAsyncFlowOption.Enabled))
+                using (var transaction = await _unitOfWork.BeginTransactionAsync(cancellationToken))
                 {
                     try
                     {
@@ -60,12 +62,14 @@ namespace NewsAggregator.News.UseCases.Queries
                             new PagedResultModel<NewsSource>(newsSourceList, request.Filters.Page, request.Filters.PageSize, 
                                 newsSourceCount), newsTags);
 
-                        transaction.Complete();
+                        await transaction.CommitAsync();
 
                         return getNewsSourceListDto;
                     }
                     catch (Exception ex)
                     {
+                        await transaction.RollbackAsync();
+
                         return new GetNewsSourceListDto(new GetNewsSourceListFilters(),
                             new PagedResultModel<NewsSource>(new List<NewsSource>(), 1, 1, 0),
                                 new List<NewsTag>());

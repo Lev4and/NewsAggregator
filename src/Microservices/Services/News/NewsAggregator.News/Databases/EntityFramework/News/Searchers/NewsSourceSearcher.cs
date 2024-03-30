@@ -1,4 +1,5 @@
 ﻿using NewsAggregator.Domain.Entities;
+using NewsAggregator.Domain.Infrastructure.Databases;
 using NewsAggregator.News.DTOs;
 using NewsAggregator.News.Entities;
 using NewsAggregator.News.Repositories;
@@ -10,19 +11,20 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Searchers
 {
     public class NewsSourceSearcher : NewsDbEntityFrameworkSearcher<NewsSource>, INewsSourceSearcher
     {
+        private readonly IUnitOfWork _unitOfWork;
         private readonly INewsSourceRepository _repository;
 
-        public NewsSourceSearcher(NewsDbContext dbContext, INewsSourceRepository repository) : base(dbContext)
+        public NewsSourceSearcher(NewsDbContext dbContext, IUnitOfWork unitOfWork, INewsSourceRepository repository) : 
+            base(dbContext)
         {
+            _unitOfWork = unitOfWork;
             _repository = repository;
         }
 
         public async Task<PagedResultModel<NewsSource>> SearchByFiltersAsync(GetNewsSourceListFilters filters, 
             CancellationToken cancellationToken)
         {
-            using (var transaction = new TransactionScope(TransactionScopeOption.Required,
-                    new TransactionOptions() { IsolationLevel = IsolationLevel.RepeatableRead },
-                        TransactionScopeAsyncFlowOption.Enabled))
+            using (var transaction = await _unitOfWork.BeginTransactionAsync(cancellationToken))
             {
                 try
                 {
@@ -34,12 +36,14 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Searchers
                     var result = new PagedResultModel<NewsSource>(list, filters.Page,
                         filters.PageSize, count);
 
-                    transaction.Complete();
+                    await transaction.CommitAsync();
 
                     return result;
                 }
                 catch
                 {
+                    await transaction.RollbackAsync();
+
                     return new PagedResultModel<NewsSource>(new List<NewsSource>(), 1,
                         1, 0);
                 }

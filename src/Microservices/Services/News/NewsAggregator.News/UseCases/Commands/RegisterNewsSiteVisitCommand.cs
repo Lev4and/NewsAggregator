@@ -5,7 +5,6 @@ using NewsAggregator.Domain.Infrastructure.MessageBrokers;
 using NewsAggregator.Domain.Repositories;
 using NewsAggregator.News.Entities;
 using NewsAggregator.News.Messages;
-using System.Transactions;
 
 namespace NewsAggregator.News.UseCases.Commands
 {
@@ -42,9 +41,7 @@ namespace NewsAggregator.News.UseCases.Commands
 
             public async Task<bool> Handle(RegisterNewsSiteVisitCommand request, CancellationToken cancellationToken)
             {
-                using (var transaction = new TransactionScope(TransactionScopeOption.Required,
-                    new TransactionOptions() { IsolationLevel = IsolationLevel.RepeatableRead },
-                        TransactionScopeAsyncFlowOption.Enabled))
+                using (var transaction = await _unitOfWork.BeginTransactionAsync(cancellationToken))
                 {
                     try
                     {
@@ -57,12 +54,14 @@ namespace NewsAggregator.News.UseCases.Commands
 
                         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-                        transaction.Complete();
+                        await transaction.CommitAsync();
 
                         return true;
                     }
                     catch
                     {
+                        await transaction.RollbackAsync();
+
                         return false;
                     }
                 }
