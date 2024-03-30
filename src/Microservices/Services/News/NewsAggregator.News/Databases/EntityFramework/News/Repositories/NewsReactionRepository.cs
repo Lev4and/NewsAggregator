@@ -24,7 +24,7 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
         {
             return await _dbContext.Reactions.AsNoTracking()
                 .Include(reaction => reaction.Icon)
-                .Include(reaction => reaction.News.Where(news => news.NewsId == newsId))
+                .Include(reaction => reaction.News)
                 .Select(reaction => new NewsReactionDto
                 {
                     NewsId = newsId,
@@ -32,7 +32,7 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
                     ReactionTitle = reaction.Title,
                     ReactionIconClass = reaction.Icon.IconClass,
                     ReactionIconColor = reaction.Icon.IconColor,
-                    Count = reaction.News.Count
+                    Count = reaction.News.Where(news => news.NewsId == newsId).Count(),
                 })
                 .ToListAsync();
         }
