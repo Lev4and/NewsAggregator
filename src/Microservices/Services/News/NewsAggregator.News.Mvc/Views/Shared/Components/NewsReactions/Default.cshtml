@@ -1,0 +1,13 @@
+﻿@model IReadOnlyCollection<NewsReactionDto>
+
+<div class="news-reactions">
+    @foreach (var reaction in Model)
+    {
+        <div class="news-reactions__reaction" data-reaction-newsId="@reaction.NewsId" data-reaction-id="@reaction.ReactionId">
+            <i class="bi @reaction.ReactionIconClass" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@reaction.ReactionTitle" style="color: @reaction.ReactionIconColor"></i>
+            <span class="news-reactions__reaction__counter" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="@(reaction.Count.ToString("N0", new CultureInfo("en-US")))">
+                @reaction.Count.ToString("N0", new CultureInfo("en-US"))
+            </span>
+        </div>
+    }
+</div>

@@ -62,7 +62,8 @@ namespace NewsAggregator.News.Extensions
                     {
                         Id = reaction.Icon.Id,
                         ReactionId = reaction.Id,
-                        IconClass = reaction.Icon.IconClass
+                        IconClass = reaction.Icon.IconClass,
+                        IconColor = reaction.Icon.IconColor
                     });
             }
 

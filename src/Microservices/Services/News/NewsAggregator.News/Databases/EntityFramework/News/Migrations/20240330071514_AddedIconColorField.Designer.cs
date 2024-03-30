@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NewsAggregator.News.Databases.EntityFramework.News;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
 {
     [DbContext(typeof(NewsDbContext))]
-    partial class NewsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240330071514_AddedIconColorField")]
+    partial class AddedIconColorField
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -6148,7 +6151,7 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                         {
                             Id = new Guid("e1f9ac21-e918-4ab7-a051-43e0fec7e7c5"),
                             IconClass = "bi-emoji-frown-fill",
-                            IconColor = "aqua",
+                            IconColor = "auqa",
                             ReactionId = new Guid("7f2a58e7-34f8-4551-a1d6-8cd2f132351d")
                         },
                         new
@@ -6183,7 +6186,7 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Migrations
                         {
                             Id = new Guid("2158fcf6-039c-49f4-8e2e-9867ba006e1f"),
                             IconClass = "bi-emoji-tear-fill",
-                            IconColor = "aqua",
+                            IconColor = "auqa",
                             ReactionId = new Guid("81f8a4e0-f850-411b-ba9a-6131c6768658")
                         },
                         new

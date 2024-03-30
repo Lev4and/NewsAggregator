@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using NewsAggregator.News.DTOs;
+using NewsAggregator.News.Extensions;
 using NewsAggregator.News.Messages;
 using NewsAggregator.News.UseCases.Queries;
 using System.ComponentModel.DataAnnotations;
@@ -32,12 +33,20 @@ namespace NewsAggregator.News.Mvc.Controllers
         {
             var news = await _mediator.Send(new GetNewsByIdQuery(id), cancellationToken);
 
-            await _mediator.Publish(new NewsViewed(id, 
-                HttpContext.Request.Headers.FirstOrDefault(header => header.Key == "X-Real-IP").Value.FirstOrDefault() 
-                    ?? HttpContext.Connection.RemoteIpAddress?.ToString() 
-                        ?? string.Empty));
+            await _mediator.Publish(new NewsViewed(id, HttpContext.GetConnectionIpAddress()));
 
             return View("News", news);
+        }
+
+        [HttpPost]
+        [Route("{newsId:guid:required}/sendNewsReaction")]
+        public async Task<IActionResult> SendNewsReactionAsync([Required][FromRoute(Name = "newsId")] Guid newsId,
+            [Required][FromQuery(Name = "reactionId")] Guid reactionId, CancellationToken cancellationToken = default)
+        {
+            await _mediator.Publish(new NewsReacted(newsId, reactionId, HttpContext.GetConnectionIpAddress()),
+                cancellationToken);
+
+            return Ok();
         }
     }
 }

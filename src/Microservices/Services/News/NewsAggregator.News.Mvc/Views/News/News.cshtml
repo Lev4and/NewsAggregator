@@ -90,6 +90,38 @@
         video[itemprop="video"] {
             width: 100%;
         }
+
+        .news-reactions {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+            .news-reactions .news-reactions__reaction {
+                margin: 5px;
+                padding: 5px;
+                gap: 5px;
+                min-width: 150px;
+                max-width: 150px;
+                cursor: pointer;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid var(--bs-border-color);
+                border-radius: 5px;
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            .news-reactions .news-reactions__reaction .news-reactions__reaction__counter {
+                    overflow: hidden;
+                    -webkit-line-clamp: 1;
+                    text-overflow: ellipsis;
+                    line-clamp: 1;
+                    -webkit-box-orient: vertical;
+            }
     </style>
 }
 
@@ -161,6 +193,7 @@
                 </div>
             }
         </article>
+        <vc:news-reactions news-id="@Model.Id" />
     </div>
     <div class="col-md-4">
         <div>

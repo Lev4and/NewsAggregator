@@ -64,6 +64,22 @@ namespace NewsAggregator.News
                         messagePublishConfigurator.Durable = true;
                         messagePublishConfigurator.ExchangeType = ExchangeType.Direct;
                     });
+
+                    configurator.Send<NewsReacted>(messageSendConfigurator =>
+                    {
+                        messageSendConfigurator.UseRoutingKeyFormatter(context => "news.reacted");
+                    });
+
+                    configurator.Message<NewsReacted>(messageConfigurator =>
+                    {
+                        messageConfigurator.SetEntityName("news.events");
+                    });
+
+                    configurator.Publish<NewsReacted>(messagePublishConfigurator =>
+                    {
+                        messagePublishConfigurator.Durable = true;
+                        messagePublishConfigurator.ExchangeType = ExchangeType.Direct;
+                    });
                 });
             });
 

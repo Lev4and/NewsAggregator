@@ -8,6 +8,8 @@ namespace NewsAggregator.News.Entities
 
         public string IconClass { get; set; }
 
+        public string IconColor { get; set; }
+
         public virtual Reaction? Reaction { get; set; }
     }
 }

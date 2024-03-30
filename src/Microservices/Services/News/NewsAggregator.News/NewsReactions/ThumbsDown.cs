@@ -11,7 +11,8 @@ namespace NewsAggregator.News.NewsReactions
             Icon = new ReactionIcon
             {
                 Id = Guid.Parse("ef493f75-50d3-49c2-9aad-01edf6cd55c2"),
-                IconClass = "bi-hand-thumbs-down-fill"
+                IconClass = "bi-hand-thumbs-down-fill",
+                IconColor = "red"
             };
         }
     }

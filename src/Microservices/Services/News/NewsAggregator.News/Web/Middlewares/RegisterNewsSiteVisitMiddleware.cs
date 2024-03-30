@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using NewsAggregator.News.Extensions;
 using NewsAggregator.News.Messages;
 using System.Net;
 
@@ -26,10 +27,7 @@ namespace NewsAggregator.News.Web.Middlewares
                 {
                     var mediator = scope.ServiceProvider.GetRequiredService<MediatR.IMediator>();
 
-                    await mediator.Publish(new NewsSiteVisited(
-                        context.Request.Headers.FirstOrDefault(header => header.Key == "X-Real-IP").Value.FirstOrDefault()
-                            ?? context.Connection.RemoteIpAddress?.ToString()
-                                ?? string.Empty));
+                    await mediator.Publish(new NewsSiteVisited(context.GetConnectionIpAddress()));
                 }
             }
         }
