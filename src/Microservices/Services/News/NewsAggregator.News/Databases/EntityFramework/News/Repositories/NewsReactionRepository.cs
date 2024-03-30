@@ -24,7 +24,7 @@ namespace NewsAggregator.News.Databases.EntityFramework.News.Repositories
         {
             return await _dbContext.Reactions.AsNoTracking()
                 .Include(reaction => reaction.Icon)
-                .Include(reaction => reaction.News.Where(news => news.Id == newsId))
+                .Include(reaction => reaction.News.Where(news => news.NewsId == newsId))
                 .Select(reaction => new NewsReactionDto
                 {
                     NewsId = newsId,
