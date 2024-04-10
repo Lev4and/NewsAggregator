@@ -59,9 +59,10 @@ namespace NewsAggregator.Infrastructure.Web.Middlewares
         private async Task WrapThrownExceptionJsonResponseAsync(HttpResponse response, Exception exception,
             CancellationToken cancellationToken = default)
         {
-            var newResponseBody = new ApiResponse<object>(null, HttpStatusCode.BadGateway, exception);
+            var newResponseBody = new ApiResponse<object>(null, HttpStatusCode.BadGateway, exception.Message, exception);
             var newResponseBodyText = JsonConvert.SerializeObject(newResponseBody);
 
+            response.ContentType = "application/json; charset=utf-8";
             response.StatusCode = (int)HttpStatusCode.BadGateway;
 
             await response.WriteAsync(newResponseBodyText, cancellationToken);
